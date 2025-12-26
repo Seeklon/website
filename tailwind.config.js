@@ -10,10 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // La VRAIE couleur Pantone Cloud Dancer (Chaud/Premium)
         background: "#F5F7FA  ",
 
-        // On garde nos bleus forts pour le contraste (Tech/Confiance)
         primary: {
           DEFAULT: "#1A459C", // Deep Royal
           light: "#3B82F6",   // Electric Frost
