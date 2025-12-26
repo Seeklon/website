@@ -1,46 +1,102 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300 py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <div className="text-2xl font-bold text-white mb-4">Seeklon</div>
-            <p className="text-sm mb-4">
-              Le vent tourne avec Seeklon. Recruter pour durer, pas pour remplacer dans 6 mois.
-            </p>
-          </div>
-          
-          <div>
-            <h3 className="text-white font-semibold mb-4">Navigation</h3>
-            <ul className="space-y-2">
-              <li><Link href="/" className="hover:text-white">Accueil</Link></li>
-              <li><Link href="/about" className="hover:text-white">À propos</Link></li>
-              <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
-            </ul>
+      <footer className="relative bg-[#0F172A] text-slate-400 py-20 overflow-hidden">
+
+        {/* --- 1. LIGNE DE SÉPARATION LUMINEUSE (Top Glow) --- */}
+        {/* Une ligne de lumière qui s'estompe sur les côtés. Très chic. */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent shadow-[0_0_15px_rgba(59,130,246,0.5)]"></div>
+
+        {/* --- 2. FOND AMBIANT & WATERMARK --- */}
+        {/* Un "S" géant ou le nom Seeklon en fond pour habiller */}
+        <div className="absolute -bottom-20 -right-20 pointer-events-none select-none overflow-hidden">
+        <span className="font-heading font-bold text-[12rem] leading-none text-white/[0.03] tracking-tighter whitespace-nowrap">
+          SEEKLON
+        </span>
+        </div>
+
+        {/* Petit brouillard bleu au fond à gauche pour la profondeur */}
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid md:grid-cols-12 gap-12 mb-16">
+
+            {/* Colonne 1 (Large - 4 cols) : Marque */}
+            <div className="md:col-span-4 space-y-6">
+              <Link href="/" className="inline-flex items-center gap-3 group">
+                <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
+                  {/* Logo avec filtre pour être blanc sur fond noir */}
+                  <Image
+                      src="/logo.png"
+                      alt="Seeklon Logo"
+                      fill
+                      className="object-contain invert brightness-0 grayscale-0 opacity-90"
+                  />
+                </div>
+                <span className="font-heading text-2xl font-bold text-white tracking-tight">
+                  Seeklon
+              </span>
+              </Link>
+              <p className="font-sans text-sm leading-relaxed max-w-sm text-slate-400">
+                L'intelligence artificielle au service d'un recrutement plus humain, plus rapide et plus durable.
+              </p>
+            </div>
+
+            {/* Spacer (1 col) */}
+            <div className="md:col-span-1"></div>
+
+            {/* Colonne 2 (Navigation) */}
+            <div className="md:col-span-2">
+              <h3 className="font-heading font-semibold text-white mb-6">Produit</h3>
+              <ul className="space-y-4 text-sm font-medium">
+                <li><Link href="/" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Fonctionnalités</Link></li>
+                <li><Link href="/pricing" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Tarifs</Link></li>
+                <li><Link href="/demo" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Demander une démo</Link></li>
+              </ul>
+            </div>
+
+            {/* Colonne 3 (Entreprise) */}
+            <div className="md:col-span-2">
+              <h3 className="font-heading font-semibold text-white mb-6">Entreprise</h3>
+              <ul className="space-y-4 text-sm font-medium">
+                <li><Link href="/about" className="hover:text-primary-light hover:pl-1 transition-all duration-200">À propos</Link></li>
+                <li><Link href="/blog" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Blog</Link></li>
+                <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Contact</Link></li>
+              </ul>
+            </div>
+
+            {/* Colonne 4 (Légal) */}
+            <div className="md:col-span-3">
+              <h3 className="font-heading font-semibold text-white mb-6">Légal</h3>
+              <ul className="space-y-4 text-sm font-medium">
+                <li><Link href="/legal" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Mentions légales</Link></li>
+                <li><Link href="/privacy" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Confidentialité</Link></li>
+                <li><Link href="/rgpd" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Gestion des cookies</Link></li>
+              </ul>
+            </div>
           </div>
 
-          <div>
-            <h3 className="text-white font-semibold mb-4">Légal</h3>
-            <ul className="space-y-2">
-              <li><Link href="#" className="hover:text-white">Mentions légales</Link></li>
-              <li><Link href="#" className="hover:text-white">RGPD</Link></li>
-            </ul>
-          </div>
+          {/* Footer Bottom */}
+          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
+            <div>
+              © {new Date().getFullYear()} Seeklon Inc. Tous droits réservés.
+            </div>
 
-          <div>
-            <h3 className="text-white font-semibold mb-4">Suivez-nous</h3>
-            <ul className="space-y-2">
-              <li><Link href="https://www.linkedin.com/company/seeklon" target="_blank" className="hover:text-white">LinkedIn</Link></li>
-            </ul>
+            <div className="flex items-center gap-6">
+              <Link href="https://linkedin.com" target="_blank" className="hover:text-white transition-colors">LinkedIn</Link>
+              <Link href="https://twitter.com" target="_blank" className="hover:text-white transition-colors">Twitter/X</Link>
+
+              {/* Petit indicateur de statut système (Touche Tech sympa) */}
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="text-slate-400">Systems Operational</span>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <div className="border-t border-slate-800 pt-8 text-center text-sm">
-          © {new Date().getFullYear()} Seeklon. Tous droits réservés.
-        </div>
-      </div>
-    </footer>
+      </footer>
   )
 }
