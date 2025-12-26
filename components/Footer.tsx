@@ -86,14 +86,7 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-6">
-              <Link href="https://linkedin.com" target="_blank" className="hover:text-white transition-colors">LinkedIn</Link>
-              <Link href="https://twitter.com" target="_blank" className="hover:text-white transition-colors">Twitter/X</Link>
-
-              {/* Petit indicateur de statut système (Touche Tech sympa) */}
-              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span className="text-slate-400">Systems Operational</span>
-              </div>
+              <Link href="https://www.linkedin.com/company/seeklon/" target="_blank" className="hover:text-white transition-colors">LinkedIn</Link>
             </div>
           </div>
         </div>
