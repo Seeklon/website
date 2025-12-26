@@ -7,7 +7,7 @@ export default function Hero() {
 
             {/* --- Z-INDEX 10 : CONTENU --- */}
             <div className="container mx-auto px-4 text-center relative z-10">
-                <h1 className="font-heading text-4xl md:text-8xl font-bold text-text-main mb-6 leading-tight">
+                <h1 className="font-heading text-4xl md:text-8xl font-extrabold text-text-main mb-6 leading-tight">
                     Seeklon. <br className="hidden md:block" />
                 </h1>
                 <h2 className="font-heading text-4xl md:text-6xl font-medium leading-tight">
