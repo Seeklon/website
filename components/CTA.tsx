@@ -15,7 +15,7 @@ export default function CTA() {
 
         <div className="container mx-auto px-4 text-center relative z-10">
 
-          <h2 className="font-heading text-3xl md:text-5xl font-bold text-primary mb-6 tracking-tight">
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
             Prêt à recruter durablement ?
           </h2>
 
@@ -26,7 +26,7 @@ export default function CTA() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
             <Link href="/contact" className="w-full sm:w-auto">
               {/* Bouton Blanc Lumineux */}
-              <Button className="w-full sm:w-auto px-8 py-4 text-lg font-bold bg-white text-primary hover:bg-blue-50 hover:scale-102 rounded-full transition-all duration-300">
+              <Button variant="outline" className="w-full sm:w-auto px-8 py-4 text-lg font-bold bg-white text-primary hover:scale-102 rounded-full transition-all duration-300">
                 Commencer maintenant
               </Button>
             </Link>
