@@ -5,7 +5,6 @@ export default function Hero() {
     return (
         <section className="relative bg-background py-20 md:py-32 overflow-hidden min-h-[85vh] flex items-center justify-center">
 
-            {/* --- Z-INDEX 10 : CONTENU --- */}
             <div className="container mx-auto px-4 text-center relative z-10">
                 <h1 className="font-heading text-6xl md:text-8xl font-extrabold text-text-main mb-6 leading-tight">
                     Seeklon. <br className="hidden md:block" />
@@ -35,7 +34,8 @@ export default function Hero() {
                     </Link>
                 </div>
             </div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none -z-0">
+
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] pointer-events-none -z-0 [mask-image:radial-gradient(closest-side,black_30%,transparent_80%)]">
 
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
                 <div className="absolute inset-0 animate-spin-slow">
@@ -50,6 +50,9 @@ export default function Hero() {
                 </div>
 
             </div>
+
+            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-10 pointer-events-none"></div>
+
         </section>
     )
 }

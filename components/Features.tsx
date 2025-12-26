@@ -27,12 +27,12 @@ export default function Features() {
   return (
       <section className="py-24 bg-background relative overflow-hidden">
 
-        {/* --- FOND VIVANT (Crucial pour l'effet verre) --- */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* J'ai intensifié un peu les blobs pour qu'ils traversent bien le verre */}
+        <div className="absolute inset-0 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
           <div className="absolute top-20 -left-20 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px]"></div>
           <div className="absolute bottom-0 -right-20 w-[600px] h-[600px] bg-primary-light/15 rounded-full blur-[100px]"></div>
         </div>
+
+        {/* Optionnel : Un petit dégradé blanc tout en haut pour faire la jonction avec le Hero si nécessaire */}
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-20">

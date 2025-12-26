@@ -22,11 +22,12 @@ export default function SocialProof() {
   return (
       <section className="py-24 relative overflow-hidden bg-background">
 
-        {/* --- 1. LE FOND VIVANT (Blobs identiques aux Features) --- */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Blob Haut Gauche pour éclairer le premier témoignage */}
+        {/* --- SOLUTION : LE GRADIENT MASK --- */}
+        {/* Le masque rend les bords haut/bas transparents pour que les blobs s'effacent en douceur */}
+        <div className="absolute inset-0 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
+          {/* Blob Haut Gauche */}
           <div className="absolute top-20 -left-20 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px]"></div>
-          {/* Blob Bas Droite pour éclairer le dernier */}
+          {/* Blob Bas Droite */}
           <div className="absolute bottom-20 -right-20 w-[600px] h-[600px] bg-primary-light/15 rounded-full blur-[100px]"></div>
         </div>
 
@@ -40,8 +41,7 @@ export default function SocialProof() {
             {testimonials.map((item, index) => (
                 <div
                     key={index}
-                    // --- 2. STYLE APPLE GLASS ---
-                    // Copie exacte du style utilisé dans Features.tsx
+                    // Style Apple Glass identique aux features
                     className="group relative p-8 rounded-2xl
                                bg-gradient-to-br from-white/60 via-white/30 to-white/10
                                backdrop-blur-xl backdrop-saturate-150
@@ -51,20 +51,17 @@ export default function SocialProof() {
                                hover:-translate-y-1 hover:bg-white/40
                                transition-all duration-300 text-left flex flex-col h-full"
                 >
-                  {/* Reflet spéculaire (Lumière sur l'arête du haut) */}
+                  {/* Reflet spéculaire */}
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent opacity-50"></div>
 
-                  {/* Icône Quote : Un peu plus visible (primary/20) et s'anime au hover */}
                   <Quote className="absolute top-6 right-6 text-primary/20 w-12 h-12 rotate-180 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[170deg]" />
 
-                  {/* Le contenu */}
                   <div className="flex-grow">
                     <p className="font-sans text-text-main italic mb-8 relative z-10 leading-relaxed">
                       "{item.quote}"
                     </p>
                   </div>
 
-                  {/* L'auteur */}
                   <div className="border-t border-primary/10 pt-4 mt-auto">
                     <div className="font-heading font-bold text-primary">
                       {item.author}
