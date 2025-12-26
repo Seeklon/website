@@ -10,42 +10,42 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Fond "Cloud Dancer" (Pantone 2026)
-        background: "#F0F2F5",
+        // La VRAIE couleur Pantone Cloud Dancer (Chaud/Premium)
+        background: "#F5F7FA  ",
 
-        // Bleu Royal (Confiance/Stabilité)
+        // On garde nos bleus forts pour le contraste (Tech/Confiance)
         primary: {
-          DEFAULT: "#1A459C",
-          light: "#3B82F6",   // Electric Frost (pour les accents)
+          DEFAULT: "#1A459C", // Deep Royal
+          light: "#3B82F6",   // Electric Frost
           dark: "#112D69",
         },
 
         // Textes
         text: {
           main: "#0F172A",    // Midnight Navy
-          muted: "#64748B",   // Gris bleuté pour les paragraphes
+          muted: "#64748B",
         },
 
-        // Surface (pour l'effet verre)
+        // Surface: On adapte légèrement la bordure pour qu'elle ne jure pas avec le fond crème
         glass: {
-          border: "rgba(255, 255, 255, 0.4)",
-          surface: "rgba(255, 255, 255, 0.7)",
+          border: "rgba(255, 255, 255, 0.6)", // Bordure un peu plus visible
+          surface: "rgba(255, 255, 255, 0.6)", // Surface laiteuse
         }
       },
       fontFamily: {
-        // Assure-toi de bien charger ces fonts dans ton layout.tsx
         sans: ["var(--font-inter)", ...fontFamily.sans],
         heading: ["var(--font-jakarta)", ...fontFamily.sans],
       },
       animation: {
-        'blob': 'blob 7s infinite', // Animation douce pour les ronds en background
+        'blob': 'blob 10s infinite',
+        'spin-slow': 'spin 20s linear infinite', // Rotation très lente (20s)
+        'spin-reverse-slow': 'spin-reverse 25s linear infinite', // Rotation inverse
       },
       keyframes: {
-        blob: {
-          '0%': { transform: 'translate(0px, 0px) scale(1)' },
-          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-          '100%': { transform: 'translate(0px, 0px) scale(1)' },
+        // ... tes keyframes existantes
+        'spin-reverse': {
+          'from': { transform: 'rotate(360deg)' },
+          'to': { transform: 'rotate(0deg)' },
         },
       },
     },
