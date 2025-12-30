@@ -124,8 +124,9 @@ export default function Contact() {
 
                   <div className="pt-4">
                     <Button
+                        variant={"outline"}
                         type="submit"
-                        className="w-full py-4 text-lg font-bold rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
+                        className="w-full py-4 text-lg font-bold text-primary rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
                     >
                       <Send size={20} />
                       Envoyer le message
