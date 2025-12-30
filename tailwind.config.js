@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#F5F7FA  ",
+        background: "#F0F5FF",
 
         primary: {
           DEFAULT: "#1A459C", // Deep Royal
