@@ -73,18 +73,6 @@ export default function SocialProof() {
                 </div>
             ))}
           </div>
-
-          {/* Section Logos Partenaires */}
-          <p className="font-sans text-sm text-text-muted uppercase tracking-widest mb-6">
-            Déjà adopté par +50 entreprises innovantes
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-40 grayscale mix-blend-multiply">
-            <div className="h-8 w-24 bg-slate-400/50 rounded animate-pulse"></div>
-            <div className="h-8 w-24 bg-slate-400/50 rounded animate-pulse delay-100"></div>
-            <div className="h-8 w-24 bg-slate-400/50 rounded animate-pulse delay-200"></div>
-            <div className="h-8 w-24 bg-slate-400/50 rounded animate-pulse delay-300"></div>
-          </div>
         </div>
       </section>
   )
