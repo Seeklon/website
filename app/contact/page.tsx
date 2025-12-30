@@ -39,17 +39,6 @@ export default function Contact() {
               <div className="space-y-4">
                 <h2 className="font-heading text-2xl font-bold text-text-main mb-6">Nos Coordonnées</h2>
 
-                {/* Card 1: Email */}
-                <a href="mailto:contact@seeklon.com" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/40 border border-white/60 hover:bg-white/80 hover:scale-102 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-primary uppercase tracking-wide">Email</p>
-                    <p className="text-text-main font-medium group-hover:text-primary transition-colors">contact@seeklon.com</p>
-                  </div>
-                </a>
-
                 {/* Card 2: LinkedIn */}
                 <a href="https://www.linkedin.com/company/seeklon" target="_blank" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/40 border border-white/60 hover:bg-white/80 hover:scale-102 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
                   <div className="w-12 h-12 bg-[#0077b5] rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform">
