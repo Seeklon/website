@@ -18,7 +18,7 @@ export default function Hero() {
 
                 <p className="font-sans text-lg md:text-xl text-text-muted mb-10 max-w-2xl mx-auto">
                     <br className="hidden md:block" />
-                    Seeklon est la solution SaaS d’IA qui trie et score automatiquement vos candidatures pour garantir des recrutements durables.
+                    Seeklon est la solution qui trie et score automatiquement vos candidatures pour garantir des recrutements durables.
                 </p>
 
                 <div className="flex flex-col md:flex-row gap-4 justify-center">

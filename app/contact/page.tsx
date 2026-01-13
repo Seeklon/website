@@ -78,7 +78,7 @@ export default function Contact() {
             </span>
             </h1>
             <p className="font-sans text-xl text-text-muted max-w-2xl mx-auto">
-              Que ce soit pour une démo ou juste pour dire bonjour, notre équipe est prête à vous répondre.
+              Passez le pas et adoptez l'oeil du cyclone.
             </p>
           </div>
 
