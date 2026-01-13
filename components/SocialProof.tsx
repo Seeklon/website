@@ -2,19 +2,19 @@ import { Quote } from 'lucide-react'
 
 const testimonials = [
   {
-    quote: "Seeklon a transformé notre processus de recrutement. Nous avons gagné un temps précieux et trouvé des candidats qui correspondent vraiment à notre culture.",
-    author: "Sophie M.",
-    role: "DRH, TechStart"
+    quote: "Vos données sont précieuses. Notre infrastructure respecte les normes RGPD les plus strictes avec un hébergement sécurisé et souverain.",
+    author: "Sécurité et confidentialité",
+    role: "L'équipe de développement"
   },
   {
-    quote: "L'interface est intuitive et le tri par IA est impressionnant de précision. Un must-have pour les PME sans service RH dédié.",
-    author: "Thomas L.",
-    role: "CEO, InnovCorp"
+    quote: "L'approche innovante de Seeklon a fait l'unanimité. C'est pour son impact concret sur le recrutement que nous sommes fiers de lui décerner le prix Coup de Cœur du Jury.",
+    author: "Hackathon BPI France",
+    role: "Jury, BPI France"
   },
   {
-    quote: "70% de temps gagné sur le tri des CVs. Le ROI est immédiat. Je recommande vivement pour toutes les agences en croissance.",
-    author: "Marie D.",
-    role: "Office Manager, GreenAgency"
+    quote: "Une intelligence artificielle entraînée pour ignorer les données sensibles (âge, genre, origine) et se concentrer uniquement sur les compétences réelles.",
+    author: "Tech & Ethique",
+    role: "L'équipe de développement"
   }
 ]
 
@@ -34,7 +34,7 @@ export default function SocialProof() {
         <div className="container mx-auto px-4 text-center relative z-10">
 
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-16">
-            Ils nous font confiance
+            Faites nous confiance
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
