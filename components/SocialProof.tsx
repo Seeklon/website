@@ -3,7 +3,7 @@ import { Quote } from 'lucide-react'
 const testimonials = [
   {
     quote: "Vos données sont précieuses. Notre infrastructure respecte les normes RGPD les plus strictes avec un hébergement sécurisé et souverain.",
-    author: "Sécurité et confidentialité",
+    author: "Sécurité & confidentialité",
     role: "L'équipe de développement"
   },
   {
