@@ -31,7 +31,7 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ["var(--font-inter)", ...fontFamily.sans],
+        sans: ["var(--font-dm-sans)", ...fontFamily.sans],
         heading: ["var(--font-jakarta)", ...fontFamily.sans],
       },
       animation: {
