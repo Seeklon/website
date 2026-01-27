@@ -3,35 +3,40 @@ import Link from 'next/link'
 
 export default function Hero() {
     return (
-        <section className="relative bg-background py-20 md:py-32 overflow-hidden min-h-[85vh] flex items-center justify-center">
+        <section className="relative bg-background py-12 md:py-20 overflow-hidden min-h-[70vh] flex items-center">
 
-            <div className="container mx-auto px-4 text-center relative z-10">
-                <h1 className="font-heading text-6xl md:text-8xl font-extrabold text-text-main mb-6 leading-tight">
-                    Seeklon. <br className="hidden md:block" />
-                </h1>
-                <h2 className="font-heading text-4xl md:text-6xl font-medium leading-tight">
-                    Quand le talent émerge de <br className="hidden md:block" />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
-                        la tempête
-                    </span>
-                </h2>
+            <div className="container mx-auto px-4 relative z-10">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    <div className="text-left">
+                        <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-text-main mb-6 leading-tight">
+                            Seeklon est la solution de tri intelligent de vos candidatures
+                        </h1>
+                        <h2 className="font-heading text-2xl md:text-3xl font-medium leading-tight text-text-muted mb-8">
+                            Simplifiez le processus de recrutement des PME. Notre ATS couplé à l'IA trie et hiérarchise instantanément les candidatures selon vos critères.
+                        </h2>
 
-                <p className="font-sans text-lg md:text-xl text-text-muted mb-10 max-w-2xl mx-auto">
-                    <br className="hidden md:block" />
-                    Seeklon est la solution qui trie et score automatiquement vos candidatures pour garantir des recrutements durables.
-                </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                            <Link href="/contact">
+                                <Button className="w-full sm:w-auto text-lg px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-full transition-all shadow-lg shadow-primary/20">
+                                    Testez le produit
+                                </Button>
+                            </Link>
+                            <Link href="/about">
+                                <Button variant="outline" className="w-full sm:w-auto text-lg px-8 py-3 border border-primary/20 text-primary hover:bg-primary/5 rounded-full transition-all backdrop-blur-sm bg-white/30">
+                                    Voir comment ça marche
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
 
-                <div className="flex flex-col md:flex-row gap-4 justify-center">
-                    <Link href="/contact">
-                        <Button className="w-full md:w-auto text-lg px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-full transition-all shadow-lg shadow-primary/20">
-                            Demander une démo
-                        </Button>
-                    </Link>
-                    <Link href="/about">
-                        <Button variant="outline" className="w-full md:w-auto text-lg px-8 py-3 border border-primary/20 text-primary hover:bg-primary/5 rounded-full transition-all backdrop-blur-sm bg-white/30">
-                            En savoir plus
-                        </Button>
-                    </Link>
+                    {/* Espace pour l'illustration 3D */}
+                    <div className="hidden md:block h-full min-h-[400px] flex items-center justify-center">
+                        <img 
+                            src="https://placehold.co/600x400/e2e8f0/1e293b?text=Illustration+Dashboard+3D" 
+                            alt="Interface Dashboard Seeklon"
+                            className="w-full h-auto rounded-lg shadow-2xl animate-bounce-slow object-cover"
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -51,7 +56,7 @@ export default function Hero() {
 
             </div>
 
-            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background via-background/80 to-transparent z-10 pointer-events-none"></div>
 
         </section>
     )

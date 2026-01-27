@@ -21,8 +21,8 @@ const jakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-    title: 'Seeklon - Quand le talent émerge de la tempête',
-    description: 'Plateforme SaaS d’IA dédiée au recrutement et à la gestion RH pour PME francophones.',
+    title: 'Seeklon - Tri intelligent de candidatures',
+    description: 'Simplifiez le processus de recrutement des PME grâce à notre ATS couplé à une IA de tri hiérarchisé.',
     icons: {
         icon: '/logo.png',
         shortcut: '/logo.png',

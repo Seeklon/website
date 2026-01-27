@@ -78,7 +78,7 @@ export default function Contact() {
             </span>
             </h1>
             <p className="font-sans text-xl text-text-muted max-w-2xl mx-auto">
-              Passez le pas et adoptez l'oeil du cyclone.
+              Contactez notre équipe pour en savoir plus.
             </p>
           </div>
 
@@ -112,8 +112,8 @@ export default function Contact() {
               <div className="relative overflow-hidden rounded-2xl bg-[#0F172A] p-8 text-white shadow-xl shadow-blue-900/10 group">
                 <div className="absolute -right-10 -top-10 w-32 h-32 bg-primary rounded-full blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
 
-                <h3 className="font-heading text-xl font-bold mb-2 relative z-10">La Tempête RH 🌪️</h3>
-                <p className="text-slate-400 text-sm mb-6 relative z-10">Recevez nos meilleurs conseils pour recruter sans stresser.</p>
+                <h3 className="font-heading text-xl font-bold mb-2 relative z-10">Restez informé</h3>
+                <p className="text-slate-400 text-sm mb-6 relative z-10">Recevez nos conseils recrutement.</p>
 
                 {!isSuccessNews ? (
                     <form className="flex gap-2 relative z-10" onSubmit={handleNewsletterSubmit}>

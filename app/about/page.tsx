@@ -25,7 +25,7 @@ export default function About() {
             </span>
             </h1>
             <p className="font-sans text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
-              Nous croyons que chaque PME mérite d'accéder aux mêmes technologies que les géants de la Tech.
+              Nous croyons que chaque PME mérite d'accéder aux mêmes technologies que les géants de la Tech pour trouver les meilleurs talents.
             </p>
           </div>
         </section>
@@ -41,11 +41,11 @@ export default function About() {
               </h2>
               <div className="space-y-6 font-sans text-lg text-text-muted">
                 <p>
-                  Les dirigeants de PME sont des héros du quotidien, souvent débordés. Le recrutement devient vite une charge mentale.
+                  Les dirigeants de PME sont des héros du quotidien, souvent débordés. Le recrutement devient vite une charge mentale qui freine la croissance.
                 </p>
                 <div className="p-6 rounded-2xl bg-primary/5 border border-primary/10 relative">
                   <p className="font-medium text-primary italic relative z-10">
-                    "Seeklon filtre le bruit pour que l'humain puisse se concentrer sur la rencontre."
+                    "Seeklon filtre le bruit pour que l'humain puisse se concentrer sur la rencontre authentique."
                   </p>
                 </div>
               </div>
@@ -59,10 +59,8 @@ export default function About() {
                 <div className="relative w-full h-full p-8 flex flex-col justify-between items-center">
 
                   {/* 1. CHAOS ANIMÉ (Haut) */}
-                  {/* On remplace les barres grises par un spectre vertical coloré qui bouge */}
                   <div className="w-full flex justify-center items-end gap-1 h-16 opacity-60">
                     {[...Array(20)].map((_, i) => {
-                      // On génère une hauteur aléatoire pour chaque barre pour simuler des données
                       const height = Math.max(20, Math.random() * 100);
                       return (
                           <div
@@ -71,7 +69,7 @@ export default function About() {
                               style={{
                                 height: `${height}%`,
                                 animationDuration: '1s',
-                                animationDelay: `${i * 0.05}s` // Effet de vague
+                                animationDelay: `${i * 0.05}s`
                               }}
                           ></div>
                       )
@@ -79,7 +77,6 @@ export default function About() {
                   </div>
 
                   {/* 2. LE FILTRE (Centre) */}
-                  {/* Petit effet de rebond (bounce) doux pour montrer que ça travaille */}
                   <div className="relative z-10 animate-bounce duration-[3000ms]">
                     <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/30">
                       <Zap className="text-white w-10 h-10" />
@@ -89,7 +86,6 @@ export default function About() {
                   </div>
 
                   {/* 3. CLARTÉ (Bas) */}
-                  {/* La carte résultat apparaît calme et stable */}
                   <div className="w-48 h-16 rounded-2xl bg-white shadow-lg border border-white/80 flex items-center px-4 gap-3 transform hover:scale-105 transition-transform duration-300">
                     <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0">
                       <Target size={20}/>
@@ -114,9 +110,9 @@ export default function About() {
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { icon: Target, color: "blue", title: "Simplicité Radicale", text: "Des outils puissants qui s'utilisent comme une évidence." },
-                { icon: Heart, color: "pink", title: "Technologie & Humain", text: "L'IA gère le volume, vous gérez la relation." },
-                { icon: Zap, color: "amber", title: "Impact Immédiat", text: "Chaque minute gagnée est une minute pour votre croissance." }
+                { icon: Target, color: "blue", title: "Simplicité", text: "Des outils puissants qui s'utilisent comme une évidence. Pas de formation nécessaire." },
+                { icon: Heart, color: "pink", title: "Authenticité", text: "L'IA gère le volume pour vous laisser gérer la relation humaine." },
+                { icon: Zap, color: "amber", title: "Efficacité", text: "Chaque minute gagnée sur le tri est une minute investie dans votre croissance." }
               ].map((val, i) => (
                   <div key={i} className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300">
                     <div className={`w-12 h-12 rounded-xl bg-${val.color}-500/20 flex items-center justify-center text-${val.color}-400 mb-6 group-hover:scale-110 transition-transform`}>
@@ -133,7 +129,7 @@ export default function About() {
         {/* TEAM & CTA */}
         <section className="py-24 relative">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-main mb-6">L'équipe</h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-main mb-6">L'équipe Fondatrice</h2>
             <div className="flex flex-wrap justify-center gap-8 mb-16">
               {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="group relative w-64 h-80 rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
@@ -149,7 +145,7 @@ export default function About() {
             </div>
 
             <div className="bg-primary/5 rounded-3xl p-12 max-w-4xl mx-auto border border-primary/10">
-              <h3 className="font-heading text-2xl font-bold text-primary mb-4">Prêt à nous rencontrer ?</h3>
+              <h3 className="font-heading text-2xl font-bold text-primary mb-4">Prêt à simplifier vos recrutements ?</h3>
               <Link href="/contact">
                 <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg shadow-primary/20 hover:-translate-y-1 transition-transform">
                   Contactez-nous
