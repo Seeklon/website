@@ -38,7 +38,7 @@ export default function Footer() {
                 </div>
                 <span className="font-heading text-2xl font-bold text-white tracking-tight">
                   Seeklon
-              </span>
+                </span>
               </Link>
               <p className="font-sans text-sm leading-relaxed max-w-sm text-slate-400">
                 Prêt à recruter plus facilement ?
@@ -52,9 +52,9 @@ export default function Footer() {
             <div className="md:col-span-2">
               <h3 className="font-heading font-semibold text-white mb-6">Produit</h3>
               <ul className="space-y-4 text-sm font-medium">
-                <li><Link href="/" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Fonctionnalités</Link></li>
+                <li><Link href="/#product" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Fonctionnalités</Link></li>
                 <li><Link href="/pricing" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Tarifs</Link></li>
-                <li><Link href="/demo" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Demander une démo</Link></li>
+                <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Demander une démo</Link></li>
               </ul>
             </div>
 

@@ -74,11 +74,11 @@ export default function Contact() {
             <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-main mb-6">
               Une question ? <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
-              On vous écoute.
+              Demandez une démo.
             </span>
             </h1>
             <p className="font-sans text-xl text-text-muted max-w-2xl mx-auto">
-              Contactez notre équipe pour en savoir plus.
+              Contactez notre équipe pour une démonstration ou pour en savoir plus.
             </p>
           </div>
 
@@ -176,7 +176,7 @@ export default function Contact() {
 
                         <div className="space-y-2">
                           <label htmlFor="message" className="text-sm font-semibold text-text-muted ml-1">Message</label>
-                          <textarea required name="message" id="message" rows={5} className="w-full px-5 py-4 rounded-xl bg-white/50 border border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 font-medium text-text-main placeholder-slate-400 shadow-sm resize-none" placeholder="Dites-nous tout..."></textarea>
+                          <textarea required name="message" id="message" rows={5} className="w-full px-5 py-4 rounded-xl bg-white/50 border border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 font-medium text-text-main placeholder-slate-400 shadow-sm resize-none" placeholder="Je souhaite une démo du produit..."></textarea>
                         </div>
 
                         <div className="pt-4">
