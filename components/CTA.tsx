@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function CTA() {
     return (
-        <section className="relative py-24 overflow-hidden">
+        <section className="relative py-12 overflow-hidden">
 
             {/* 1. FOND "DEEP ICE" */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-dark z-0"></div>
@@ -14,7 +14,7 @@ export default function CTA() {
             <div className="container mx-auto px-4 text-center relative z-10">
 
                 <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                    Prêt à recruter durablement ?
+                    Prêt à recruter plus facilement ?
                 </h2>
 
                 <p className="font-sans text-lg md:text-xl text-blue-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">

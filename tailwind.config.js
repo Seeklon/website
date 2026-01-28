@@ -31,15 +31,20 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ["var(--font-inter)", ...fontFamily.sans],
+        sans: ["var(--font-dm-sans)", ...fontFamily.sans],
         heading: ["var(--font-jakarta)", ...fontFamily.sans],
       },
       animation: {
         'blob': 'blob 10s infinite',
         'spin-slow': 'spin 20s linear infinite', // Rotation très lente (20s)
         'spin-reverse-slow': 'spin-reverse 25s linear infinite', // Rotation inverse
+        'scroll': 'scroll 40s linear infinite',
       },
       keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
         // ... tes keyframes existantes
         'spin-reverse': {
           'from': { transform: 'rotate(360deg)' },
@@ -48,7 +53,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };
 
 export default config;

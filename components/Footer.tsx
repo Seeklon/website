@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-      <footer className="relative bg-[#0F172A] text-slate-400 py-20 overflow-hidden">
+      <footer className="relative bg-[#0F172A] text-slate-400 py-12 overflow-hidden">
 
         {/* --- 1. LIGNE DE SÉPARATION LUMINEUSE (Top Glow) --- */}
         {/* Une ligne de lumière qui s'estompe sur les côtés. Très chic. */}
@@ -22,7 +22,7 @@ export default function Footer() {
 
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-12 gap-12 mb-16">
+          <div className="grid md:grid-cols-12 gap-12 mb-10">
 
             {/* Colonne 1 (Large - 4 cols) : Marque */}
             <div className="md:col-span-4 space-y-6">
@@ -38,10 +38,10 @@ export default function Footer() {
                 </div>
                 <span className="font-heading text-2xl font-bold text-white tracking-tight">
                   Seeklon
-              </span>
+                </span>
               </Link>
               <p className="font-sans text-sm leading-relaxed max-w-sm text-slate-400">
-                L'intelligence artificielle au service d'un recrutement plus humain, plus rapide et plus durable.
+                Prêt à recruter plus facilement ?
               </p>
             </div>
 
@@ -52,9 +52,9 @@ export default function Footer() {
             <div className="md:col-span-2">
               <h3 className="font-heading font-semibold text-white mb-6">Produit</h3>
               <ul className="space-y-4 text-sm font-medium">
-                <li><Link href="/" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Fonctionnalités</Link></li>
-                <li><Link href="/pricing" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Tarifs</Link></li>
-                <li><Link href="/demo" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Demander une démo</Link></li>
+                <li><Link href="/#product" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Fonctionnalités</Link></li>
+                {/* <li><Link href="/pricing" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Tarifs</Link></li> */}
+                <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Demander une démo</Link></li>
               </ul>
             </div>
 

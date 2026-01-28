@@ -1,15 +1,15 @@
 import './globals.css'
 import type {Metadata} from 'next'
 // 1. Import des deux familles de polices
-import {Inter, Plus_Jakarta_Sans} from 'next/font/google'
+import {DM_Sans, Plus_Jakarta_Sans} from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-// 2. Configuration de Inter (Corps de texte)
+// 2. Configuration de DM Sans (Corps de texte)
 // On ajoute 'variable' pour que Tailwind puisse l'utiliser
-const inter = Inter({
+const dmSans = DM_Sans({
     subsets: ['latin'],
-    variable: '--font-inter',
+    variable: '--font-dm-sans',
     display: 'swap',
 })
 
@@ -21,8 +21,8 @@ const jakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-    title: 'Seeklon - Quand le talent émerge de la tempête',
-    description: 'Plateforme SaaS d’IA dédiée au recrutement et à la gestion RH pour PME francophones.',
+    title: 'Seeklon - Tri intelligent de candidatures',
+    description: 'Simplifiez le processus de recrutement des PME grâce à notre ATS couplé à une IA de tri hiérarchisé.',
     icons: {
         icon: '/logo.png',
         shortcut: '/logo.png',
@@ -38,7 +38,7 @@ export default function RootLayout({
     return (
         <html lang="fr">
         <body className={`
-        ${inter.variable} 
+        ${dmSans.variable} 
         ${jakarta.variable} 
         font-sans 
         bg-background 

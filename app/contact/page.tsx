@@ -74,11 +74,11 @@ export default function Contact() {
             <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-main mb-6">
               Une question ? <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
-              On vous écoute.
+              Demandez une démo.
             </span>
             </h1>
             <p className="font-sans text-xl text-text-muted max-w-2xl mx-auto">
-              Passez le pas et adoptez l'oeil du cyclone.
+              Contactez notre équipe pour une démonstration ou pour en savoir plus.
             </p>
           </div>
 
@@ -112,8 +112,8 @@ export default function Contact() {
               <div className="relative overflow-hidden rounded-2xl bg-[#0F172A] p-8 text-white shadow-xl shadow-blue-900/10 group">
                 <div className="absolute -right-10 -top-10 w-32 h-32 bg-primary rounded-full blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
 
-                <h3 className="font-heading text-xl font-bold mb-2 relative z-10">La Tempête RH 🌪️</h3>
-                <p className="text-slate-400 text-sm mb-6 relative z-10">Recevez nos meilleurs conseils pour recruter sans stresser.</p>
+                <h3 className="font-heading text-xl font-bold mb-2 relative z-10">Restez informé</h3>
+                <p className="text-slate-400 text-sm mb-6 relative z-10">Recevez nos conseils recrutement.</p>
 
                 {!isSuccessNews ? (
                     <form className="flex gap-2 relative z-10" onSubmit={handleNewsletterSubmit}>
@@ -176,7 +176,7 @@ export default function Contact() {
 
                         <div className="space-y-2">
                           <label htmlFor="message" className="text-sm font-semibold text-text-muted ml-1">Message</label>
-                          <textarea required name="message" id="message" rows={5} className="w-full px-5 py-4 rounded-xl bg-white/50 border border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 font-medium text-text-main placeholder-slate-400 shadow-sm resize-none" placeholder="Dites-nous tout..."></textarea>
+                          <textarea required name="message" id="message" rows={5} className="w-full px-5 py-4 rounded-xl bg-white/50 border border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 outline-none transition-all duration-300 font-medium text-text-main placeholder-slate-400 shadow-sm resize-none" placeholder="Je souhaite une démo du produit..."></textarea>
                         </div>
 
                         <div className="pt-4">

@@ -13,6 +13,9 @@ export default function Header() {
 
     const navItems = [
         { label: 'Accueil', href: '/' },
+        { label: 'Produit', href: '/product' },
+        // { label: 'Tarifs', href: '/pricing' },
+        { label: 'Blog', href: '/blog' },
         { label: 'À propos', href: '/about' },
         { label: 'Contact', href: '/contact' }
     ]
@@ -81,7 +84,7 @@ export default function Header() {
                 <div className="hidden md:flex gap-4">
                     <Link href="/contact">
                         <Button className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-full font-medium transition-all shadow-lg shadow-primary/20 text-sm">
-                            Demander une démo
+                            Testez le produit
                         </Button>
                     </Link>
                 </div>
@@ -125,7 +128,7 @@ export default function Header() {
 
                     <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                         <Button className="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-xl font-medium shadow-lg shadow-primary/20">
-                            Demander une démo
+                            Testez le produit
                         </Button>
                     </Link>
                 </div>
