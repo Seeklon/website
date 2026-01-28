@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/Button'
-import { Bot, Share2, MessageSquare, CheckCircle2, XCircle, ArrowRight } from 'lucide-react'
+import { Bot, Share2, MessageSquare, CheckCircle2, XCircle, ArrowRight, Star } from 'lucide-react'
 
 export default function Product() {
   return (
@@ -123,7 +123,11 @@ export default function Product() {
                      <div className="w-full bg-white rounded-xl shadow-lg p-6 space-y-4 max-w-sm border border-slate-100">
                         <div className="flex justify-between items-center border-b border-slate-100 pb-4">
                             <span className="font-bold text-slate-700">Candidat #42</span>
-                            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">Match 94%</span>
+                            <div className="flex gap-0.5 items-center">
+                                {[1,2,3,4,5].map(i => (
+                                    <Star key={i} size={14} className="fill-yellow-400 text-yellow-400" />
+                                ))}
+                            </div>
                         </div>
                         <div className="space-y-2">
                             <div className="h-2 bg-slate-100 rounded w-3/4"></div>
@@ -141,12 +145,12 @@ export default function Product() {
                     <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6">
                         <Bot size={24} />
                     </div>
-                    <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">Une IA qui comprend, pas qui cherche.</h2>
+                    <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">Une IA qui comprend les profils.</h2>
                     <p className="text-lg text-text-muted mb-6 leading-relaxed">
                         Oubliez la recherche par mots-clés qui élimine les bons profils. Notre IA analyse la sémantique, le parcours et le potentiel. Elle lit le CV comme un humain expert le ferait, mais en une fraction de seconde.
                     </p>
                     <ul className="space-y-3">
-                        <li className="flex items-center gap-2 text-text-main"><CheckCircle2 size={18} className="text-primary"/> Scoring automatique (0 à 100%)</li>
+                        <li className="flex items-center gap-2 text-text-main"><CheckCircle2 size={18} className="text-primary"/> Scoring automatique (0 à 5 étoiles)</li>
                         <li className="flex items-center gap-2 text-text-main"><CheckCircle2 size={18} className="text-primary"/> Détection des soft skills</li>
                     </ul>
                 </div>

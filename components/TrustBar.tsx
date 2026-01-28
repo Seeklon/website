@@ -53,7 +53,7 @@ export default function TrustBar() {
             </div>
             
             <div className="relative w-full overflow-hidden">
-                <div className="flex w-max animate-scroll hover:[animation-play-state:paused]">
+                <div className="flex w-max animate-scroll">
                     {/* Première boucle */}
                     <div className="flex gap-16 px-8 items-center">
                         {JOB_BOARDS.map((board, index) => (
