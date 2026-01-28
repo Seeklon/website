@@ -9,7 +9,7 @@ export default function Hero() {
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div className="text-left">
                         <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-text-main mb-6 leading-tight">
-                            Seeklon est la solution de tri intelligent de vos candidatures
+                            La solution de tri intelligent de vos candidatures
                         </h1>
                         <h2 className="font-heading text-2xl md:text-3xl font-medium leading-tight text-text-muted mb-8">
                             Simplifiez le processus de recrutement des PME. Notre ATS couplé à l'IA trie et hiérarchise instantanément les candidatures selon vos critères.
