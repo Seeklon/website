@@ -53,7 +53,7 @@ export default function Footer() {
               <h3 className="font-heading font-semibold text-white mb-6">Produit</h3>
               <ul className="space-y-4 text-sm font-medium">
                 <li><Link href="/#product" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Fonctionnalités</Link></li>
-                <li><Link href="/pricing" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Tarifs</Link></li>
+                {/* <li><Link href="/pricing" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Tarifs</Link></li> */}
                 <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Demander une démo</Link></li>
               </ul>
             </div>
