@@ -3,16 +3,16 @@ import Link from 'next/link'
 
 export default function Hero() {
     return (
-        <section className="relative bg-background py-12 md:py-20 overflow-hidden min-h-[70vh] flex items-center">
+        <section className="relative bg-background py-20 md:py-32 overflow-hidden min-h-[70vh] flex items-center">
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="grid md:grid-cols-2 gap-16 items-center">
                     <div className="text-left">
-                        <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-text-main mb-6 leading-tight">
-                            La solution de tri intelligent de vos candidatures
+                        <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-text-main mb-8 leading-tight">
+                            Recrutez mieux,<br/> plus vite.
                         </h1>
-                        <h2 className="font-heading text-2xl md:text-3xl font-medium leading-tight text-text-muted mb-8">
-                            Simplifiez le processus de recrutement des PME. Notre ATS couplé à l'IA trie et hiérarchise instantanément les candidatures selon vos critères.
+                        <h2 className="font-heading text-xl md:text-2xl font-medium leading-relaxed text-text-muted mb-10 max-w-lg">
+                            L'IA qui trie vos candidatures pour que vous ne rencontriez que les meilleurs.
                         </h2>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-start">

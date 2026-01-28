@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/Button'
-import { Bot, Share2, LayoutDashboard, Users, ShieldCheck, CheckCircle2, XCircle, ArrowRight } from 'lucide-react'
+import { Bot, Share2, MessageSquare, CheckCircle2, XCircle, ArrowRight } from 'lucide-react'
 
 export default function Product() {
   return (
@@ -21,7 +21,7 @@ export default function Product() {
               </span>
             </h1>
             <p className="font-sans text-xl text-text-muted mb-10 leading-relaxed">
-              De la diffusion de l'offre à la signature du contrat, Seeklon automatise les tâches chronophages pour vous laisser vous concentrer sur l'humain.
+              De la rédaction de l'offre à l'entretien final, Seeklon automatise les tâches chronophages pour vous laisser vous concentrer sur l'humain.
             </p>
             
             <div className="relative w-full aspect-video bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden group">
@@ -86,10 +86,10 @@ export default function Product() {
                         Recrutement Traditionnel
                     </h3>
                     <ul className="space-y-4 text-slate-600">
+                        <li className="flex gap-3"><span className="text-red-400">✕</span> Rédaction d'offre laborieuse</li>
                         <li className="flex gap-3"><span className="text-red-400">✕</span> Multidiffusion manuelle (copier-coller)</li>
-                        <li className="flex gap-3"><span className="text-red-400">✕</span> Réception des CV par email en vrac</li>
                         <li className="flex gap-3"><span className="text-red-400">✕</span> Tri manuel sur Excel (chronophage)</li>
-                        <li className="flex gap-3"><span className="text-red-400">✕</span> Perte de candidatures intéressantes</li>
+                        <li className="flex gap-3"><span className="text-red-400">✕</span> Entretiens mal préparés</li>
                     </ul>
                 </div>
 
@@ -103,10 +103,10 @@ export default function Product() {
                         Avec Seeklon
                     </h3>
                     <ul className="space-y-4 text-slate-700 font-medium">
+                        <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> Aide à la rédaction par IA</li>
                         <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> 1 clic pour diffuser partout</li>
-                        <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> Centralisation automatique</li>
                         <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> L'IA pré-sélectionne le Top 10%</li>
-                        <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> Dashboard collaboratif</li>
+                        <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> Guide d'entretien généré automatiquement</li>
                     </ul>
                 </div>
             </div>
@@ -187,57 +187,42 @@ export default function Product() {
                 </div>
             </div>
 
-            {/* Feature 3 : Collaboratif */}
+            {/* Feature 3 : Aide à l'entretien (New) */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="order-2 md:order-1 relative h-[400px] bg-slate-100 rounded-3xl border border-slate-200 overflow-hidden flex items-center justify-center">
-                     <div className="w-3/4 bg-white shadow-xl rounded-xl p-4 space-y-3">
-                        <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold">T</div>
-                            <div className="bg-slate-50 p-3 rounded-lg rounded-tl-none text-sm text-slate-600">
-                                "J'adore ce profil ! Je l'ai mis en shortlist pour l'entretien."
+                     <div className="w-3/4 bg-white shadow-xl rounded-xl p-6 space-y-4">
+                        <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
+                            <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <MessageSquare size={20} />
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-sm">Guide d'entretien</h4>
+                                <p className="text-xs text-slate-400">Généré par IA pour Candidat #42</p>
                             </div>
                         </div>
-                        <div className="flex items-center gap-3 flex-row-reverse">
-                            <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">A</div>
-                            <div className="bg-primary text-white p-3 rounded-lg rounded-tr-none text-sm">
-                                "Top, je bloque le créneau mardi à 14h."
+                        <div className="space-y-3">
+                            <div className="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                                <p className="text-xs font-bold text-slate-700 mb-1">Question suggérée :</p>
+                                <p className="text-sm text-slate-600 italic">"Pouvez-vous détailler votre expérience sur le projet X mentionné dans votre CV ?"</p>
+                            </div>
+                            <div className="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                                <p className="text-xs font-bold text-slate-700 mb-1">Point de vigilance :</p>
+                                <p className="text-sm text-slate-600 italic">"Vérifier son niveau d'anglais technique."</p>
                             </div>
                         </div>
                      </div>
                 </div>
                 <div className="order-1 md:order-2">
                     <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-6">
-                        <Users size={24} />
+                        <MessageSquare size={24} />
                     </div>
-                    <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">Recrutez en équipe.</h2>
+                    <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">Ne soyez plus jamais pris au dépourvu.</h2>
                     <p className="text-lg text-text-muted mb-6 leading-relaxed">
-                        Le recrutement est un sport d'équipe. Partagez les profils, ajoutez des notes privées, @mentionnez vos collègues et prenez des décisions collégiales sans quitter la plateforme.
+                        L'IA ne s'arrête pas au tri. Pour chaque candidat sélectionné, Seeklon génère un guide d'entretien sur-mesure avec les questions à poser et les points à creuser, basés sur l'analyse du CV et de l'offre.
                     </p>
                 </div>
             </div>
 
-        </div>
-      </section>
-
-      {/* 4. SÉCURITÉ & TECH */}
-      <section className="py-16 bg-[#0F172A] text-white">
-        <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto bg-white/5 border border-white/10 p-8 rounded-2xl">
-                <div className="flex items-start gap-6">
-                    <ShieldCheck size={48} className="text-green-400 shrink-0" />
-                    <div>
-                        <h3 className="text-xl font-bold mb-2">Sécurité Enterprise-Grade</h3>
-                        <p className="text-slate-400 max-w-lg">
-                            Vos données sont hébergées en France (OVH/Scaleway) et chiffrées de bout en bout. Nous sommes conformes RGPD et ne revendons jamais vos données candidats.
-                        </p>
-                    </div>
-                </div>
-                <div>
-                     <span className="inline-flex items-center px-4 py-2 rounded-lg bg-green-500/10 text-green-400 font-bold border border-green-500/20">
-                        <CheckCircle2 size={16} className="mr-2"/> Conforme RGPD
-                     </span>
-                </div>
-            </div>
         </div>
       </section>
 

@@ -19,14 +19,17 @@ export default function Pricing() {
                     
                     {/* START */}
                     <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                        <h3 className="font-heading text-xl font-bold text-text-main mb-2">Découverte</h3>
+                        <h3 className="font-heading text-xl font-bold text-text-main mb-2">Bêta</h3>
                         <div className="text-3xl font-bold text-primary mb-6">Gratuit</div>
+                        <p className="text-sm text-text-muted mb-6 h-10">
+                            Pour découvrir la puissance de l'IA Seeklon.
+                        </p>
                         <ul className="space-y-4 mb-8">
                             <li className="flex items-center gap-3 text-sm text-text-muted">
                                 <Check size={18} className="text-green-500" /> 1 offre d'emploi active
                             </li>
                             <li className="flex items-center gap-3 text-sm text-text-muted">
-                                <Check size={18} className="text-green-500" /> Tri IA basique
+                                <Check size={18} className="text-green-500" /> Tri IA standard
                             </li>
                             <li className="flex items-center gap-3 text-sm text-text-muted">
                                 <Check size={18} className="text-green-500" /> Support email
@@ -34,7 +37,7 @@ export default function Pricing() {
                         </ul>
                         <Link href="/contact">
                             <Button variant="outline" className="w-full py-3 rounded-xl border-primary text-primary hover:bg-primary/5">
-                                Commencer
+                                Accès Bêta
                             </Button>
                         </Link>
                     </div>
@@ -42,13 +45,16 @@ export default function Pricing() {
                     {/* PRO (Highlighted) */}
                     <div className="relative p-8 rounded-3xl bg-white border-2 border-primary shadow-xl scale-105 z-10">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wide">
-                            Populaire
+                            Recommandé
                         </div>
-                        <h3 className="font-heading text-xl font-bold text-text-main mb-2">Pro</h3>
+                        <h3 className="font-heading text-xl font-bold text-text-main mb-2">Standard</h3>
                         <div className="mb-6">
-                            <span className="text-3xl font-bold text-primary">Bêta Gratuite</span>
-                            <span className="block text-xs text-text-muted mt-1">Puis 49€/mois</span>
+                            <span className="text-3xl font-bold text-primary">49€</span>
+                            <span className="text-sm text-text-muted"> / mois</span>
                         </div>
+                        <p className="text-sm text-text-muted mb-6 h-10">
+                            Pour les PME qui recrutent régulièrement.
+                        </p>
                         <ul className="space-y-4 mb-8">
                             <li className="flex items-center gap-3 text-sm text-text-main font-medium">
                                 <Check size={18} className="text-primary" /> Offres illimitées
@@ -57,15 +63,15 @@ export default function Pricing() {
                                 <Check size={18} className="text-primary" /> Tri IA avancé & Scoring
                             </li>
                             <li className="flex items-center gap-3 text-sm text-text-main font-medium">
-                                <Check size={18} className="text-primary" /> Multidiffusion (LinkedIn, Indeed...)
+                                <Check size={18} className="text-primary" /> Multidiffusion incluse
                             </li>
                             <li className="flex items-center gap-3 text-sm text-text-main font-medium">
-                                <Check size={18} className="text-primary" /> Support prioritaire
+                                <Check size={18} className="text-primary" /> Guides d'entretien IA
                             </li>
                         </ul>
                         <Link href="/contact">
                             <Button className="w-full py-3 rounded-xl bg-primary text-white hover:bg-primary-dark shadow-lg shadow-primary/20">
-                                Profiter de la Bêta
+                                Commencer l'essai
                             </Button>
                         </Link>
                     </div>
@@ -74,15 +80,18 @@ export default function Pricing() {
                     <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all">
                         <h3 className="font-heading text-xl font-bold text-text-main mb-2">Entreprise</h3>
                         <div className="text-3xl font-bold text-primary mb-6">Sur mesure</div>
+                        <p className="text-sm text-text-muted mb-6 h-10">
+                            Pour les gros volumes de recrutement.
+                        </p>
                         <ul className="space-y-4 mb-8">
                             <li className="flex items-center gap-3 text-sm text-text-muted">
                                 <Check size={18} className="text-green-500" /> Volume illimité
                             </li>
                             <li className="flex items-center gap-3 text-sm text-text-muted">
-                                <Check size={18} className="text-green-500" /> API & Intégrations ATS
+                                <Check size={18} className="text-green-500" /> Accompagnement personnalisé
                             </li>
                             <li className="flex items-center gap-3 text-sm text-text-muted">
-                                <Check size={18} className="text-green-500" /> Account Manager dédié
+                                <Check size={18} className="text-green-500" /> Facturation centralisée
                             </li>
                         </ul>
                         <Link href="/contact">

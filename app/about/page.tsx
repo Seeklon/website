@@ -19,9 +19,9 @@ export default function About() {
                 Notre Mission
             </span>
             <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-main mb-8 leading-tight">
-              Rendre le recrutement aussi simple que <br className="hidden md:block" />
+              Le recrutement, <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
-               postuler.
+               enfin serein.
             </span>
             </h1>
             <p className="font-sans text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">

@@ -64,18 +64,6 @@ export default function SocialProof() {
             ))}
           </div>
 
-          {/* Valeurs Section */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto border-t border-primary/10 pt-12">
-                <div className="text-center">
-                    <h3 className="font-heading text-xl font-bold text-primary mb-2">Simplicité</h3>
-                    <p className="text-sm text-text-muted">Une interface épurée pour une prise en main immédiate.</p>
-                </div>
-                <div className="text-center">
-                    <h3 className="font-heading text-xl font-bold text-primary mb-2">Authenticité</h3>
-                    <p className="text-sm text-text-muted">Des relations transparentes et un recrutement humain.</p>
-                </div>
-          </div>
-
         </div>
       </section>
   )

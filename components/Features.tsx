@@ -1,25 +1,25 @@
-import { FileText, Share2, BrainCircuit, Trophy, Play } from 'lucide-react'
+import { FileText, Share2, BrainCircuit, MessageSquare } from 'lucide-react'
 
 const steps = [
   {
-    title: "Rédaction & Diffusion",
-    description: "Le recruteur rédige son offre via le formulaire Seeklon et la poste en un clic sur les principaux sites (Monster, Indeed, LinkedIn, etc.).",
+    title: "Rédaction Assistée",
+    description: "L'IA vous aide à rédiger une offre claire et attractive en quelques secondes pour attirer les meilleurs talents.",
     icon: FileText
   },
   {
-    title: "Centralisation",
-    description: "Le format de l'offre oblige le candidat à postuler vers notre ATS, centralisant ainsi toutes les sources.",
+    title: "Multidiffusion",
+    description: "Publiez votre offre en un clic sur tous les jobboards (Indeed, LinkedIn, etc.) et centralisez les retours.",
     icon: Share2
   },
   {
-    title: "Tri Intelligent IA",
-    description: "Notre ATS couplé à l'IA effectue un tri hiérarchisé instantané des candidatures selon les critères spécifiés dans l'offre.",
+    title: "Tri & Scoring IA",
+    description: "Notre algorithme analyse et classe instantanément les CV reçus pour identifier le Top 10% pertinent.",
     icon: BrainCircuit
   },
   {
-    title: "Résultat Immédiat",
-    description: "Vous ne lisez que les CV pertinents. Le gain de temps est considérable !",
-    icon: Trophy
+    title: "Aide à l'entretien",
+    description: "Générez automatiquement un guide d'entretien personnalisé pour chaque candidat sélectionné.",
+    icon: MessageSquare
   }
 ]
 
@@ -38,7 +38,7 @@ export default function Features() {
               Comment ça marche ?
             </h2>
             <p className="font-sans text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
-              Un processus simplifié pour vous concentrer sur l'essentiel : les talents.
+              Un processus complet, de la rédaction de l'offre jusqu'à l'entretien.
             </p>
           </div>
 
@@ -69,24 +69,6 @@ export default function Features() {
                   </p>
                 </div>
             ))}
-          </div>
-
-          {/* Placeholder Vidéo Démo */}
-          <div className="max-w-4xl mx-auto">
-             <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-900 border border-white/20 shadow-2xl group cursor-pointer">
-                {/* Fond placeholder */}
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900">
-                    <div className="text-center">
-                        <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
-                           <Play className="w-8 h-8 text-white fill-white ml-1" />
-                        </div>
-                        <p className="text-slate-400 font-medium">Voir la démo (1min)</p>
-                    </div>
-                </div>
-                
-                {/* Overlay effet "scan" ou tech */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 pointer-events-none bg-[length:100%_2px,3px_100%]"></div>
-             </div>
           </div>
 
         </div>
