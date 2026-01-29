@@ -11,9 +11,9 @@ export default function Product() {
       <section className="relative py-20 md:py-32 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-6 tracking-wide uppercase">
+            {/* <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-6 tracking-wide uppercase">
                 Tour d'horizon
-            </span>
+            </span> */}
             <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-main mb-8 leading-tight">
               Une suite complète pour <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
@@ -21,7 +21,7 @@ export default function Product() {
               </span>
             </h1>
             <p className="font-sans text-xl text-text-muted mb-10 leading-relaxed">
-              De la rédaction de l'offre à l'entretien final, Seeklon automatise les tâches chronophages pour vous laisser vous concentrer sur l'humain.
+            De la rédaction de l'offre à l'entretien final, Seeklon automatise vos tâches les plus chronophages.
             </p>
             
             <div className="relative w-full aspect-video bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden group">

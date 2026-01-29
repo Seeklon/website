@@ -3,22 +3,22 @@ import { FileText, Share2, Sparkles, MessageSquare } from 'lucide-react'
 const steps = [
   {
     title: "Rédaction Assistée",
-    description: "Rédigez votre offre d'emploi en quelques secondes grâce à la matrice de seeklon.",
+    description: "Rédigez votre offre d'emploi en quelques secondes grâce à la matrice de Seeklon.",
     icon: FileText
   },
   {
     title: "Multidiffusion",
-    description: "Publiez votre offre en un clic sur tous les jobboards (Indeed, LinkedIn, etc.) et centralisez les retours.",
+    description: "Publiez votre offre d'emploi sur tous les jobboards (Indeed, LinkedIn, etc.) et Seeklon centralise toutes les candidatures reçues.",
     icon: Share2
   },
   {
     title: "Tri & Scoring IA",
-    description: "Notre algorithme analyse et classe instantanément les CV reçus pour identifier les plus pertinent selon vos critères.",
+    description: "Notre algorithme analyse et classe instantanément les CV reçus pour identifier les plus pertinents selon vos critères.",
     icon: Sparkles
   },
   {
     title: "Aide à l'entretien",
-    description: "Seeklon génère automatiquement un guide d'entretient d'embauche adapté à chaque candidat selectionné. Confirmez les points forts du candidat et, investiguez sur ses points faible.",
+    description: "Seeklon génère un guide d'entretien d'embauche. Confirmez les points forts du candidat et investiguez sur ses points faibles.",
     icon: MessageSquare
   }
 ]

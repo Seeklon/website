@@ -12,7 +12,7 @@ export default function Hero() {
                             Recrutez plus vite.
                         </h1>
                         <h2 className="font-heading text-xl md:text-2xl font-medium leading-relaxed text-text-muted mb-10 max-w-lg">
-                        Seeklon est un ats boosté à l'ia capable de trier vos candidatures en quelques secondes.
+                        Seeklon est un ATS boosté à l'IA capable de trier vos candidatures en quelques secondes.
                         </h2>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-start">
