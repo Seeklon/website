@@ -7,6 +7,11 @@ const testimonials = [
     role: "Expert Business"
   },
   {
+    quote: "Une innovation majeure pour relever les défis du recrutement : trier avec précision et qualifier les talents avec pertinence.",
+    author: "Prix Coup de cœur du Jury Hackathon BPI 2024",
+    role: "Jury BPI"
+  },
+  {
     quote: "Une innovation prometteuse qui répond aux vrais besoins de tri et de qualification des candidats.",
     author: "Témoignage Équipe Pédagogique Epitech",
     role: "Direction"
@@ -29,7 +34,7 @@ export default function SocialProof() {
             Témoignages
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             {testimonials.map((item, index) => (
                 <div
                     key={index}
