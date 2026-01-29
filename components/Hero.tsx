@@ -9,7 +9,7 @@ export default function Hero() {
                 <div className="grid md:grid-cols-2 gap-16 items-center">
                     <div className="text-left">
                         <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-text-main mb-8 leading-tight">
-                            Recrutez mieux,<br/> plus vite.
+                            Recrutez plus vite.
                         </h1>
                         <h2 className="font-heading text-xl md:text-2xl font-medium leading-relaxed text-text-muted mb-10 max-w-lg">
                             L'IA qui trie vos candidatures pour que vous ne rencontriez que les meilleurs.
