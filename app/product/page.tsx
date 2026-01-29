@@ -25,41 +25,16 @@ export default function Product() {
             </p>
             
             <div className="relative w-full aspect-video bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden group">
-                 {/* Simulation Interface Dashboard */}
-                 <div className="absolute inset-0 bg-slate-800/50 flex flex-col p-6">
-                    {/* Fake Header */}
-                    <div className="h-12 w-full border-b border-white/10 flex items-center justify-between px-4 mb-6">
-                        <div className="flex gap-4">
-                            <div className="w-32 h-4 bg-white/10 rounded"></div>
-                            <div className="w-20 h-4 bg-white/5 rounded"></div>
-                        </div>
-                        <div className="w-8 h-8 rounded-full bg-primary"></div>
-                    </div>
-                    {/* Fake Content */}
-                    <div className="flex gap-6 h-full">
-                        <div className="w-64 h-full bg-white/5 rounded-lg p-4 space-y-3 hidden md:block">
-                            {[1,2,3,4].map(i => <div key={i} className="w-full h-8 bg-white/5 rounded"></div>)}
-                        </div>
-                        <div className="flex-1 space-y-6">
-                            <div className="flex justify-between">
-                                <div className="w-48 h-8 bg-white/10 rounded"></div>
-                                <div className="w-24 h-8 bg-primary/20 rounded"></div>
-                            </div>
-                            <div className="grid grid-cols-3 gap-4">
-                                {[1,2,3].map(i => <div key={i} className="h-24 bg-white/5 rounded-lg border border-white/5"></div>)}
-                            </div>
-                            <div className="space-y-3">
-                                {[1,2,3,4].map(i => (
-                                    <div key={i} className="h-16 bg-white/5 rounded-lg flex items-center px-4 gap-4 border border-white/5">
-                                        <div className="w-10 h-10 rounded-full bg-white/10"></div>
-                                        <div className="flex-1 h-3 bg-white/10 rounded w-1/2"></div>
-                                        <div className="w-20 h-6 bg-green-500/20 rounded-full"></div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                 </div>
+                 <video 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline
+                    className="w-full h-full object-cover"
+                 >
+                    <source src="/prez.webm" type="video/webm" />
+                    Your browser does not support the video tag.
+                 </video>
                  
                  {/* Badge Overlay */}
                  <div className="absolute bottom-6 right-6 bg-white text-text-main px-4 py-2 rounded-lg font-bold shadow-lg flex items-center gap-2 animate-bounce-slow">

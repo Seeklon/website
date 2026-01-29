@@ -1,5 +1,6 @@
 import Button from './Button'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Hero() {
     return (
@@ -29,13 +30,19 @@ export default function Hero() {
                         </div>
                     </div>
 
-                    {/* Espace pour l'illustration 3D */}
-                    <div className="hidden md:block h-full min-h-[400px] flex items-center justify-center">
-                        <img 
-                            src="https://placehold.co/600x400/e2e8f0/1e293b?text=Illustration+Dashboard+3D" 
-                            alt="Interface Dashboard Seeklon"
-                            className="w-full h-auto rounded-lg shadow-2xl animate-bounce-slow object-cover"
-                        />
+                    {/* Illustration Dashboard */}
+                    <div className="hidden md:block h-full min-h-[400px] flex items-center justify-center relative perspective-1000">
+                        <div className="relative transform transition-transform hover:scale-[1.02] duration-500">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-xl blur opacity-30"></div>
+                            <Image 
+                                src="/capdshbrdseeklon.png" 
+                                alt="Interface Dashboard Seeklon"
+                                width={800}
+                                height={600}
+                                className="relative rounded-xl shadow-2xl border border-white/10 w-full h-auto object-cover"
+                                priority
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
