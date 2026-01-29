@@ -48,7 +48,8 @@ export default function TrustBar() {
         <section className="py-10 border-b border-slate-100 bg-white/50 backdrop-blur-sm overflow-hidden">
             <div className="container mx-auto px-4 text-center mb-8">
                 <p className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
-                    Compatible avec vos plateformes préférées
+                    Compatible avec toutes les plateformes du marché
+
                 </p>
             </div>
             

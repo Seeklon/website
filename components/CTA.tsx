@@ -18,7 +18,7 @@ export default function CTA() {
                 </h2>
 
                 <p className="font-sans text-lg md:text-xl text-blue-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-                    Rejoignez la beta et découvrez comment l'IA de Seeklon transforme votre gestion RH dès aujourd'hui.
+                    Rejoignez la Bêta et découvrez comment l'IA de Seeklon transforme votre gestion RH dès aujourd'hui.
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
