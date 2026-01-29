@@ -52,7 +52,7 @@ export default function Header() {
 
                 {/* Logo Zone */}
                 <Link href="/" className="flex items-center gap-2 group z-50" onClick={() => setIsMobileMenuOpen(false)}>
-                    <div className="relative w-8 h-8 transition-transform group-hover:scale-105">
+                    <div className="relative w-10 h-10 transition-transform group-hover:scale-105">
                         <Image
                             src="/logo.png"
                             alt="Seeklon Logo"
@@ -61,7 +61,7 @@ export default function Header() {
                             priority
                         />
                     </div>
-                    <span className="font-heading text-xl font-bold text-primary tracking-tight">
+                    <span className="font-heading text-2xl font-bold text-primary tracking-tight">
                         Seeklon
                     </span>
                 </Link>

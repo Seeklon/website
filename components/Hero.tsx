@@ -9,10 +9,10 @@ export default function Hero() {
                 <div className="grid md:grid-cols-2 gap-16 items-center">
                     <div className="text-left">
                         <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-text-main mb-8 leading-tight">
-                            Recrutez mieux,<br/> plus vite.
+                            Recrutez plus vite.
                         </h1>
                         <h2 className="font-heading text-xl md:text-2xl font-medium leading-relaxed text-text-muted mb-10 max-w-lg">
-                            L'IA qui trie vos candidatures pour que vous ne rencontriez que les meilleurs.
+                        Seeklon est un ats boosté à l'ia capable de trier vos candidatures en quelques secondes.
                         </h2>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-start">
@@ -21,7 +21,7 @@ export default function Hero() {
                                     Testez le produit
                                 </Button>
                             </Link>
-                            <Link href="/about">
+                            <Link href="/product">
                                 <Button variant="outline" className="w-full sm:w-auto text-lg px-8 py-3 border border-primary/20 text-primary hover:bg-primary/5 rounded-full transition-all backdrop-blur-sm bg-white/30">
                                     Voir comment ça marche
                                 </Button>

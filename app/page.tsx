@@ -10,10 +10,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TrustBar />
       <Features />
+      <TrustBar />
+
       <SocialProof />
-      <CTA />
+      {/* <CTA /> */}
       <Newsletter />
     </>
   )

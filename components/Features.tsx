@@ -1,9 +1,9 @@
-import { FileText, Share2, BrainCircuit, MessageSquare } from 'lucide-react'
+import { FileText, Share2, Sparkles, MessageSquare } from 'lucide-react'
 
 const steps = [
   {
     title: "Rédaction Assistée",
-    description: "L'IA vous aide à rédiger une offre claire et attractive en quelques secondes pour attirer les meilleurs talents.",
+    description: "Rédigez votre offre d'emploi en quelques secondes grâce à la matrice de seeklon.",
     icon: FileText
   },
   {
@@ -13,12 +13,12 @@ const steps = [
   },
   {
     title: "Tri & Scoring IA",
-    description: "Notre algorithme analyse et classe instantanément les CV reçus pour identifier le Top 10% pertinent.",
-    icon: BrainCircuit
+    description: "Notre algorithme analyse et classe instantanément les CV reçus pour identifier les plus pertinent selon vos critères.",
+    icon: Sparkles
   },
   {
     title: "Aide à l'entretien",
-    description: "Générez automatiquement un guide d'entretien personnalisé pour chaque candidat sélectionné.",
+    description: "Seeklon génère automatiquement un guide d'entretient d'embauche adapté à chaque candidat selectionné. Confirmez les points forts du candidat et, investiguez sur ses points faible.",
     icon: MessageSquare
   }
 ]
@@ -50,8 +50,8 @@ export default function Features() {
                 <div key={index} className="flex flex-col items-center text-center group">
                   
                   {/* Icon Circle */}
-                  <div className="w-24 h-24 rounded-full bg-white border-4 border-background shadow-xl flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 transition-transform duration-300">
-                    <div className="absolute inset-0 bg-primary/5 rounded-full blur-xl group-hover:bg-primary/10 transition-colors"></div>
+                  <div className="w-24 h-24 rounded-3xl bg-white border-4 border-background shadow-xl flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 transition-transform duration-300">
+                    <div className="absolute inset-0 bg-primary/5 rounded-3xl blur-xl group-hover:bg-primary/10 transition-colors"></div>
                     <step.icon size={32} className="text-primary" strokeWidth={1.5} />
                     
                     {/* Numéro de l'étape */}
