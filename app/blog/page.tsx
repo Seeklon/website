@@ -21,9 +21,6 @@ export default function BlogIndex() {
                 </div>
                 
                 <div className="container mx-auto px-4 relative z-10 text-center">
-                    <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-6 tracking-wide uppercase">
-                        Le Blog
-                    </span>
                     <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-main mb-6">
                         Conseils & Actualités
                     </h1>

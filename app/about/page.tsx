@@ -15,9 +15,6 @@ export default function About() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse duration-[4000ms]"></div>
 
           <div className="container mx-auto px-4 relative z-10">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-6 tracking-wide uppercase">
-                Notre Mission
-            </span>
             <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-main mb-8 leading-tight">
               Le recrutement, <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
