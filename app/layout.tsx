@@ -21,6 +21,7 @@ const jakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
+    metadataBase: new URL('https://landing.seeklon.com'),
     title: 'Seeklon - Tri intelligent de candidatures',
     description: 'Simplifiez le processus de recrutement des PME grâce à notre ATS couplé à une IA de tri hiérarchisé.',
     icons: {

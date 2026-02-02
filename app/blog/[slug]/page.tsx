@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Calendar, Tag } from 'lucide-react'
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
 
 interface Props {
     params: {
@@ -16,6 +17,24 @@ export async function generateStaticParams() {
     return posts.map((post) => ({
         slug: post.slug,
     }))
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const post = getPostBySlug(params.slug)
+    
+    if (!post) {
+        return {
+            title: 'Article non trouvé',
+        }
+    }
+
+    return {
+        title: post.title,
+        description: post.excerpt,
+        alternates: {
+            canonical: `https://landing.seeklon.com/blog/${params.slug}`,
+        },
+    }
 }
 
 export default function BlogPost({ params }: Props) {
