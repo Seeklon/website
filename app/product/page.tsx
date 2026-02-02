@@ -79,8 +79,8 @@ export default function Product() {
                     </h3>
                     <ul className="space-y-4 text-slate-700 font-medium">
                         <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> Aide à la rédaction par IA</li>
-                        <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> 1 clic pour diffuser partout</li>
-                        <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> L'IA pré-sélectionne le Top 10%</li>
+                        <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> Multidiffusion sur tous les jobboards</li>
+                        <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> Scoring automatique (0 à 5 étoiles)</li>
                         <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> Guide d'entretien généré automatiquement</li>
                     </ul>
                 </div>
@@ -195,7 +195,7 @@ export default function Product() {
                     <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-6">
                         <MessageSquare size={24} />
                     </div>
-                    <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">Ne soyez plus jamais pris au dépourvu.</h2>
+                    <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">Entretien d'embauche sur-mesure.</h2>
                     <p className="text-lg text-text-muted mb-6 leading-relaxed">
                         L'IA ne s'arrête pas au tri. Pour chaque candidat sélectionné, Seeklon génère un guide d'entretien sur-mesure avec les questions à poser et les points à creuser, basés sur l'analyse du CV et de l'offre.
                     </p>
