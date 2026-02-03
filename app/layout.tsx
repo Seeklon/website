@@ -22,12 +22,60 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://landing.seeklon.com'),
-    title: 'Seeklon - Tri intelligent de candidatures',
+    title: {
+        default: 'Seeklon - Tri intelligent de candidatures par IA',
+        template: '%s | Seeklon',
+    },
     description: 'Simplifiez le processus de recrutement des PME grâce à notre ATS couplé à une IA de tri hiérarchisé.',
+    keywords: ['ATS', 'recrutement', 'IA', 'tri CV', 'PME', 'candidatures', 'RH', 'ressources humaines', 'logiciel recrutement', 'scoring candidat', 'multidiffusion', 'jobboards', 'automatisation recrutement', 'logiciel RH', 'gestion candidatures', 'recrutement France'],
+    authors: [{ name: 'Seeklon' }],
+    creator: 'Seeklon',
+    publisher: 'Seeklon',
+    formatDetection: {
+        email: false,
+        address: false,
+        telephone: false,
+    },
     icons: {
         icon: '/logo.png',
         shortcut: '/logo.png',
         apple: '/logo.png',
+    },
+    openGraph: {
+        type: 'website',
+        locale: 'fr_FR',
+        url: 'https://landing.seeklon.com',
+        siteName: 'Seeklon',
+        title: 'Seeklon - Tri intelligent de candidatures par IA',
+        description: 'Simplifiez le processus de recrutement des PME grâce à notre ATS couplé à une IA de tri hiérarchisé.',
+        images: [
+            {
+                url: '/logo.png',
+                width: 512,
+                height: 512,
+                alt: 'Seeklon Logo',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Seeklon - Tri intelligent de candidatures',
+        description: 'Simplifiez le processus de recrutement des PME grâce à notre ATS couplé à une IA.',
+        images: ['/logo.png'],
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    verification: {
+        google: 'google1f15b651a8454aac',
     },
 }
 

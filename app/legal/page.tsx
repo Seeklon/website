@@ -1,4 +1,17 @@
 import React from 'react';
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Mentions Légales - Seeklon',
+  description: 'Mentions légales du site Seeklon : informations sur l\'éditeur, l\'hébergement et la propriété intellectuelle.',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://landing.seeklon.com/legal',
+  },
+}
 
 export default function Legal() {
   return (

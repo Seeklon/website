@@ -31,6 +31,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: post.title,
         description: post.excerpt,
+        authors: [{ name: 'Seeklon' }],
+        openGraph: {
+            title: post.title,
+            description: post.excerpt,
+            url: `https://landing.seeklon.com/blog/${params.slug}`,
+            siteName: 'Seeklon',
+            locale: 'fr_FR',
+            type: 'article',
+            publishedTime: post.date,
+            authors: ['Seeklon'],
+            images: [
+                {
+                    url: post.coverImage,
+                    width: 512,
+                    height: 512,
+                    alt: post.title,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.excerpt,
+            images: [post.coverImage],
+        },
         alternates: {
             canonical: `https://landing.seeklon.com/blog/${params.slug}`,
         },

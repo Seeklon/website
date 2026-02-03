@@ -3,9 +3,28 @@ import Image from 'next/image'
 import { getAllPosts } from '@/lib/blog'
 import { Calendar, ArrowRight } from 'lucide-react'
 
-export const metadata = {
-    title: 'Blog Seeklon - Conseils Recrutement & RH',
-    description: 'Découvrez nos derniers articles sur le recrutement, l\'IA et la gestion des talents pour les PME.',
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: 'Blog Seeklon - Conseils Recrutement, RH & Marque Employeur',
+    description: 'Conseils recrutement pour PME : rédiger une offre d\'emploi, améliorer l\'expérience candidat, utiliser l\'IA pour le tri de CV et développer votre marque employeur.',
+    keywords: ['conseils recrutement', 'blog RH', 'marque employeur', 'expérience candidat', 'rédiger offre emploi', 'IA recrutement', 'conseils PME recrutement'],
+    openGraph: {
+        title: 'Blog Seeklon - Conseils Recrutement & Marque Employeur',
+        description: 'Conseils recrutement pour PME : offres d\'emploi, expérience candidat, IA et marque employeur.',
+        url: 'https://landing.seeklon.com/blog',
+        siteName: 'Seeklon',
+        locale: 'fr_FR',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Blog Seeklon - Conseils Recrutement & RH',
+        description: 'Conseils recrutement pour PME : offres d\'emploi, expérience candidat et IA.',
+    },
+    alternates: {
+        canonical: 'https://landing.seeklon.com/blog',
+    },
 }
 
 export default function BlogIndex() {

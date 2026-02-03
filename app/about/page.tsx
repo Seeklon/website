@@ -2,6 +2,29 @@ import Image from 'next/image'
 import { Target, Heart, Zap, Users, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import Button from '@/components/Button'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'À propos de Seeklon - Startup française ATS & IA',
+  description: 'Découvrez l\'équipe Seeklon basée à Paris et notre mission : démocratiser l\'accès aux technologies de recrutement IA pour les PME françaises. Simplicité, authenticité, efficacité.',
+  keywords: ['équipe Seeklon', 'startup recrutement France', 'ATS français', 'mission Seeklon', 'recrutement PME'],
+  openGraph: {
+    title: 'À propos de Seeklon - Startup française ATS & IA',
+    description: 'L\'équipe Seeklon à Paris et notre mission : démocratiser le recrutement IA pour les PME françaises.',
+    url: 'https://landing.seeklon.com/about',
+    siteName: 'Seeklon',
+    locale: 'fr_FR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'À propos de Seeklon - Startup ATS française',
+    description: 'L\'équipe Seeklon et notre mission pour les PME françaises.',
+  },
+  alternates: {
+    canonical: 'https://landing.seeklon.com/about',
+  },
+}
 
 export default function About() {
 

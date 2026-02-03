@@ -1,4 +1,17 @@
 import React from 'react';
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Politique de Confidentialité - Seeklon',
+  description: 'Politique de confidentialité Seeklon : découvrez comment nous collectons, utilisons et protégeons vos données personnelles.',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://landing.seeklon.com/privacy',
+  },
+}
 
 export default function Privacy() {
   return (

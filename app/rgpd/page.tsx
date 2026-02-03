@@ -1,4 +1,17 @@
 import React from 'react';
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Charte RGPD & Cookies - Seeklon',
+  description: 'Charte RGPD et politique de cookies Seeklon : vos droits, notre utilisation des cookies et comment nous contacter.',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://landing.seeklon.com/rgpd',
+  },
+}
 
 export default function Rgpd() {
   return (

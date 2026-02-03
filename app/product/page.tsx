@@ -2,6 +2,29 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/Button'
 import { Bot, Share2, MessageSquare, CheckCircle2, XCircle, ArrowRight, Star } from 'lucide-react'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Produit Seeklon - Fonctionnalités ATS & IA de recrutement',
+  description: 'Découvrez les fonctionnalités de Seeklon : analyse sémantique des CV (pas de mots-clés), scoring 0-5 étoiles, détection des soft skills, multidiffusion sur LinkedIn, Indeed, Monster et guides d\'entretien IA.',
+  keywords: ['fonctionnalités ATS', 'analyse sémantique CV', 'scoring candidat', 'soft skills', 'multidiffusion LinkedIn Indeed', 'guide entretien IA', 'tri CV automatique'],
+  openGraph: {
+    title: 'Produit Seeklon - Fonctionnalités ATS & IA de recrutement',
+    description: 'Analyse sémantique des CV, scoring intelligent, détection des soft skills et multidiffusion sur tous les jobboards.',
+    url: 'https://landing.seeklon.com/product',
+    siteName: 'Seeklon',
+    locale: 'fr_FR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Produit Seeklon - Fonctionnalités ATS & IA',
+    description: 'Analyse sémantique, scoring, soft skills et multidiffusion. Découvrez l\'IA Seeklon.',
+  },
+  alternates: {
+    canonical: 'https://landing.seeklon.com/product',
+  },
+}
 
 export default function Product() {
   return (
