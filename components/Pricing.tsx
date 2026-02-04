@@ -18,7 +18,7 @@ export default function Pricing() {
                 <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
                     
                     {/* START */}
-                    <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                    <div className="p-8 rounded-3xl bg-white border border-primary/10 shadow-sm hover:shadow-md transition-all">
                         <h3 className="font-heading text-xl font-bold text-text-main mb-2">Bêta</h3>
                         <div className="text-3xl font-bold text-primary mb-6">Gratuit</div>
                         <p className="text-sm text-text-muted mb-6 h-10">
@@ -77,7 +77,7 @@ export default function Pricing() {
                     </div>
 
                     {/* ENTREPRISE */}
-                    <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                    <div className="p-8 rounded-3xl bg-white border border-primary/10 shadow-sm hover:shadow-md transition-all">
                         <h3 className="font-heading text-xl font-bold text-text-main mb-2">Entreprise</h3>
                         <div className="text-3xl font-bold text-primary mb-6">Sur mesure</div>
                         <p className="text-sm text-text-muted mb-6 h-10">

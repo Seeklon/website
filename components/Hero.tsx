@@ -33,7 +33,7 @@ export default function Hero() {
                     {/* Illustration Dashboard */}
                     <div className="hidden md:block h-full min-h-[400px] flex items-center justify-center relative perspective-1000">
                         <div className="relative transform transition-transform hover:scale-[1.02] duration-500">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-xl blur opacity-30"></div>
+                            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary-light rounded-xl blur opacity-30"></div>
                             <Image 
                                 src="/capdshbrdseeklon.png" 
                                 alt="Interface Dashboard Seeklon"

@@ -18,14 +18,14 @@ export default function Newsletter() {
                         <input 
                             type="email" 
                             placeholder="Votre email professionnel" 
-                            className="flex-grow px-6 py-3 rounded-full border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white"
+                            className="flex-grow px-6 py-3 rounded-full border border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white"
                             required 
                         />
                         <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full font-medium shadow-lg shadow-primary/20 transition-all">
                             S'inscrire
                         </Button>
                     </form>
-                    <p className="text-xs text-slate-400 mt-4">
+                    <p className="text-xs text-text-muted mt-4">
                         Nous respectons vos données. Désinscription à tout moment.
                     </p>
                 </div>

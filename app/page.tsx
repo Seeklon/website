@@ -1,4 +1,5 @@
 import Hero from '@/components/Hero'
+import WhyAtsIA from '@/components/WhyAtsIA'
 import TrustBar from '@/components/TrustBar'
 import Features from '@/components/Features'
 import SocialProof from '@/components/SocialProof'
@@ -8,12 +9,12 @@ import Newsletter from '@/components/Newsletter'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Seeklon - ATS intelligent avec tri de CV par IA pour PME',
-  description: 'Recrutez plus vite avec Seeklon, l\'ATS français boosté à l\'IA qui trie vos candidatures par analyse sémantique. Scoring intelligent, multidiffusion sur tous les jobboards et guides d\'entretien générés automatiquement.',
-  keywords: ['ATS', 'recrutement', 'IA', 'tri CV', 'PME', 'candidatures', 'RH', 'logiciel recrutement', 'scoring candidat', 'multidiffusion jobboards', 'analyse sémantique CV', 'guide entretien IA', 'recrutement PME France'],
+  title: 'ATS IA pour PME | Seeklon – Recrutez plus vite',
+  description: 'Triez vos candidatures en quelques secondes grâce à Seeklon, l\'ATS IA pour PME. Scoring, multidiffusion, guides d\'entretien. Demandez une démo gratuite.',
+  keywords: ['ATS', 'recrutement', 'IA', 'tri CV', 'PME', 'candidatures', 'RH', 'logiciel recrutement', 'scoring candidat', 'multidiffusion jobboards', 'analyse sémantique CV', 'guide entretien IA', 'recrutement PME France', 'ATS IA'],
   openGraph: {
-    title: 'Seeklon - ATS intelligent avec tri de CV par IA pour PME',
-    description: 'L\'ATS français qui trie vos candidatures par IA. Scoring intelligent, multidiffusion sur tous les jobboards et guides d\'entretien générés.',
+    title: 'ATS IA pour PME | Seeklon – Recrutez plus vite',
+    description: 'Triez vos candidatures en quelques secondes grâce à Seeklon, l\'ATS IA pour PME. Scoring, multidiffusion, guides d\'entretien.',
     url: 'https://landing.seeklon.com',
     siteName: 'Seeklon',
     locale: 'fr_FR',
@@ -21,8 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Seeklon - ATS intelligent avec tri de CV par IA pour PME',
-    description: 'L\'ATS français qui trie vos candidatures par IA. Scoring, multidiffusion et guides d\'entretien.',
+    title: 'ATS IA pour PME | Seeklon – Recrutez plus vite',
+    description: 'Triez vos candidatures en quelques secondes grâce à Seeklon, l\'ATS IA pour PME. Scoring, multidiffusion, guides d\'entretien.',
   },
   alternates: {
     canonical: 'https://landing.seeklon.com',
@@ -33,9 +34,9 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <WhyAtsIA />
       <Features />
       <TrustBar />
-
       <SocialProof />
       {/* <CTA /> */}
       <Newsletter />

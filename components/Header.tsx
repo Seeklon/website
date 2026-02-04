@@ -124,7 +124,7 @@ export default function Header() {
                         </Link>
                     ))}
 
-                    <div className="h-px bg-slate-100 my-2"></div>
+                    <div className="h-px bg-primary/10 my-2"></div>
 
                     <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                         <Button className="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-xl font-medium shadow-lg shadow-primary/20">

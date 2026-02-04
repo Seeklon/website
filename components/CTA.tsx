@@ -17,7 +17,7 @@ export default function CTA() {
                     Prêt à recruter plus facilement ?
                 </h2>
 
-                <p className="font-sans text-lg md:text-xl text-blue-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+                <p className="font-sans text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
                     Rejoignez la Bêta et découvrez comment l'IA de Seeklon transforme votre gestion RH dès aujourd'hui.
                 </p>
 
@@ -28,8 +28,8 @@ export default function CTA() {
                         <Button variant={"outline"}
                             className="w-full sm:w-auto px-8 py-4 text-lg font-bold rounded-full transition-all duration-300
                            bg-white text-primary border-2 border-transparent
-                           shadow-lg shadow-blue-900/10
-                           hover:-translate-y-1 hover:bg-primary-dark hover:shadow-xl hover:shadow-blue-900/20 hover:text-white">
+                           shadow-lg shadow-primary-dark/10
+                           hover:-translate-y-1 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary-dark/20 hover:text-white">
                             Commencer maintenant
                         </Button>
                     </Link>

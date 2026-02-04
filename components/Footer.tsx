@@ -40,7 +40,7 @@ export default function Footer() {
                   Seeklon
                 </span>
               </Link>
-              <p className="font-sans text-sm leading-relaxed max-w-sm text-slate-400">
+              <p className="font-sans text-sm leading-relaxed max-w-sm text-text-muted">
                 Prêt à recruter plus facilement ?
               </p>
             </div>
@@ -80,7 +80,7 @@ export default function Footer() {
           </div>
 
           {/* Footer Bottom */}
-          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
+          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-text-muted">
             <div>
               © {new Date().getFullYear()} Seeklon Inc. Tous droits réservés.
             </div>
