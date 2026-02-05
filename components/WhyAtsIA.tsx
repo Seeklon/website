@@ -28,7 +28,7 @@ export default function WhyAtsIA() {
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-text-main leading-relaxed mb-6">
                 <span className="font-bold text-primary">L'ATS IA de Seeklon analyse le sens</span>, pas les mots. 
-                Grâce au traitement du langage naturel (NLP), notre algorithme comprend le contexte des 
+                Grâce au traitement du langage naturel, notre algorithme comprend le contexte des 
                 expériences, détecte les soft skills et identifie les compétences transférables. 
                 Résultat : <span className="font-semibold text-green-600">zéro faux négatif</span> dû à une variation de formulation.
               </p>
