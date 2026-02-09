@@ -1,6 +1,6 @@
 ---
 title: "Expérience candidat : le guide ultime pour booster votre marque employeur"
-date: "2026-01-10"
+date: "2026-02-16"
 publishDate: "2026-02-16"
 category: "Marque Employeur"
 excerpt: "72% des candidats partagent une mauvaise expérience de recrutement en ligne. Découvrez comment transformer chaque candidature en opportunité pour votre marque employeur."
