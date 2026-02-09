@@ -1,6 +1,6 @@
 ---
 title: "Comment rédiger une offre d'emploi attractive : le guide complet 2026"
-date: "2026-01-15"
+date: "2026-02-09"
 publishDate: "2026-02-09"
 category: "Conseils Recrutement"
 excerpt: "Une offre d'emploi bien rédigée reçoit 3 fois plus de candidatures qualifiées. Découvrez les 7 éléments clés pour attirer les meilleurs talents en 2026."
