@@ -1,6 +1,6 @@
 ---
 title: "IA et recrutement : comment l'analyse sémantique transforme le tri des CV en 2026"
-date: "2026-01-20"
+date: "2026-01-21"
 publishDate: "2026-02-03"
 category: "Technologie RH"
 excerpt: "Les ATS traditionnels passent à côté de 75% des bons profils à cause du filtrage par mots-clés. Découvrez comment l'IA sémantique révolutionne la présélection des candidatures."
