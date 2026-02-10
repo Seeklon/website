@@ -1,5 +1,6 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import Hero from '@/components/Hero'
+import WhyAtsIA from '@/components/WhyAtsIA'
 import TrustBar from '@/components/TrustBar'
 import Features from '@/components/Features'
 import SocialProof from '@/components/SocialProof'
@@ -23,6 +24,7 @@ export default async function HomePage({ params }: Props) {
   return (
     <>
       <Hero />
+      <WhyAtsIA />
       <Features />
       <TrustBar />
       <SocialProof />

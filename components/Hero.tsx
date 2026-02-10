@@ -35,7 +35,7 @@ export default function Hero() {
 
                     <div className="hidden md:block h-full min-h-[400px] flex items-center justify-center">
                         <img 
-                            src="https://placehold.co/600x400/e2e8f0/1e293b?text=Illustration+Dashboard+3D" 
+                            src="/capdshbrdseeklon.png" 
                             alt={t('dashboardAlt')}
                             className="w-full h-auto rounded-lg shadow-2xl animate-bounce-slow object-cover"
                         />
