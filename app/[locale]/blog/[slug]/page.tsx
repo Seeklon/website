@@ -10,9 +10,9 @@ import { routing } from '@/i18n/routing'
 type Props = { params: Promise<{ locale: string; slug: string }> }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts()
   const params: { locale: string; slug: string }[] = []
   for (const locale of routing.locales) {
+    const posts = getAllPosts(locale)
     for (const post of posts) {
       params.push({ locale, slug: post.slug })
     }
@@ -24,7 +24,7 @@ export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params
   setRequestLocale(locale)
   const t = await getTranslations('Blog')
-  const post = getPostBySlug(slug)
+  const post = getPostBySlug(slug, locale)
 
   if (!post) {
     notFound()

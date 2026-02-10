@@ -11,7 +11,7 @@ export default async function BlogIndexPage({ params }: Props) {
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('Blog')
-  const posts = getAllPosts()
+  const posts = getAllPosts(locale)
 
   return (
     <div className="bg-background min-h-screen">

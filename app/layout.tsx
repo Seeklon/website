@@ -1,13 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { headers } from 'next/headers'
-import { DM_Sans, Plus_Jakarta_Sans } from 'next/font/google'
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-dm-sans',
-  display: 'swap',
-})
+import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -32,9 +26,14 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
+        />
+      </head>
       <body
         className={`
-          ${dmSans.variable}
           ${jakarta.variable}
           font-sans
           bg-background

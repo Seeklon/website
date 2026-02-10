@@ -4,8 +4,6 @@ import { routing } from '@/i18n/routing'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://landing.seeklon.com'
-  const posts = getAllPosts()
-
   const routes = [
     '',
     '/about',
@@ -30,10 +28,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: route === '' ? 1 : 0.8,
       })
     }
+    const posts = getAllPosts(locale)
     for (const post of posts) {
       entries.push({
         url: `${baseUrl}${prefix}/blog/${post.slug}`,
-        lastModified: new Date(post.date),
+        lastModified: new Date(post.publishDate ?? post.date),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
       })

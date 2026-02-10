@@ -48,6 +48,18 @@ export default async function ProductPage({ params }: Props) {
         <div className="container mx-auto px-4">
           <h2 className="text-center font-heading text-3xl font-bold mb-12">{t('whyChange')}</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="bg-white p-8 rounded-3xl border border-green-100 shadow-lg relative overflow-hidden ring-1 ring-green-500/20">
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600"><CheckCircle2 size={20}/></span>
+                {t('withSeeklon')}
+              </h3>
+              <ul className="space-y-4 text-slate-700 font-medium">
+                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s1')}</li>
+                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s2')}</li>
+                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s3')}</li>
+                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s4')}</li>
+              </ul>
+            </div>
             <div className="bg-white p-8 rounded-3xl border border-red-100 shadow-sm relative overflow-hidden">
               <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-500"><XCircle size={20}/></span>
@@ -58,18 +70,6 @@ export default async function ProductPage({ params }: Props) {
                 <li className="flex gap-3"><span className="text-red-400">✕</span> {t('t2')}</li>
                 <li className="flex gap-3"><span className="text-red-400">✕</span> {t('t3')}</li>
                 <li className="flex gap-3"><span className="text-red-400">✕</span> {t('t4')}</li>
-              </ul>
-            </div>
-            <div className="bg-white p-8 rounded-3xl border border-green-100 shadow-lg relative overflow-hidden ring-1 ring-green-500/20">
-              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600"><CheckCircle2 size={20}/></span>
-                {t('withSeeklon')}
-              </h3>
-              <ul className="space-y-4 text-slate-700 font-medium">
-                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s1')}</li>
-                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s2')}</li>
-                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s3')}</li>
-                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s4')}</li>
               </ul>
             </div>
           </div>

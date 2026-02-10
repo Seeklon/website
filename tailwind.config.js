@@ -31,8 +31,8 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ["var(--font-dm-sans)", ...fontFamily.sans],
-        heading: ["var(--font-jakarta)", ...fontFamily.sans],
+        sans: ["var(--font-jakarta)", ...fontFamily.sans],
+        heading: ["Satoshi", "var(--font-jakarta)", ...fontFamily.sans],
       },
       animation: {
         'blob': 'blob 10s infinite',
