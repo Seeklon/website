@@ -1,4 +1,7 @@
+"use client"
+
 import { Linkedin, Briefcase, Globe, Search, Building2, Users, MapPin } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 const JOB_BOARDS = [
     {
@@ -44,12 +47,12 @@ const JOB_BOARDS = [
 ]
 
 export default function TrustBar() {
+    const t = useTranslations('TrustBar')
     return (
         <section className="py-10 border-b border-slate-100 bg-white/50 backdrop-blur-sm overflow-hidden">
             <div className="container mx-auto px-4 text-center mb-8">
                 <p className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
-                    Compatible avec toutes les plateformes du marché
-
+                    {t('label')}
                 </p>
             </div>
             

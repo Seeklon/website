@@ -1,37 +1,25 @@
-import { Quote } from 'lucide-react'
+"use client"
 
-const testimonials = [
-  {
-    quote: "Seeklon transforme l'approche du recrutement PME. L'outil fait gagner un temps précieux en ne présentant que les profils pertinents.",
-    author: "Témoignage Mentor",
-    role: "Expert Business"
-  },
-  {
-    quote: "Une innovation majeure pour relever les défis du recrutement : trier avec précision et qualifier les talents avec pertinence.",
-    author: "Prix Coup de cœur du Jury Hackathon BPI 2024",
-    role: "Jury BPI"
-  },
-  {
-    quote: "Une innovation prometteuse qui répond aux vrais besoins de tri et de qualification des candidats.",
-    author: "Témoignage Équipe Pédagogique Epitech",
-    role: "Direction"
-  }
-]
+import { Quote } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export default function SocialProof() {
+  const t = useTranslations('SocialProof')
+  const testimonials = [
+    { quote: t('quote1'), author: t('author1'), role: t('role1') },
+    { quote: t('quote2'), author: t('author2'), role: t('role2') },
+    { quote: t('quote3'), author: t('author3'), role: t('role3') },
+  ]
   return (
       <section className="py-12 relative overflow-hidden bg-background">
-
-        {/* --- SOLUTION : LE GRADIENT MASK --- */}
         <div className="absolute inset-0 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
           <div className="absolute top-20 -left-20 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px]"></div>
           <div className="absolute bottom-0 -right-20 w-[600px] h-[600px] bg-primary-light/15 rounded-full blur-[100px]"></div>
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-12">
-            Témoignages
+            {t('title')}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">

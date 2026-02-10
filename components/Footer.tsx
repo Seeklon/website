@@ -1,7 +1,11 @@
-import Link from 'next/link'
+"use client"
+
+import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 export default function Footer() {
+  const t = useTranslations('Footer')
   return (
       <footer className="relative bg-[#0F172A] text-slate-400 py-12 overflow-hidden">
 
@@ -31,7 +35,7 @@ export default function Footer() {
                   {/* Logo avec filtre pour être blanc sur fond noir */}
                   <Image
                       src="/logo.png"
-                      alt="Seeklon Logo"
+                      alt={t('logoAlt')}
                       fill
                       className="object-contain invert brightness-0 grayscale-0 opacity-90"
                   />
@@ -41,48 +45,42 @@ export default function Footer() {
                 </span>
               </Link>
               <p className="font-sans text-sm leading-relaxed max-w-sm text-slate-400">
-                Prêt à recruter plus facilement ?
+                {t('tagline')}
               </p>
             </div>
 
-            {/* Spacer (1 col) */}
             <div className="md:col-span-1"></div>
 
-            {/* Colonne 2 (Navigation) */}
             <div className="md:col-span-2">
-              <h3 className="font-heading font-semibold text-white mb-6">Produit</h3>
+              <h3 className="font-heading font-semibold text-white mb-6">{t('product')}</h3>
               <ul className="space-y-4 text-sm font-medium">
-                <li><Link href="/#product" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Fonctionnalités</Link></li>
-                {/* <li><Link href="/pricing" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Tarifs</Link></li> */}
-                <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Demander une démo</Link></li>
+                <li><Link href="/#product" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('features')}</Link></li>
+                <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('requestDemo')}</Link></li>
               </ul>
             </div>
 
-            {/* Colonne 3 (Entreprise) */}
             <div className="md:col-span-2">
-              <h3 className="font-heading font-semibold text-white mb-6">Entreprise</h3>
+              <h3 className="font-heading font-semibold text-white mb-6">{t('company')}</h3>
               <ul className="space-y-4 text-sm font-medium">
-                <li><Link href="/about" className="hover:text-primary-light hover:pl-1 transition-all duration-200">À propos</Link></li>
-                <li><Link href="/blog" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Blog</Link></li>
-                <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Contact</Link></li>
+                <li><Link href="/about" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('about')}</Link></li>
+                <li><Link href="/blog" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('blog')}</Link></li>
+                <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('contact')}</Link></li>
               </ul>
             </div>
 
-            {/* Colonne 4 (Légal) */}
             <div className="md:col-span-3">
-              <h3 className="font-heading font-semibold text-white mb-6">Légal</h3>
+              <h3 className="font-heading font-semibold text-white mb-6">{t('legal')}</h3>
               <ul className="space-y-4 text-sm font-medium">
-                <li><Link href="/legal" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Mentions légales</Link></li>
-                <li><Link href="/privacy" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Confidentialité</Link></li>
-                <li><Link href="/rgpd" className="hover:text-primary-light hover:pl-1 transition-all duration-200">Gestion des cookies</Link></li>
+                <li><Link href="/legal" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('legalMentions')}</Link></li>
+                <li><Link href="/privacy" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('privacy')}</Link></li>
+                <li><Link href="/rgpd" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('cookies')}</Link></li>
               </ul>
             </div>
           </div>
 
-          {/* Footer Bottom */}
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
             <div>
-              © {new Date().getFullYear()} Seeklon Inc. Tous droits réservés.
+              © {new Date().getFullYear()} Seeklon Inc. {t('copyright')}
             </div>
 
             <div className="flex items-center gap-6">

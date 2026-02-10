@@ -1,7 +1,11 @@
+"use client"
+
 import Button from './Button'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
+import { useTranslations } from 'next-intl'
 
 export default function Hero() {
+    const t = useTranslations('Hero')
     return (
         <section className="relative bg-background py-20 md:py-32 overflow-hidden min-h-[70vh] flex items-center">
 
@@ -9,31 +13,30 @@ export default function Hero() {
                 <div className="grid md:grid-cols-2 gap-16 items-center">
                     <div className="text-left">
                         <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-text-main mb-8 leading-tight">
-                            Recrutez plus vite.
+                            {t('title')}
                         </h1>
                         <h2 className="font-heading text-xl md:text-2xl font-medium leading-relaxed text-text-muted mb-10 max-w-lg">
-                        Seeklon est un ATS boosté à l'IA capable de trier vos candidatures en quelques secondes.
+                            {t('subtitle')}
                         </h2>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-start">
                             <Link href="/contact">
                                 <Button className="w-full sm:w-auto text-lg px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-full transition-all shadow-lg shadow-primary/20">
-                                    Testez le produit
+                                    {t('tryProduct')}
                                 </Button>
                             </Link>
                             <Link href="/product">
                                 <Button variant="outline" className="w-full sm:w-auto text-lg px-8 py-3 border border-primary/20 text-primary hover:bg-primary/5 rounded-full transition-all backdrop-blur-sm bg-white/30">
-                                    Voir comment ça marche
+                                    {t('howItWorks')}
                                 </Button>
                             </Link>
                         </div>
                     </div>
 
-                    {/* Espace pour l'illustration 3D */}
                     <div className="hidden md:block h-full min-h-[400px] flex items-center justify-center">
                         <img 
                             src="https://placehold.co/600x400/e2e8f0/1e293b?text=Illustration+Dashboard+3D" 
-                            alt="Interface Dashboard Seeklon"
+                            alt={t('dashboardAlt')}
                             className="w-full h-auto rounded-lg shadow-2xl animate-bounce-slow object-cover"
                         />
                     </div>
