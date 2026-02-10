@@ -12,40 +12,72 @@ export interface Post {
     coverImage: string
     category: string
     content: string
+    draft?: boolean
+    publishDate?: string
+}
+
+/**
+ * Date utilisée pour la visibilité et l’affichage (publishDate si présent, sinon date).
+ */
+function getDisplayDate(post: Post): string {
+    return post.publishDate ?? post.date
+}
+
+/**
+ * Détermine si un article doit être publié :
+ * - En production : pas de brouillon, date de publication passée ou aujourd’hui.
+ * - En développement : tous les articles sont visibles (brouillons et dates futures inclus).
+ */
+function shouldPublish(post: Post): boolean {
+    const isDev = process.env.NODE_ENV === 'development'
+
+    if (post.draft === true) {
+        return isDev
+    }
+
+    const displayDate = getDisplayDate(post)
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    const articleDate = new Date(displayDate)
+    articleDate.setHours(0, 0, 0, 0)
+
+    return articleDate <= today
 }
 
 export function getAllPosts(): Post[] {
-    // Si le dossier n'existe pas, on le crée (sécurité)
     if (!fs.existsSync(postsDirectory)) {
         return []
     }
 
     const fileNames = fs.readdirSync(postsDirectory)
-    const allPostsData = fileNames.map((fileName) => {
-        // Remove ".md" from file name to get id
-        const slug = fileName.replace(/\.md$/, '')
+    const allPostsData = fileNames
+        .filter((fileName) => fileName.endsWith('.md'))
+        .map((fileName) => {
+            const slug = fileName.replace(/\.md$/, '')
+            const fullPath = path.join(postsDirectory, fileName)
+            const fileContents = fs.readFileSync(fullPath, 'utf8')
+            const { data, content } = matter(fileContents)
 
-        // Read markdown file as string
-        const fullPath = path.join(postsDirectory, fileName)
-        const fileContents = fs.readFileSync(fullPath, 'utf8')
+            return {
+                slug,
+                content,
+                ...(data as {
+                    title: string
+                    date: string
+                    excerpt: string
+                    coverImage: string
+                    category: string
+                    draft?: boolean
+                    publishDate?: string
+                }),
+            }
+        })
 
-        // Use gray-matter to parse the post metadata section
-        const { data, content } = matter(fileContents)
-
-        return {
-            slug,
-            content,
-            ...(data as { title: string; date: string; excerpt: string; coverImage: string; category: string }),
-        }
-    })
-
-    // Sort posts by date
-    return allPostsData.sort((a, b) => {
-        if (a.date < b.date) {
-            return 1
-        } else {
-            return -1
-        }
+    const published = allPostsData.filter(shouldPublish)
+    return published.sort((a, b) => {
+        const dateA = getDisplayDate(a)
+        const dateB = getDisplayDate(b)
+        return dateB.localeCompare(dateA)
     })
 }
 
@@ -55,11 +87,24 @@ export function getPostBySlug(slug: string): Post | null {
         const fileContents = fs.readFileSync(fullPath, 'utf8')
         const { data, content } = matter(fileContents)
 
-        return {
+        const post: Post = {
             slug,
             content,
-            ...(data as { title: string; date: string; excerpt: string; coverImage: string; category: string }),
+            ...(data as {
+                title: string
+                date: string
+                excerpt: string
+                coverImage: string
+                category: string
+                draft?: boolean
+                publishDate?: string
+            }),
         }
+
+        if (!shouldPublish(post)) {
+            return null
+        }
+        return post
     } catch (e) {
         return null
     }

@@ -47,7 +47,7 @@ export default async function BlogIndexPage({ params }: Props) {
                 <div className="flex-1 p-6 flex flex-col">
                   <div className="flex items-center gap-2 text-slate-400 text-xs font-medium mb-3">
                     <Calendar size={14} />
-                    {new Date(post.date).toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    {new Date(post.publishDate ?? post.date).toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </div>
                   <h2 className="font-heading text-xl font-bold text-text-main mb-3 line-clamp-2 group-hover:text-primary transition-colors">
                     {post.title}

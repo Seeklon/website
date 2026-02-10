@@ -40,7 +40,7 @@ export default async function BlogPostPage({ params }: Props) {
           </Link>
           <div className="flex items-center justify-center gap-4 text-sm font-medium text-primary-light mb-6">
             <span className="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full"><Tag size={14} /> {post.category}</span>
-            <span className="flex items-center gap-1 text-slate-400"><Calendar size={14} /> {new Date(post.date).toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+            <span className="flex items-center gap-1 text-slate-400"><Calendar size={14} /> {new Date(post.publishDate ?? post.date).toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
           </div>
           <h1 className="font-heading text-3xl md:text-5xl font-bold mb-6 leading-tight">
             {post.title}
