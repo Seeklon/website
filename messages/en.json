@@ -180,5 +180,39 @@
     "siteDescription": "Simplify hiring for SMBs with our ATS powered by AI screening.",
     "homeTitle": "AI ATS for SMBs | Seeklon – Recruit faster",
     "homeDescription": "Sort your applications in seconds with Seeklon, the AI ATS for SMBs. Scoring, multi-posting, interview guides. Request a free demo."
+  },
+  "Legal": {
+    "title": "Legal notice",
+    "editorTitle": "1. Site publisher",
+    "editorContent": "The Seeklon website is published by Seeklon SAS (registration in progress). Registered office: Paris, France. Email: contact@seeklon.com",
+    "hostingTitle": "2. Hosting",
+    "hostingContent": "The site is hosted by Vercel Inc. Address: 440 N Barranca Ave #4133, Covina, CA 91723, USA.",
+    "ipTitle": "3. Intellectual property",
+    "ipContent": "This entire site is subject to French and international legislation on copyright and intellectual property. All reproduction rights are reserved, including for downloadable documents and iconographic and photographic representations."
+  },
+  "Privacy": {
+    "title": "Privacy policy",
+    "collectTitle": "1. Data collection",
+    "collectContent": "We collect the information you provide directly when you use our contact form or create an account. This may include your name, email address, company name and phone number.",
+    "useTitle": "2. Use of data",
+    "useIntro": "The information we collect allows us to:",
+    "useLi1": "Provide, operate and maintain our website",
+    "useLi2": "Improve, personalize and develop our website",
+    "useLi3": "Understand and analyze how you use our website",
+    "useLi4": "Communicate with you, including for customer service",
+    "securityTitle": "3. Security",
+    "securityContent": "We take the security of your data very seriously. We implement appropriate technical and organizational measures to protect your personal data against accidental or unlawful destruction, loss, alteration, disclosure or unauthorized access."
+  },
+  "Rgpd": {
+    "title": "GDPR & Cookie policy",
+    "rightsTitle": "1. Your rights",
+    "rightsContent": "Under the General Data Protection Regulation (GDPR), you have the following rights regarding your personal data:",
+    "rightsLi1": "Right of access: You have the right to request copies of your personal data.",
+    "rightsLi2": "Right to rectification: You have the right to ask us to correct any information you believe is inaccurate.",
+    "rightsLi3": "Right to erasure: You have the right to ask us to erase your personal data, under certain conditions.",
+    "cookiesTitle": "2. Cookies",
+    "cookiesContent": "Our site uses cookies to improve your browsing experience. These cookies are essential for the site to function and help us understand how you use it. You can configure your browser to refuse cookies at any time.",
+    "dpoTitle": "3. DPO contact",
+    "dpoContent": "For any questions regarding the protection of your data or to exercise your rights, you can contact our Data Protection Officer at: contact@seeklon.com"
   }
 }

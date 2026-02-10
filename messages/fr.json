@@ -180,5 +180,39 @@
     "siteDescription": "Simplifiez le processus de recrutement des PME grâce à notre ATS couplé à une IA de tri hiérarchisé.",
     "homeTitle": "ATS IA pour PME | Seeklon – Recrutez plus vite",
     "homeDescription": "Triez vos candidatures en quelques secondes grâce à Seeklon, l'ATS IA pour PME. Scoring, multidiffusion, guides d'entretien. Demandez une démo gratuite."
+  },
+  "Legal": {
+    "title": "Mentions Légales",
+    "editorTitle": "1. Éditeur du site",
+    "editorContent": "Le site Seeklon est édité par la société Seeklon SAS (en cours d'immatriculation). Siège social : Paris, France. Email : contact@seeklon.com",
+    "hostingTitle": "2. Hébergement",
+    "hostingContent": "Le site est hébergé par Vercel Inc. Adresse : 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.",
+    "ipTitle": "3. Propriété Intellectuelle",
+    "ipContent": "L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques."
+  },
+  "Privacy": {
+    "title": "Politique de Confidentialité",
+    "collectTitle": "1. Collecte des données",
+    "collectContent": "Nous collectons les informations que vous nous fournissez directement lorsque vous utilisez notre formulaire de contact ou créez un compte. Ces informations peuvent inclure votre nom, adresse email, nom de société et numéro de téléphone.",
+    "useTitle": "2. Utilisation des données",
+    "useIntro": "Les informations que nous collectons nous permettent de :",
+    "useLi1": "Fournir, exploiter et maintenir notre site web",
+    "useLi2": "Améliorer, personnaliser et développer notre site web",
+    "useLi3": "Comprendre et analyser la façon dont vous utilisez notre site web",
+    "useLi4": "Communiquer avec vous, notamment pour le service client",
+    "securityTitle": "3. Sécurité",
+    "securityContent": "Nous prenons la sécurité de vos données très au sérieux. Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles appropriées pour protéger vos données personnelles contre la destruction accidentelle ou illicite, la perte, l'altération, la divulgation ou l'accès non autorisé."
+  },
+  "Rgpd": {
+    "title": "Charte RGPD & Cookies",
+    "rightsTitle": "1. Vos Droits",
+    "rightsContent": "Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants concernant vos données personnelles :",
+    "rightsLi1": "Droit d'accès : Vous avez le droit de demander des copies de vos données personnelles.",
+    "rightsLi2": "Droit de rectification : Vous avez le droit de nous demander de corriger toute information que vous jugez inexacte.",
+    "rightsLi3": "Droit à l'effacement : Vous avez le droit de nous demander d'effacer vos données personnelles, sous certaines conditions.",
+    "cookiesTitle": "2. Cookies",
+    "cookiesContent": "Notre site utilise des cookies pour améliorer votre expérience de navigation. Ces cookies sont essentiels au fonctionnement du site et nous aident à comprendre comment vous l'utilisez. Vous pouvez à tout moment configurer votre navigateur pour refuser les cookies.",
+    "dpoTitle": "3. Contact DPO",
+    "dpoContent": "Pour toute question relative à la protection de vos données ou pour exercer vos droits, vous pouvez contacter notre Délégué à la Protection des Données à l'adresse suivante : contact@seeklon.com"
   }
 }
