@@ -221,6 +221,25 @@
     "securityTitle": "3. Sécurité",
     "securityContent": "Nous prenons la sécurité de vos données très au sérieux. Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles appropriées pour protéger vos données personnelles contre la destruction accidentelle ou illicite, la perte, l'altération, la divulgation ou l'accès non autorisé."
   },
+  "About": {
+    "title": "Le recrutement,",
+    "titleHighlight": "enfin serein.",
+    "intro": "Nous croyons que chaque PME mérite d'accéder aux mêmes technologies que les géants de la Tech pour trouver les meilleurs talents.",
+    "whyTitle": "Pourquoi Seeklon ?",
+    "whyP1": "Les dirigeants de PME sont des héros du quotidien, souvent débordés. Le recrutement devient vite une charge mentale qui freine la croissance.",
+    "whyQuote": "Seeklon filtre le bruit pour que l'humain puisse se concentrer sur la rencontre authentique.",
+    "valuesTitle": "Nos Valeurs",
+    "value1Title": "Simplicité",
+    "value1Text": "Des outils puissants qui s'utilisent comme une évidence. Pas de formation nécessaire.",
+    "value2Title": "Authenticité",
+    "value2Text": "L'IA gère le volume pour vous laisser gérer la relation humaine.",
+    "value3Title": "Efficacité",
+    "value3Text": "Chaque minute gagnée sur le tri est une minute investie dans votre croissance.",
+    "teamTitle": "L'équipe Fondatrice",
+    "coFounder": "Co-Founder",
+    "ctaTitle": "Prêt à simplifier vos recrutements ?",
+    "ctaButton": "Contactez-nous"
+  },
   "Rgpd": {
     "title": "Charte RGPD & Cookies",
     "rightsTitle": "1. Vos Droits",

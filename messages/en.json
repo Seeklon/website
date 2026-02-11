@@ -221,6 +221,25 @@
     "securityTitle": "3. Security",
     "securityContent": "We take the security of your data very seriously. We implement appropriate technical and organizational measures to protect your personal data against accidental or unlawful destruction, loss, alteration, disclosure or unauthorized access."
   },
+  "About": {
+    "title": "Hiring,",
+    "titleHighlight": "finally stress-free.",
+    "intro": "We believe every SMB deserves access to the same technology as tech giants to find the best talent.",
+    "whyTitle": "Why Seeklon?",
+    "whyP1": "SMB leaders are everyday heroes, often overwhelmed. Recruiting quickly becomes a mental burden that holds back growth.",
+    "whyQuote": "Seeklon filters out the noise so humans can focus on authentic connection.",
+    "valuesTitle": "Our Values",
+    "value1Title": "Simplicity",
+    "value1Text": "Powerful tools that feel obvious to use. No training required.",
+    "value2Title": "Authenticity",
+    "value2Text": "AI handles volume so you can focus on the human relationship.",
+    "value3Title": "Efficiency",
+    "value3Text": "Every minute saved on screening is a minute invested in your growth.",
+    "teamTitle": "Founding Team",
+    "coFounder": "Co-Founder",
+    "ctaTitle": "Ready to simplify your hiring?",
+    "ctaButton": "Contact us"
+  },
   "Rgpd": {
     "title": "GDPR & Cookie policy",
     "rightsTitle": "1. Your rights",

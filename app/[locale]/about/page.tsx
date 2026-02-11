@@ -1,8 +1,7 @@
-import Image from 'next/image'
 import { Target, Heart, Zap, Users } from 'lucide-react'
 import { Link } from '@/i18n/navigation'
 import Button from '@/components/Button'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -11,6 +10,7 @@ const membres = ['Thomas B', 'Ilyes M', 'Robin B', 'Deniz U']
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params
   setRequestLocale(locale)
+  const t = await getTranslations('About')
 
   return (
     <div className="bg-background overflow-hidden">
@@ -18,13 +18,13 @@ export default async function AboutPage({ params }: Props) {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse duration-[4000ms]"></div>
         <div className="container mx-auto px-4 relative z-10">
           <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-main mb-8 leading-tight">
-            Le recrutement, <br className="hidden md:block" />
+            {t('title')} <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
-              enfin serein.
+              {t('titleHighlight')}
             </span>
           </h1>
           <p className="font-sans text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
-            Nous croyons que chaque PME mérite d&apos;accéder aux mêmes technologies que les géants de la Tech pour trouver les meilleurs talents.
+            {t('intro')}
           </p>
         </div>
       </section>
@@ -33,15 +33,15 @@ export default async function AboutPage({ params }: Props) {
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-main mb-6">
-              Pourquoi Seeklon ?
+              {t('whyTitle')}
             </h2>
             <div className="space-y-6 font-sans text-lg text-text-muted">
               <p>
-                Les dirigeants de PME sont des héros du quotidien, souvent débordés. Le recrutement devient vite une charge mentale qui freine la croissance.
+                {t('whyP1')}
               </p>
               <div className="p-6 rounded-2xl bg-primary/5 border border-primary/10 relative">
                 <p className="font-medium text-primary italic relative z-10">
-                  &quot;Seeklon filtre le bruit pour que l&apos;humain puisse se concentrer sur la rencontre authentique.&quot;
+                  &quot;{t('whyQuote')}&quot;
                 </p>
               </div>
             </div>
@@ -90,20 +90,20 @@ export default async function AboutPage({ params }: Props) {
       <section className="py-24 bg-[#0F172A] relative overflow-hidden text-white">
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-3xl md:text-5xl font-bold mb-6">Nos Valeurs</h2>
+            <h2 className="font-heading text-3xl md:text-5xl font-bold mb-6">{t('valuesTitle')}</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: Target, color: 'blue', title: 'Simplicité', text: "Des outils puissants qui s'utilisent comme une évidence. Pas de formation nécessaire." },
-              { icon: Heart, color: 'pink', title: 'Authenticité', text: "L'IA gère le volume pour vous laisser gérer la relation humaine." },
-              { icon: Zap, color: 'amber', title: 'Efficacité', text: 'Chaque minute gagnée sur le tri est une minute investie dans votre croissance.' },
+              { icon: Target, color: 'blue', titleKey: 'value1Title', textKey: 'value1Text' },
+              { icon: Heart, color: 'pink', titleKey: 'value2Title', textKey: 'value2Text' },
+              { icon: Zap, color: 'amber', titleKey: 'value3Title', textKey: 'value3Text' },
             ].map((val, i) => (
               <div key={i} className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300">
                 <div className={`w-12 h-12 rounded-xl bg-${val.color}-500/20 flex items-center justify-center text-${val.color}-400 mb-6 group-hover:scale-110 transition-transform`}>
                   <val.icon size={24} />
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-3 text-white">{val.title}</h3>
-                <p className="text-slate-400 leading-relaxed text-sm">{val.text}</p>
+                <h3 className="font-heading text-xl font-bold mb-3 text-white">{t(val.titleKey)}</h3>
+                <p className="text-slate-400 leading-relaxed text-sm">{t(val.textKey)}</p>
               </div>
             ))}
           </div>
@@ -112,7 +112,7 @@ export default async function AboutPage({ params }: Props) {
 
       <section className="py-24 relative">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-main mb-6">L&apos;équipe Fondatrice</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-main mb-6">{t('teamTitle')}</h2>
           <div className="flex flex-wrap justify-center gap-8 mb-16">
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="group relative w-64 h-80 rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
@@ -121,16 +121,16 @@ export default async function AboutPage({ params }: Props) {
                 </div>
                 <div className="absolute bottom-0 left-0 w-full p-6 bg-white/90 backdrop-blur-md border-t border-slate-100">
                   <div className="font-bold text-text-main">{membres[i - 1]}</div>
-                  <div className="text-xs text-primary font-medium uppercase">Co-Founder</div>
+                  <div className="text-xs text-primary font-medium uppercase">{t('coFounder')}</div>
                 </div>
               </div>
             ))}
           </div>
           <div className="bg-primary/5 rounded-3xl p-12 max-w-4xl mx-auto border border-primary/10">
-            <h3 className="font-heading text-2xl font-bold text-primary mb-4">Prêt à simplifier vos recrutements ?</h3>
+            <h3 className="font-heading text-2xl font-bold text-primary mb-4">{t('ctaTitle')}</h3>
             <Link href="/contact">
               <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg shadow-primary/20 hover:-translate-y-1 transition-transform">
-                Contactez-nous
+                {t('ctaButton')}
               </Button>
             </Link>
           </div>
