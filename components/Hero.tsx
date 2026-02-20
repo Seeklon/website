@@ -13,7 +13,10 @@ export default function Hero() {
                 <div className="grid md:grid-cols-2 gap-16 items-center">
                     <div className="text-left">
                         <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-text-main mb-8 leading-tight">
-                            {t('title')}
+                            {t('titleBefore')}{" "}
+                            <span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>
+                                {t('titleAccent')}
+                            </span>
                         </h1>
                         <h2 className="font-heading text-xl md:text-2xl font-medium leading-relaxed text-text-muted mb-10 max-w-lg">
                             {t('subtitle')}

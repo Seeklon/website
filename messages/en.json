@@ -26,13 +26,17 @@
     "logoAlt": "Seeklon Logo"
   },
   "Hero": {
-    "title": "Recruit faster.",
+    "titleBefore": "Recruit",
+    "titleAccent": "faster.",
     "subtitle": "Seeklon is an AI-powered ATS that can sort your applications in seconds.",
     "tryProduct": "Try the product",
     "howItWorks": "See how it works",
     "dashboardAlt": "Seeklon Dashboard interface"
   },
   "WhyAtsIA": {
+    "titleBefore": "Why choose an ",
+    "titleAccent": "AI ATS",
+    "titleEnd": " over a classic ATS?",
     "title": "Why choose an AI ATS over a classic ATS?",
     "intro": "Traditional ATS only search for keywords in CVs, ruling out qualified talent for technical reasons. Seeklon's semantic AI",
     "highlight": "identifies 3x more relevant candidates",
@@ -42,24 +46,43 @@
     "zeroFalseNegative": "zero false negatives",
     "bodyEnd": "due to wording variations.",
     "savingsTitle": "12h saved",
+    "savingsTitleStat": "12h",
+    "savingsTitleRest": " saved",
     "savingsDesc": "per hire: automation of sourcing (4h), CV screening (5h) and interview scheduling (3h).",
     "costTitle": "-60% costs",
+    "costTitleStat": "-60%",
+    "costTitleRest": " costs",
     "costDesc": "By handling screening in-house with AI, you save on headhunter fees (15-20% of gross salary) while keeping quality.",
     "qualityTitle": "Top 1% talent",
+    "qualityTitleBefore": "Top ",
+    "qualityTitleAccent": "1%",
+    "qualityTitleEnd": " talent",
     "qualityDesc": "Our AI analyzes soft skills and culture fit to reduce early turnover by 40%.",
     "trustTitle": "100% French, GDPR-compliant solution",
+    "trustTitleBefore": "100% French, ",
+    "trustTitleAccent": "GDPR-compliant solution",
     "trustDesc": "Seeklon centralizes applications from LinkedIn, Indeed, Monster and generates personalized interview guides. Data hosted in France, GDPR compliance guaranteed."
   },
   "Features": {
+    "titleBefore": "How does ",
+    "titleAccent": "it work?",
     "title": "How does it work?",
     "subtitle": "A full process, from job posting to interview.",
     "step1Title": "Assisted writing",
+    "step1TitleBefore": "Assisted ",
+    "step1TitleAccent": "writing",
     "step1Desc": "Draft your job posting in seconds with Seeklon's matrix.",
     "step2Title": "Multi-posting",
+    "step2TitleBefore": "",
+    "step2TitleAccent": "Multi-posting",
     "step2Desc": "Publish your job on all job boards (Indeed, LinkedIn, etc.) and Seeklon centralizes all applications.",
     "step3Title": "AI screening & scoring",
+    "step3TitleBefore": "AI screening & ",
+    "step3TitleAccent": "scoring",
     "step3Desc": "Our algorithm analyzes and ranks CVs instantly to surface the best fits for your criteria.",
     "step4Title": "Interview support",
+    "step4TitleBefore": "Interview ",
+    "step4TitleAccent": "support",
     "step4Desc": "Seeklon generates a hiring interview guide. Confirm strengths and dig into areas to improve."
   },
   "TrustBar": {
@@ -78,6 +101,8 @@
     "role3": "Management"
   },
   "Newsletter": {
+    "titleBefore": "Get the ",
+    "titleAccent": "newsletter",
     "title": "Get the newsletter",
     "subtitle": "Get tips to optimize your hiring.",
     "placeholder": "Your work email",
@@ -88,6 +113,12 @@
     "badge": "Let's talk recruiting",
     "title": "Have a question?",
     "titleHighlight": "Request a demo.",
+    "coordinatesBefore": "Contact ",
+    "coordinatesAccent": "details",
+    "stayInformedBefore": "Stay ",
+    "stayInformedAccent": "informed",
+    "successTitleBefore": "Message ",
+    "successTitleAccent": "received!",
     "subtitle": "Contact our team for a demo or to learn more.",
     "coordinates": "Contact details",
     "social": "Social",
@@ -114,6 +145,8 @@
     "errorConnection": "Connection error."
   },
   "Blog": {
+    "titleBefore": "Tips & ",
+    "titleAccent": "News",
     "title": "Tips & News",
     "subtitle": "All the keys to modernize your hiring and attract top talent.",
     "readArticle": "Read article",
@@ -125,6 +158,16 @@
   "Product": {
     "titleLine1": "A complete suite to",
     "titleLine2": "run your hiring.",
+    "whyChangeBefore": "Why ",
+    "whyChangeAccent": "change?",
+    "aiProfilesTitleBefore": "An AI that understands ",
+    "aiProfilesTitleAccent": "profiles.",
+    "diffuseTitleBefore": "Broadcast once, receive ",
+    "diffuseTitleAccent": "everywhere.",
+    "interviewTitleBefore": "Tailor-made job ",
+    "interviewTitleAccent": "interview.",
+    "ctaTitleBefore": "Ready to modernize your ",
+    "ctaTitleAccent": "hiring?",
     "intro": "From job posting to final interview, Seeklon automates your most time-consuming tasks.",
     "whyChange": "Why change?",
     "traditional": "Traditional recruiting",
@@ -161,12 +204,16 @@
     "interviewVigilancePoint": "Check their technical English level."
   },
   "CTA": {
+    "titleBefore": "Ready to recruit ",
+    "titleAccent": "more easily?",
     "title": "Ready to recruit more easily?",
     "subtitle": "Join the Beta and see how Seeklon's AI transforms your HR workflow today.",
     "ctaStart": "Get started",
     "ctaLearn": "Learn more"
   },
   "Pricing": {
+    "titleBefore": "Simple ",
+    "titleAccent": "pricing",
     "title": "Simple pricing",
     "subtitle": "Choose the plan that fits your hiring needs.",
     "beta": "Beta",
@@ -200,6 +247,8 @@
     "homeDescription": "Sort your applications in seconds with Seeklon, the AI ATS for SMBs. Scoring, multi-posting, interview guides. Request a free demo."
   },
   "Legal": {
+    "titleBefore": "Legal ",
+    "titleAccent": "notice",
     "title": "Legal notice",
     "editorTitle": "1. Site publisher",
     "editorContent": "The Seeklon website is published by Seeklon SAS (registration in progress). Registered office: Paris, France. Email: contact@seeklon.com",
@@ -209,6 +258,8 @@
     "ipContent": "This entire site is subject to French and international legislation on copyright and intellectual property. All reproduction rights are reserved, including for downloadable documents and iconographic and photographic representations."
   },
   "Privacy": {
+    "titleBefore": "Privacy ",
+    "titleAccent": "policy",
     "title": "Privacy policy",
     "collectTitle": "1. Data collection",
     "collectContent": "We collect the information you provide directly when you use our contact form or create an account. This may include your name, email address, company name and phone number.",
@@ -224,6 +275,14 @@
   "About": {
     "title": "Hiring,",
     "titleHighlight": "finally stress-free.",
+    "whyTitleBefore": "Why ",
+    "whyTitleAccent": "Seeklon?",
+    "valuesTitleBefore": "Our ",
+    "valuesTitleAccent": "Values",
+    "teamTitleBefore": "Founding ",
+    "teamTitleAccent": "Team",
+    "ctaTitleBefore": "Ready to simplify your ",
+    "ctaTitleAccent": "hiring?",
     "intro": "We believe every SMB deserves access to the same technology as tech giants to find the best talent.",
     "whyTitle": "Why Seeklon?",
     "whyP1": "SMB leaders are everyday heroes, often overwhelmed. Recruiting quickly becomes a mental burden that holds back growth.",
@@ -241,6 +300,8 @@
     "ctaButton": "Contact us"
   },
   "Rgpd": {
+    "titleBefore": "GDPR & Cookie ",
+    "titleAccent": "policy",
     "title": "GDPR & Cookie policy",
     "rightsTitle": "1. Your rights",
     "rightsContent": "Under the General Data Protection Regulation (GDPR), you have the following rights regarding your personal data:",

@@ -12,7 +12,7 @@ export default function Pricing() {
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="font-heading text-3xl md:text-5xl font-bold text-primary mb-6">
-                        {t('title')}
+                        {t('titleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('titleAccent')}</span>
                     </h2>
                     <p className="font-sans text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
                         {t('subtitle')}
@@ -22,7 +22,7 @@ export default function Pricing() {
                 <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
                     
                     <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                        <h3 className="font-heading text-xl font-bold text-text-main mb-2">{t('beta')}</h3>
+                        <h3 className="font-heading text-xl font-bold text-text-main mb-2"><span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('beta')}</span></h3>
                         <div className="text-3xl font-bold text-primary mb-6">{t('free')}</div>
                         <p className="text-sm text-text-muted mb-6 h-10">{t('betaDesc')}</p>
                         <ul className="space-y-4 mb-8">
@@ -39,7 +39,7 @@ export default function Pricing() {
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wide">
                             {t('recommended')}
                         </div>
-                        <h3 className="font-heading text-xl font-bold text-text-main mb-2">{t('standard')}</h3>
+                        <h3 className="font-heading text-xl font-bold text-text-main mb-2"><span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('standard')}</span></h3>
                         <div className="mb-6">
                             <span className="text-3xl font-bold text-primary">49€</span>
                             <span className="text-sm text-text-muted"> / {t('month')}</span>
@@ -57,7 +57,7 @@ export default function Pricing() {
                     </div>
 
                     <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                        <h3 className="font-heading text-xl font-bold text-text-main mb-2">{t('enterprise')}</h3>
+                        <h3 className="font-heading text-xl font-bold text-text-main mb-2"><span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('enterprise')}</span></h3>
                         <div className="text-3xl font-bold text-primary mb-6">{t('custom')}</div>
                         <p className="text-sm text-text-muted mb-6 h-10">{t('enterpriseDesc')}</p>
                         <ul className="space-y-4 mb-8">

@@ -16,7 +16,9 @@ export default function WhyAtsIA() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-heading text-3xl md:text-5xl font-bold text-text-main mb-6">
-              {t('title')}
+              {t('titleBefore')}
+              <span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('titleAccent')}</span>
+              {t('titleEnd')}
             </h2>
             <p className="text-lg text-text-muted leading-relaxed max-w-3xl mx-auto">
               {t('intro')} <span className="font-bold text-green-600">{t('highlight')}</span> {t('introEnd')}
@@ -35,7 +37,9 @@ export default function WhyAtsIA() {
                 <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-primary/30">
                   <Clock className="text-white" size={24} strokeWidth={2.5} />
                 </div>
-                <h3 className="font-heading text-2xl font-bold text-primary mb-3">{t('savingsTitle')}</h3>
+                <h3 className="font-heading text-2xl font-bold text-primary mb-3">
+                  <span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('savingsTitleStat')}</span>{t('savingsTitleRest')}
+                </h3>
                 <p className="text-sm text-text-muted font-medium leading-relaxed">{t('savingsDesc')}</p>
               </div>
 
@@ -43,7 +47,9 @@ export default function WhyAtsIA() {
                 <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-primary/30">
                   <PiggyBank className="text-white" size={24} strokeWidth={2.5} />
                 </div>
-                <h3 className="font-heading text-2xl font-bold text-primary mb-3">{t('costTitle')}</h3>
+                <h3 className="font-heading text-2xl font-bold text-primary mb-3">
+                  <span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('costTitleStat')}</span>{t('costTitleRest')}
+                </h3>
                 <p className="text-sm text-text-muted font-medium leading-relaxed">{t('costDesc')}</p>
               </div>
 
@@ -51,7 +57,9 @@ export default function WhyAtsIA() {
                 <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-primary/30">
                   <Trophy className="text-white" size={24} strokeWidth={2.5} />
                 </div>
-                <h3 className="font-heading text-2xl font-bold text-primary mb-3">{t('qualityTitle')}</h3>
+                <h3 className="font-heading text-2xl font-bold text-primary mb-3">
+                  {t('qualityTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('qualityTitleAccent')}</span>{t('qualityTitleEnd')}
+                </h3>
                 <p className="text-sm text-text-muted font-medium leading-relaxed">{t('qualityDesc')}</p>
               </div>
             </div>
@@ -67,7 +75,9 @@ export default function WhyAtsIA() {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-heading text-xl font-bold mb-2">{t('trustTitle')}</h3>
+                  <h3 className="font-heading text-xl font-bold mb-2">
+                    {t('trustTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('trustTitleAccent')}</span>
+                  </h3>
                   <p className="text-slate-300 leading-relaxed">{t('trustDesc')}</p>
                 </div>
               </div>

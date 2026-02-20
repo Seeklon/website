@@ -17,7 +17,7 @@ export default async function ProductPage({ params }: Props) {
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
             <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-main mb-8 leading-tight">
               {t('titleLine1')} <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
+              <span className="font-accent italic text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
                 {t('titleLine2')}
               </span>
             </h1>
@@ -46,7 +46,7 @@ export default async function ProductPage({ params }: Props) {
 
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-center font-heading text-3xl font-bold mb-12">{t('whyChange')}</h2>
+          <h2 className="text-center font-heading text-3xl font-bold mb-12">{t('whyChangeBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('whyChangeAccent')}</span></h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           <div className="bg-white p-8 rounded-3xl border border-green-100 shadow-lg relative overflow-hidden ring-1 ring-green-500/20">
               <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
@@ -108,7 +108,7 @@ export default async function ProductPage({ params }: Props) {
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6">
                 <Bot size={24} />
               </div>
-              <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">{t('aiProfilesTitle')}</h2>
+              <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">{t('aiProfilesTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('aiProfilesTitleAccent')}</span></h2>
               <p className="text-lg text-text-muted mb-6 leading-relaxed">
                 {t('aiProfilesDesc')}
               </p>
@@ -125,7 +125,7 @@ export default async function ProductPage({ params }: Props) {
               <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-6">
                 <Share2 size={24} />
               </div>
-              <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">{t('diffuseTitle')}</h2>
+              <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">{t('diffuseTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('diffuseTitleAccent')}</span></h2>
               <p className="text-lg text-text-muted mb-6 leading-relaxed">
                 {t('diffuseDesc')}
               </p>
@@ -181,7 +181,7 @@ export default async function ProductPage({ params }: Props) {
               <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-6">
                 <MessageSquare size={24} />
               </div>
-              <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">{t('interviewTitle')}</h2>
+              <h2 className="font-heading text-3xl font-bold mb-4 text-text-main">{t('interviewTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('interviewTitleAccent')}</span></h2>
               <p className="text-lg text-text-muted mb-6 leading-relaxed">
                 {t('interviewDesc')}
               </p>
@@ -194,7 +194,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-24 text-center">
         <div className="container mx-auto px-4">
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-text-main mb-8">
-            {t('ctaTitle')}
+            {t('ctaTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('ctaTitleAccent')}</span>
           </h2>
           <Link href="/contact">
             <Button className="bg-primary hover:bg-primary-dark text-white px-10 py-4 text-xl rounded-full shadow-xl shadow-primary/20 hover:-translate-y-1 transition-transform">

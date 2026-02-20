@@ -18,7 +18,7 @@ export default function Features() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-5xl font-bold text-primary mb-6">
-              {t('title')}
+              {t('titleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('titleAccent')}</span>
             </h2>
             <p className="font-sans text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
               {t('subtitle')}

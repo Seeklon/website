@@ -64,7 +64,7 @@ export default function ContactPage() {
         <div className="text-center mb-16">
           <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-main mb-6">
             {t('title')} <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
+            <span className="font-accent italic text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
               {t('titleHighlight')}
             </span>
           </h1>
@@ -99,7 +99,7 @@ export default function ContactPage() {
 
             <div className="relative overflow-hidden rounded-2xl bg-[#0F172A] p-8 text-white shadow-xl shadow-blue-900/10 group">
               <div className="absolute -right-10 -top-10 w-32 h-32 bg-primary rounded-full blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <h3 className="font-heading text-xl font-bold mb-2 relative z-10">{t('stayInformed')}</h3>
+              <h3 className="font-heading text-xl font-bold mb-2 relative z-10">{t('stayInformedBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('stayInformedAccent')}</span></h3>
               <p className="text-slate-400 text-sm mb-6 relative z-10">{t('stayInformedDesc')}</p>
               {!isSuccessNews ? (
                 <form className="flex gap-2 relative z-10" onSubmit={handleNewsletterSubmit}>
@@ -180,7 +180,7 @@ export default function ContactPage() {
                   <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-6 shadow-sm">
                     <CheckCircle size={40} />
                   </div>
-                  <h3 className="font-heading text-3xl font-bold text-text-main mb-4">{t('successTitle')}</h3>
+                  <h3 className="font-heading text-3xl font-bold text-text-main mb-4">{t('successTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('successTitleAccent')}</span></h3>
                   <p className="font-sans text-lg text-text-muted max-w-md">
                     {t('successMessage')}
                   </p>

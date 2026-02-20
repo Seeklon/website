@@ -19,7 +19,7 @@ export default function SocialProof() {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-12">
-            {t('title')}
+            <span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('title')}</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">

@@ -52,7 +52,7 @@ export default function Footer() {
             <div className="md:col-span-1"></div>
 
             <div className="md:col-span-2">
-              <h3 className="font-heading font-semibold text-white mb-6">{t('product')}</h3>
+              <h3 className="font-heading font-semibold text-white mb-6"><span className="font-accent italic">{t('product')}</span></h3>
               <ul className="space-y-4 text-sm font-medium">
                 <li><Link href="/#product" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('features')}</Link></li>
                 <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('requestDemo')}</Link></li>
@@ -60,7 +60,7 @@ export default function Footer() {
             </div>
 
             <div className="md:col-span-2">
-              <h3 className="font-heading font-semibold text-white mb-6">{t('company')}</h3>
+              <h3 className="font-heading font-semibold text-white mb-6"><span className="font-accent italic">{t('company')}</span></h3>
               <ul className="space-y-4 text-sm font-medium">
                 <li><Link href="/about" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('about')}</Link></li>
                 <li><Link href="/blog" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('blog')}</Link></li>
@@ -69,7 +69,7 @@ export default function Footer() {
             </div>
 
             <div className="md:col-span-3">
-              <h3 className="font-heading font-semibold text-white mb-6">{t('legal')}</h3>
+              <h3 className="font-heading font-semibold text-white mb-6"><span className="font-accent italic">{t('legal')}</span></h3>
               <ul className="space-y-4 text-sm font-medium">
                 <li><Link href="/legal" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('legalMentions')}</Link></li>
                 <li><Link href="/privacy" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('privacy')}</Link></li>

@@ -21,7 +21,7 @@ export default async function BlogIndexPage({ params }: Props) {
         </div>
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-main mb-6">
-            {t('title')}
+            {t('titleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('titleAccent')}</span>
           </h1>
           <p className="font-sans text-xl text-text-muted max-w-2xl mx-auto">
             {t('subtitle')}

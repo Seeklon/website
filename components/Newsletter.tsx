@@ -10,7 +10,7 @@ export default function Newsletter() {
              <div className="container mx-auto px-4 relative z-10">
                 <div className="max-w-3xl mx-auto text-center bg-white/50 backdrop-blur-sm border border-white/60 rounded-3xl p-8 md:p-12 shadow-sm">
                     <h2 className="font-heading text-3xl font-bold text-primary mb-4">
-                        {t('title')}
+                        {t('titleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('titleAccent')}</span>
                     </h2>
                     <p className="font-sans text-text-muted mb-8 text-lg">
                         {t('subtitle')}

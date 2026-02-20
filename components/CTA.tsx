@@ -14,7 +14,7 @@ export default function CTA() {
 
             <div className="container mx-auto px-4 text-center relative z-10">
                 <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                    {t('title')}
+                    {t('titleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('titleAccent')}</span>
                 </h2>
                 <p className="font-sans text-lg md:text-xl text-blue-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">
                     {t('subtitle')}

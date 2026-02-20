@@ -19,7 +19,7 @@ export default async function AboutPage({ params }: Props) {
         <div className="container mx-auto px-4 relative z-10">
           <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-main mb-8 leading-tight">
             {t('title')} <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
+            <span className="font-accent italic text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
               {t('titleHighlight')}
             </span>
           </h1>
@@ -33,7 +33,7 @@ export default async function AboutPage({ params }: Props) {
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-main mb-6">
-              {t('whyTitle')}
+              {t('whyTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('whyTitleAccent')}</span>
             </h2>
             <div className="space-y-6 font-sans text-lg text-text-muted">
               <p>
@@ -90,7 +90,7 @@ export default async function AboutPage({ params }: Props) {
       <section className="py-24 bg-[#0F172A] relative overflow-hidden text-white">
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-3xl md:text-5xl font-bold mb-6">{t('valuesTitle')}</h2>
+            <h2 className="font-heading text-3xl md:text-5xl font-bold mb-6">{t('valuesTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('valuesTitleAccent')}</span></h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -102,7 +102,7 @@ export default async function AboutPage({ params }: Props) {
                 <div className={`w-12 h-12 rounded-xl bg-${val.color}-500/20 flex items-center justify-center text-${val.color}-400 mb-6 group-hover:scale-110 transition-transform`}>
                   <val.icon size={24} />
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-3 text-white">{t(val.titleKey)}</h3>
+                <h3 className="font-heading text-xl font-bold mb-3 text-white"><span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t(val.titleKey)}</span></h3>
                 <p className="text-slate-400 leading-relaxed text-sm">{t(val.textKey)}</p>
               </div>
             ))}
@@ -112,7 +112,7 @@ export default async function AboutPage({ params }: Props) {
 
       <section className="py-24 relative">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-main mb-6">{t('teamTitle')}</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-main mb-6">{t('teamTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('teamTitleAccent')}</span></h2>
           <div className="flex flex-wrap justify-center gap-8 mb-16">
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="group relative w-64 h-80 rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
@@ -127,7 +127,7 @@ export default async function AboutPage({ params }: Props) {
             ))}
           </div>
           <div className="bg-primary/5 rounded-3xl p-12 max-w-4xl mx-auto border border-primary/10">
-            <h3 className="font-heading text-2xl font-bold text-primary mb-4">{t('ctaTitle')}</h3>
+            <h3 className="font-heading text-2xl font-bold text-primary mb-4">{t('ctaTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('ctaTitleAccent')}</span></h3>
             <Link href="/contact">
               <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg shadow-primary/20 hover:-translate-y-1 transition-transform">
                 {t('ctaButton')}

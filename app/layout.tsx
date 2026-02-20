@@ -1,13 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { headers } from 'next/headers'
-import { Plus_Jakarta_Sans } from 'next/font/google'
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  variable: '--font-jakarta',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://landing.seeklon.com'),
@@ -27,14 +20,20 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap"
           rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
+        />
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=swear-display@500,600,700&display=swap"
+          rel="stylesheet"
         />
       </head>
       <body
         className={`
-          ${jakarta.variable}
           font-sans
           bg-background
           text-text-main
