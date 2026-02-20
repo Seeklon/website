@@ -31,8 +31,9 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ["var(--font-dm-sans)", ...fontFamily.sans],
-        heading: ["var(--font-jakarta)", ...fontFamily.sans],
+        heading: ['"Cabinet Grotesk"', 'sans-serif'],
+        sans: ["var(--font-jakarta)", ...fontFamily.sans],
+        accent: ['"Swear Display"', 'serif'],
       },
       animation: {
         'blob': 'blob 10s infinite',

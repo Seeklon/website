@@ -1,23 +1,26 @@
-// components/Header.tsx
 "use client"
 
-import Link from 'next/link'
+import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import Image from 'next/image'
-import Button from './Button' // Assure-toi que ce chemin est correct
+import Button from './Button'
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react' // On utilise Lucide pour les icônes, c'est plus propre
+import { Menu, X } from 'lucide-react'
+import { useTranslations, useLocale } from 'next-intl'
 
 export default function Header() {
+    const t = useTranslations('Header')
+    const locale = useLocale()
+    const pathname = usePathname()
+    const router = useRouter()
     const [isScrolled, setIsScrolled] = useState(false)
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false) // Nouvel état pour le menu
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
     const navItems = [
-        { label: 'Accueil', href: '/' },
-        { label: 'Produit', href: '/product' },
-        // { label: 'Tarifs', href: '/pricing' },
-        { label: 'Blog', href: '/blog' },
-        { label: 'À propos', href: '/about' },
-        { label: 'Contact', href: '/contact' }
+        { label: t('home'), href: '/' },
+        { label: t('product'), href: '/product' },
+        { label: t('blog'), href: '/blog' },
+        { label: t('about'), href: '/about' },
+        { label: t('contact'), href: '/contact' }
     ]
 
     // Gestion du scroll pour l'effet Frost
@@ -55,7 +58,7 @@ export default function Header() {
                     <div className="relative w-10 h-10 transition-transform group-hover:scale-105">
                         <Image
                             src="/logo.png"
-                            alt="Seeklon Logo"
+                            alt={t('logoAlt')}
                             fill
                             className="object-contain"
                             priority
@@ -81,10 +84,21 @@ export default function Header() {
                 </nav>
 
                 {/* Action Zone (Desktop) */}
-                <div className="hidden md:flex gap-4">
+                <div className="hidden md:flex gap-4 items-center">
+                    <div className="flex gap-1 text-sm font-medium">
+                        {['fr', 'en'].map((loc) => (
+                            <button
+                                key={loc}
+                                onClick={() => router.replace(pathname, { locale: loc })}
+                                className={`px-2 py-1 rounded ${locale === loc ? 'text-primary font-bold bg-primary/10' : 'text-text-muted hover:text-primary'}`}
+                            >
+                                {loc.toUpperCase()}
+                            </button>
+                        ))}
+                    </div>
                     <Link href="/contact">
                         <Button className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-full font-medium transition-all shadow-lg shadow-primary/20 text-sm">
-                            Testez le produit
+                            {t('tryProduct')}
                         </Button>
                     </Link>
                 </div>
@@ -124,11 +138,22 @@ export default function Header() {
                         </Link>
                     ))}
 
-                    <div className="h-px bg-primary/10 my-2"></div>
+                    <div className="flex gap-2 py-2">
+                        {['fr', 'en'].map((loc) => (
+                            <button
+                                key={loc}
+                                onClick={() => { router.replace(pathname, { locale: loc }); setIsMobileMenuOpen(false); }}
+                                className={`px-3 py-1.5 rounded-lg text-sm font-medium ${locale === loc ? 'bg-primary text-white' : 'bg-slate-100 text-text-muted'}`}
+                            >
+                                {loc.toUpperCase()}
+                            </button>
+                        ))}
+                    </div>
+                    <div className="h-px bg-slate-100 my-2"></div>
 
                     <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                         <Button className="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-xl font-medium shadow-lg shadow-primary/20">
-                            Testez le produit
+                            {t('tryProduct')}
                         </Button>
                     </Link>
                 </div>

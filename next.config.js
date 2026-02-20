@@ -1,5 +1,13 @@
+const createNextIntlPlugin = require('next-intl/plugin')
+
+const withNextIntl = createNextIntlPlugin()
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    trailingSlash: false,
+    experimental: {
+        webpackBuildWorker: true,
+    },
     async redirects() {
         return [
             {
@@ -11,4 +19,6 @@ const nextConfig = {
     },
 }
 
-module.exports = nextConfig
+const config = withNextIntl(nextConfig)
+config.env = { ...config.env, _next_intl_trailing_slash: 'false' }
+module.exports = config

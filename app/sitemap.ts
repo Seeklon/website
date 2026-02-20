@@ -1,21 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
+import { routing } from '@/i18n/routing'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://landing.seeklon.com'
-
-  // Récupérer tous les articles de blog
-  const posts = getAllPosts()
-  
-  // Créer les URLs pour les articles de blog
-  const blogUrls = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
-
-  // Routes statiques
   const routes = [
     '',
     '/about',
@@ -26,12 +14,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/legal',
     '/privacy',
     '/rgpd',
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1 : 0.8,
-  }))
+  ]
 
-  return [...routes, ...blogUrls]
+  const entries: MetadataRoute.Sitemap = []
+
+  for (const locale of routing.locales) {
+    const prefix = locale === routing.defaultLocale ? '' : `/${locale}`
+    for (const route of routes) {
+      entries.push({
+        url: `${baseUrl}${prefix}${route}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: route === '' ? 1 : 0.8,
+      })
+    }
+    const posts = getAllPosts(locale)
+    for (const post of posts) {
+      entries.push({
+        url: `${baseUrl}${prefix}/blog/${post.slug}`,
+        lastModified: new Date(post.publishDate ?? post.date),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      })
+    }
+  }
+
+  return entries
 }
