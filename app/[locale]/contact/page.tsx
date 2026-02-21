@@ -99,7 +99,7 @@ export default function ContactPage() {
 
             <div className="relative overflow-hidden rounded-2xl bg-[#0F172A] p-8 text-white shadow-xl shadow-blue-900/10 group">
               <div className="absolute -right-10 -top-10 w-32 h-32 bg-primary rounded-full blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <h3 className="font-heading text-xl font-bold mb-2 relative z-10">{t('stayInformedBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('stayInformedAccent')}</span></h3>
+              <h3 className="font-heading text-xl font-bold mb-2 relative z-10">{t('stayInformedBefore')}<span className="font-accent italic text-white" style={{ fontWeight: 600 }}>{t('stayInformedAccent')}</span></h3>
               <p className="text-slate-400 text-sm mb-6 relative z-10">{t('stayInformedDesc')}</p>
               {!isSuccessNews ? (
                 <form className="flex gap-2 relative z-10" onSubmit={handleNewsletterSubmit}>

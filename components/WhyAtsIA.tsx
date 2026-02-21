@@ -76,7 +76,7 @@ export default function WhyAtsIA() {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-heading text-xl font-bold mb-2">
-                    {t('trustTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('trustTitleAccent')}</span>
+                    {t('trustTitleBefore')}<span className="font-accent italic text-white" style={{ fontWeight: 600 }}>{t('trustTitleAccent')}</span>
                   </h3>
                   <p className="text-slate-300 leading-relaxed">{t('trustDesc')}</p>
                 </div>

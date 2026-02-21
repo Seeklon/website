@@ -90,7 +90,7 @@ export default async function AboutPage({ params }: Props) {
       <section className="py-24 bg-[#0F172A] relative overflow-hidden text-white">
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-3xl md:text-5xl font-bold mb-6">{t('valuesTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('valuesTitleAccent')}</span></h2>
+            <h2 className="font-heading text-3xl md:text-5xl font-bold mb-6">{t('valuesTitleBefore')}<span className="font-accent italic text-white" style={{ fontWeight: 600 }}>{t('valuesTitleAccent')}</span></h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -102,7 +102,7 @@ export default async function AboutPage({ params }: Props) {
                 <div className={`w-12 h-12 rounded-xl bg-${val.color}-500/20 flex items-center justify-center text-${val.color}-400 mb-6 group-hover:scale-110 transition-transform`}>
                   <val.icon size={24} />
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-3 text-white"><span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t(val.titleKey)}</span></h3>
+                <h3 className="font-heading text-xl font-bold mb-3 text-white"><span className="font-accent italic text-white" style={{ fontWeight: 600 }}>{t(val.titleKey)}</span></h3>
                 <p className="text-slate-400 leading-relaxed text-sm">{t(val.textKey)}</p>
               </div>
             ))}
