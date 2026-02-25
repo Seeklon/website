@@ -8,7 +8,7 @@ import { setRequestLocale } from 'next-intl/server'
 type Props = { params: Promise<{ locale: string }> }
 
 function isPlaceholderImage(coverImage: string): boolean {
-  return coverImage === '/logo.png' || (coverImage && coverImage.includes('logo'))
+  return coverImage === '/logo.png' || (!!coverImage && coverImage.includes('logo'))
 }
 
 export default async function BlogIndexPage({ params }: Props) {
