@@ -1,12 +1,29 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { headers } from 'next/headers'
+import { SITE_URL } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://landing.seeklon.com'),
+  metadataBase: new URL(SITE_URL),
   title: { default: 'Seeklon', template: '%s | Seeklon' },
   description: 'Simplify hiring for SMBs with our ATS powered by AI screening.',
   icons: { icon: '/logo.png', shortcut: '/logo.png', apple: '/logo.png' },
+  openGraph: {
+    siteName: 'Seeklon',
+    type: 'website',
+    images: [
+      {
+        url: '/product/capture-synthetic.webp',
+        width: 1902,
+        height: 827,
+        alt: 'Interface Seeklon de pilotage des candidatures',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/product/capture-synthetic.webp'],
+  },
 }
 
 export default async function RootLayout({

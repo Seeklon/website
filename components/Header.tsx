@@ -2,26 +2,34 @@
 
 import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import Image from 'next/image'
-import Button from './Button'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { useTranslations, useLocale } from 'next-intl'
 
 export default function Header() {
     const t = useTranslations('Header')
+    const pricingT = useTranslations('Pricing')
     const locale = useLocale()
     const pathname = usePathname()
     const router = useRouter()
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
+    const switchLocale = (nextLocale: string) => {
+        router.replace(`${pathname}${window.location.search}${window.location.hash}`, { locale: nextLocale })
+    }
+
     const navItems = [
         { label: t('home'), href: '/' },
         { label: t('product'), href: '/product' },
+        { label: t('pricing'), href: '/pricing' },
         { label: t('blog'), href: '/blog' },
         { label: t('about'), href: '/about' },
         { label: t('contact'), href: '/contact' }
     ]
+    const isPricingPage = pathname === '/pricing'
+    const primaryHref = isPricingPage ? '/contact?plan=beta' : '/contact'
+    const primaryLabel = isPricingPage ? pricingT('betaCta') : t('tryProduct')
 
     // Gestion du scroll pour l'effet Frost
     useEffect(() => {
@@ -89,17 +97,15 @@ export default function Header() {
                         {['fr', 'en'].map((loc) => (
                             <button
                                 key={loc}
-                                onClick={() => router.replace(pathname, { locale: loc })}
+                                onClick={() => switchLocale(loc)}
                                 className={`px-2 py-1 rounded ${locale === loc ? 'text-primary font-bold bg-primary/10' : 'text-text-muted hover:text-primary'}`}
                             >
                                 {loc.toUpperCase()}
                             </button>
                         ))}
                     </div>
-                    <Link href="/contact">
-                        <Button className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-full font-medium transition-all shadow-lg shadow-primary/20 text-sm">
-                            {t('tryProduct')}
-                        </Button>
+                    <Link href={primaryHref} className="rounded-full bg-primary px-6 py-2 text-sm font-medium text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30">
+                        {primaryLabel}
                     </Link>
                 </div>
 
@@ -142,7 +148,7 @@ export default function Header() {
                         {['fr', 'en'].map((loc) => (
                             <button
                                 key={loc}
-                                onClick={() => { router.replace(pathname, { locale: loc }); setIsMobileMenuOpen(false); }}
+                                onClick={() => { switchLocale(loc); setIsMobileMenuOpen(false); }}
                                 className={`px-3 py-1.5 rounded-lg text-sm font-medium ${locale === loc ? 'bg-primary text-white' : 'bg-slate-100 text-text-muted'}`}
                             >
                                 {loc.toUpperCase()}
@@ -151,10 +157,8 @@ export default function Header() {
                     </div>
                     <div className="h-px bg-slate-100 my-2"></div>
 
-                    <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                        <Button className="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-xl font-medium shadow-lg shadow-primary/20">
-                            {t('tryProduct')}
-                        </Button>
+                    <Link href={primaryHref} onClick={() => setIsMobileMenuOpen(false)} className="block w-full rounded-lg bg-primary py-3 text-center font-medium text-white shadow-lg shadow-primary/20 transition-colors hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30">
+                        {primaryLabel}
                     </Link>
                 </div>
             </div>

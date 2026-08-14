@@ -27,7 +27,7 @@ Documentation du projet **Seeklon Web** : site vitrine et blog multilingue (FR/E
 - **Produit** : Seeklon — ATS (Applicant Tracking System) avec tri des candidatures par IA sémantique.
 - **Site** : landing (accueil, produit, tarifs, contact, à propos, mentions légales, confidentialité, RGPD) + blog d’articles (conseils recrutement, marque employeur, tech RH).
 - **Langues** : français (par défaut) et anglais. Contenu UI et articles de blog gérés par locale.
-- **URL de production** : `https://landing.seeklon.com`.
+- **URL de production** : `https://www.seeklon.com`.
 
 ---
 
@@ -204,18 +204,20 @@ Les pages sous `app/[locale]/blog/` appellent ces fonctions avec la `locale` cou
 
 | Route | Description |
 |-------|-------------|
-| `/` | Accueil (Hero, WhyAtsIA, Features, TrustBar, SocialProof, Newsletter) |
+| `/` | Accueil (Hero, WhyAtsIA, Features, TrustBar, SocialProof, FAQ, Newsletter) |
 | `/about` | À propos |
 | `/blog` | Liste des articles du blog |
 | `/blog/[slug]` | Article de blog |
 | `/contact` | Contact / demande de démo |
-| `/pricing` | Tarifs |
+| `/thank-you` | Confirmation après envoi du formulaire contact |
+| `/pricing` | Offre bêta gratuite, tarif Standard envisagé, aperçu produit, retours d'évaluation et FAQ dédiée |
 | `/product` | Page produit (fonctionnalités, avantages) |
 | `/legal` | Mentions légales |
 | `/privacy` | Politique de confidentialité |
 | `/rgpd` | Page RGPD |
 
 - **Redirection** : `/demo` → `/contact` (permanent), configurée dans `next.config.js`.
+- **404** : `app/not-found.tsx` fournit une page 404 custom.
 
 ---
 
@@ -227,9 +229,12 @@ Les pages sous `app/[locale]/blog/` appellent ces fonctions avec la `locale` cou
 - **WhyAtsIA** : valeur ajoutée ATS IA (chiffres, avantages, confiance).
 - **Features** : étapes du parcours (rédaction, diffusion, tri IA, entretien).
 - **TrustBar** : compatibilité plateformes (job boards, etc.).
-- **SocialProof** : témoignages / citations.
-- **Newsletter** : formulaire d’inscription.
-- **Pricing** : blocs tarifaires (si présente sur la page tarifs).
+- **SocialProof** : retours nommés Agap2 et Detektin, avec la reconnaissance du Hackathon BPI 2024. Toute nouvelle attribution doit avoir été approuvée par la personne ou l'organisation citée.
+- **FAQ** : 5 questions fréquentes sur l'accueil et 4 questions spécifiques à la bêta sur la page Tarifs.
+- **Newsletter** : formulaire d'inscription relié à Formspree, avec états envoi, succès et erreur.
+- **Pricing** : offre bêta unique à 0 €, tarif Standard envisagé après la bêta, inclusions et aperçu produit avec données fictives.
+- **Breadcrumbs** : fil d'Ariane simple sur les articles de blog.
+- **MobileStickyCTA** : CTA mobile persistant vers la page contact.
 - **CTA** : boutons d’action réutilisables.
 - **Button** : bouton de base (variantes, liens).
 
@@ -256,22 +261,23 @@ Les textes affichés viennent des namespaces dans `messages/fr.json` et `message
 
 ### Sitemap (`app/sitemap.ts`)
 
-- **URL** : `https://landing.seeklon.com/sitemap.xml`
+- **URL** : `https://www.seeklon.com/sitemap.xml`
 - Génère des entrées pour :
   - Chaque **locale** (fr sans préfixe, en avec préfixe `/en`).
-  - Toutes les **pages statiques** (accueil, about, blog, contact, pricing, product, legal, privacy, rgpd).
+  - Toutes les **pages statiques indexables** (accueil, about, blog, contact, pricing, product, legal, privacy, rgpd).
   - Chaque **article de blog** par locale (`/blog/[slug]` ou `/en/blog/[slug]`).
+- La page `/thank-you` est exclue du sitemap et déclare `noindex, nofollow`.
 - `lastModified` : date du jour pour les pages, `publishDate` ou `date` pour les articles.
 - `changeFrequency` : weekly pour les pages, monthly pour les articles.
 - `priority` : 1 pour l’accueil, 0.8 pour les autres pages, 0.7 pour les articles.
 
 ### Robots (`app/robots.ts`)
 
-- **URL** : `https://landing.seeklon.com/robots.txt`
+- **URL** : `https://www.seeklon.com/robots.txt`
 - Contenu :
-  - `host` : `https://landing.seeklon.com`
+  - `host` : `https://www.seeklon.com`
   - `allow: /` pour tout le site
-  - `sitemap` : `https://landing.seeklon.com/sitemap.xml`
+  - `sitemap` : `https://www.seeklon.com/sitemap.xml`
 
 ---
 
@@ -286,10 +292,26 @@ Les textes affichés viennent des namespaces dans `messages/fr.json` et `message
 
 Aucune variable obligatoire documentée pour le build. Si des services (newsletter, formulaire contact) utilisent des clés API, les définir dans `.env.local` (et ne pas les committer).
 
+### Analytics et consentement
+
+- Google Analytics 4 est configuré avec l'ID de mesure `G-YT9YC2FR33`.
+- Le script GA4 n'est chargé qu'après acceptation du bandeau de consentement.
+- Le choix est stocké côté navigateur dans `localStorage` sous la clé `seeklon_analytics_consent`.
+- Après un choix, le bouton flottant « Cookies » permet de modifier ou retirer le consentement.
+- En cas de refus ou de retrait, le site bloque les futurs événements GA4 et tente de supprimer les cookies `_ga` / `_ga_*` du domaine courant.
+- Après envoi réussi du formulaire de contact, un événement GA4 `generate_lead` est émis uniquement si Analytics a déjà été accepté.
+
+### Formulaires
+
+- Les formulaires de contact et de newsletter sont acheminés par Formspree.
+- Les CTA de la page Tarifs transmettent le contexte `plan=beta` au formulaire de contact.
+- La politique de confidentialité et les notices sous les formulaires signalent ce sous-traitant technique.
+
 ### Métadonnées
 
-- **Root** : `app/layout.tsx` définit `metadataBase`, `title` (template `%s | Seeklon`), `description`, icônes.
-- Les pages peuvent surcharger `title` et `description` via `generateMetadata` (ex. page d’accueil avec namespace `Metadata`).
+- **Root** : `app/layout.tsx` définit `metadataBase`, `title` (template `%s | Seeklon`), `description`, icônes et image sociale par défaut.
+- `lib/seo.ts` centralise le domaine canonique, l'image de partage social et le helper `buildPageMetadata`.
+- Les pages principales et articles surchargent `title`, `description`, canonical, Open Graph et Twitter via `generateMetadata`.
 
 ---
 
@@ -297,7 +319,7 @@ Aucune variable obligatoire documentée pour le build. Si des services (newslett
 
 1. **Build** : `npm run build`
 2. **Lancer** : `npm run start` (ou déploiement sur Vercel/autre avec la même commande de build/start).
-3. **Domaine** : le site est conçu pour `https://landing.seeklon.com`. Si le domaine change, mettre à jour :
+3. **Domaine** : le site est conçu pour `https://www.seeklon.com`. Si le domaine change, mettre à jour :
    - `metadataBase` dans `app/layout.tsx`
    - `baseUrl` dans `app/sitemap.ts` et `app/robots.ts`
 

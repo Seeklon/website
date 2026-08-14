@@ -5,16 +5,19 @@ import TrustBar from '@/components/TrustBar'
 import Features from '@/components/Features'
 import SocialProof from '@/components/SocialProof'
 import Newsletter from '@/components/Newsletter'
+import FAQ from '@/components/FAQ'
+import { buildPageMetadata } from '@/lib/seo'
 
 type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'Metadata' })
-  return {
+  return buildPageMetadata({
     title: t('homeTitle'),
     description: t('homeDescription'),
-  }
+    locale,
+  })
 }
 
 export default async function HomePage({ params }: Props) {
@@ -28,6 +31,7 @@ export default async function HomePage({ params }: Props) {
       <Features />
       <TrustBar />
       <SocialProof />
+      <FAQ />
       <Newsletter />
     </>
   )

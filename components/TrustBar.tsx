@@ -54,6 +54,9 @@ export default function TrustBar() {
                 <p className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
                     {t('label')}
                 </p>
+                <p className="mx-auto mt-2 max-w-2xl text-xs leading-relaxed text-slate-500">
+                    {t('disclaimer')}
+                </p>
             </div>
             
             <div className="relative w-full overflow-hidden">

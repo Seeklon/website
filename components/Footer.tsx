@@ -55,6 +55,7 @@ export default function Footer() {
               <h3 className="font-heading font-semibold text-white mb-6"><span className="font-accent italic">{t('product')}</span></h3>
               <ul className="space-y-4 text-sm font-medium">
                 <li><Link href="/#product" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('features')}</Link></li>
+                <li><Link href="/pricing" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('pricing')}</Link></li>
                 <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('requestDemo')}</Link></li>
               </ul>
             </div>
@@ -80,7 +81,7 @@ export default function Footer() {
 
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
             <div>
-              © {new Date().getFullYear()} Seeklon Inc. {t('copyright')}
+              © {new Date().getFullYear()} Seeklon. {t('copyright')}
             </div>
 
             <div className="flex items-center gap-6">

@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import CookieConsentAnalytics from '@/components/CookieConsentAnalytics'
+import MobileStickyCTA from '@/components/MobileStickyCTA'
 
 type Props = {
   children: React.ReactNode
@@ -29,6 +31,8 @@ export default async function LocaleLayout({ children, params }: Props) {
         {children}
       </main>
       <Footer />
+      <MobileStickyCTA />
+      <CookieConsentAnalytics />
     </NextIntlClientProvider>
   )
 }

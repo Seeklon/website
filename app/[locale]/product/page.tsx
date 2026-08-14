@@ -2,8 +2,20 @@ import { Link } from '@/i18n/navigation'
 import Button from '@/components/Button'
 import { Bot, Share2, MessageSquare, CheckCircle2, XCircle, Star, ArrowRight } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { buildPageMetadata } from '@/lib/seo'
 
 type Props = { params: Promise<{ locale: string }> }
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata' })
+  return buildPageMetadata({
+    title: t('productTitle'),
+    description: t('productDescription'),
+    locale,
+    path: '/product',
+  })
+}
 
 export default async function ProductPage({ params }: Props) {
   const { locale } = await params

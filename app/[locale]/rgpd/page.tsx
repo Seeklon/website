@@ -1,6 +1,18 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { buildPageMetadata } from '@/lib/seo'
 
 type Props = { params: Promise<{ locale: string }> }
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata' })
+  return buildPageMetadata({
+    title: t('rgpdTitle'),
+    description: t('rgpdDescription'),
+    locale,
+    path: '/rgpd',
+  })
+}
 
 export default async function RgpdPage({ params }: Props) {
   const { locale } = await params

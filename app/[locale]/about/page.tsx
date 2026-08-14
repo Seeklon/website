@@ -2,10 +2,22 @@ import { Target, Heart, Zap, Users } from 'lucide-react'
 import { Link } from '@/i18n/navigation'
 import Button from '@/components/Button'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { buildPageMetadata } from '@/lib/seo'
 
 type Props = { params: Promise<{ locale: string }> }
 
 const membres = ['Thomas B', 'Ilyes M', 'Robin B', 'Deniz U']
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata' })
+  return buildPageMetadata({
+    title: t('aboutTitle'),
+    description: t('aboutDescription'),
+    locale,
+    path: '/about',
+  })
+}
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params

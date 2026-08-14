@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact - Demandez une démo gratuite Seeklon',
     description: 'Contactez l\'équipe Seeklon pour une démonstration gratuite. Accès Bêta gratuit, réponse sous 24h.',
-    url: 'https://landing.seeklon.com/contact',
+    url: 'https://www.seeklon.com/contact',
     siteName: 'Seeklon',
     locale: 'fr_FR',
     type: 'website',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: 'Demandez une démonstration gratuite de l\'ATS Seeklon.',
   },
   alternates: {
-    canonical: 'https://landing.seeklon.com/contact',
+    canonical: 'https://www.seeklon.com/contact',
   },
 }
 

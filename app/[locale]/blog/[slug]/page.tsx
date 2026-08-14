@@ -6,8 +6,27 @@ import { ArrowLeft, Calendar, Tag } from 'lucide-react'
 import { notFound } from 'next/navigation'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
+import Breadcrumbs from '@/components/Breadcrumbs'
+import { buildPageMetadata } from '@/lib/seo'
 
 type Props = { params: Promise<{ locale: string; slug: string }> }
+
+export async function generateMetadata({ params }: Props) {
+  const { locale, slug } = await params
+  const post = getPostBySlug(slug, locale)
+
+  if (!post) {
+    return {}
+  }
+
+  return buildPageMetadata({
+    title: post.title,
+    description: post.excerpt,
+    locale,
+    path: `/blog/${post.slug}`,
+    type: 'article',
+  })
+}
 
 export async function generateStaticParams() {
   const params: { locale: string; slug: string }[] = []
@@ -35,6 +54,14 @@ export default async function BlogPostPage({ params }: Props) {
       <div className="bg-[#0F172A] text-white pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
+          <Breadcrumbs
+            className="mb-8 justify-center text-slate-400"
+            items={[
+              { label: t('breadcrumbHome'), href: '/' },
+              { label: t('breadcrumbBlog'), href: '/blog' },
+              { label: post.title },
+            ]}
+          />
           <Link href="/blog" className="inline-flex items-center text-slate-400 hover:text-white mb-8 transition-colors text-sm font-medium">
             <ArrowLeft size={16} className="mr-2" /> {t('backToBlog')}
           </Link>
