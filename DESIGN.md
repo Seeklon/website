@@ -100,7 +100,7 @@ Le bleu brume `paper` constitue le fond principal ; `ink` porte les titres et le
 
 Bricolage Grotesque 800 porte uniquement le titre du hero, auto-hébergée dans `/fonts/bricolage-grotesque-800.ttf`, avec sa licence OFL à côté du fichier. Alexandria reste la police des autres titres ; Cabinet Grotesk porte le texte courant. Les piles complètes restent définies dans `tailwind.config.js`. Swear Display demeure disponible dans la configuration, sans devenir une règle d'affichage par défaut.
 
-Les styles partagés display/headline sont les tokens ci-dessus. L'accueil possède des ajustements locaux : titre d'ouverture de 3.5rem à 6rem, interligne 1.03 ; titres de chapitre de 2rem à 3rem, graisse 600 et interligne 1.14. Le texte explicatif varie de 17px à 20px, avec des mesures de 38 à 54 caractères selon son rôle.
+Les styles partagés display/headline sont les tokens ci-dessus. L'accueil possède des ajustements locaux : titre d'ouverture de 3.5rem à 6rem, interligne 1.03 ; titres de chapitre de 2rem à 3rem, graisse 600 et interligne 1.22. Le texte explicatif varie de 17px à 20px, avec des mesures de 38 à 54 caractères selon son rôle.
 
 ## Layout
 
@@ -109,6 +109,8 @@ Le conteneur principal atteint 1440px, avec des marges intérieures de 20px sur 
 Le récit ménage 128px avant le prologue sur desktop et 72px sur mobile, puis 104px/80px après ce prologue. La séquence possède 24px de respiration à chaque extrémité ; ses chapitres mobiles et en mouvement réduit ont 72px de padding vertical. La citation conserve 104px de padding vertical et la conclusion 128px/88px. Le CTA partagé laisse 80px/64px avant le footer sur accueil, tarifs et à propos ; le blog n'est pas concerné.
 
 Le prototype actuel de l'accueil réunit le titre centré sur deux lignes, la promesse, le contexte et une capture principale entière dans une seule scène bleu nuit éclairée de bleu Seeklon. Des captures décoratives en profondeur entourent le titre sur grand écran et disparaissent à 1100px de largeur ou moins. Cette proposition reste soumise au retour esthétique de l'utilisateur. La suite conserve un affichage produit fixe pendant trois étapes de lecture. Sous 1024px, lorsque la hauteur du viewport ne dépasse pas 720px, ou avec réduction des animations, chaque étape de cette séquence affiche sa capture dans le flux.
+
+Les trois fonctionnalités conservent leurs textes, tailles de police et espaces entre chapitres. À l'intérieur : interligne des titres 1.22, numéro à 20px du titre, explication à 40px et résultat à 24px de l'explication. En lecture linéaire, la capture suit le résultat à 56px ; sa légende est à 24px. Sur desktop, les onglets précèdent la capture de 32px, puis le résultat est séparé de la légende par 40px. Ces ajustements restent locaux à la séquence.
 
 ## Elevation & Depth
 

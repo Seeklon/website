@@ -45,6 +45,8 @@ Ces animations sont implémentées sans nouvelle dépendance. La revue indépend
 
 ## Evidence
 
+Affinage confirmé : uniquement les espaces internes des trois fonctionnalités, sans changer aucun texte. Titres à interligne 1.22 ; groupes numéro/titre (20px), explication (40px), résultat (24px), capture linéaire (56px), légende (24px). Onglets/capture desktop : 32px ; légende/résultat : 40px. Les paddings des chapitres et les autres sections restent inchangés.
+
 Captures originales conservées sans recadrage :
 - Capture principale du prototype : `public/marketing/app-screens/09-offer-detail-1920x1080.png`.
 - Fonds décoratifs entiers : captures `09`, `10`, `13` et `17` du même dossier ; teinte et flou appliqués en CSS, sans modification des rasters.
