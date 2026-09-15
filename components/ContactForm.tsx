@@ -31,16 +31,16 @@ export default function ContactForm() {
     )
   }
 
-  const fieldClass = 'w-full rounded-[12px] border border-ink/20 bg-paper px-4 py-3.5 text-ink placeholder:text-ink-muted/70 transition-colors hover:border-ink/35 focus:border-electric focus:outline-none'
+  const fieldClass = 'w-full rounded-[12px] border border-ink/20 bg-paper px-4 py-3.5 text-base font-normal leading-7 text-ink placeholder:text-ink-muted transition-colors hover:border-ink/35 focus:border-electric focus:outline-none'
 
   return (
     <form className="bg-white p-8 md:p-12" onSubmit={handleSubmit} aria-describedby={status === 'error' ? 'contact-error' : undefined}>
       <h2 className="font-display text-3xl font-bold tracking-[-0.03em]">{t('sendMessage')}</h2>
       <div className="mt-8 grid gap-6 md:grid-cols-2">
-        <label className="grid gap-2 text-sm font-bold" htmlFor="name">{t('name')}<input required id="name" name="name" autoComplete="name" className={fieldClass} placeholder={t('namePlaceholder')} /></label>
-        <label className="grid gap-2 text-sm font-bold" htmlFor="company">{t('company')}<input id="company" name="company" autoComplete="organization" className={fieldClass} placeholder={t('companyPlaceholder')} /></label>
-        <label className="grid gap-2 text-sm font-bold md:col-span-2" htmlFor="email">{t('email')}<input required id="email" name="email" type="email" autoComplete="email" className={fieldClass} placeholder={t('emailPlaceholder')} /></label>
-        <label className="grid gap-2 text-sm font-bold md:col-span-2" htmlFor="message">{t('message')}<textarea required id="message" name="message" rows={6} className={`${fieldClass} resize-y`} placeholder={t('messagePlaceholder')} /></label>
+        <label className="grid gap-2 text-base font-bold" htmlFor="name">{t('name')}<input required id="name" name="name" autoComplete="name" className={fieldClass} placeholder={t('namePlaceholder')} /></label>
+        <label className="grid gap-2 text-base font-bold" htmlFor="company">{t('company')}<input id="company" name="company" autoComplete="organization" className={fieldClass} placeholder={t('companyPlaceholder')} /></label>
+        <label className="grid gap-2 text-base font-bold md:col-span-2" htmlFor="email">{t('email')}<input required id="email" name="email" type="email" autoComplete="email" className={fieldClass} placeholder={t('emailPlaceholder')} /></label>
+        <label className="grid gap-2 text-base font-bold md:col-span-2" htmlFor="message">{t('message')}<textarea required id="message" name="message" rows={6} className={`${fieldClass} resize-y`} placeholder={t('messagePlaceholder')} /></label>
       </div>
       {status === 'error' && <p id="contact-error" className="mt-5 font-semibold text-red-700" role="alert">{t('errorConnection')}</p>}
       <Button type="submit" disabled={status === 'submitting'} className="mt-8 w-full md:w-auto">

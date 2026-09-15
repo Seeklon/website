@@ -26,7 +26,7 @@ export default async function AboutPage({ params }: Props) {
   const principles = ['clarity', 'control', 'team'] as const
 
   return (
-    <div className="bg-paper">
+    <div className="about-readable bg-paper">
       <section className="px-5 py-20 md:px-8 md:py-28">
         <div className="mx-auto grid max-w-[1440px] gap-12 md:grid-cols-12 md:items-end">
           <h1 className="display-title max-w-[11ch] md:col-span-7">{t('title')}</h1>

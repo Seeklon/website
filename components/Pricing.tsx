@@ -10,7 +10,7 @@ export default function Pricing() {
   const t = useTranslations('Pricing')
 
   return (
-    <section className="bg-paper px-5 py-20 md:px-8 md:py-28" aria-labelledby="pricing-title">
+    <section className="pricing-readable bg-paper px-5 py-20 md:px-8 md:py-28" aria-labelledby="pricing-title">
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-8 border-b border-ink/15 pb-12 md:grid-cols-12 md:items-end">
           <h1 id="pricing-title" className="display-title max-w-[10ch] md:col-span-7">{t('title')}</h1>
@@ -23,8 +23,8 @@ export default function Pricing() {
               <span className="text-sm font-extrabold text-electric" aria-hidden="true">0{index + 1}</span>
               <h2 className="mt-8">{t(`${pack}Name`)}</h2>
               <p className="mt-7 text-sm font-bold uppercase tracking-[0.12em] text-electric">{t('configurationLabel')}</p>
-              <p className="mt-4 leading-7 text-ink-muted">{t('configurationText')}</p>
-              <dl className="mt-8 grid gap-3 border-t border-ink/15 pt-6 text-sm font-semibold text-ink-muted">
+              <p className="mt-4 text-lg leading-8 text-ink-muted">{t('configurationText')}</p>
+              <dl className="mt-8 grid gap-3 border-t border-ink/15 pt-6 text-base font-semibold text-ink-muted">
                 <div>{t('parameter1')}</div>
                 <div>{t('parameter2')}</div>
                 <div>{t('parameter3')}</div>
@@ -37,7 +37,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-ink/15 pt-7 text-sm text-ink-muted md:flex-row md:items-center md:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-ink/15 pt-7 text-base text-ink-muted md:flex-row md:items-center md:justify-between">
           <p>{t('customNote')}</p>
           <Link href="/contact" className="font-bold text-ink underline">{t('talkToUs')}</Link>
         </div>

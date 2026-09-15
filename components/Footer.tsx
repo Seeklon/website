@@ -2,13 +2,14 @@
 
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { Link } from '@/i18n/navigation'
+import { Link, usePathname } from '@/i18n/navigation'
 
 export default function Footer() {
   const t = useTranslations('Footer')
+  const pathname = usePathname()
 
   return (
-    <footer className="border-t border-white/15 bg-ink px-5 py-14 text-blue-100 md:px-8">
+    <footer className={`border-t border-white/15 bg-ink px-5 py-14 text-blue-100 md:px-8 ${pathname.startsWith('/blog') ? '' : 'footer-readable'}`}>
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-12 border-b border-white/15 pb-12 md:grid-cols-12">
           <div className="md:col-span-5">

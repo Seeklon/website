@@ -45,6 +45,8 @@ Ces animations sont implémentées sans nouvelle dépendance. La revue indépend
 
 ## Evidence
 
+Lisibilité : descriptions des trois étapes 18px, résultats 17px, légendes 15px, liens d'agrandissement et onglets 16px, source de citation 15px. Les textes et captures restent identiques. Les conteneurs permettent le retour à la ligne lors de l'agrandissement du texte ; aucune modification de la hero.
+
 Affinage confirmé : uniquement les espaces internes des trois fonctionnalités, sans changer aucun texte. Titres à interligne 1.22 ; groupes numéro/titre (20px), explication (40px), résultat (24px), capture linéaire (56px), légende (24px). Onglets/capture desktop : 32px ; légende/résultat : 40px. Les paddings des chapitres et les autres sections restent inchangés.
 
 Captures originales conservées sans recadrage :
