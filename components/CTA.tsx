@@ -1,46 +1,24 @@
-'use client'
+"use client"
 
-import Button from './Button'
-import { Link } from '@/i18n/navigation'
+import { ArrowRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 
 export default function CTA() {
-    const t = useTranslations('CTA')
-    return (
-        <section className="relative py-12 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-dark z-0"></div>
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-light/30 rounded-full blur-2xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+  const t = useTranslations('CTA')
 
-            <div className="container mx-auto px-4 text-center relative z-10">
-                <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                    {t('titleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('titleAccent')}</span>
-                </h2>
-                <p className="font-sans text-lg md:text-xl text-blue-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-                    {t('subtitle')}
-                </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
-                    <Link href="/contact" className="w-full sm:w-auto">
-                        <Button variant="outline"
-                            className="w-full sm:w-auto px-8 py-4 text-lg font-bold rounded-full transition-all duration-300
-                           bg-white text-primary border-2 border-transparent
-                           shadow-lg shadow-blue-900/10
-                           hover:-translate-y-1 hover:bg-primary-dark hover:shadow-xl hover:shadow-blue-900/20 hover:text-white">
-                            {t('ctaStart')}
-                        </Button>
-                    </Link>
-                    <Link href="/about" className="w-full sm:w-auto">
-                        <Button
-                            variant="outline"
-                            className="w-full sm:w-auto px-8 py-4 text-lg font-medium rounded-full transition-all duration-300
-                           text-white border-2 border-white/30 bg-transparent
-                           hover:bg-white/10 hover:border-white"
-                        >
-                            {t('ctaLearn')}
-                        </Button>
-                    </Link>
-                </div>
-            </div>
-        </section>
-    )
+  return (
+    <section className="bg-coral px-5 py-20 text-ink md:px-8 md:py-28">
+      <div className="mx-auto flex max-w-[1440px] flex-col items-start justify-between gap-10 md:flex-row md:items-end">
+        <div>
+          <h2 className="section-title max-w-[11ch]">{t('title')}</h2>
+          <p className="mt-5 max-w-xl text-lg leading-8 text-ink/75">{t('subtitle')}</p>
+        </div>
+        <Link href="/contact" className="button-dark group shrink-0">
+          {t('cta')}
+          <ArrowRight size={18} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
+        </Link>
+      </div>
+    </section>
+  )
 }

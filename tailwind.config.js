@@ -10,18 +10,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#F0F5FF",
+        background: "#F2F7F8",
+        paper: "#F2F7F8",
+        ink: {
+          DEFAULT: "#081126",
+          muted: "#4C5A70",
+        },
+        electric: "#0C6DF8",
+        cobalt: "#1A88F8",
+        coral: "#FF806B",
 
         primary: {
-          DEFAULT: "#1A459C", // Deep Royal
-          light: "#3B82F6",   // Electric Frost
-          dark: "#112D69",
+          DEFAULT: "#0C6DF8",
+          light: "#1A88F8",
+          dark: "#0756C9",
         },
 
         // Textes
         text: {
-          main: "#0F172A",    // Midnight Navy
-          muted: "#64748B",
+          main: "#081126",
+          muted: "#4C5A70",
         },
 
         // Surface: On adapte légèrement la bordure pour qu'elle ne jure pas avec le fond crème
@@ -31,8 +39,9 @@ const config: Config = {
         }
       },
       fontFamily: {
-        heading: ['"Cabinet Grotesk"', 'sans-serif'],
-        sans: ["var(--font-jakarta)", ...fontFamily.sans],
+        heading: ['"Alexandria"', '"Cabinet Grotesk"', 'sans-serif'],
+        display: ['"Alexandria"', '"Cabinet Grotesk"', 'sans-serif'],
+        sans: ['"Cabinet Grotesk"', ...fontFamily.sans],
         accent: ['"Swear Display"', 'serif'],
       },
       animation: {

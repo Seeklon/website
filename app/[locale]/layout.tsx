@@ -20,12 +20,21 @@ export default async function LocaleLayout({ children, params }: Props) {
     notFound()
   }
   setRequestLocale(locale as (typeof routing.locales)[number])
-  const messages = await getMessages()
+  const allMessages = await getMessages()
+  const messages = {
+    Header: allMessages.Header,
+    Footer: allMessages.Footer,
+    Hero: allMessages.Hero,
+    Features: allMessages.Features,
+    CTA: allMessages.CTA,
+    Pricing: allMessages.Pricing,
+    Contact: allMessages.Contact,
+  }
 
   return (
     <NextIntlClientProvider messages={messages}>
       <Header />
-      <main className="min-h-screen pt-16">
+      <main className="min-h-screen pt-[72px]">
         {children}
       </main>
       <Footer />

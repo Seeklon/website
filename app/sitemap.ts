@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog',
     '/contact',
     '/pricing',
-    '/product',
     '/legal',
     '/privacy',
     '/rgpd',
@@ -23,9 +22,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const route of routes) {
       entries.push({
         url: `${baseUrl}${prefix}${route}`,
-        lastModified: new Date(),
+        lastModified: new Date('2026-09-15'),
         changeFrequency: 'weekly' as const,
         priority: route === '' ? 1 : 0.8,
+        alternates: {
+          languages: {
+            fr: `${baseUrl}${route}`,
+            en: `${baseUrl}/en${route}`,
+          },
+        },
       })
     }
     const posts = getAllPosts(locale)

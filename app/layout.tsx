@@ -5,7 +5,7 @@ import { headers } from 'next/headers'
 export const metadata: Metadata = {
   metadataBase: new URL('https://landing.seeklon.com'),
   title: { default: 'Seeklon', template: '%s | Seeklon' },
-  description: 'Simplify hiring for SMBs with our ATS powered by AI screening.',
+  description: 'Seeklon aide les PME à rédiger leurs offres, trier les candidatures et préparer les entretiens.',
   icons: { icon: '/logo.png', shortcut: '/logo.png', apple: '/logo.png' },
 }
 
@@ -22,13 +22,10 @@ export default async function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link
-          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=swear-display@500,600,700&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,600,700,800&display=swap"
           rel="stylesheet"
         />
       </head>

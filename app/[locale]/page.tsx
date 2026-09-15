@@ -1,19 +1,27 @@
-import { setRequestLocale, getTranslations } from 'next-intl/server'
-import Hero from '@/components/Hero'
-import WhyAtsIA from '@/components/WhyAtsIA'
-import TrustBar from '@/components/TrustBar'
+import type { Metadata } from 'next'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import CTA from '@/components/CTA'
 import Features from '@/components/Features'
-import SocialProof from '@/components/SocialProof'
-import Newsletter from '@/components/Newsletter'
+import Hero from '@/components/Hero'
 
 type Props = { params: Promise<{ locale: string }> }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'Metadata' })
+
   return {
     title: t('homeTitle'),
     description: t('homeDescription'),
+    alternates: {
+      canonical: locale === 'fr' ? '/' : `/${locale}`,
+      languages: { fr: '/', en: '/en', 'x-default': '/' },
+    },
+    openGraph: {
+      title: t('homeTitle'),
+      description: t('homeDescription'),
+      images: ['/marketing/app-screens/13-recruitment-pipeline-1920x1080.png'],
+    },
   }
 }
 
@@ -24,11 +32,8 @@ export default async function HomePage({ params }: Props) {
   return (
     <>
       <Hero />
-      <WhyAtsIA />
       <Features />
-      <TrustBar />
-      <SocialProof />
-      <Newsletter />
+      <CTA />
     </>
   )
 }
