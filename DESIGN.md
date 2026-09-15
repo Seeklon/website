@@ -140,6 +140,8 @@ Premier test inspiré de la composition demandée de Pitch et d'une entrée typo
 
 La seconde ligne « plus vite » utilise le bleu clair `#8cc4ff` déjà présent dans l'ambiance, sans dégradé. Le texte de soutien explicite les résultats : une offre claire, des CV organisés et des entretiens préparés, avec une décision qui reste humaine. La navbar reste inchangée.
 
+Les deux particules centrales sont masquées afin de préserver le contraste du titre pendant le mouvement ; six accents ambiants restent visibles.
+
 La première ligne entre en 650ms. La seconde se compose lettre par lettre avec compression et étirement en 760ms, un délai initial de 120ms et un décalage de 35ms par caractère. La figure entière, capture et légende réunies, avance de 40px et passe de 0.88 à 1 en 1000ms après 180ms. Sous 768px, les caractères démarrent à 8px de décalage et 1.18 d'étirement vertical, contre 24px et 1.45 sur desktop. L'animation d'entrée ne boucle pas ; un bouton permet de la rejouer et reste hors de la scène remontée pour conserver son focus. À 1100px de largeur ou moins, les fonds décoratifs disparaissent ; l'introduction reste animée, y compris sur mobile. En mode réduit, tous ces éléments sont immédiatement à leur place et les contrôles d'animation sont masqués. Aucun sélecteur de capture ni carrousel n'est présent.
 
 Les quatre captures de fond dérivent sur une boucle alternée de 9s, indépendamment de leur entrée, tandis que huit points et arcs bleus suivent une boucle de 12s. Un bouton permet de suspendre ces mouvements ambiants ; ils se suspendent aussi lorsque le hero quitte le viewport ou que le document est masqué. Le mode réduit les désactive. La capture principale reste stable après son entrée.

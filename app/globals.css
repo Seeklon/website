@@ -137,6 +137,8 @@ select:focus-visible {
 .opening-current { position: absolute; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
 .opening-current i { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #8cc4ff; opacity: .55; animation: current-drift 12s ease-in-out infinite alternate; }
 .opening-current i:nth-child(3n) { width: 22px; height: 7px; border-radius: 100%; background: transparent; border-top: 2px solid #8cc4ff; }
+/* Keep the moving ambient accents out of the central heading. */
+.opening-current i:nth-child(4), .opening-current i:nth-child(5) { display: none; }
 .recruit-opening[data-paused="true"] .opening-float, .recruit-opening[data-paused="true"] .opening-current i { animation-play-state: paused; }
 @keyframes screen-drift { from { transform: translate(0, -12px); } to { transform: translate(14px, 18px); } }
 @keyframes current-drift { from { transform: translate(-14px, 12px) rotate(-20deg); } to { transform: translate(24px, -32px) rotate(30deg); } }
