@@ -106,6 +106,8 @@ Les styles partagés display/headline sont les tokens ci-dessus. L'accueil poss�
 
 Le conteneur principal atteint 1440px, avec des marges intérieures de 20px sur petit écran et 32px sur grand écran. Les composants s'adaptent à leur contenu ; les proportions de l'accueil ne sont pas une grille obligatoire pour toutes les pages.
 
+Le récit ménage 128px avant le prologue sur desktop et 72px sur mobile, puis 104px/80px après ce prologue. La séquence possède 24px de respiration à chaque extrémité ; ses chapitres mobiles et en mouvement réduit ont 72px de padding vertical. La citation conserve 104px de padding vertical et la conclusion 128px/88px. Le CTA partagé laisse 80px/64px avant le footer sur accueil, tarifs et à propos ; le blog n'est pas concerné.
+
 Le prototype actuel de l'accueil réunit le titre centré sur deux lignes, la promesse, le contexte et une capture principale entière dans une seule scène bleu nuit éclairée de bleu Seeklon. Des captures décoratives en profondeur entourent le titre sur grand écran et disparaissent à 1100px de largeur ou moins. Cette proposition reste soumise au retour esthétique de l'utilisateur. La suite conserve un affichage produit fixe pendant trois étapes de lecture. Sous 1024px, lorsque la hauteur du viewport ne dépasse pas 720px, ou avec réduction des animations, chaque étape de cette séquence affiche sa capture dans le flux.
 
 ## Elevation & Depth
@@ -135,6 +137,8 @@ Dans le guide actif de la séquence, un contour SVG se dessine autour de la deux
 ### Opening prototype
 
 Premier test inspiré de la composition demandée de Pitch et d'une entrée typographique de type Jitter ; ce traitement reste local au hero et attend le retour esthétique de l'utilisateur. Le titre est centré sur deux lignes, avec un CTA blanc et une capture d'offre entière de 960px maximum. Le fond bleu nuit reçoit deux éclairages radiaux bleus ; quatre captures réelles décoratives sont teintées, à 48 % d'opacité et floutées de 1.5px. Elles restent droites et gardent leur ratio ; elles ne constituent pas la preuve principale.
+
+La seconde ligne « plus vite » utilise le bleu clair `#8cc4ff` déjà présent dans l'ambiance, sans dégradé. Le texte de soutien explicite les résultats : une offre claire, des CV organisés et des entretiens préparés, avec une décision qui reste humaine. La navbar reste inchangée.
 
 La première ligne entre en 650ms. La seconde se compose lettre par lettre avec compression et étirement en 760ms, un délai initial de 120ms et un décalage de 35ms par caractère. La figure entière, capture et légende réunies, avance de 40px et passe de 0.88 à 1 en 1000ms après 180ms. Sous 768px, les caractères démarrent à 8px de décalage et 1.18 d'étirement vertical, contre 24px et 1.45 sur desktop. L'animation d'entrée ne boucle pas ; un bouton permet de la rejouer et reste hors de la scène remontée pour conserver son focus. À 1100px de largeur ou moins, les fonds décoratifs disparaissent ; l'introduction reste animée, y compris sur mobile. En mode réduit, tous ces éléments sont immédiatement à leur place et les contrôles d'animation sont masqués. Aucun sélecteur de capture ni carrousel n'est présent.
 
