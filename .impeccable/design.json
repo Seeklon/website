@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-15T17:18:48.570Z",
+  "title": "Design System: Seeklon",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Bleu brume",
+        "tonalRamp": [
+          "oklch(15% 0.008 215)",
+          "oklch(26% 0.008 215)",
+          "oklch(37% 0.008 215)",
+          "oklch(48% 0.008 215)",
+          "oklch(59% 0.008 215)",
+          "oklch(70% 0.008 215)",
+          "oklch(82% 0.008 215)",
+          "oklch(95% 0.008 215)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Bleu nuit",
+        "tonalRamp": [
+          "oklch(15% 0.047 266)",
+          "oklch(26% 0.047 266)",
+          "oklch(37% 0.047 266)",
+          "oklch(48% 0.047 266)",
+          "oklch(59% 0.047 266)",
+          "oklch(70% 0.047 266)",
+          "oklch(82% 0.047 266)",
+          "oklch(95% 0.047 266)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Encre secondaire",
+        "tonalRamp": [
+          "oklch(15% 0.04 259)",
+          "oklch(26% 0.04 259)",
+          "oklch(37% 0.04 259)",
+          "oklch(48% 0.04 259)",
+          "oklch(59% 0.04 259)",
+          "oklch(70% 0.04 259)",
+          "oklch(82% 0.04 259)",
+          "oklch(95% 0.04 259)"
+        ]
+      },
+      "electric": {
+        "role": "primary",
+        "displayName": "Bleu Seeklon",
+        "tonalRamp": [
+          "oklch(15% 0.225 258)",
+          "oklch(26% 0.225 258)",
+          "oklch(37% 0.225 258)",
+          "oklch(48% 0.225 258)",
+          "oklch(59% 0.225 258)",
+          "oklch(70% 0.225 258)",
+          "oklch(82% 0.225 258)",
+          "oklch(95% 0.225 258)"
+        ]
+      },
+      "coral": {
+        "role": "secondary",
+        "displayName": "Corail",
+        "tonalRamp": [
+          "oklch(15% 0.158 32)",
+          "oklch(26% 0.158 32)",
+          "oklch(37% 0.158 32)",
+          "oklch(48% 0.158 32)",
+          "oklch(59% 0.158 32)",
+          "oklch(70% 0.158 32)",
+          "oklch(82% 0.158 32)",
+          "oklch(95% 0.158 32)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Blanc",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(37% 0 0)",
+          "oklch(48% 0 0)",
+          "oklch(59% 0 0)",
+          "oklch(70% 0 0)",
+          "oklch(82% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      }
+    },
+    "shadows": [
+      {
+        "name": "opening-proof",
+        "value": "0 18px 38px rgb(8 17 38 / 9%)",
+        "purpose": "Capture entière de l'ouverture."
+      },
+      {
+        "name": "sequence-display",
+        "value": "0 22px 52px rgb(8 17 38 / 12%)",
+        "purpose": "Affichage produit fixe au défilement."
+      }
+    ],
+    "motion": [
+      {
+        "name": "route-draw",
+        "value": "850ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Ligne d'ouverture tracée de scaleX(0) à scaleX(1)."
+      },
+      {
+        "name": "opening-proof-arrival",
+        "value": "650ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Capture entière de scale(.97) à scale(1), ombre progressive ; désactivé sous 768px."
+      },
+      {
+        "name": "sequence-cursor",
+        "value": "380ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Curseur partagé entre trois onglets."
+      },
+      {
+        "name": "frame-opacity",
+        "value": "220ms ease-out",
+        "purpose": "Fondu entre captures, sans translation ni changement d'échelle."
+      },
+      {
+        "name": "result-arrival",
+        "value": "300ms 120ms ease-out both",
+        "purpose": "Résultat de l'étape : délai de 120ms, translation horizontale de 10px à 0 et opacité de .65 à 1."
+      },
+      {
+        "name": "question-locate",
+        "value": "700ms 220ms cubic-bezier(.16,1,.3,1) both",
+        "purpose": "Contour SVG de la deuxième question, sans modifier la capture originale."
+      },
+      {
+        "name": "question-takes-stage",
+        "value": "850ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Balayage bleu par clip-path, une seule fois à 78 % du viewport ; deux couches de texte alignées."
+      },
+      {
+        "name": "question-approach",
+        "value": "650ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Citation : translateX(24px) scale(.96) vers translateX(0) scale(1), sur desktop et mobile."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "Animations et transitions globales réduites ; citation directement finale et captures dans le flux."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-layout",
+        "value": "768px"
+      },
+      {
+        "name": "sticky-min-width",
+        "value": "1024px"
+      },
+      {
+        "name": "linear-max-height",
+        "value": "720px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button primary",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Variante primary du bouton partagé.",
+      "html": "<button class=\"ds-button-primary\">Demander une démonstration</button>",
+      "css": ".ds-button-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border:0;border-radius:12px;font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:color 150ms,background-color 150ms;background:var(--electric);color:#fff;box-shadow:0 10px 24px rgba(12,109,248,.22);}.ds-button-primary:hover{background:#1d4ed8}.ds-button-primary:focus-visible{outline:3px solid var(--coral);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-button-primary{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Button dark",
+      "kind": "button",
+      "refersTo": "button-dark",
+      "description": "Variante dark du bouton partagé.",
+      "html": "<button class=\"ds-button-dark\">Demander une démonstration</button>",
+      "css": ".ds-button-dark{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border:0;border-radius:12px;font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:color 150ms,background-color 150ms;background:var(--ink);color:#fff;box-shadow:0 10px 24px rgba(8,17,38,.2);}.ds-button-dark:hover{background:#172554}.ds-button-dark:focus-visible{outline:3px solid var(--coral);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-button-dark{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Button on-dark",
+      "kind": "button",
+      "refersTo": "button-on-dark",
+      "description": "Variante on-dark du bouton partagé.",
+      "html": "<button class=\"ds-button-on-dark\">Demander une démonstration</button>",
+      "css": ".ds-button-on-dark{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border:0;border-radius:12px;font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:color 150ms,background-color 150ms;background:#fff;color:var(--ink);box-shadow:0 10px 24px rgba(8,17,38,.18);}.ds-button-on-dark:hover{background:#eff6ff}.ds-button-on-dark:focus-visible{outline:3px solid var(--coral);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-button-on-dark{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Button quiet",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Variante quiet du bouton partagé.",
+      "html": "<button class=\"ds-button-quiet\">Demander une démonstration</button>",
+      "css": ".ds-button-quiet{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border:0;border-radius:12px;font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:color 150ms,background-color 150ms;background:transparent;color:var(--ink);}.ds-button-quiet:hover{background:rgb(255 255 255 / .7)}.ds-button-quiet:focus-visible{outline:3px solid var(--coral);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-button-quiet{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Navigation link",
+      "kind": "nav",
+      "description": "Lien compact à soulignement bleu.",
+      "html": "<a class=\"ds-nav\" href=\"#fonctionnalites\">Fonctionnalités</a>",
+      "css": ".ds-nav{position:relative;display:inline-block;padding:8px 0;color:var(--ink-muted);font:700 14px 'Cabinet Grotesk',sans-serif;text-decoration:none;transition:color 150ms}.ds-nav:after{content:'';position:absolute;inset:auto 0 0;height:1px;background:var(--electric);transform:scaleX(0);transform-origin:left;transition:transform 150ms}.ds-nav:hover{color:var(--ink)}.ds-nav:hover:after,.ds-nav:focus-visible:after{transform:scaleX(1)}.ds-nav:focus-visible{outline:3px solid var(--coral);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-nav,.ds-nav:after{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Product stage",
+      "kind": "custom",
+      "description": "Cadre de capture entière ; le contenu de la capture provient du produit.",
+      "html": "<figure class=\"ds-stage\"><div class=\"ds-screen\">Capture produit entière · 16:9</div><figcaption>Données de démonstration</figcaption></figure>",
+      "css": ".ds-stage{margin:0;font-family:'Cabinet Grotesk',sans-serif}.ds-screen{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;background:#fff;color:var(--ink-muted);border-radius:16px;box-shadow:0 22px 52px rgb(8 17 38 / 12%)}.ds-stage figcaption{margin-top:18px;font-size:12px;color:var(--ink-muted)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Un recrutement accompagné",
+    "overview": "Seeklon associe un fond bleu brume, une encre bleu nuit et le bleu de marque à des captures réelles du produit. La hiérarchie aide à comprendre le travail et laisse la décision au recruteur. Le logo et les polices existants restent les repères de marque.\n\nCe document décrit les règles réutilisées dans le code. La composition de l'accueil et son public prioritaire sont consignés dans `.impeccable/surfaces/app-locale-page-tsx.md`.",
+    "keyCharacteristics": [
+      "Captures réelles, entières et droites sur l'accueil.",
+      "Titres Alexandria et texte courant Cabinet Grotesk.",
+      "Surfaces brume, actions bleues et encre bleu nuit."
+    ],
+    "rules": [
+      {
+        "name": "The Evidence Rule",
+        "body": "La couleur soutient la lecture de preuves réelles ; elle ne remplace pas les écrans du produit.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "**Do** conserver le logo, le bleu Seeklon et les polices existantes.",
+      "**Do** montrer des captures entières sur l'accueil et identifier les données de démonstration.",
+      "**Do** préserver la lecture linéaire sur mobile et avec réduction des animations."
+    ],
+    "donts": [
+      "**Don't** incliner ou recadrer les captures de l'accueil.",
+      "**Don't** transformer le corail en grand panneau CTA.",
+      "**Don't** présenter une ancienne maquette rejetée comme une référence approuvée."
+    ]
+  }
+}

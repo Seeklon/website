@@ -8,7 +8,9 @@ web
 
 ## Users
 
-Seeklon s'adresse en priorité aux recruteurs, responsables RH, dirigeants de PME et managers qui recrutent sans équipe de recrutement surdimensionnée. Ils cherchent à traiter des candidatures avec méthode, à gagner du temps sur la préparation et à garder la décision finale entre leurs mains.
+Seeklon s'adresse en priorité aux managers de PME qui recrutent sans équipe RH dédiée. Ils doivent passer d'un besoin de recrutement à une offre, lire et trier les candidatures, puis préparer les entretiens tout en gardant la décision finale entre leurs mains.
+
+Les recruteurs, responsables RH et dirigeants de PME constituent des publics complémentaires ; ils partagent le besoin de traiter les candidatures avec méthode et de gagner du temps sur la préparation.
 
 ## Product Purpose
 

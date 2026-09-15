@@ -1,79 +1,149 @@
-# Design Seeklon
+---
+name: Seeklon
+description: Un recrutement accompagné, avec des preuves lisibles et une décision humaine.
+colors:
+  paper: "#f2f7f8"
+  ink: "#081126"
+  ink-muted: "#4c5a70"
+  electric: "#0c6df8"
+  coral: "#ff806b"
+  white: "#ffffff"
+typography:
+  display:
+    fontFamily: "Alexandria, Cabinet Grotesk, sans-serif"
+    fontSize: "clamp(3.5rem, 7.3vw, 6rem)"
+    fontWeight: 700
+    lineHeight: 0.92
+    letterSpacing: "-0.035em"
+  headline:
+    fontFamily: "Alexandria, Cabinet Grotesk, sans-serif"
+    fontSize: "clamp(2.25rem, 5vw, 4.75rem)"
+    fontWeight: 700
+    lineHeight: 0.98
+    letterSpacing: "-0.035em"
+  body:
+    fontFamily: "Cabinet Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "18px"
+    lineHeight: 1.75
+  label:
+    fontFamily: "Cabinet Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "14px"
+    fontWeight: 700
+rounded:
+  control: "12px"
+  screen: "16px"
+spacing:
+  mobile-gutter: "20px"
+  desktop-gutter: "32px"
+  control-block: "12px"
+  control-inline: "24px"
+components:
+  button-primary:
+    backgroundColor: "{colors.electric}"
+    textColor: "{colors.white}"
+    rounded: "{rounded.control}"
+    padding: "12px 24px"
+  button-dark:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.white}"
+    rounded: "{rounded.control}"
+    padding: "12px 24px"
+  button-on-dark:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.control}"
+    padding: "12px 24px"
+  button-quiet:
+    textColor: "{colors.ink}"
+    rounded: "{rounded.control}"
+    padding: "12px 24px"
+---
 
-Ce document décrit le langage visuel effectivement utilisé par le site vitrine. La direction est celle d'un **atelier de décision** : le produit est montré comme un dossier de recrutement que l'on structure, consulte et annote. Les grands aplats, cadres fins, onglets et repères numérotés remplacent les gradients décoratifs et les empilements de cartes SaaS génériques.
+# Design System: Seeklon
 
-## Direction visuelle
+## Overview
 
-- Fond principal bleu brume, texte bleu nuit, grandes zones bleu Seeklon et accent corail ponctuel.
-- Les écrans réels du produit sont la preuve principale. Ils peuvent dépasser d'un cadre, être légèrement inclinés ou recevoir de courtes annotations.
-- Les angles restent mesurés et les surfaces lisibles : rayon courant de `12px` à `16px`, bordures fines et ombres réservées aux éléments qui se détachent réellement du plan.
-- Le Bento est ponctuel et asymétrique. Il sert uniquement à organiser plusieurs preuves ou principes liés ; il ne transforme pas chaque paragraphe en carte.
+**Creative North Star: "Un recrutement accompagné"**
 
-## Palette et tokens
+Seeklon associe un fond bleu brume, une encre bleu nuit et le bleu de marque à des captures réelles du produit. La hiérarchie aide à comprendre le travail et laisse la décision au recruteur. Le logo et les polices existants restent les repères de marque.
 
-| Token | Valeur | Usage |
-| --- | --- | --- |
-| `paper` | `#F2F7F8` | fond général et annotations claires |
-| `ink` | `#081126` | texte principal et aplats sombres |
-| `ink-muted` | `#4C5A70` | texte secondaire |
-| `electric` | `#0C6DF8` | action principale et repères actifs |
-| `cobalt` | `#1A88F8` | grand aplat produit |
-| `coral` | `#FF806B` | sélection, focus et marqueur ponctuel |
+Ce document décrit les règles réutilisées dans le code. La composition de l'accueil et son public prioritaire sont consignés dans `.impeccable/surfaces/app-locale-page-tsx.md`.
 
-Les bordures utilisent principalement `ink` à 10–15 % d'opacité. Les ombres sont bleu nuit translucide et restent attachées aux boutons, captures en surplomb ou cartes mises en avant.
+**Key Characteristics:**
+- Captures réelles, entières et droites sur l'accueil.
+- Titres Alexandria et texte courant Cabinet Grotesk.
+- Surfaces brume, actions bleues et encre bleu nuit.
 
-## Typographies
+## Colors
 
-- Titres et affichage : `Alexandria`, avec `Cabinet Grotesk` puis `sans-serif` en repli.
-- Texte courant : `Cabinet Grotesk`, puis la pile sans-serif de Tailwind.
-- Accent disponible : `Swear Display`, puis `serif` ; il n'est pas un style de titre par défaut.
-- Les grands titres utilisent un interlettrage de `-0.035em`, un interligne serré et des tailles fluides avec `clamp()`.
+### Primary
 
-## Grille et composition
+Le bleu Seeklon, token `electric`, signale les actions et les étapes actives. Les grandes surfaces bleues portent un contenu précis, avec du texte blanc.
 
-- Conteneur principal : largeur maximale `1440px`, marges latérales de `20px` sur mobile et `32px` à partir de `md`.
-- Hero : partage `42/58` entre promesse et preuve produit sur grand écran, puis une seule colonne sous `1024px`.
-- Sections de preuves : grille de 12 colonnes. Sur l'accueil, les deux premiers usages occupent 7 et 5 colonnes ; la préparation d'entretien occupe toute la largeur avec une composition interne `5/7`.
-- L'index `01/02/03` donne le rythme sans recourir à des statistiques.
-- La page tarifs utilise la même grille : deux packs sur 6 colonnes, puis trois packs sur 4 colonnes.
+### Secondary
 
-## Composants et actions
+Le corail `coral` reste un accent de sélection et de focus. Il ne devient pas un grand panneau d'appel à l'action.
 
-- `button-primary` : fond bleu électrique, texte blanc, action principale.
-- `button-dark` : fond bleu nuit, texte blanc.
-- `button-on-dark` : surface blanche sur fond sombre.
-- `button-quiet` : action secondaire sans fond permanent.
-- Tous les boutons ont une hauteur minimale de `48px`, un rayon de `12px`, une graisse forte et un focus visible corail.
-- Les liens de navigation sont compacts, en texte atténué, avec un soulignement bleu animé au survol ou au focus.
-- Le header reste fixe, opaque et séparé par une bordure. Le menu mobile est un panneau vertical simple ; le sélecteur FR/EN expose son état avec `aria-pressed`.
-- Le footer reprend l'aplat bleu nuit et organise produit, entreprise et liens légaux sans décor superflu.
+### Neutral
 
-## Mouvement
+Le bleu brume `paper` constitue le fond principal ; `ink` porte les titres et le texte fort ; `ink-muted` accompagne les explications et les légendes. Le blanc accueille les captures et les boutons sur fond sombre.
 
-- Mouvement signature : arrivée courte du dossier produit avec translation, rotation légère et disparition du flou, sur une courbe `cubic-bezier(.16, 1, .3, 1)`.
-- Les flèches de CTA se déplacent de quelques pixels au survol ; les transitions restent fonctionnelles et brèves, sans rebond.
-- Avec `prefers-reduced-motion: reduce`, le défilement fluide est désactivé et animations/transitions sont ramenées à `0.01ms` et une seule itération.
+**The Evidence Rule.** La couleur soutient la lecture de preuves réelles ; elle ne remplace pas les écrans du produit.
 
-## Responsive et accessibilité
+## Typography
 
-- Sous `1024px`, le hero, l'atelier de transparence et les mises en page éditoriales passent en une colonne ; les panneaux de fonctionnalités occupent toute la grille.
-- Sous `768px`, le Bento et les compositions internes deviennent linéaires, les captures sont moins inclinées ou remises à plat, et les titres restent fluides sans débordement.
-- Le focus clavier est visible sur tous les éléments interactifs. Le contraste s'appuie sur `ink`/`paper`, blanc/bleu nuit et blanc/bleu électrique.
-- Les icônes décoratives sont masquées aux technologies d'assistance ; les captures produit ont des textes alternatifs localisés et les sections sont reliées à leurs titres avec `aria-labelledby`.
-- Les données visibles dans les captures sont explicitement présentées comme des données de démonstration.
+Alexandria porte l'affichage et les titres ; Cabinet Grotesk porte le texte courant. Les piles complètes restent définies dans `tailwind.config.js`. Swear Display demeure disponible dans la configuration, sans devenir une règle d'affichage par défaut.
 
-## Règles de contenu
+Les styles partagés display/headline sont les tokens ci-dessus. L'accueil possède des ajustements locaux : titre d'ouverture de 3.75rem à 6rem, interligne 1.04 ; titres de chapitre de 2rem à 3rem, graisse 600 et interligne 1.14. Le texte explicatif varie de 17px à 20px, avec des mesures de 38 à 54 caractères selon son rôle.
 
-- Montrer une action avant de promettre un résultat : rédiger une offre, trier les candidatures, préparer un entretien.
-- Employer des verbes concrets, une voix directe et respectueuse du métier de recruteur.
-- Parler d'« analyse » et de « tri » ; ne pas employer « IA » ou « scoring » dans le discours marketing.
-- Ne publier aucun chiffre de performance, témoignage, client, intégration, compatibilité de multidiffusion, prix ou quota qui n'a pas été validé.
-- Ne jamais suggérer qu'une candidature est rejetée automatiquement. Rendre visibles les critères du poste, les éléments du parcours et les points à vérifier, tout en rappelant que la décision appartient au recruteur.
-- Les packs se nomment Brise, Bourrasque, Rafale, Tornade et Cyclone ; leurs détails commerciaux restent à confirmer.
+## Layout
 
-## Captures et provenance
+Le conteneur principal atteint 1440px, avec des marges intérieures de 20px sur petit écran et 32px sur grand écran. Les composants s'adaptent à leur contenu ; les proportions de l'accueil ne sont pas une grille obligatoire pour toutes les pages.
 
-- Sources produit : les 17 captures réelles conservées dans `public/marketing/app-screens/`.
-- Captures utilisées directement : table des candidatures (`10-applications-table-1920x1080.png`), détail candidat avec CV (`15-candidate-detail-with-cv-1920x1080.png`) et guide d'entretien (`17-interview-guide-1920x1080.png`).
-- Plaques recadrées utilisées par le hero et le premier panneau : `assets/plates/pipeline-screen.png` et `assets/plates/offer-screen.png`, dérivées des captures produit.
-- Direction Impeccable : seed assigné `ac3f819c`, mode `persuade`, composition créative retenue `.impeccable/mocks/home-dossier-open.png` et contrat de surface `.impeccable/surfaces/app-locale-page-tsx.md`. Cette composition a servi de direction, pas de référence pixel-perfect ; les captures de revue contrôlent la reproduction de l’implémentation finale.
+L'accueil utilise une ouverture asymétrique et un affichage produit fixe pendant trois étapes de lecture. Sous 1024px, lorsque la hauteur du viewport ne dépasse pas 720px, ou avec réduction des animations, chaque étape affiche sa capture dans le flux. L'ouverture passe à une colonne sous 768px.
+
+## Elevation & Depth
+
+Les fonds et les traits fins définissent les plans. Des ombres diffuses bleu nuit détachent les boutons et les captures, sans rotation ni effet de dossier flottant sur l'accueil. Les valeurs d'ombre et les transitions figurent dans le sidecar.
+
+## Shapes
+
+Les boutons ont des angles mesurés ; les écrans utilisent un rayon de 12px dans l'ouverture et 16px dans la séquence. Les captures gardent leur ratio naturel. Le panneau CTA utilise un rayon local de 28px, ramené à 24px sur mobile.
+
+## Components
+
+### Buttons
+
+Les quatre variantes sont primaire bleu, sombre, blanche sur fond sombre et discrète. Elles utilisent une hauteur minimale de 48px ; la variante compacte du header descend à 40px. Les états de survol changent le fond, et le focus visible utilise un contour corail de 3px décalé de 3px.
+
+### Navigation
+
+Le header opaque et fixe mesure 72px, avec une séparation fine. Les liens compacts utilisent un soulignement bleu au survol et au focus. Sous 768px, le menu devient un panneau vertical. Le sélecteur FR/EN expose l'état sélectionné.
+
+### Product evidence
+
+Les captures de l'accueil restent complètes, avec une hauteur automatique. La séquence présente une seule preuve active sur grand écran et offre un lien vers le fichier original. Les légendes identifient les données de démonstration et le contour ajouté au guide. Les écrans restent en place pendant un fondu de 220ms ; le curseur partagé des trois onglets glisse en 380ms. Le résultat apparaît en 300ms après un délai de 120ms.
+
+L'ouverture trace la ligne du parcours en 850ms. Sa capture passe de 0.97 à 1 avec une ombre progressive en 650ms, sauf sous 768px. Dans le guide actif, un contour SVG se dessine autour de la deuxième question en 700ms, après 220ms ; il ne modifie pas le fichier de capture.
+
+### Interview reveal
+
+Au premier passage de la citation à 78 % de la hauteur du viewport, une surface bleue la révèle de gauche à droite en 850ms. Deux couches de texte alignées conservent une encre adaptée à chaque fond ; la copie visuelle est masquée aux technologies d'assistance. La citation avance de 24px vers sa position finale et passe de 0.96 à 1 en 650ms. Le balayage reste présent sur mobile. Sans observateur disponible, la citation apparaît directement dans son état final.
+
+Avec réduction des animations, la citation montre son état final et les trois captures restent dans le flux ; les transitions et animations globales sont ramenées à 0.01ms. Ces valeurs décrivent le code, sans présumer du verdict de revue visuelle.
+
+### Closing action
+
+Le panneau bleu final emploie du texte blanc et un bouton blanc. L'action mène à la demande de démonstration.
+
+## Do's and Don'ts
+
+### Do:
+- **Do** conserver le logo, le bleu Seeklon et les polices existantes.
+- **Do** montrer des captures entières sur l'accueil et identifier les données de démonstration.
+- **Do** préserver la lecture linéaire sur mobile et avec réduction des animations.
+
+### Don't:
+- **Don't** incliner ou recadrer les captures de l'accueil.
+- **Don't** transformer le corail en grand panneau CTA.
+- **Don't** présenter une ancienne maquette rejetée comme une référence approuvée.

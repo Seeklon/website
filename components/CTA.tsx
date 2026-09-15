@@ -8,13 +8,13 @@ export default function CTA() {
   const t = useTranslations('CTA')
 
   return (
-    <section className="bg-coral px-5 py-20 text-ink md:px-8 md:py-28">
-      <div className="mx-auto flex max-w-[1440px] flex-col items-start justify-between gap-10 md:flex-row md:items-end">
+    <section className="bg-paper px-5 pb-8 md:px-8 md:pb-12">
+      <div className="cta-panel mx-auto flex max-w-[1440px] flex-col items-start justify-between gap-10 md:flex-row md:items-end">
         <div>
           <h2 className="section-title max-w-[11ch]">{t('title')}</h2>
-          <p className="mt-5 max-w-xl text-lg leading-8 text-ink/75">{t('subtitle')}</p>
+          <p className="mt-5 max-w-xl text-lg leading-8 text-white">{t('subtitle')}</p>
         </div>
-        <Link href="/contact" className="button-dark group shrink-0">
+        <Link href="/contact" className="button-on-dark group shrink-0">
           {t('cta')}
           <ArrowRight size={18} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
         </Link>
