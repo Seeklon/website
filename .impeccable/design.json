@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-15T17:28:09.603Z",
+  "generatedAt": "2026-09-15T17:49:47.442Z",
   "title": "Design System: Seeklon",
   "extensions": {
     "colorMeta": {
@@ -92,7 +92,7 @@
     "shadows": [
       {
         "name": "opening-proof",
-        "value": "0 28px 56px rgb(8 17 38 / 28%)",
+        "value": "0 32px 72px rgb(0 0 0 / 35%)",
         "purpose": "Capture entière de l'ouverture."
       },
       {
@@ -103,19 +103,24 @@
     ],
     "motion": [
       {
-        "name": "opening-proof-arrival",
-        "value": "700ms cubic-bezier(.16,1,.3,1)",
-        "purpose": "Cadre du hero : translateY(20px) scale(.97) vers l'état final, ombre progressive ; désactivé sous 768px."
+        "name": "title-arrival",
+        "value": "650ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Prototype hero : première ligne depuis translateY(-16px)."
       },
       {
-        "name": "opening-choice-cursor",
-        "value": "380ms cubic-bezier(.16,1,.3,1)",
-        "purpose": "Curseur blanc vertical sur desktop, horizontal sous 768px ; sélection manuelle."
+        "name": "type-assemble",
+        "value": "760ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Prototype hero : compression/étirement par caractère ; délai 120ms + 35ms par caractère. Décalage 24px et étirement vertical 1.45 sur desktop, 8px et 1.18 sous 768px."
       },
       {
-        "name": "opening-preview-opacity",
-        "value": "240ms ease-out",
-        "purpose": "Fondu de la capture choisie ; aucune lecture automatique."
+        "name": "scene-product-arrival",
+        "value": "1000ms 180ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Prototype hero : figure entière, image et légende ensemble, depuis translateY(40px) scale(.88)."
+      },
+      {
+        "name": "scene-depth-arrival",
+        "value": "1100ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Prototype hero : captures décoratives depuis scale(.82) et décalage horizontal ; délais 0/100/160/220ms, masquées à 1100px de largeur ou moins."
       },
       {
         "name": "sequence-cursor",
@@ -151,6 +156,16 @@
         "name": "reduced-motion",
         "value": "0.01ms",
         "purpose": "Animations et transitions globales réduites ; citation directement finale et captures dans le flux."
+      },
+      {
+        "name": "screen-drift",
+        "value": "9s ease-in-out infinite alternate",
+        "purpose": "Quatre captures décoratives via leur conteneur interne ; déplacement de (0,-12px) à (14px,18px). Pause manuelle, hors viewport ou document masqué ; désactivé en mode réduit."
+      },
+      {
+        "name": "current-drift",
+        "value": "12s ease-in-out infinite alternate",
+        "purpose": "Huit points/arcs bleus ; de translate(-14px,12px) rotate(-20deg) à translate(24px,-32px) rotate(30deg). Même pause et réduction que les fonds."
       }
     ],
     "breakpoints": [
@@ -166,7 +181,13 @@
         "name": "linear-max-height",
         "value": "720px"
       }
-    ]
+    ],
+    "typographyMeta": {
+      "hero-title": {
+        "displayName": "Titre du hero",
+        "purpose": "Bricolage Grotesque 800 auto-hébergée, réservée au hero ; fichier TTF et licence OFL dans /fonts/."
+      }
+    }
   },
   "components": [
     {
@@ -221,7 +242,7 @@
     "overview": "Seeklon associe un fond bleu brume, une encre bleu nuit et le bleu de marque à des captures réelles du produit. La hiérarchie aide à comprendre le travail et laisse la décision au recruteur. Le logo et les polices existants restent les repères de marque.\n\nCe document décrit les règles réutilisées dans le code. La composition de l'accueil et son public prioritaire sont consignés dans `.impeccable/surfaces/app-locale-page-tsx.md`.",
     "keyCharacteristics": [
       "Captures réelles, entières et droites sur l'accueil.",
-      "Titres Alexandria et texte courant Cabinet Grotesk.",
+      "Titre du hero Bricolage Grotesque ; autres titres Alexandria et texte Cabinet Grotesk.",
       "Surfaces brume, actions bleues et encre bleu nuit."
     ],
     "rules": [

@@ -21,7 +21,7 @@ related_targets: ["components/Hero.tsx", "components/Features.tsx", "components/
 
 **STORY.** Besoin → rédaction de l'offre → tri des CV → guide d'entretien → décision humaine → demande de démonstration. Une question issue du guide de démonstration devient une grande citation, explicitement attribuée à ces données.
 
-**FIRST VIEWPORT.** Direction confirmée par l'utilisateur : « Une grande scène produit interactive, sur fond bleu Seeklon ». Un bandeau compact réunit « Recruter plus vite », la promesse, le contexte du manager sans RH et la demande de démonstration. La scène bleue pleine largeur présente trois boutons à gauche et une grande capture entière à droite. Le bandeau utilise 2fr/1fr ; la scène 1fr/2.5fr avec une colonne de choix d'au moins 240px. Sous 768px, les choix deviennent horizontaux au-dessus de la capture. Le visiteur choisit l'offre, les candidatures ou l'entretien, sans lecture automatique.
+**FIRST VIEWPORT.** Premier prototype demandé par l'utilisateur : composition inspirée de Pitch et animation typographique potentiellement inspirée de Jitter, à retirer si l'essai ne convient pas. Une seule scène bleu nuit éclairée de bleu Seeklon réunit le titre centré « Recruter / plus vite » en Bricolage Grotesque 800 auto-hébergée (TTF et licence OFL dans `/fonts/`), la promesse, le contexte du manager sans RH, un CTA blanc et une capture d'offre entière de 960px maximum. Quatre captures réelles teintées et légèrement floutées composent la profondeur sur desktop ; elles disparaissent à 1100px de largeur ou moins. Les sélecteurs et le carrousel de l'essai précédent sont retirés. Le header bleu nuit s'applique à l'accueil uniquement, menu mobile inclus. Les autres polices et les sections suivantes restent inchangées. Ce prototype attend la validation esthétique de l'utilisateur.
 
 **FORM.** Après le prologue, une colonne narrative de 4fr accompagne un affichage produit de 8fr fixé à 120px du haut. Trois étapes actualisent la capture, la navigation et le résultat au défilement. Le viewport doit mesurer au moins 1024px de large et plus de 720px de haut ; sinon, ou avec réduction des animations, les trois captures sont présentées dans le flux. La citation sur fond bleu précède la conclusion sur la décision humaine et le CTA final.
 
@@ -29,7 +29,9 @@ related_targets: ["components/Hero.tsx", "components/Features.tsx", "components/
 
 ## Motion contract
 
-La demande utilisateur inclut davantage d'animation et un effet visuel marquant, avec revue Impeccable. La nouvelle ouverture déplace un curseur blanc entre les trois choix en 380ms ; les captures sélectionnées changent par fondu de 240ms. Le cadre arrive en 700ms, avec une échelle de 0.97 à 1, une translation verticale de 20px à 0 et une ombre progressive. Cette arrivée est désactivée sous 768px. Les boutons exposent leur sélection et contrôlent l'aperçu ; un lien ouvre le fichier actif. Aucun nouvel asset généré n'est requis. La revue indépendante de cette nouvelle hero par Impeccable avec Astra conclut `ship`, sans correction matérielle, sur les cinq tailles et les trois états fournis. Elle confirme la présence du produit et la cohérence de la composition, sans certifier une réaction subjective « wouah » ni une mesure de fluidité sur appareils réels.
+L'essai du hero fait entrer la première ligne en 650ms, puis assemble chaque caractère de la seconde avec compression et étirement en 760ms, à partir de 120ms et avec un décalage de 35ms. La figure entière, image et légende ensemble, passe de scale(.88) et translateY(40px) à sa place finale en 1000ms après 180ms. Sous 768px, l'entrée des caractères utilise 8px de décalage et 1.18 d'étirement vertical ; desktop conserve 24px et 1.45. Les fonds décoratifs entrent en 1100ms, avec des délais de 0 à 220ms. Le bouton de reprise reste hors de la scène remontée afin de conserver son focus. L'entrée ne boucle pas ; seuls les fonds décoratifs et les particules ont un mouvement ambiant continu. À 1100px de largeur ou moins, les fonds décoratifs sont masqués ; l'introduction reste animée, y compris sur mobile. Le mode réduit affiche immédiatement l'état final et masque les contrôles d'animation. Aucune image générée ni nouvelle dépendance. Le verdict `ship` de l'ancien hero ne s'applique pas à ce prototype ; validation utilisateur et revue de ce rendu restent ouvertes.
+
+Les quatre captures de fond dérivent sur une boucle alternée de 9s, indépendamment de leur entrée, tandis que huit points et arcs bleus suivent une boucle de 12s. Un bouton permet de suspendre ces mouvements ambiants ; ils se suspendent aussi lorsque le hero quitte le viewport ou que le document est masqué. Le mode réduit les désactive. La capture principale reste stable après son entrée.
 
 Dans la séquence fixe, le curseur commun se déplace en 380ms, les captures restent stables avec un fondu de 220ms, et le résultat arrive en 300ms après 120ms. Le guide actif souligne sa deuxième question avec un contour SVG dessiné en 700ms après 220ms. L'annotation est déclarée dans les textes FR/EN ; aucun raster n'est modifié.
 
@@ -40,7 +42,8 @@ Ces animations sont implémentées sans nouvelle dépendance. La revue indépend
 ## Evidence
 
 Captures originales conservées sans recadrage :
-- Ouverture interactive : `public/marketing/app-screens/09-offer-detail-1920x1080.png`, `public/marketing/app-screens/10-applications-table-1920x1080.png` et `public/marketing/app-screens/17-interview-guide-1920x1080.png`.
+- Capture principale du prototype : `public/marketing/app-screens/09-offer-detail-1920x1080.png`.
+- Fonds décoratifs entiers : captures `09`, `10`, `13` et `17` du même dossier ; teinte et flou appliqués en CSS, sans modification des rasters.
 - Rédaction : `public/marketing/app-screens/06-create-offer-form-1920x1080.png`.
 - Tri : `public/marketing/app-screens/10-applications-table-1920x1080.png`.
 - Entretien : `public/marketing/app-screens/17-interview-guide-1920x1080.png`.

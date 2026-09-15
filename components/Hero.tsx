@@ -1,53 +1,78 @@
 "use client"
 
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Pause, Play, RotateCcw } from 'lucide-react'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 
-const previews = [
-  { key: 'write', image: '/marketing/app-screens/09-offer-detail-1920x1080.png' },
-  { key: 'sort', image: '/marketing/app-screens/10-applications-table-1920x1080.png' },
-  { key: 'prepare', image: '/marketing/app-screens/17-interview-guide-1920x1080.png' },
-] as const
+const backdropScreens = [
+  '/marketing/app-screens/10-applications-table-1920x1080.png',
+  '/marketing/app-screens/17-interview-guide-1920x1080.png',
+  '/marketing/app-screens/09-offer-detail-1920x1080.png',
+  '/marketing/app-screens/13-recruitment-pipeline-1920x1080.png',
+]
+const productScreen = '/marketing/app-screens/09-offer-detail-1920x1080.png'
 
 export default function Hero() {
   const t = useTranslations('Hero')
-  const [active, setActive] = useState(0)
+  const [take, setTake] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const [visible, setVisible] = useState(true)
+  const opening = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const element = opening.current
+    if (!element) return
+    let intersecting = true
+    const update = () => setVisible(intersecting && !document.hidden)
+    const observer = new IntersectionObserver(([entry]) => {
+      intersecting = entry.isIntersecting
+      update()
+    })
+    observer.observe(element)
+    document.addEventListener('visibilitychange', update)
+    return () => { observer.disconnect(); document.removeEventListener('visibilitychange', update) }
+  }, [])
+
   return (
-    <section className="recruit-opening" aria-labelledby="hero-title">
-      <div className="opening-heading">
-        <div><h1 id="hero-title">{t('title')}</h1><p className="opening-promise">{t('better')}</p></div>
-        <div className="opening-context">
-          <p>{t('subtitle')}</p>
-          <Link href="/contact" className="button-primary">{t('requestDemo')}<ArrowUpRight size={18} aria-hidden="true" /></Link>
-        </div>
+    <section ref={opening} className="recruit-opening" data-paused={paused || !visible} aria-labelledby="hero-title">
+      <div className="opening-controls">
+        <button type="button" aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? <Play size={16} aria-hidden="true" /> : <Pause size={16} aria-hidden="true" />}{t('pauseMotion')}</button>
+        <button className="opening-replay" type="button" onClick={() => setTake(value => value + 1)}><RotateCcw size={16} aria-hidden="true" />{t('replay')}</button>
       </div>
-      <div className="opening-stage">
-        <div className="opening-stage-inner">
-          <div className="opening-choices" role="group" aria-label={t('workflowLabel')} data-active={active}>
-            {previews.map((preview, index) => (
-              <button key={preview.key} type="button" aria-pressed={active === index} aria-controls="opening-preview" onClick={() => setActive(index)}>
-                <span className="opening-choice-title">{t(`${preview.key}Action`)}<ArrowUpRight size={22} aria-hidden="true" /></span>
-                <span className="opening-choice-question">{t(`${preview.key}Question`)}</span>
-              </button>
-            ))}
-            <span className="opening-choice-cursor" aria-hidden="true" />
-          </div>
-          <figure className="opening-proof">
-            <div className="opening-preview" id="opening-preview">
-              {previews.map((preview, index) => (
-                <div className="opening-preview-frame" data-visible={active === index} aria-hidden={active !== index} key={preview.key}>
-                  <Image src={preview.image} alt={t(`${preview.key}Alt`)} width={1920} height={1080} unoptimized priority={index === 0} loading={index === 0 ? undefined : 'eager'} />
-                </div>
-              ))}
+      <div className="opening-scene" key={take}>
+        <div className="opening-current" aria-hidden="true">
+          {Array.from({ length: 8 }, (_, index) => <i key={index} style={{ left: `${8 + index * 12}%`, top: `${90 + (index % 3) * 145}px`, animationDelay: `${index * -1.7}s` }} />)}
+        </div>
+        <div className="opening-backdrop" aria-hidden="true">
+          {backdropScreens.map((src, index) => (
+            <div className={`opening-depth-screen opening-depth-screen-${index}`} key={src}>
+              <div className="opening-float"><Image src={src} alt="" width={1920} height={1080} unoptimized /></div>
             </div>
-            <figcaption><span>{t('openingCaption')}</span><a href={previews[active].image} target="_blank" rel="noreferrer">{t('openScreen')}<ArrowUpRight size={15} aria-hidden="true" /></a></figcaption>
-          </figure>
+          ))}
         </div>
+        <div className="opening-heading">
+          <h1 id="hero-title" aria-label={t('title')}>
+            <span className="opening-title-lead" aria-hidden="true">{t('titleLead')}</span>
+            <span className="opening-title-motion" aria-hidden="true">
+              {Array.from(t('titleEnd')).map((letter, index) => <span key={index} style={{ animationDelay: `${120 + index * 35}ms` }}>{letter === ' ' ? '\u00a0' : letter}</span>)}
+            </span>
+          </h1>
+          <p className="opening-promise">{t('better')}</p>
+          <p className="opening-description">{t('subtitle')}</p>
+          <Link href="/contact" className="button-on-dark">{t('requestDemo')}<ArrowUpRight size={18} aria-hidden="true" /></Link>
+        </div>
+        <figure className="opening-proof">
+          <a className="opening-preview" href={productScreen} target="_blank" rel="noreferrer" aria-label={t('openScreen')}>
+            <Image src={productScreen} alt={t('writeAlt')} width={1920} height={1080} unoptimized priority />
+          </a>
+          <figcaption><span>{t('openingCaption')}</span><a href={productScreen} target="_blank" rel="noreferrer">{t('openScreen')}<ArrowUpRight size={15} aria-hidden="true" /></a></figcaption>
+        </figure>
       </div>
-      <a className="opening-invitation" href="#fonctionnalites"><span>{t('openingLine')}</span><ArrowDown size={22} aria-hidden="true" /></a>
+      <div className="opening-footer">
+        <a className="opening-invitation" href="#fonctionnalites"><span>{t('openingLine')}</span><ArrowDown size={20} aria-hidden="true" /></a>
+      </div>
     </section>
   )
 }

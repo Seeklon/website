@@ -9,6 +9,12 @@ colors:
   coral: "#ff806b"
   white: "#ffffff"
 typography:
+  hero-title:
+    fontFamily: "Bricolage Grotesque, Alexandria, sans-serif"
+    fontSize: "clamp(3.5rem, 7.5vw, 6rem)"
+    fontWeight: 800
+    lineHeight: 1.03
+    letterSpacing: "-0.035em"
   display:
     fontFamily: "Alexandria, Cabinet Grotesk, sans-serif"
     fontSize: "clamp(3.5rem, 7.3vw, 6rem)"
@@ -71,7 +77,7 @@ Ce document décrit les règles réutilisées dans le code. La composition de l'
 
 **Key Characteristics:**
 - Captures réelles, entières et droites sur l'accueil.
-- Titres Alexandria et texte courant Cabinet Grotesk.
+- Titre du hero Bricolage Grotesque ; autres titres Alexandria et texte Cabinet Grotesk.
 - Surfaces brume, actions bleues et encre bleu nuit.
 
 ## Colors
@@ -92,19 +98,19 @@ Le bleu brume `paper` constitue le fond principal ; `ink` porte les titres et le
 
 ## Typography
 
-Alexandria porte l'affichage et les titres ; Cabinet Grotesk porte le texte courant. Les piles complètes restent définies dans `tailwind.config.js`. Swear Display demeure disponible dans la configuration, sans devenir une règle d'affichage par défaut.
+Bricolage Grotesque 800 porte uniquement le titre du hero, auto-hébergée dans `/fonts/bricolage-grotesque-800.ttf`, avec sa licence OFL à côté du fichier. Alexandria reste la police des autres titres ; Cabinet Grotesk porte le texte courant. Les piles complètes restent définies dans `tailwind.config.js`. Swear Display demeure disponible dans la configuration, sans devenir une règle d'affichage par défaut.
 
-Les styles partagés display/headline sont les tokens ci-dessus. L'accueil possède des ajustements locaux : titre d'ouverture de 3.25rem à 5rem, interligne 1.08 ; titres de chapitre de 2rem à 3rem, graisse 600 et interligne 1.14. Le texte explicatif varie de 17px à 20px, avec des mesures de 38 à 54 caractères selon son rôle.
+Les styles partagés display/headline sont les tokens ci-dessus. L'accueil possède des ajustements locaux : titre d'ouverture de 3.5rem à 6rem, interligne 1.03 ; titres de chapitre de 2rem à 3rem, graisse 600 et interligne 1.14. Le texte explicatif varie de 17px à 20px, avec des mesures de 38 à 54 caractères selon son rôle.
 
 ## Layout
 
 Le conteneur principal atteint 1440px, avec des marges intérieures de 20px sur petit écran et 32px sur grand écran. Les composants s'adaptent à leur contenu ; les proportions de l'accueil ne sont pas une grille obligatoire pour toutes les pages.
 
-L'accueil ouvre sur un bandeau de promesse et de contexte, puis une grande scène produit interactive sur fond bleu Seeklon. Ses trois choix verticaux accompagnent une capture entière ; sous 768px, les choix deviennent horizontaux au-dessus de la capture. La suite conserve un affichage produit fixe pendant trois étapes de lecture. Sous 1024px, lorsque la hauteur du viewport ne dépasse pas 720px, ou avec réduction des animations, chaque étape de cette séquence affiche sa capture dans le flux.
+Le prototype actuel de l'accueil réunit le titre centré sur deux lignes, la promesse, le contexte et une capture principale entière dans une seule scène bleu nuit éclairée de bleu Seeklon. Des captures décoratives en profondeur entourent le titre sur grand écran et disparaissent à 1100px de largeur ou moins. Cette proposition reste soumise au retour esthétique de l'utilisateur. La suite conserve un affichage produit fixe pendant trois étapes de lecture. Sous 1024px, lorsque la hauteur du viewport ne dépasse pas 720px, ou avec réduction des animations, chaque étape de cette séquence affiche sa capture dans le flux.
 
 ## Elevation & Depth
 
-Les fonds et les traits fins définissent les plans. Des ombres diffuses bleu nuit détachent les boutons et les captures, sans rotation ni effet de dossier flottant sur l'accueil. Les valeurs d'ombre et les transitions figurent dans le sidecar.
+Les fonds et les traits fins définissent les plans. Des ombres diffuses bleu nuit détachent les boutons et les captures, sans rotation des captures. Les écrans décoratifs du hero dérivent doucement ; la preuve principale reste stable après son entrée. Les valeurs d'ombre et les transitions figurent dans le sidecar.
 
 ## Shapes
 
@@ -118,7 +124,7 @@ Les quatre variantes sont primaire bleu, sombre, blanche sur fond sombre et disc
 
 ### Navigation
 
-Le header opaque et fixe mesure 72px, avec une séparation fine. Les liens compacts utilisent un soulignement bleu au survol et au focus. Sous 768px, le menu devient un panneau vertical. Le sélecteur FR/EN expose l'état sélectionné.
+Le header opaque et fixe mesure 72px, avec une séparation fine. Sur l'accueil uniquement, son fond bleu nuit et ses liens blancs prolongent le hero, y compris dans le menu mobile ; les autres routes gardent leur traitement. Les liens compacts utilisent un soulignement bleu au survol et au focus. Sous 768px, le menu devient un panneau vertical. Le sélecteur FR/EN expose l'état sélectionné.
 
 ### Product evidence
 
@@ -126,9 +132,13 @@ Les captures de l'accueil restent complètes, avec une hauteur automatique. La s
 
 Dans le guide actif de la séquence, un contour SVG se dessine autour de la deuxième question en 700ms, après 220ms ; il ne modifie pas le fichier de capture.
 
-### Interactive opening
+### Opening prototype
 
-Sur le fond bleu Seeklon, trois boutons sélectionnent les captures de l'offre, des candidatures et du guide. La sélection appartient au visiteur, sans défilement automatique. Un curseur blanc se déplace en 380ms ; les captures changent par fondu de 240ms. À l'arrivée, le cadre passe de 0.97 à 1 et remonte de 20px avec une ombre progressive en 700ms. Sous 768px, cette arrivée est désactivée et les choix restent accessibles au-dessus de la capture à hauteur naturelle. Un lien permet d'ouvrir la capture sélectionnée et la légende identifie les données de démonstration. La réduction des animations conserve l'interaction et abrège ses transitions.
+Premier test inspiré de la composition demandée de Pitch et d'une entrée typographique de type Jitter ; ce traitement reste local au hero et attend le retour esthétique de l'utilisateur. Le titre est centré sur deux lignes, avec un CTA blanc et une capture d'offre entière de 960px maximum. Le fond bleu nuit reçoit deux éclairages radiaux bleus ; quatre captures réelles décoratives sont teintées, à 48 % d'opacité et floutées de 1.5px. Elles restent droites et gardent leur ratio ; elles ne constituent pas la preuve principale.
+
+La première ligne entre en 650ms. La seconde se compose lettre par lettre avec compression et étirement en 760ms, un délai initial de 120ms et un décalage de 35ms par caractère. La figure entière, capture et légende réunies, avance de 40px et passe de 0.88 à 1 en 1000ms après 180ms. Sous 768px, les caractères démarrent à 8px de décalage et 1.18 d'étirement vertical, contre 24px et 1.45 sur desktop. L'animation d'entrée ne boucle pas ; un bouton permet de la rejouer et reste hors de la scène remontée pour conserver son focus. À 1100px de largeur ou moins, les fonds décoratifs disparaissent ; l'introduction reste animée, y compris sur mobile. En mode réduit, tous ces éléments sont immédiatement à leur place et les contrôles d'animation sont masqués. Aucun sélecteur de capture ni carrousel n'est présent.
+
+Les quatre captures de fond dérivent sur une boucle alternée de 9s, indépendamment de leur entrée, tandis que huit points et arcs bleus suivent une boucle de 12s. Un bouton permet de suspendre ces mouvements ambiants ; ils se suspendent aussi lorsque le hero quitte le viewport ou que le document est masqué. Le mode réduit les désactive. La capture principale reste stable après son entrée.
 
 ### Interview reveal
 

@@ -31,6 +31,10 @@
   },
   "Hero": {
     "title": "Recruit faster.",
+    "titleLead": "Recruit",
+    "titleEnd": "faster.",
+    "replay": "Replay animation",
+    "pauseMotion": "Pause motion",
     "better": "Even without an HR team.",
     "subtitle": "Write the job post, review CVs and prepare interviews. You stay in charge of the hiring decision.",
     "requestDemo": "Request a demo",

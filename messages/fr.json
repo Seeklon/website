@@ -31,6 +31,10 @@
   },
   "Hero": {
     "title": "Recruter plus vite.",
+    "titleLead": "Recruter",
+    "titleEnd": "plus vite.",
+    "replay": "Rejouer l’animation",
+    "pauseMotion": "Pause du mouvement",
     "better": "Même sans équipe RH.",
     "subtitle": "Rédigez l’offre, triez les CV et préparez les entretiens. Vous gardez la main sur le recrutement.",
     "requestDemo": "Demander une démo",
