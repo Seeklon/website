@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-15T17:18:48.570Z",
+  "generatedAt": "2026-09-15T17:28:09.603Z",
   "title": "Design System: Seeklon",
   "extensions": {
     "colorMeta": {
@@ -92,7 +92,7 @@
     "shadows": [
       {
         "name": "opening-proof",
-        "value": "0 18px 38px rgb(8 17 38 / 9%)",
+        "value": "0 28px 56px rgb(8 17 38 / 28%)",
         "purpose": "Capture entière de l'ouverture."
       },
       {
@@ -103,14 +103,19 @@
     ],
     "motion": [
       {
-        "name": "route-draw",
-        "value": "850ms cubic-bezier(.16,1,.3,1)",
-        "purpose": "Ligne d'ouverture tracée de scaleX(0) à scaleX(1)."
+        "name": "opening-proof-arrival",
+        "value": "700ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Cadre du hero : translateY(20px) scale(.97) vers l'état final, ombre progressive ; désactivé sous 768px."
       },
       {
-        "name": "opening-proof-arrival",
-        "value": "650ms cubic-bezier(.16,1,.3,1)",
-        "purpose": "Capture entière de scale(.97) à scale(1), ombre progressive ; désactivé sous 768px."
+        "name": "opening-choice-cursor",
+        "value": "380ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Curseur blanc vertical sur desktop, horizontal sous 768px ; sélection manuelle."
+      },
+      {
+        "name": "opening-preview-opacity",
+        "value": "240ms ease-out",
+        "purpose": "Fondu de la capture choisie ; aucune lecture automatique."
       },
       {
         "name": "sequence-cursor",

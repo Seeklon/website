@@ -21,7 +21,7 @@ related_targets: ["components/Hero.tsx", "components/Features.tsx", "components/
 
 **STORY.** Besoin → rédaction de l'offre → tri des CV → guide d'entretien → décision humaine → demande de démonstration. Une question issue du guide de démonstration devient une grande citation, explicitement attribuée à ces données.
 
-**FIRST VIEWPORT.** « Recruter plus vite » à gauche ; contexte du manager, demande de démonstration et capture entière du détail d'offre à droite. Grille 1.05fr/1fr, puis une colonne sous 768px. Trois liens annoncent les étapes.
+**FIRST VIEWPORT.** Direction confirmée par l'utilisateur : « Une grande scène produit interactive, sur fond bleu Seeklon ». Un bandeau compact réunit « Recruter plus vite », la promesse, le contexte du manager sans RH et la demande de démonstration. La scène bleue pleine largeur présente trois boutons à gauche et une grande capture entière à droite. Le bandeau utilise 2fr/1fr ; la scène 1fr/2.5fr avec une colonne de choix d'au moins 240px. Sous 768px, les choix deviennent horizontaux au-dessus de la capture. Le visiteur choisit l'offre, les candidatures ou l'entretien, sans lecture automatique.
 
 **FORM.** Après le prologue, une colonne narrative de 4fr accompagne un affichage produit de 8fr fixé à 120px du haut. Trois étapes actualisent la capture, la navigation et le résultat au défilement. Le viewport doit mesurer au moins 1024px de large et plus de 720px de haut ; sinon, ou avec réduction des animations, les trois captures sont présentées dans le flux. La citation sur fond bleu précède la conclusion sur la décision humaine et le CTA final.
 
@@ -29,7 +29,7 @@ related_targets: ["components/Hero.tsx", "components/Features.tsx", "components/
 
 ## Motion contract
 
-La demande utilisateur inclut davantage d'animation et un effet visuel marquant, avec revue Impeccable. L'ouverture trace son parcours en 850ms et fait apparaître la capture par une échelle de 0.97 à 1 et une ombre progressive en 650ms ; cette mise à l'échelle est désactivée sous 768px.
+La demande utilisateur inclut davantage d'animation et un effet visuel marquant, avec revue Impeccable. La nouvelle ouverture déplace un curseur blanc entre les trois choix en 380ms ; les captures sélectionnées changent par fondu de 240ms. Le cadre arrive en 700ms, avec une échelle de 0.97 à 1, une translation verticale de 20px à 0 et une ombre progressive. Cette arrivée est désactivée sous 768px. Les boutons exposent leur sélection et contrôlent l'aperçu ; un lien ouvre le fichier actif. Aucun nouvel asset généré n'est requis. La revue indépendante de cette nouvelle hero par Impeccable avec Astra conclut `ship`, sans correction matérielle, sur les cinq tailles et les trois états fournis. Elle confirme la présence du produit et la cohérence de la composition, sans certifier une réaction subjective « wouah » ni une mesure de fluidité sur appareils réels.
 
 Dans la séquence fixe, le curseur commun se déplace en 380ms, les captures restent stables avec un fondu de 220ms, et le résultat arrive en 300ms après 120ms. Le guide actif souligne sa deuxième question avec un contour SVG dessiné en 700ms après 220ms. L'annotation est déclarée dans les textes FR/EN ; aucun raster n'est modifié.
 
@@ -40,7 +40,7 @@ Ces animations sont implémentées sans nouvelle dépendance. La revue indépend
 ## Evidence
 
 Captures originales conservées sans recadrage :
-- Ouverture : `public/marketing/app-screens/09-offer-detail-1920x1080.png`.
+- Ouverture interactive : `public/marketing/app-screens/09-offer-detail-1920x1080.png`, `public/marketing/app-screens/10-applications-table-1920x1080.png` et `public/marketing/app-screens/17-interview-guide-1920x1080.png`.
 - Rédaction : `public/marketing/app-screens/06-create-offer-form-1920x1080.png`.
 - Tri : `public/marketing/app-screens/10-applications-table-1920x1080.png`.
 - Entretien : `public/marketing/app-screens/17-interview-guide-1920x1080.png`.

@@ -32,15 +32,21 @@
   "Hero": {
     "title": "Recruit faster.",
     "better": "Even without an HR team.",
-    "subtitle": "Your team needs someone. Your working day is already full. Seeklon helps you write the job post, review CVs and prepare interviews.",
+    "subtitle": "Write the job post, review CVs and prepare interviews. You stay in charge of the hiring decision.",
     "requestDemo": "Request a demo",
     "openingLine": "A role to fill. Let’s work through what comes next.",
     "workflowLabel": "From role to interview",
-    "actionWrite": "Define",
-    "actionSort": "Review",
-    "actionPrepare": "Meet",
-    "openingAlt": "Product Designer Senior role in Seeklon showing responsibilities, skills and requirements",
-    "openingCaption": "One recruitment throughout this walkthrough · Demonstration example"
+    "openingCaption": "Real interface · One role · Demonstration data",
+    "writeAction": "Define",
+    "writeQuestion": "Who do you need to hire?",
+    "writeAlt": "Full Product Designer Senior role screen in Seeklon",
+    "sortAction": "Review",
+    "sortQuestion": "Which careers will you explore?",
+    "sortAlt": "Full applications screen for the Product Designer Senior role",
+    "prepareAction": "Meet",
+    "prepareQuestion": "What will you ask in the interview?",
+    "prepareAlt": "Full interview guide screen for Léa Moreau",
+    "openScreen": "Enlarge screen"
   },
   "WhyAtsIA": {
     "titleBefore": "Why choose an ",

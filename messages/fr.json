@@ -32,15 +32,21 @@
   "Hero": {
     "title": "Recruter plus vite.",
     "better": "Même sans équipe RH.",
-    "subtitle": "Votre équipe a besoin de quelqu’un. Votre journée est déjà bien remplie. Seeklon vous aide à rédiger l’offre, trier les CV et préparer les entretiens.",
+    "subtitle": "Rédigez l’offre, triez les CV et préparez les entretiens. Vous gardez la main sur le recrutement.",
     "requestDemo": "Demander une démo",
     "openingLine": "Un poste à pourvoir. Voyons la suite ensemble.",
     "workflowLabel": "Du poste à l’entretien",
-    "actionWrite": "Préciser",
-    "actionSort": "Trier",
-    "actionPrepare": "Rencontrer",
-    "openingAlt": "Offre Product Designer Senior dans Seeklon : missions, compétences et prérequis",
-    "openingCaption": "Un même recrutement, tout au long de la visite · Exemple de démonstration"
+    "openingCaption": "Interface réelle · Un même poste · Données de démonstration",
+    "writeAction": "Préciser",
+    "writeQuestion": "Quel poste cherchez-vous ?",
+    "writeAlt": "Écran complet du poste Product Designer Senior dans Seeklon",
+    "sortAction": "Trier",
+    "sortQuestion": "Quels parcours approfondir ?",
+    "sortAlt": "Écran complet des candidatures pour le poste Product Designer Senior",
+    "prepareAction": "Rencontrer",
+    "prepareQuestion": "Que demander en entretien ?",
+    "prepareAlt": "Écran complet du guide d’entretien de Léa Moreau",
+    "openScreen": "Agrandir l’écran"
   },
   "WhyAtsIA": {
     "titleBefore": "Pourquoi choisir un ",

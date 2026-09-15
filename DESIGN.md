@@ -94,13 +94,13 @@ Le bleu brume `paper` constitue le fond principal ; `ink` porte les titres et le
 
 Alexandria porte l'affichage et les titres ; Cabinet Grotesk porte le texte courant. Les piles complètes restent définies dans `tailwind.config.js`. Swear Display demeure disponible dans la configuration, sans devenir une règle d'affichage par défaut.
 
-Les styles partagés display/headline sont les tokens ci-dessus. L'accueil possède des ajustements locaux : titre d'ouverture de 3.75rem à 6rem, interligne 1.04 ; titres de chapitre de 2rem à 3rem, graisse 600 et interligne 1.14. Le texte explicatif varie de 17px à 20px, avec des mesures de 38 à 54 caractères selon son rôle.
+Les styles partagés display/headline sont les tokens ci-dessus. L'accueil possède des ajustements locaux : titre d'ouverture de 3.25rem à 5rem, interligne 1.08 ; titres de chapitre de 2rem à 3rem, graisse 600 et interligne 1.14. Le texte explicatif varie de 17px à 20px, avec des mesures de 38 à 54 caractères selon son rôle.
 
 ## Layout
 
 Le conteneur principal atteint 1440px, avec des marges intérieures de 20px sur petit écran et 32px sur grand écran. Les composants s'adaptent à leur contenu ; les proportions de l'accueil ne sont pas une grille obligatoire pour toutes les pages.
 
-L'accueil utilise une ouverture asymétrique et un affichage produit fixe pendant trois étapes de lecture. Sous 1024px, lorsque la hauteur du viewport ne dépasse pas 720px, ou avec réduction des animations, chaque étape affiche sa capture dans le flux. L'ouverture passe à une colonne sous 768px.
+L'accueil ouvre sur un bandeau de promesse et de contexte, puis une grande scène produit interactive sur fond bleu Seeklon. Ses trois choix verticaux accompagnent une capture entière ; sous 768px, les choix deviennent horizontaux au-dessus de la capture. La suite conserve un affichage produit fixe pendant trois étapes de lecture. Sous 1024px, lorsque la hauteur du viewport ne dépasse pas 720px, ou avec réduction des animations, chaque étape de cette séquence affiche sa capture dans le flux.
 
 ## Elevation & Depth
 
@@ -124,7 +124,11 @@ Le header opaque et fixe mesure 72px, avec une séparation fine. Les liens compa
 
 Les captures de l'accueil restent complètes, avec une hauteur automatique. La séquence présente une seule preuve active sur grand écran et offre un lien vers le fichier original. Les légendes identifient les données de démonstration et le contour ajouté au guide. Les écrans restent en place pendant un fondu de 220ms ; le curseur partagé des trois onglets glisse en 380ms. Le résultat apparaît en 300ms après un délai de 120ms.
 
-L'ouverture trace la ligne du parcours en 850ms. Sa capture passe de 0.97 à 1 avec une ombre progressive en 650ms, sauf sous 768px. Dans le guide actif, un contour SVG se dessine autour de la deuxième question en 700ms, après 220ms ; il ne modifie pas le fichier de capture.
+Dans le guide actif de la séquence, un contour SVG se dessine autour de la deuxième question en 700ms, après 220ms ; il ne modifie pas le fichier de capture.
+
+### Interactive opening
+
+Sur le fond bleu Seeklon, trois boutons sélectionnent les captures de l'offre, des candidatures et du guide. La sélection appartient au visiteur, sans défilement automatique. Un curseur blanc se déplace en 380ms ; les captures changent par fondu de 240ms. À l'arrivée, le cadre passe de 0.97 à 1 et remonte de 20px avec une ombre progressive en 700ms. Sous 768px, cette arrivée est désactivée et les choix restent accessibles au-dessus de la capture à hauteur naturelle. Un lien permet d'ouvrir la capture sélectionnée et la légende identifie les données de démonstration. La réduction des animations conserve l'interaction et abrège ses transitions.
 
 ### Interview reveal
 
