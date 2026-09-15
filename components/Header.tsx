@@ -27,7 +27,7 @@ export default function Header() {
   }, [])
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-paper ${pathname === '/' ? 'header-home' : ''}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-paper ${['/', '/pricing', '/about', '/blog'].includes(pathname) ? 'header-home' : ''}`}>
       <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 md:px-8">
         <Link href="/" className="group flex items-center gap-2.5" onClick={() => setIsOpen(false)}>
           <Image src="/logo.png" alt="" width={34} height={34} priority className="transition-transform group-hover:rotate-6" />

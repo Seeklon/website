@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-15T17:49:47.442Z",
+  "generatedAt": "2026-09-15T19:08:44Z",
   "title": "Design System: Seeklon",
   "extensions": {
     "colorMeta": {
@@ -99,13 +99,18 @@
         "name": "sequence-display",
         "value": "0 22px 52px rgb(8 17 38 / 12%)",
         "purpose": "Affichage produit fixe au défilement."
+      },
+      {
+        "name": "about-proof",
+        "value": "0 24px 56px rgb(8 17 38 / 14%)",
+        "purpose": "Capture entière du guide d'entretien sur À propos."
       }
     ],
     "motion": [
       {
         "name": "title-arrival",
         "value": "650ms cubic-bezier(.16,1,.3,1)",
-        "purpose": "Prototype hero : première ligne depuis translateY(-16px)."
+        "purpose": "Première ligne du hero et titres d'ouverture Tarifs, À propos et index du blog depuis translateY(-16px)."
       },
       {
         "name": "type-assemble",
@@ -185,7 +190,11 @@
     "typographyMeta": {
       "hero-title": {
         "displayName": "Titre du hero",
-        "purpose": "Bricolage Grotesque 800 auto-hébergée, réservée au hero ; fichier TTF et licence OFL dans /fonts/."
+        "purpose": "Bricolage Grotesque 800 auto-hébergée ; fichier TTF et licence OFL dans /fonts/. Ce rôle décrit le hero de l'accueil."
+      },
+      "secondary-title": {
+        "displayName": "Titres d'ouverture secondaires",
+        "purpose": "Tarifs, À propos et index du blog. Sous 768px : clamp(2.5rem, 10.5vw, 4rem). Bricolage porte aussi les noms des packs et les titres des thèmes ; les pages d'articles restent hors de cette extension."
       }
     }
   },
@@ -242,7 +251,7 @@
     "overview": "Seeklon associe un fond bleu brume, une encre bleu nuit et le bleu de marque à des captures réelles du produit. La hiérarchie aide à comprendre le travail et laisse la décision au recruteur. Le logo et les polices existants restent les repères de marque.\n\nCe document décrit les règles réutilisées dans le code. La composition de l'accueil et son public prioritaire sont consignés dans `.impeccable/surfaces/app-locale-page-tsx.md`.",
     "keyCharacteristics": [
       "Captures réelles, entières et droites sur l'accueil.",
-      "Titre du hero Bricolage Grotesque ; autres titres Alexandria et texte Cabinet Grotesk.",
+      "Titres d'ouverture Bricolage Grotesque sur l'accueil, Tarifs, À propos et l'index du blog ; titres courants Alexandria et texte Cabinet Grotesk.",
       "Surfaces brume, actions bleues et encre bleu nuit."
     ],
     "rules": [

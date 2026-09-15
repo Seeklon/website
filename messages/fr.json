@@ -163,6 +163,16 @@
     "sendAnother": "Envoyer un autre message",
     "errorConnection": "Le message n’a pas pu être envoyé. Vérifiez votre connexion ou écrivez à contact@seeklon.com."
   },
+  "BlogIndex": {
+    "titleLead": "Des repères pour",
+    "titleAccent": "mieux recruter.",
+    "subtitle": "Offres, candidatures, entretiens : des lectures pour avancer dans vos recrutements, une question à la fois.",
+    "metaTitle": "Conseils de recrutement pour les PME — Blog Seeklon",
+    "metaDescription": "Retrouvez les articles Seeklon sur le recrutement, l’expérience candidat et la marque employeur, classés par thématique.",
+    "themesTitle": "Votre prochaine lecture",
+    "themesLabel": "Parcourir les articles par thématique",
+    "empty": "Les prochains articles seront publiés ici."
+  },
   "Blog": {
     "titleBefore": "Conseils & ",
     "titleAccent": "Actualités",
@@ -228,6 +238,11 @@
     "cta": "Parlons de votre poste"
   },
   "Pricing": {
+    "titleLead": "Un pack pour",
+    "titleAccent": "votre rythme.",
+    "packsLabel": "Les cinq packs Seeklon",
+    "exploreTitle": "Partons de vos recrutements.",
+    "comingSoon": "Tarifs à venir",
     "title": "Des packs qui suivent votre rythme de recrutement.",
     "subtitle": "Brise, Bourrasque, Rafale, Tornade ou Cyclone : cinq repères pour cadrer une formule avec votre équipe. Le contenu et le tarif de chaque pack restent à confirmer.",
     "metaTitle": "Tarifs du logiciel de recrutement pour PME",
@@ -279,13 +294,18 @@
     "securityContent": "Nous prenons la sécurité de vos données très au sérieux. Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles appropriées pour protéger vos données personnelles contre la destruction accidentelle ou illicite, la perte, l'altération, la divulgation ou l'accès non autorisé."
   },
   "About": {
+    "titleLead": "Recruter ensemble.",
+    "titleAccent": "Décider clairement.",
+    "seeProduct": "Voir le produit en action",
+    "screenNote": "Interface réelle · Données de démonstration",
+    "openScreen": "Agrandir l’écran",
     "title": "Le recrutement se travaille mieux quand tout le monde voit la même chose.",
     "intro": "Seeklon construit un espace commun pour les PME, les équipes RH et les managers qui veulent décider avec des critères clairs.",
     "metaTitle": "À propos de Seeklon",
     "metaDescription": "Découvrez pourquoi Seeklon construit un logiciel de recrutement pour les PME, centré sur la clarté, la maîtrise et le travail d’équipe.",
     "storyTitle": "Un atelier commun, du poste à l’entretien.",
     "storyBody": "Une offre, un CV, une note d’entretien : le contexte se disperse vite entre les outils. Seeklon réunit ces éléments pour que chaque personne impliquée comprenne le poste, retrouve les informations utiles et documente sa décision.",
-    "productAlt": "Profil candidat consulté dans l’espace de recrutement Seeklon",
+    "productAlt": "Guide d’entretien candidat dans l’espace de recrutement Seeklon",
     "clarityTitle": "Clarté",
     "clarityText": "Les informations liées au poste et au candidat restent lisibles, au bon endroit.",
     "controlTitle": "Maîtrise",

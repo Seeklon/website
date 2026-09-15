@@ -163,6 +163,16 @@
     "sendAnother": "Send another message",
     "errorConnection": "The message could not be sent. Check your connection or email contact@seeklon.com."
   },
+  "BlogIndex": {
+    "titleLead": "Practical guidance for",
+    "titleAccent": "better hiring.",
+    "subtitle": "Job posts, applications, interviews: reading to help you move forward, one hiring question at a time.",
+    "metaTitle": "Recruitment advice for small businesses — Seeklon Blog",
+    "metaDescription": "Explore Seeklon articles on recruitment, candidate experience and employer branding, organised by topic.",
+    "themesTitle": "Your next read",
+    "themesLabel": "Browse articles by topic",
+    "empty": "New articles will be published here."
+  },
   "Blog": {
     "titleBefore": "Tips & ",
     "titleAccent": "News",
@@ -228,6 +238,11 @@
     "cta": "Let’s discuss your role"
   },
   "Pricing": {
+    "titleLead": "A plan for",
+    "titleAccent": "your hiring pace.",
+    "packsLabel": "The five Seeklon plans",
+    "exploreTitle": "Start with your hiring needs.",
+    "comingSoon": "Pricing coming soon",
     "title": "Plans that follow your hiring pace.",
     "subtitle": "Brise, Bourrasque, Rafale, Tornade or Cyclone: five markers for scoping a plan with your team. The content and price of each plan are still being finalised.",
     "metaTitle": "Recruitment software pricing for SMBs",
@@ -279,13 +294,18 @@
     "securityContent": "We take the security of your data very seriously. We implement appropriate technical and organizational measures to protect your personal data against accidental or unlawful destruction, loss, alteration, disclosure or unauthorized access."
   },
   "About": {
+    "titleLead": "Recruit together.",
+    "titleAccent": "Decide with clarity.",
+    "seeProduct": "See the product in action",
+    "screenNote": "Real interface · Demonstration data",
+    "openScreen": "View full screen",
     "title": "Hiring works better when everyone sees the same thing.",
     "intro": "Seeklon builds a shared workspace for SMBs, HR teams and managers who want to decide with clear criteria.",
     "metaTitle": "About Seeklon",
     "metaDescription": "Learn why Seeklon is building recruitment software for SMBs around clarity, control and teamwork.",
     "storyTitle": "One shared workbench, from role to interview.",
     "storyBody": "A job post, a CV, an interview note: context quickly scatters across tools. Seeklon brings those elements together so everyone involved understands the role, finds useful information and documents the decision.",
-    "productAlt": "Candidate profile viewed in the Seeklon recruitment workspace",
+    "productAlt": "Candidate interview guide in the Seeklon recruitment workspace",
     "clarityTitle": "Clarity",
     "clarityText": "Information related to the role and candidate stays readable and in the right place.",
     "controlTitle": "Control",

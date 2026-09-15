@@ -15,6 +15,12 @@ typography:
     fontWeight: 800
     lineHeight: 1.03
     letterSpacing: "-0.035em"
+  secondary-title:
+    fontFamily: "Bricolage Grotesque, Alexandria, sans-serif"
+    fontSize: "clamp(3rem, 5.8vw, 5.5rem)"
+    fontWeight: 800
+    lineHeight: 1.08
+    letterSpacing: "-0.03em"
   display:
     fontFamily: "Alexandria, Cabinet Grotesk, sans-serif"
     fontSize: "clamp(3.5rem, 7.3vw, 6rem)"
@@ -77,7 +83,7 @@ Ce document décrit les règles réutilisées dans le code. La composition de l'
 
 **Key Characteristics:**
 - Captures réelles, entières et droites sur l'accueil.
-- Titre du hero Bricolage Grotesque ; autres titres Alexandria et texte Cabinet Grotesk.
+- Titres d'ouverture Bricolage Grotesque sur l'accueil, Tarifs, À propos et l'index du blog ; titres courants Alexandria et texte Cabinet Grotesk.
 - Surfaces brume, actions bleues et encre bleu nuit.
 
 ## Colors
@@ -98,17 +104,21 @@ Le bleu brume `paper` constitue le fond principal ; `ink` porte les titres et le
 
 ## Typography
 
-Lisibilité hors hero : explications des fonctionnalités et paragraphes tarifs/à propos à 1.125rem (18px), bénéfices à 1.0625rem (17px), légendes et source de citation à .9375rem (15px), liens d'agrandissement et onglets à 1rem (16px). Formulaire : libellés et champs à 16px, saisie de graisse normale, placeholders `ink-muted` opaques sur `paper`. Footer hors blog : liens 16px, mentions secondaires 14px ; le footer du blog conserve son traitement. Les tailles des grands titres ne changent pas.
+Lisibilité hors hero : explications des fonctionnalités et paragraphes tarifs/à propos à 1.125rem (18px), bénéfices à 1.0625rem (17px), légendes et source de citation à .9375rem (15px), liens d'agrandissement et onglets à 1rem (16px). Formulaire : libellés et champs à 16px, saisie de graisse normale, placeholders `ink-muted` opaques sur `paper`. Footer : liens 16px, mentions secondaires 14px, y compris sur l'index du blog ; les articles conservent leur traitement.
 
-Les colonnes concernées autorisent la réduction de leur largeur minimale et les mots longs peuvent se couper lors de l'agrandissement du texte. Ces règles sont limitées au récit, au CTA, aux pages tarifs/à propos/contact et au footer hors blog, sans toucher à la hero ni aux articles.
+Les colonnes concernées autorisent la réduction de leur largeur minimale et les mots longs peuvent se couper lors de l'agrandissement du texte. Ces règles concernent le récit, le CTA, les pages tarifs/à propos/contact, l'index du blog et le footer hors pages d'articles. Les articles conservent leurs règles de lecture.
 
-Bricolage Grotesque 800 porte uniquement le titre du hero, auto-hébergée dans `/fonts/bricolage-grotesque-800.ttf`, avec sa licence OFL à côté du fichier. Alexandria reste la police des autres titres ; Cabinet Grotesk porte le texte courant. Les piles complètes restent définies dans `tailwind.config.js`. Swear Display demeure disponible dans la configuration, sans devenir une règle d'affichage par défaut.
+Bricolage Grotesque 800 porte les titres d'ouverture de l'accueil, Tarifs, À propos et de l'index du blog, ainsi que les noms des packs et les titres des thèmes du blog. Elle est auto-hébergée dans `/fonts/bricolage-grotesque-800.ttf`, avec sa licence OFL à côté du fichier. Alexandria reste la police des autres titres ; Cabinet Grotesk porte le texte courant. Les piles complètes restent définies dans `tailwind.config.js`. Swear Display demeure disponible dans la configuration, sans devenir une règle d'affichage par défaut.
+
+Les ouvertures secondaires utilisent le token `secondary-title`, avec une taille `clamp(2.5rem, 10.5vw, 4rem)` sous 768px. Leurs textes explicatifs et les extraits du blog sont à 18px, interligne 1.75 ; les dates sont à 15px. Les noms des packs et thèmes utilisent Bricolage 800 de 2rem à 2.75rem. Les titres d'articles de l'index restent en Alexandria 600. Ces règles ne concernent pas les pages d'articles.
 
 Les styles partagés display/headline sont les tokens ci-dessus. L'accueil possède des ajustements locaux : titre d'ouverture de 3.5rem à 6rem, interligne 1.03 ; titres de chapitre de 2rem à 3rem, graisse 600 et interligne 1.22. Le texte explicatif varie de 17px à 20px, avec des mesures de 38 à 54 caractères selon son rôle.
 
 ## Layout
 
 Le conteneur principal atteint 1440px, avec des marges intérieures de 20px sur petit écran et 32px sur grand écran. Les composants s'adaptent à leur contenu ; les proportions de l'accueil ne sont pas une grille obligatoire pour toutes les pages.
+
+Tarifs, À propos et l'index du blog emploient un conteneur de 1280px maximum, avec les mêmes marges intérieures 32px/20px. Les ouvertures laissent 80px de chaque côté vertical, puis 56px sous 768px. Le corps Tarifs/À propos reçoit 112px de padding vertical, puis 72px sur mobile. L'index sépare les thèmes de la liste par 80px sur desktop ; sous 1024px, la navigation thématique rejoint le flux au-dessus des articles. Les entrées gardent 40px de padding vertical, ramenés à 32px sous 768px. Les colonnes date/texte deviennent une seule colonne sur mobile.
 
 Le récit ménage 128px avant le prologue sur desktop et 72px sur mobile, puis 104px/80px après ce prologue. La séquence possède 24px de respiration à chaque extrémité ; ses chapitres mobiles et en mouvement réduit ont 72px de padding vertical. La citation conserve 104px de padding vertical et la conclusion 128px/88px. Le CTA partagé laisse 80px/64px avant le footer sur accueil, tarifs et à propos ; le blog n'est pas concerné.
 
@@ -132,7 +142,7 @@ Les quatre variantes sont primaire bleu, sombre, blanche sur fond sombre et disc
 
 ### Navigation
 
-Le header opaque et fixe mesure 72px, avec une séparation fine. Sur l'accueil uniquement, son fond bleu nuit et ses liens blancs prolongent le hero, y compris dans le menu mobile ; les autres routes gardent leur traitement. Les liens compacts utilisent un soulignement bleu au survol et au focus. Sous 768px, le menu devient un panneau vertical. Le sélecteur FR/EN expose l'état sélectionné.
+Le header opaque et fixe mesure 72px, avec une séparation fine. Sur les routes `/`, `/pricing`, `/about` et `/blog` dans les deux langues, son fond bleu nuit et ses liens blancs prolongent l'ouverture, y compris dans le menu mobile ; les autres routes, dont les articles, gardent leur traitement. Les liens compacts utilisent un soulignement bleu au survol et au focus. Sous 768px, le menu devient un panneau vertical. Le sélecteur FR/EN expose l'état sélectionné.
 
 ### Product evidence
 
@@ -161,6 +171,12 @@ Avec réduction des animations, la citation montre son état final et les trois 
 ### Closing action
 
 Le panneau bleu final emploie du texte blanc et un bouton blanc. L'action mène à la demande de démonstration.
+
+### Secondary marketing pages
+
+Les ouvertures secondaires portent une seconde ligne bleu clair, un texte teinté bleu et une entrée courte du titre (650ms), désactivée avec réduction du mouvement. Les listes ouvertes et traits fins organisent les packs, principes et articles. Le blog utilise des liens de thème ancrés avec une marge de défilement de 112px et une navigation latérale fixe dans son conteneur sur desktop.
+
+À propos réutilise la capture réelle entière `/marketing/app-screens/17-interview-guide-1920x1080.png`, avec son ratio naturel, un rayon de 16px et une ombre diffuse. La légende identifie les données de démonstration et offre un lien d'agrandissement vers le même fichier. Les choix éditoriaux et le verdict de revue de cette extension figurent dans `.impeccable/surfaces/secondary-marketing.md`.
 
 ## Do's and Don'ts
 

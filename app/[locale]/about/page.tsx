@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import CTA from '@/components/CTA'
+import { Link } from '@/i18n/navigation'
+import { ArrowUpRight } from 'lucide-react'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -27,30 +29,21 @@ export default async function AboutPage({ params }: Props) {
 
   return (
     <div className="about-readable bg-paper">
-      <section className="px-5 py-20 md:px-8 md:py-28">
-        <div className="mx-auto grid max-w-[1440px] gap-12 md:grid-cols-12 md:items-end">
-          <h1 className="display-title max-w-[11ch] md:col-span-7">{t('title')}</h1>
-          <p className="max-w-xl text-xl leading-9 text-ink-muted md:col-span-5">{t('intro')}</p>
+      <section className="secondary-opening">
+        <div className="secondary-container">
+          <h1>{t('titleLead')}<span>{t('titleAccent')}</span></h1>
+          <div className="secondary-intro"><p>{t('intro')}</p><Link href="/#fonctionnalites" className="button-on-dark">{t('seeProduct')}<ArrowUpRight size={18} aria-hidden="true" /></Link></div>
         </div>
       </section>
-
-      <section className="px-5 pb-24 md:px-8 md:pb-32">
-        <div className="about-bento mx-auto max-w-[1440px]">
-          <article className="about-story">
-            <h2 className="section-title max-w-[11ch]">{t('storyTitle')}</h2>
-            <p>{t('storyBody')}</p>
-          </article>
-          <div className="about-product-image">
-            <Image
-              src="/marketing/app-screens/14-candidate-profile-1920x1080.png"
-              alt={t('productAlt')}
-              fill
-              sizes="(max-width: 767px) 92vw, 55vw"
-              className="object-cover object-left-top"
-            />
-          </div>
+      <section className="secondary-container about-narrative">
+        <div className="about-story-intro"><h2>{t('storyTitle')}</h2><p>{t('storyBody')}</p></div>
+        <figure className="about-proof">
+          <Image src="/marketing/app-screens/17-interview-guide-1920x1080.png" alt={t('productAlt')} width={1920} height={1080} unoptimized />
+          <figcaption><span>{t('screenNote')}</span><a href="/marketing/app-screens/17-interview-guide-1920x1080.png" target="_blank" rel="noreferrer">{t('openScreen')}<ArrowUpRight size={18} aria-hidden="true" /></a></figcaption>
+        </figure>
+        <div className="about-principles">
           {principles.map((principle) => (
-            <article key={principle} className="about-principle">
+            <article key={principle}>
               <h3>{t(`${principle}Title`)}</h3>
               <p>{t(`${principle}Text`)}</p>
             </article>
