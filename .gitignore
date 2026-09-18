@@ -4,6 +4,9 @@ node_modules
 .DS_Store
 *.tsbuildinfo
 
+# Local typography preview only; commercial web license must be confirmed first.
+public/fonts/GenoidDemo-Bold.otf
+
 # Impeccable runtime artifacts (shared briefs and design docs stay tracked)
 .impeccable/browser/
 .impeccable/build/

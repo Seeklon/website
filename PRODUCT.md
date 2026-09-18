@@ -44,7 +44,7 @@ Seeklon présente une analyse explicable au recruteur : les éléments retenus e
 ## Brand Commitments
 
 - Nom du produit : Seeklon.
-- Conserver le titre français « Recruter plus vite » sur l'accueil.
+- Porter l'accueil avec la promesse « Recruter sans naviguer à vue » et rappeler explicitement que la décision reste humaine.
 - Privilégier des verbes d'action concrets, une voix directe et respectueuse du métier de recruteur.
 - Éviter les textes génériques, le jargon technique et toute formulation qui dévalorise les pratiques actuelles des recruteurs.
 - La marque peut employer ponctuellement des compositions Bento lorsqu'elles servent la hiérarchie et les démonstrations produit, sans transformer chaque contenu en carte.

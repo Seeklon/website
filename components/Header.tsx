@@ -37,7 +37,7 @@ export default function Header() {
       <div className="header-inner mx-auto h-[72px] max-w-[1440px] px-5 md:px-8">
         <Link href="/" className="site-logo group flex items-center gap-2.5" onClick={() => setIsOpen(false)}>
           <Image src="/logo.png" alt="" width={34} height={34} priority className="transition-transform group-hover:rotate-6" />
-          <span className="font-display text-2xl font-bold tracking-[-0.03em] text-ink">Seeklon</span>
+          <span className="wordmark text-2xl text-ink">Seeklon</span>
           <span className="sr-only">{t('home')}</span>
         </Link>
 

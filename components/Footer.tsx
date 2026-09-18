@@ -15,7 +15,7 @@ export default function Footer() {
           <div className="md:col-span-5">
             <Link href="/" className="inline-flex items-center gap-3 text-white">
               <Image src="/logo.png" alt="" width={36} height={36} className="brightness-0 invert" />
-              <span className="font-display text-3xl font-bold tracking-[-0.03em]">Seeklon</span>
+              <span className="wordmark text-3xl">Seeklon</span>
             </Link>
             <p className="mt-5 max-w-sm leading-7 text-blue-100">{t('tagline')}</p>
           </div>

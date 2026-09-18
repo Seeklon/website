@@ -51,13 +51,13 @@ export default function Hero() {
           ))}
         </div>
         <div className="opening-heading">
+          <p className="opening-eyebrow">{t('eyebrow')}</p>
           <h1 id="hero-title" aria-label={t('title')}>
             <span className="opening-title-lead" aria-hidden="true">{t('titleLead')}</span>
             <span className="opening-title-motion" aria-hidden="true">
               {Array.from(t('titleEnd')).map((letter, index) => <span key={index} style={{ animationDelay: `${120 + index * 35}ms` }}>{letter === ' ' ? '\u00a0' : letter}</span>)}
             </span>
           </h1>
-          <p className="opening-promise">{t('better')}</p>
           <p className="opening-description">{t('subtitle')}</p>
           <Link href="/contact" className="button-on-dark">{t('requestDemo')}<ArrowUpRight size={18} aria-hidden="true" /></Link>
         </div>

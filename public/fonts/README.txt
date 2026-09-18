@@ -1,9 +1,16 @@
-Polices GT Walsheim (titres H1/H2)
-=================================
+Polices auto-hébergées
+======================
 
-Placer ici les fichiers suivants (format .woff2) :
-- GTWalsheim-Regular.woff2  (poids 400)
-- GTWalsheim-Bold.woff2    (poids 700)
+- Bricolage Grotesque 800 : ouvertures marketing secondaires.
+- Archivo variable latin : grands titres éditoriaux de l'accueil.
 
-GT Walsheim est une police commerciale Grilli Type.
-Si les fichiers sont absents, le navigateur utilisera Space Grotesk en secours pour les titres.
+Ces familles sont distribuées sous SIL Open Font License 1.1. Les fichiers de
+licence correspondants sont conservés dans ce dossier.
+
+Preview locale uniquement
+--------------------------
+
+`GenoidDemo-Bold.otf` peut être extrait depuis le drop Orca pour prévisualiser
+le mot-symbole Seeklon et le H1 principal. Le fichier est une version de démonstration commerciale
+et reste exclu de Git. Avant production, fournir un asset web couvert par une
+licence Limitype confirmée ; sinon la pile de fallback reste active.

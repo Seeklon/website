@@ -9,12 +9,25 @@ colors:
   coral: "#ff806b"
   white: "#ffffff"
 typography:
+  wordmark:
+    fontFamily: "Genoid Preview, Bricolage Grotesque, Alexandria, sans-serif"
+    fontSize: "24px"
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: "-0.025em"
   hero-title:
-    fontFamily: "Bricolage Grotesque, Alexandria, sans-serif"
+    fontFamily: "Genoid Preview, Archivo, Alexandria, sans-serif"
     fontSize: "clamp(3.5rem, 7.5vw, 6rem)"
-    fontWeight: 800
-    lineHeight: 1.03
-    letterSpacing: "-0.035em"
+    fontWeight: 700
+    lineHeight: 0.94
+    letterSpacing: "0"
+    wordSpacing: "0.08em"
+  editorial-title:
+    fontFamily: "Archivo, Alexandria, sans-serif"
+    fontSize: "clamp(2rem, 5.8vw, 5.4rem)"
+    fontWeight: 700
+    lineHeight: 1.08
+    letterSpacing: "-0.04em"
   secondary-title:
     fontFamily: "Bricolage Grotesque, Alexandria, sans-serif"
     fontSize: "clamp(3rem, 5.8vw, 5.5rem)"
@@ -77,7 +90,7 @@ components:
 
 **Creative North Star: "Un recrutement accompagné"**
 
-Seeklon associe un fond bleu brume, une encre bleu nuit et le bleu de marque à des captures réelles du produit. La hiérarchie aide à comprendre le travail et laisse la décision au recruteur. Le logo et les polices existants restent les repères de marque.
+Seeklon associe un fond bleu brume, une encre bleu nuit et le bleu de marque à des captures réelles du produit. La hiérarchie aide à comprendre le travail et laisse la décision au recruteur. Sur l'accueil, de grands titres néo-grotesques, compacts et fortement composés donnent une voix éditoriale contemporaine ; la sans-serif existante conserve toutes les fonctions de lecture et d'action.
 
 Ce document décrit les règles réutilisées dans le code. La composition de l'accueil et son public prioritaire sont consignés dans `.impeccable/surfaces/app-locale-page-tsx.md`.
 
@@ -85,7 +98,9 @@ La cible issue des retours utilisateurs de septembre 2026 est consignée dans `S
 
 **Key Characteristics:**
 - Captures réelles, entières et droites sur l'accueil.
-- Titres d'ouverture Bricolage Grotesque sur l'accueil, Tarifs, À propos et l'index du blog ; titres courants Alexandria et texte Cabinet Grotesk.
+- Mot-symbole Seeklon et H1 principal en Genoid Bold pour la prévisualisation locale, avec des fallbacks versionnables tant que la licence web et l'asset de production ne sont pas fournis.
+- Autres grands titres de l'accueil en Archivo, alternative néo-grotesque OFL auto-hébergée inspirée des références Neue Montreal sans employer cette fonte commerciale.
+- Ouvertures secondaires en Bricolage Grotesque ; titres courants Alexandria et texte, navigation, boutons et micro-labels dans la sans-serif existante.
 - Surfaces brume, actions bleues et encre bleu nuit.
 
 ## Colors
@@ -110,11 +125,15 @@ Lisibilité hors hero : explications des fonctionnalités et paragraphes tarifs/
 
 Les colonnes concernées autorisent la réduction de leur largeur minimale et les mots longs peuvent se couper lors de l'agrandissement du texte. Ces règles concernent le récit, le CTA, les pages tarifs/à propos/contact, l'index du blog et le footer hors pages d'articles. Les articles conservent leurs règles de lecture.
 
-Bricolage Grotesque 800 porte les titres d'ouverture de l'accueil, Tarifs, À propos et de l'index du blog, ainsi que les noms des packs et les titres des thèmes du blog. Elle est auto-hébergée dans `/fonts/bricolage-grotesque-800.ttf`, avec sa licence OFL à côté du fichier. Alexandria reste la police des autres titres ; Cabinet Grotesk porte le texte courant. Les piles complètes restent définies dans `tailwind.config.js`. Swear Display demeure disponible dans la configuration, sans devenir une règle d'affichage par défaut.
+Genoid Demo Bold porte le texte « Seeklon » du header et du footer ainsi que le H1 principal dans la prévisualisation locale. Son OTF est volontairement exclu de Git : le fichier fourni est une version de démonstration commerciale, et l'asset web ne pourra entrer en production qu'après confirmation de la licence Limitype. En son absence, le wordmark retombe sur Bricolage Grotesque puis Alexandria ; le H1 retombe sur Archivo puis Alexandria, sans bloquer l'affichage.
+
+Archivo variable porte les grands titres éditoriaux du prologue, des chapitres, de la citation et de la conclusion, ainsi que le fallback versionnable du H1. Son sous-ensemble latin WOFF2 est auto-hébergé dans `/fonts/archivo-variable-latin.woff2`, avec la licence OFL conservée dans `/fonts/archivo-OFL.txt`. Aucun paquet de fonte ni chargement distant supplémentaire n'est requis.
+
+La sans-serif existante reste la règle du texte courant, de la navigation, des boutons, des légendes, des repères et des micro-labels. Bricolage Grotesque 800 demeure réservée aux ouvertures secondaires, aux noms des packs et aux thèmes du blog ; elle est auto-hébergée dans `/fonts/bricolage-grotesque-800.ttf` avec sa licence OFL. Alexandria reste la police des autres titres hors accueil.
 
 Les ouvertures secondaires utilisent le token `secondary-title`, avec une taille `clamp(2.5rem, 10.5vw, 4rem)` sous 768px. Leurs textes explicatifs et les extraits du blog sont à 18px, interligne 1.75 ; les dates sont à 15px. Les noms des packs et thèmes utilisent Bricolage 800 de 2rem à 2.75rem. Les titres d'articles de l'index restent en Alexandria 600. Ces règles ne concernent pas les pages d'articles.
 
-Les styles partagés display/headline sont les tokens ci-dessus. L'accueil possède des ajustements locaux : titre d'ouverture de 3.5rem à 6rem, interligne 1.03 ; titres de chapitre de 2rem à 3rem, graisse 600 et interligne 1.22. Le texte explicatif varie de 17px à 20px, avec des mesures de 38 à 54 caractères selon son rôle.
+Les styles partagés display/headline sont les tokens ci-dessus. Le H1 Genoid de l'accueil va de 3.5rem à 6rem, graisse 700 et interligne .94 ; son tracking reste neutre et son espacement des mots passe à .08em pour préserver les blancs intérieurs malgré l'animation caractère par caractère. Archivo porte les titres de chapitre de 2rem à 3rem, graisse 600 et interligne 1.08, le prologue jusqu'à 5.4rem et la conclusion jusqu'à 6rem. Sous 768px, le hero descend à 3rem et le prologue à 2.8rem. Le texte explicatif reste dans la sans-serif courante de 17px à 20px, avec des mesures de 38 à 60 caractères selon son rôle.
 
 ## Layout
 
@@ -124,9 +143,9 @@ Tarifs, À propos et l'index du blog emploient un conteneur de 1280px maximum, a
 
 Le prologue du récit devient une scène centrée d'au moins 78vh sur desktop, avec 120 à 190px de respiration en haut et 128 à 208px en bas. Sur mobile, il conserve 104px puis 120px. La séquence sombre reçoit 72px en haut et 96px en bas ; sa colonne narrative réserve 240px supplémentaires en sortie afin que le titre de la troisième étape puisse atteindre le haut de la capture avant que celle-ci ne quitte sa position fixe, y compris lorsque la preuve occupe toute la largeur disponible. Ses chapitres desktop occupent au plus `60vh - 16px` ou 560px afin que la séquence complète reste compacte. Ses chapitres mobiles et en mouvement réduit ont 72 à 80px de padding vertical, sans cette réserve. La citation conserve 104px de padding vertical et rejoint la conclusion bleue dans une même section. Le CTA partagé reste employé sur tarifs et à propos ; l'accueil possède un seul CTA final intégré à sa conclusion.
 
-L'accueil réunit le titre centré sur deux lignes, la promesse, le contexte et une capture principale entière dans une seule scène bleu nuit éclairée de bleu Seeklon. Des captures décoratives en profondeur entourent le titre sur grand écran et disparaissent à 1100px de largeur ou moins. Entre 800 et 950px de hauteur sur desktop, la preuve principale est ramenée à 520px afin que son bord inférieur et l'invitation à poursuivre restent dans le premier viewport. La suite ouvre un prologue clair, ample et concentrique, puis bascule dans une scène bleu nuit continue : halos lumineux, profondeur atmosphérique et affichage produit fixe pendant les trois étapes. Cette composition reprend de Reflect le rythme, l'immersion et la respiration, sans sa palette ni ses assets. Sous 1024px, ou avec réduction des animations, chaque étape affiche sa capture dans le flux. Sur les desktops de 800px de haut ou moins, le cadre fixe et ses espacements se compactent sans supprimer l'animation.
+L'accueil réunit un eyebrow sans-serif, le titre éditorial centré sur deux lignes, une explication et une capture principale entière dans une seule scène bleu nuit éclairée de bleu Seeklon. Des captures décoratives en profondeur entourent le titre sur grand écran et disparaissent à 1100px de largeur ou moins. Entre 800 et 950px de hauteur sur desktop, la preuve principale est ramenée à 520px afin que son bord inférieur et l'invitation à poursuivre restent dans le premier viewport. La suite ouvre un prologue clair, ample et concentrique, puis bascule dans une scène bleu nuit continue : halos lumineux, profondeur atmosphérique et affichage produit fixe pendant les trois étapes. Cette composition conserve le rythme, l'immersion et la respiration existants ; la nouvelle voix vient de la typographie et du texte, sans reprendre la palette ni les assets des références. Sous 1024px, ou avec réduction des animations, chaque étape affiche sa capture dans le flux. Sur les desktops de 800px de haut ou moins, le cadre fixe et ses espacements se compactent sans supprimer l'animation.
 
-Les trois fonctionnalités conservent leurs textes, tailles de titres et espaces entre chapitres. À l'intérieur : interligne des titres 1.22, numéro à 20px du titre, explication à 40px et résultat à 24px de l'explication. En lecture linéaire, la capture suit le résultat à 56px ; sa légende est à 24px. Sur desktop, les onglets précèdent la capture de 32px, puis le résultat est séparé de la légende par 40px. Ces ajustements restent locaux à la séquence.
+Les trois fonctionnalités conservent leur structure et leurs espaces entre chapitres. À l'intérieur : interligne éditorial des titres 1.08, numéro à 20px du titre, explication à 40px et résultat à 24px de l'explication. En lecture linéaire, la capture suit le résultat à 56px ; sa légende est à 24px. Sur desktop, les onglets précèdent la capture de 32px, puis le résultat est séparé de la légende par 40px. Ces ajustements restent locaux à la séquence.
 
 ## Elevation & Depth
 
@@ -154,13 +173,13 @@ Dans le guide actif de la séquence, un contour SVG se dessine autour de la deux
 
 ### Opening
 
-L'ouverture s'inspire de la composition demandée de Pitch et d'une entrée typographique de type Jitter. Le titre est centré sur deux lignes, avec un CTA blanc et une capture d'offre entière de 820px maximum, ramenée à 520px sur les viewports desktop de 800 à 950px de haut. Le fond bleu nuit reçoit deux éclairages radiaux bleus ; quatre captures réelles décoratives sont teintées, à 48 % d'opacité et floutées de 1.5px. Elles restent droites et gardent leur ratio ; elles ne constituent pas la preuve principale.
+L'ouverture conserve sa composition immersive et son entrée typographique. Le H1 Genoid 700 est centré sur deux lignes, précédé d'un eyebrow dans la sans-serif courante, puis suivi d'un CTA blanc et d'une capture d'offre entière de 820px maximum, ramenée à 520px sur les viewports desktop de 800 à 950px de haut. Archivo constitue son fallback versionnable. Le fond bleu nuit reçoit deux éclairages radiaux bleus ; quatre captures réelles décoratives sont teintées, à 48 % d'opacité et floutées de 1.5px. Elles restent droites et gardent leur ratio ; elles ne constituent pas la preuve principale.
 
-La seconde ligne « plus vite » utilise le bleu clair `#8cc4ff` déjà présent dans l'ambiance, sans dégradé. Le texte de soutien explicite les résultats : une offre claire, des CV organisés et des entretiens préparés, avec une décision qui reste humaine. La navigation nomme cette séquence « Le parcours » / « How it works ».
+La seconde ligne « naviguer à vue » / « flying blind » utilise le bleu clair `#8cc4ff` déjà présent dans l'ambiance, sans dégradé. Le texte de soutien décrit le passage de l'intuition à des étapes claires sans attribuer la décision au produit. La navigation nomme cette séquence « Le parcours » / « How it works ».
 
 Les deux particules centrales sont masquées afin de préserver le contraste du titre pendant le mouvement ; six accents ambiants restent visibles.
 
-La première ligne entre en 650ms. La seconde se compose lettre par lettre avec compression et étirement en 760ms, un délai initial de 120ms et un décalage de 35ms par caractère. La promesse, l'explication et le CTA suivent entre 520 et 760ms. La figure entière, capture et légende réunies, avance de 40px et passe de 0.88 à 1 en 900ms après 860ms. Sous 768px, les caractères démarrent à 8px de décalage et 1.18 d'étirement vertical, contre 24px et 1.45 sur desktop. L'animation d'entrée ne boucle pas et aucun contrôle de relance n'est livré ; le contrôle pause/reprise ne concerne que les mouvements ambiants. À 1100px de largeur ou moins, les fonds décoratifs disparaissent ; l'introduction reste animée, y compris sur mobile. En mode réduit, tous ces éléments sont immédiatement à leur place et les contrôles d'animation sont masqués. Aucun sélecteur de capture ni carrousel n'est présent.
+La première ligne entre en 650ms. La seconde se compose lettre par lettre avec compression et étirement en 760ms, un délai initial de 120ms et un décalage de 35ms par caractère. L'eyebrow, l'explication et le CTA suivent la même séquence d'entrée existante. La figure entière, capture et légende réunies, avance de 40px et passe de 0.88 à 1 en 900ms après 860ms. Sous 768px, les caractères démarrent à 8px de décalage et 1.18 d'étirement vertical, contre 24px et 1.45 sur desktop. L'animation d'entrée ne boucle pas et aucun contrôle de relance n'est livré ; le contrôle pause/reprise ne concerne que les mouvements ambiants. À 1100px de largeur ou moins, les fonds décoratifs disparaissent ; l'introduction reste animée, y compris sur mobile. En mode réduit, tous ces éléments sont immédiatement à leur place et les contrôles d'animation sont masqués. Aucun sélecteur de capture ni carrousel n'est présent.
 
 Le titre du prologue se révèle mot par mot en 820ms, depuis 34px de décalage, une échelle de 0.94 et 12px de flou ; le texte de soutien suit en 760ms après 480ms. À chaque changement d'étape, le titre actif se reforme en 620ms depuis 18px et 8px de flou. Les deux lignes de la résolution reprennent la révélation en 820ms avec des délais de 300 et 410ms. Ces effets ne masquent le contenu qu'après détection d'`IntersectionObserver` et affichent immédiatement l'état final en mouvement réduit.
 
@@ -185,7 +204,9 @@ Les ouvertures secondaires portent une seconde ligne bleu clair, un texte teint�
 ## Do's and Don'ts
 
 ### Do:
-- **Do** conserver le logo, le bleu Seeklon et les polices existantes.
+- **Do** réserver Genoid au mot-symbole et au H1 principal, avec un asset local non versionné tant que sa licence web n'est pas confirmée.
+- **Do** réserver Archivo aux autres grands titres éditoriaux de l'accueil et au fallback du H1.
+- **Do** conserver la sans-serif actuelle pour le corps, la navigation, les boutons et les micro-labels.
 - **Do** montrer des captures entières sur l'accueil et identifier les données de démonstration.
 - **Do** préserver la lecture linéaire sur mobile et avec réduction des animations.
 
