@@ -43,7 +43,7 @@ Le prologue révèle ses mots en 820ms avec décalage, échelle et flou décrois
 
 La citation déclenche une seule fois un balayage bleu de 850ms lorsqu'elle atteint 78 % de la hauteur du viewport. Deux couches de texte alignées accompagnent le fond, et la citation rejoint sa place depuis 24px de décalage et une échelle de 0.96 en 650ms. Le doublon visuel est masqué aux lecteurs d'écran. Le balayage existe aussi sur mobile ; le mode réduit et l'absence d'IntersectionObserver affichent directement l'état final de la citation. Le mode réduit garde également les captures dans le flux.
 
-Ces animations sont implémentées sans nouvelle dépendance. La revue Chromium du 18 septembre 2026 valide les variantes FR et EN à 1440×900, 1024×800 et 390×844, le mode réduit à 390×844, ainsi que les trois états synchronisés du parcours desktop. Elle confirme aussi le chargement local de Genoid et l'absence de débordement du H1 français à 390px après neutralisation du tracking et ajout de l'espacement des mots. Ce verdict ne certifie ni une réaction subjective « wouah », ni les performances sur appareils réels.
+Ces animations sont implémentées sans nouvelle dépendance. La revue Chromium du 18 septembre 2026 valide les variantes FR et EN à 1440×900, 1024×800 et 390×844, le mode réduit à 390×844, ainsi que les trois états synchronisés du parcours desktop. Une vérification instrumentée complémentaire à 360×800 et 320×720 confirme exactement deux lignes, une seconde ligne non sécable et aucun débordement horizontal, avec Genoid chargée comme avec son fallback Archivo forcé. Ce verdict ne certifie ni une réaction subjective « wouah », ni les performances sur appareils réels.
 
 ## Evidence
 
