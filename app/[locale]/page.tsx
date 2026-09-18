@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import CTA from '@/components/CTA'
 import Features from '@/components/Features'
 import Hero from '@/components/Hero'
 
@@ -33,7 +32,6 @@ export default async function HomePage({ params }: Props) {
     <>
       <Hero />
       <Features />
-      <CTA />
     </>
   )
 }

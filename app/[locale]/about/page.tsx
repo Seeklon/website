@@ -39,7 +39,7 @@ export default async function AboutPage({ params }: Props) {
         <div className="about-story-intro"><h2>{t('storyTitle')}</h2><p>{t('storyBody')}</p></div>
         <figure className="about-proof">
           <Image src="/marketing/app-screens/17-interview-guide-1920x1080.png" alt={t('productAlt')} width={1920} height={1080} unoptimized />
-          <figcaption><span>{t('screenNote')}</span><a href="/marketing/app-screens/17-interview-guide-1920x1080.png" target="_blank" rel="noreferrer">{t('openScreen')}<ArrowUpRight size={18} aria-hidden="true" /></a></figcaption>
+          <figcaption><span>{t('screenNote')}</span><a href="/marketing/app-screens/17-interview-guide-1920x1080.png" target="_blank" rel="noreferrer" aria-label={`${t('openScreen')} — ${t('newTab')}`}>{t('openScreen')}<ArrowUpRight size={18} aria-hidden="true" /></a></figcaption>
         </figure>
         <div className="about-principles">
           {principles.map((principle) => (

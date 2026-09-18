@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowDown, ArrowUpRight, Pause, Play, RotateCcw } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Pause, Play } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
@@ -16,7 +16,6 @@ const productScreen = '/marketing/app-screens/09-offer-detail-1920x1080.png'
 
 export default function Hero() {
   const t = useTranslations('Hero')
-  const [take, setTake] = useState(0)
   const [paused, setPaused] = useState(false)
   const [visible, setVisible] = useState(true)
   const opening = useRef<HTMLElement>(null)
@@ -38,10 +37,9 @@ export default function Hero() {
   return (
     <section ref={opening} className="recruit-opening" data-paused={paused || !visible} aria-labelledby="hero-title">
       <div className="opening-controls">
-        <button type="button" aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? <Play size={16} aria-hidden="true" /> : <Pause size={16} aria-hidden="true" />}{t('pauseMotion')}</button>
-        <button className="opening-replay" type="button" onClick={() => setTake(value => value + 1)}><RotateCcw size={16} aria-hidden="true" />{t('replay')}</button>
+        <button type="button" aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? <Play size={16} aria-hidden="true" /> : <Pause size={16} aria-hidden="true" />}{paused ? t('resumeMotion') : t('pauseMotion')}</button>
       </div>
-      <div className="opening-scene" key={take}>
+      <div className="opening-scene">
         <div className="opening-current" aria-hidden="true">
           {Array.from({ length: 8 }, (_, index) => <i key={index} style={{ left: `${8 + index * 12}%`, top: `${90 + (index % 3) * 145}px`, animationDelay: `${index * -1.7}s` }} />)}
         </div>
@@ -64,10 +62,10 @@ export default function Hero() {
           <Link href="/contact" className="button-on-dark">{t('requestDemo')}<ArrowUpRight size={18} aria-hidden="true" /></Link>
         </div>
         <figure className="opening-proof">
-          <a className="opening-preview" href={productScreen} target="_blank" rel="noreferrer" aria-label={t('openScreen')}>
+          <a className="opening-preview" href={productScreen} target="_blank" rel="noreferrer" aria-label={`${t('openScreen')} — ${t('newTab')}`}>
             <Image src={productScreen} alt={t('writeAlt')} width={1920} height={1080} unoptimized priority />
           </a>
-          <figcaption><span>{t('openingCaption')}</span><a href={productScreen} target="_blank" rel="noreferrer">{t('openScreen')}<ArrowUpRight size={15} aria-hidden="true" /></a></figcaption>
+          <figcaption><span>{t('openingCaption')}</span><a href={productScreen} target="_blank" rel="noreferrer" aria-label={`${t('openScreen')} — ${t('newTab')}`}>{t('openScreen')}<ArrowUpRight size={15} aria-hidden="true" /></a></figcaption>
         </figure>
       </div>
       <div className="opening-footer">

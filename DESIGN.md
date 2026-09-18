@@ -81,6 +81,8 @@ Seeklon associe un fond bleu brume, une encre bleu nuit et le bleu de marque à 
 
 Ce document décrit les règles réutilisées dans le code. La composition de l'accueil et son public prioritaire sont consignés dans `.impeccable/surfaces/app-locale-page-tsx.md`.
 
+La cible issue des retours utilisateurs de septembre 2026 est consignée dans `SITE-REFONTE-DIRECTIVES.md`. Ce document sépare explicitement les corrections à livrer, les explorations et les informations encore à confirmer ; tant qu'elles ne sont pas implémentées, les sections ci-dessous continuent de décrire l'état réel.
+
 **Key Characteristics:**
 - Captures réelles, entières et droites sur l'accueil.
 - Titres d'ouverture Bricolage Grotesque sur l'accueil, Tarifs, À propos et l'index du blog ; titres courants Alexandria et texte Cabinet Grotesk.
@@ -120,15 +122,15 @@ Le conteneur principal atteint 1440px, avec des marges intérieures de 20px sur 
 
 Tarifs, À propos et l'index du blog emploient un conteneur de 1280px maximum, avec les mêmes marges intérieures 32px/20px. Les ouvertures laissent 80px de chaque côté vertical, puis 56px sous 768px. Le corps Tarifs/À propos reçoit 112px de padding vertical, puis 72px sur mobile. L'index sépare les thèmes de la liste par 80px sur desktop ; sous 1024px, la navigation thématique rejoint le flux au-dessus des articles. Les entrées gardent 40px de padding vertical, ramenés à 32px sous 768px. Les colonnes date/texte deviennent une seule colonne sur mobile.
 
-Le récit ménage 128px avant le prologue sur desktop et 72px sur mobile, puis 104px/80px après ce prologue. La séquence possède 24px de respiration à chaque extrémité ; ses chapitres mobiles et en mouvement réduit ont 72px de padding vertical. La citation conserve 104px de padding vertical et la conclusion 128px/88px. Le CTA partagé laisse 80px/64px avant le footer sur accueil, tarifs et à propos ; le blog n'est pas concerné.
+Le prologue du récit devient une scène centrée d'au moins 78vh sur desktop, avec 120 à 190px de respiration en haut et 128 à 208px en bas. Sur mobile, il conserve 104px puis 120px. La séquence sombre reçoit 72px en haut et 96px en bas ; sa colonne narrative réserve 240px supplémentaires en sortie afin que le titre de la troisième étape puisse atteindre le haut de la capture avant que celle-ci ne quitte sa position fixe, y compris lorsque la preuve occupe toute la largeur disponible. Ses chapitres desktop occupent au plus `60vh - 16px` ou 560px afin que la séquence complète reste compacte. Ses chapitres mobiles et en mouvement réduit ont 72 à 80px de padding vertical, sans cette réserve. La citation conserve 104px de padding vertical et rejoint la conclusion bleue dans une même section. Le CTA partagé reste employé sur tarifs et à propos ; l'accueil possède un seul CTA final intégré à sa conclusion.
 
-Le prototype actuel de l'accueil réunit le titre centré sur deux lignes, la promesse, le contexte et une capture principale entière dans une seule scène bleu nuit éclairée de bleu Seeklon. Des captures décoratives en profondeur entourent le titre sur grand écran et disparaissent à 1100px de largeur ou moins. Cette proposition reste soumise au retour esthétique de l'utilisateur. La suite conserve un affichage produit fixe pendant trois étapes de lecture. Sous 1024px, lorsque la hauteur du viewport ne dépasse pas 720px, ou avec réduction des animations, chaque étape de cette séquence affiche sa capture dans le flux.
+L'accueil réunit le titre centré sur deux lignes, la promesse, le contexte et une capture principale entière dans une seule scène bleu nuit éclairée de bleu Seeklon. Des captures décoratives en profondeur entourent le titre sur grand écran et disparaissent à 1100px de largeur ou moins. Entre 800 et 950px de hauteur sur desktop, la preuve principale est ramenée à 520px afin que son bord inférieur et l'invitation à poursuivre restent dans le premier viewport. La suite ouvre un prologue clair, ample et concentrique, puis bascule dans une scène bleu nuit continue : halos lumineux, profondeur atmosphérique et affichage produit fixe pendant les trois étapes. Cette composition reprend de Reflect le rythme, l'immersion et la respiration, sans sa palette ni ses assets. Sous 1024px, ou avec réduction des animations, chaque étape affiche sa capture dans le flux. Sur les desktops de 800px de haut ou moins, le cadre fixe et ses espacements se compactent sans supprimer l'animation.
 
 Les trois fonctionnalités conservent leurs textes, tailles de titres et espaces entre chapitres. À l'intérieur : interligne des titres 1.22, numéro à 20px du titre, explication à 40px et résultat à 24px de l'explication. En lecture linéaire, la capture suit le résultat à 56px ; sa légende est à 24px. Sur desktop, les onglets précèdent la capture de 32px, puis le résultat est séparé de la légende par 40px. Ces ajustements restent locaux à la séquence.
 
 ## Elevation & Depth
 
-Les fonds et les traits fins définissent les plans. Des ombres diffuses bleu nuit détachent les boutons et les captures, sans rotation des captures. Les écrans décoratifs du hero dérivent doucement ; la preuve principale reste stable après son entrée. Les valeurs d'ombre et les transitions figurent dans le sidecar.
+Les fonds, halos et orbites définissent les plans. Des ombres diffuses bleu nuit détachent les boutons et les captures, sans rotation des captures. Les écrans décoratifs du hero dérivent doucement ; la preuve principale reste stable après son entrée. Le halo de l'ouverture, les cercles du prologue et la profondeur lumineuse de la séquence sont produits en CSS : aucun visuel généré ne remplace les preuves produit. Les valeurs d'ombre et les transitions figurent dans le sidecar.
 
 ## Shapes
 
@@ -142,23 +144,25 @@ Les quatre variantes sont primaire bleu, sombre, blanche sur fond sombre et disc
 
 ### Navigation
 
-Le header opaque et fixe mesure 72px, avec une séparation fine. Sur les routes `/`, `/pricing`, `/about` et `/blog` dans les deux langues, son fond bleu nuit et ses liens blancs prolongent l'ouverture, y compris dans le menu mobile ; les autres routes, dont les articles, gardent leur traitement. Les liens compacts utilisent un soulignement bleu au survol et au focus. Sous 768px, le menu devient un panneau vertical. Le sélecteur FR/EN expose l'état sélectionné.
+Le header fixe mesure 72px, avec une séparation fine et un fond translucide qui protège la lisibilité. Sur les routes `/`, `/pricing`, `/about` et `/blog` dans les deux langues, son fond bleu nuit et ses liens blancs prolongent l'ouverture, y compris dans le menu mobile ; les autres routes, dont les articles, gardent leur traitement. Une grille à trois colonnes centre réellement la navigation, indépendamment de la largeur du logo et des actions. Les liens restent ouverts, sans capsule englobante, avec 32px entre eux et 24px entre le sélecteur de langue et le CTA ; leur survol et leur focus emploient une surface locale discrète. La page ou la section courante est annoncée par `aria-current` et soulignée par un trait court. Sous 1024px, le menu devient un panneau vertical afin de préserver les espacements de la navigation. Le sélecteur FR/EN expose l'état sélectionné et conserve l'ancre courante.
 
 ### Product evidence
 
-Les captures de l'accueil restent complètes, avec une hauteur automatique. La séquence présente une seule preuve active sur grand écran et offre un lien vers le fichier original. Les légendes identifient les données de démonstration et le contour ajouté au guide. Les écrans restent en place pendant un fondu de 220ms ; le curseur partagé des trois onglets glisse en 380ms. Le résultat apparaît en 300ms après un délai de 120ms.
+Les captures de l'accueil restent complètes, alignées dans un cadre fixe au ratio 16:9. La séquence présente une seule preuve active sur grand écran, entourée d'un halo bleu et d'une profondeur lumineuse ; elle offre un lien vers le fichier original dans un nouvel onglet annoncé. Les légendes identifient les données de démonstration et le contour ajouté au guide. Le scroll de page reste vertical, mais les écrans progressent horizontalement : l'étape suivante entre par la droite et l'étape précédente revient depuis la gauche en 720ms. Un repère circulaire lumineux suit la même direction sur une ligne 01–02–03 en 620ms. Les verbes Rédiger, Trier et Préparer portent la navigation ; les numéros restent des repères secondaires. Le résultat apparaît en 420ms sans délai artificiel. Le changement d'écran se déclenche lorsque le titre du chapitre atteint le haut de la capture fixe, afin que texte et preuve restent alignés, notamment à l'étape 03.
 
 Dans le guide actif de la séquence, un contour SVG se dessine autour de la deuxième question en 700ms, après 220ms ; il ne modifie pas le fichier de capture.
 
-### Opening prototype
+### Opening
 
-Premier test inspiré de la composition demandée de Pitch et d'une entrée typographique de type Jitter ; ce traitement reste local au hero et attend le retour esthétique de l'utilisateur. Le titre est centré sur deux lignes, avec un CTA blanc et une capture d'offre entière de 960px maximum. Le fond bleu nuit reçoit deux éclairages radiaux bleus ; quatre captures réelles décoratives sont teintées, à 48 % d'opacité et floutées de 1.5px. Elles restent droites et gardent leur ratio ; elles ne constituent pas la preuve principale.
+L'ouverture s'inspire de la composition demandée de Pitch et d'une entrée typographique de type Jitter. Le titre est centré sur deux lignes, avec un CTA blanc et une capture d'offre entière de 820px maximum, ramenée à 520px sur les viewports desktop de 800 à 950px de haut. Le fond bleu nuit reçoit deux éclairages radiaux bleus ; quatre captures réelles décoratives sont teintées, à 48 % d'opacité et floutées de 1.5px. Elles restent droites et gardent leur ratio ; elles ne constituent pas la preuve principale.
 
-La seconde ligne « plus vite » utilise le bleu clair `#8cc4ff` déjà présent dans l'ambiance, sans dégradé. Le texte de soutien explicite les résultats : une offre claire, des CV organisés et des entretiens préparés, avec une décision qui reste humaine. La navbar reste inchangée.
+La seconde ligne « plus vite » utilise le bleu clair `#8cc4ff` déjà présent dans l'ambiance, sans dégradé. Le texte de soutien explicite les résultats : une offre claire, des CV organisés et des entretiens préparés, avec une décision qui reste humaine. La navigation nomme cette séquence « Le parcours » / « How it works ».
 
 Les deux particules centrales sont masquées afin de préserver le contraste du titre pendant le mouvement ; six accents ambiants restent visibles.
 
-La première ligne entre en 650ms. La seconde se compose lettre par lettre avec compression et étirement en 760ms, un délai initial de 120ms et un décalage de 35ms par caractère. La figure entière, capture et légende réunies, avance de 40px et passe de 0.88 à 1 en 1000ms après 180ms. Sous 768px, les caractères démarrent à 8px de décalage et 1.18 d'étirement vertical, contre 24px et 1.45 sur desktop. L'animation d'entrée ne boucle pas ; un bouton permet de la rejouer et reste hors de la scène remontée pour conserver son focus. À 1100px de largeur ou moins, les fonds décoratifs disparaissent ; l'introduction reste animée, y compris sur mobile. En mode réduit, tous ces éléments sont immédiatement à leur place et les contrôles d'animation sont masqués. Aucun sélecteur de capture ni carrousel n'est présent.
+La première ligne entre en 650ms. La seconde se compose lettre par lettre avec compression et étirement en 760ms, un délai initial de 120ms et un décalage de 35ms par caractère. La promesse, l'explication et le CTA suivent entre 520 et 760ms. La figure entière, capture et légende réunies, avance de 40px et passe de 0.88 à 1 en 900ms après 860ms. Sous 768px, les caractères démarrent à 8px de décalage et 1.18 d'étirement vertical, contre 24px et 1.45 sur desktop. L'animation d'entrée ne boucle pas et aucun contrôle de relance n'est livré ; le contrôle pause/reprise ne concerne que les mouvements ambiants. À 1100px de largeur ou moins, les fonds décoratifs disparaissent ; l'introduction reste animée, y compris sur mobile. En mode réduit, tous ces éléments sont immédiatement à leur place et les contrôles d'animation sont masqués. Aucun sélecteur de capture ni carrousel n'est présent.
+
+Le titre du prologue se révèle mot par mot en 820ms, depuis 34px de décalage, une échelle de 0.94 et 12px de flou ; le texte de soutien suit en 760ms après 480ms. À chaque changement d'étape, le titre actif se reforme en 620ms depuis 18px et 8px de flou. Les deux lignes de la résolution reprennent la révélation en 820ms avec des délais de 300 et 410ms. Ces effets ne masquent le contenu qu'après détection d'`IntersectionObserver` et affichent immédiatement l'état final en mouvement réduit.
 
 Les quatre captures de fond dérivent sur une boucle alternée de 9s, indépendamment de leur entrée, tandis que huit points et arcs bleus suivent une boucle de 12s. Un bouton permet de suspendre ces mouvements ambiants ; ils se suspendent aussi lorsque le hero quitte le viewport ou que le document est masqué. Le mode réduit les désactive. La capture principale reste stable après son entrée.
 
@@ -170,7 +174,7 @@ Avec réduction des animations, la citation montre son état final et les trois 
 
 ### Closing action
 
-Le panneau bleu final emploie du texte blanc et un bouton blanc. L'action mène à la demande de démonstration.
+La question issue du produit, la réassurance sur la décision humaine et l'appel à la démo forment une seule conclusion bleue. Son titre utilise deux lignes grammaticalement complètes et son unique action mène à la demande de démonstration.
 
 ### Secondary marketing pages
 

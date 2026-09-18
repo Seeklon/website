@@ -20,34 +20,41 @@ export default function Header() {
     { label: t('about'), href: '/about' },
   ]
 
+  const isNavItemActive = (href: string) => {
+    const path = href.split('#')[0]
+    if (path === '/') return pathname === '/'
+    return pathname === path || pathname.startsWith(`${path}/`)
+  }
+
   useEffect(() => {
-    const closeOnDesktop = () => window.innerWidth >= 768 && setIsOpen(false)
+    const closeOnDesktop = () => window.innerWidth >= 1024 && setIsOpen(false)
     window.addEventListener('resize', closeOnDesktop)
     return () => window.removeEventListener('resize', closeOnDesktop)
   }, [])
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-paper ${['/', '/pricing', '/about', '/blog'].includes(pathname) ? 'header-home' : ''}`}>
-      <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 md:px-8">
-        <Link href="/" className="group flex items-center gap-2.5" onClick={() => setIsOpen(false)}>
+    <header className={`site-header fixed inset-x-0 top-0 z-50 border-b border-ink/10 ${['/', '/pricing', '/about', '/blog'].includes(pathname) ? 'header-home' : ''}`}>
+      <div className="header-inner mx-auto h-[72px] max-w-[1440px] px-5 md:px-8">
+        <Link href="/" className="site-logo group flex items-center gap-2.5" onClick={() => setIsOpen(false)}>
           <Image src="/logo.png" alt="" width={34} height={34} priority className="transition-transform group-hover:rotate-6" />
           <span className="font-display text-2xl font-bold tracking-[-0.03em] text-ink">Seeklon</span>
           <span className="sr-only">{t('home')}</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label={t('mainNavigation')}>
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="nav-link">{item.label}</Link>
-          ))}
+        <nav className="header-nav hidden lg:flex" aria-label={t('mainNavigation')}>
+          {navItems.map((item) => {
+            const active = isNavItemActive(item.href)
+            return <Link key={item.href} href={item.href} className="nav-link" aria-current={active ? (item.href.includes('#') ? 'location' : 'page') : undefined}>{item.label}</Link>
+          })}
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex">
-          <div className="flex border border-ink/15 p-1" aria-label={t('language')}>
+        <div className="header-actions hidden items-center lg:flex">
+          <div className="language-switcher flex border border-ink/15 p-1" aria-label={t('language')}>
             {(['fr', 'en'] as const).map((loc) => (
               <button
                 key={loc}
                 type="button"
-                onClick={() => router.replace(pathname, { locale: loc })}
+                onClick={() => router.replace(`${pathname}${window.location.hash}`, { locale: loc })}
                 className={`min-w-9 px-2 py-1 text-xs font-bold transition-colors ${locale === loc ? 'bg-ink text-white' : 'text-ink-muted hover:text-ink'}`}
                 aria-pressed={locale === loc}
               >
@@ -60,7 +67,7 @@ export default function Header() {
 
         <button
           type="button"
-          className="focus-ring p-2 text-ink md:hidden"
+          className="header-menu-button focus-ring p-2 text-ink lg:hidden"
           aria-label={isOpen ? t('closeMenu') : t('openMenu')}
           aria-expanded={isOpen}
           aria-controls="mobile-navigation"
@@ -70,20 +77,23 @@ export default function Header() {
         </button>
       </div>
 
-      <div id="mobile-navigation" className={`${isOpen ? 'block' : 'hidden'} border-t border-ink/10 bg-paper md:hidden`}>
+      <div id="mobile-navigation" className={`${isOpen ? 'block' : 'hidden'} border-t border-ink/10 bg-paper lg:hidden`}>
         <nav className="flex flex-col px-5 py-5" aria-label={t('mobileNavigation')}>
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)} className="border-b border-ink/10 py-4 text-lg font-semibold text-ink">
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active = isNavItemActive(item.href)
+            return (
+              <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)} className="mobile-nav-link border-b border-ink/10 py-4 text-lg font-semibold text-ink" aria-current={active ? (item.href.includes('#') ? 'location' : 'page') : undefined}>
+                {item.label}
+              </Link>
+            )
+          })}
           <div className="mt-5 flex items-center justify-between gap-4">
-            <div className="flex border border-ink/15 p-1">
+            <div className="flex border border-ink/15 p-1" aria-label={t('language')}>
               {(['fr', 'en'] as const).map((loc) => (
                 <button
                   key={loc}
                   type="button"
-                  onClick={() => { router.replace(pathname, { locale: loc }); setIsOpen(false) }}
+                  onClick={() => { router.replace(`${pathname}${window.location.hash}`, { locale: loc }); setIsOpen(false) }}
                   className={`min-w-11 px-2 py-2 text-xs font-bold ${locale === loc ? 'bg-ink text-white' : 'text-ink-muted'}`}
                   aria-pressed={locale === loc}
                 >
