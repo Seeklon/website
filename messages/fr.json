@@ -150,39 +150,49 @@
     }
   },
   "Contact": {
-    "badge": "Parlons Recrutement",
-    "title": "Une question ?",
-    "titleHighlight": "Demandez une démo.",
-    "coordinatesBefore": "Nos ",
-    "coordinatesAccent": "Coordonnées",
-    "stayInformedBefore": "Restez ",
-    "stayInformedAccent": "informé",
-    "successTitleBefore": "Message ",
-    "successTitleAccent": "reçu !",
-    "subtitle": "Contactez notre équipe pour une démonstration ou pour en savoir plus.",
-    "coordinates": "Nos Coordonnées",
-    "social": "Réseaux",
-    "linkedin": "Suivez-nous sur LinkedIn",
-    "office": "Bureau",
-    "stayInformed": "Restez informé",
-    "stayInformedDesc": "Recevez nos conseils recrutement.",
-    "emailPlaceholder": "Votre email pro",
-    "subscribed": "Vous êtes inscrit !",
-    "sendMessage": "Envoyez-nous un message",
-    "name": "Nom complet",
-    "company": "Société",
-    "companyPlaceholder": "Votre entreprise",
-    "email": "Email professionnel",
-    "message": "Message",
-    "messagePlaceholder": "Je souhaite une démo du produit...",
-    "sending": "Envoi en cours...",
-    "submit": "Envoyer le message",
-    "successTitle": "Message reçu !",
-    "successMessage": "Merci de nous avoir contactés. Notre équipe Seeklon a bien reçu votre demande et reviendra vers vous sous 24h.",
-    "sendAnother": "Envoyer un autre message",
-    "errorSend": "Erreur lors de l'envoi du message.",
-    "errorSubscribe": "Erreur lors de l'inscription.",
-    "errorConnection": "Erreur de connexion."
+    "hero": {
+      "line1": "Parlons de votre prochain recrutement.",
+      "line2": "Réponse sous 24 heures.",
+      "body": "Une démo, une question sur la bêta, ou l’envie d’être prévenu quand les packs ouvrent : écrivez-nous."
+    },
+    "form": {
+      "title": "Écrivez-nous",
+      "name": "Nom complet",
+      "namePlaceholder": "Camille Bernard",
+      "company": "Entreprise",
+      "companyPlaceholder": "Nom de votre entreprise",
+      "optional": "facultatif",
+      "email": "E-mail professionnel",
+      "emailPlaceholder": "camille@entreprise.fr",
+      "message": "Votre message",
+      "messagePlaceholder": "Je voudrais une démo, nous recrutons deux personnes ce trimestre…",
+      "submit": "Envoyer le message",
+      "sending": "Envoi en cours…",
+      "error": "L’envoi a échoué. Réessayez, ou écrivez-nous directement sur LinkedIn.",
+      "successTitle": "Message reçu.",
+      "successBody": "Nous revenons vers vous sous 24 heures, du lundi au vendredi.",
+      "again": "Envoyer un autre message"
+    },
+    "aside": {
+      "title": "En pratique",
+      "responseTitle": "Réponse sous 24 heures",
+      "responseBody": "Par une personne de l’équipe, pas par un robot.",
+      "betaTitle": "Bêta gratuite",
+      "betaBody": "L’accès est gratuit pendant toute la bêta, sans engagement.",
+      "placeTitle": "Paris, France",
+      "placeBody": "Seeklon est né pendant le hackathon Bpifrance sur l’IA et l’éthique.",
+      "linkedin": "Suivre Seeklon sur LinkedIn"
+    },
+    "news": {
+      "title": "Être prévenu à l’ouverture des packs.",
+      "body": "Un e-mail quand les tarifs sont annoncés, et de temps en temps nos conseils recrutement. Rien d’autre.",
+      "label": "E-mail professionnel",
+      "placeholder": "camille@entreprise.fr",
+      "submit": "M’inscrire",
+      "sending": "Inscription…",
+      "success": "C’est noté, vous serez prévenu.",
+      "error": "L’inscription a échoué. Réessayez dans un instant."
+    }
   },
   "Blog": {
     "titleBefore": "Conseils & ",
@@ -434,7 +444,9 @@
     "homeTitle": "Seeklon – Recruter plus vite, même sans équipe RH",
     "homeDescription": "Rédigez une offre claire, organisez les CV et préparez vos entretiens avec Seeklon, le logiciel de recrutement des PME. Démo gratuite.",
     "pricingTitle": "Tarifs Seeklon – Gratuit pendant la bêta",
-    "pricingDescription": "Seeklon est en bêta : l’accès est gratuit pour les premières entreprises. Découvrez les packs à venir, Brise, Tempête et Cyclone, et leur contenu."
+    "pricingDescription": "Seeklon est en bêta : l’accès est gratuit pour les premières entreprises. Découvrez les packs à venir, Brise, Tempête et Cyclone, et leur contenu.",
+    "contactTitle": "Contact Seeklon – Demandez une démo",
+    "contactDescription": "Écrivez à l’équipe Seeklon pour une démo, une question sur la bêta gratuite ou pour être prévenu à l’ouverture des packs. Réponse sous 24 heures."
   },
   "Legal": {
     "titleBefore": "Mentions ",

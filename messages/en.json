@@ -150,39 +150,49 @@
     }
   },
   "Contact": {
-    "badge": "Let's talk recruiting",
-    "title": "Have a question?",
-    "titleHighlight": "Request a demo.",
-    "coordinatesBefore": "Contact ",
-    "coordinatesAccent": "details",
-    "stayInformedBefore": "Stay ",
-    "stayInformedAccent": "informed",
-    "successTitleBefore": "Message ",
-    "successTitleAccent": "received!",
-    "subtitle": "Contact our team for a demo or to learn more.",
-    "coordinates": "Contact details",
-    "social": "Social",
-    "linkedin": "Follow us on LinkedIn",
-    "office": "Office",
-    "stayInformed": "Stay informed",
-    "stayInformedDesc": "Get our recruiting tips.",
-    "emailPlaceholder": "Your work email",
-    "subscribed": "You're subscribed!",
-    "sendMessage": "Send us a message",
-    "name": "Full name",
-    "company": "Company",
-    "companyPlaceholder": "Your company",
-    "email": "Work email",
-    "message": "Message",
-    "messagePlaceholder": "I'd like a product demo...",
-    "sending": "Sending...",
-    "submit": "Send message",
-    "successTitle": "Message received!",
-    "successMessage": "Thank you for reaching out. The Seeklon team has received your request and will get back to you within 24 hours.",
-    "sendAnother": "Send another message",
-    "errorSend": "Error sending message.",
-    "errorSubscribe": "Error subscribing.",
-    "errorConnection": "Connection error."
+    "hero": {
+      "line1": "Let's talk about your next hire.",
+      "line2": "Answer within 24 hours.",
+      "body": "A demo, a question about the beta, or a heads-up when the packs open: write to us."
+    },
+    "form": {
+      "title": "Write to us",
+      "name": "Full name",
+      "namePlaceholder": "Camille Bernard",
+      "company": "Company",
+      "companyPlaceholder": "Your company name",
+      "optional": "optional",
+      "email": "Work email",
+      "emailPlaceholder": "camille@company.com",
+      "message": "Your message",
+      "messagePlaceholder": "We're hiring two people this quarter and would like a demo…",
+      "submit": "Send the message",
+      "sending": "Sending…",
+      "error": "Sending failed. Try again, or write to us on LinkedIn.",
+      "successTitle": "Message received.",
+      "successBody": "We'll get back to you within 24 hours, Monday to Friday.",
+      "again": "Send another message"
+    },
+    "aside": {
+      "title": "In practice",
+      "responseTitle": "Answer within 24 hours",
+      "responseBody": "From someone on the team, not from a bot.",
+      "betaTitle": "Free beta",
+      "betaBody": "Access is free for the whole beta, with no commitment.",
+      "placeTitle": "Paris, France",
+      "placeBody": "Seeklon was born at the Bpifrance hackathon on AI and ethics.",
+      "linkedin": "Follow Seeklon on LinkedIn"
+    },
+    "news": {
+      "title": "Get notified when the packs open.",
+      "body": "One email when pricing is announced, and our hiring tips now and then. Nothing else.",
+      "label": "Work email",
+      "placeholder": "camille@company.com",
+      "submit": "Sign me up",
+      "sending": "Signing up…",
+      "success": "Noted — we'll let you know.",
+      "error": "Sign-up failed. Try again in a moment."
+    }
   },
   "Blog": {
     "titleBefore": "Tips & ",
@@ -434,7 +444,9 @@
     "homeTitle": "Seeklon – Hire faster, even without an HR team",
     "homeDescription": "Write a clear job post, organise CVs and prepare your interviews with Seeklon, the hiring software for small companies. Free demo.",
     "pricingTitle": "Seeklon pricing – Free during the beta",
-    "pricingDescription": "Seeklon is in beta: access is free for the first companies. See the upcoming Breeze, Storm and Cyclone packs and what they include."
+    "pricingDescription": "Seeklon is in beta: access is free for the first companies. See the upcoming Breeze, Storm and Cyclone packs and what they include.",
+    "contactTitle": "Contact Seeklon – Book a demo",
+    "contactDescription": "Write to the Seeklon team for a demo, a question about the free beta, or to be notified when the packs open. Answer within 24 hours."
   },
   "Legal": {
     "titleBefore": "Legal ",
