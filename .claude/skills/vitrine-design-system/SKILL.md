@@ -27,7 +27,7 @@ A page provides only its sections and ends with `<ClosingCta />`, which carries
 |---|---|---|
 | `ink` | `#0B0B0C` | headings, body on light |
 | `ink-soft` | `#4F4E49` | secondary paragraphs (≥16px) |
-| `ink-faint` | `#5F5D57` | captions, counters, hints (12–15px) |
+| `ink-faint` | `#57554F` | captions, counters, hints (12–15px) |
 | `azure` | `#0C6DF8` | accent, primary buttons, active bars |
 | `azure-deep` | `#0A56C4` | small blue text, hover of primary buttons |
 | `azure-mist` | `#B4D5FF` | avatars, soft blue surfaces |
@@ -90,6 +90,13 @@ content. Rules that matter:
   scroll-snap, next card peeking, `snap-always`), `panel` (≥1024 but short), `pinned`
   (`pin` screen = `(min-width:1024px) and (min-height:620px)`, sticky runway drives the
   steps). Keep `PANEL_QUERY`/`PIN_QUERY` in sync with `tailwind.config.js`.
+- Blog: the index is a three-column grid of typographic cards (meta, title, excerpt, and
+  the read link pinned to the bottom behind a rule) — no thumbnails, the posts have no
+  artwork of their own. An article is an 860px column with the body in a white card; the
+  `typography` plugin is retuned in `globals.css` under `.home .prose`, the markdown's
+  leading `# ` is stripped at render (the page already has the `h1`), apostrophes are
+  swapped for the curly one, and GFM tables are wrapped in `not-prose` so they scroll
+  sideways on a phone.
 
 ## Motion
 
@@ -102,8 +109,9 @@ content. Rules that matter:
 
 ## i18n
 
-- Copy lives in `messages/fr.json` / `messages/en.json`, namespaces `Home` and `Pricing`;
-  both locales are updated in the same change.
+- Copy lives in `messages/fr.json` / `messages/en.json`, namespaces `Home`, `Pricing`,
+  `Contact`, `About` and `Blog`; both locales are updated in the same change. Article text
+  itself lives in `content/blog/<locale>/*.md`, not in the message files.
 - Lists (features, table rows, FAQ) are arrays read with `t.raw(...)` and typed at the call
   site.
 - Headings are split into `line1` / `line2` keys rather than `<br>`.

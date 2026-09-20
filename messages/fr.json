@@ -195,15 +195,18 @@
     }
   },
   "Blog": {
-    "titleBefore": "Conseils & ",
-    "titleAccent": "Actualités",
-    "title": "Conseils & Actualités",
-    "subtitle": "Toutes les clés pour moderniser votre recrutement et attirer les meilleurs talents.",
-    "readArticle": "Lire l'article",
+    "titleBefore": "Conseils &",
+    "titleAccent": "actualités",
+    "subtitle": "Des méthodes concrètes pour recruter sereinement, même sans équipe RH.",
+    "readArticle": "Lire l’article",
     "backToBlog": "Retour au blog",
-    "aboutSeeklon": "À propos de Seeklon",
-    "aboutSeeklonDesc": "Seeklon aide les PME à recruter simplement grâce à l'IA.",
-    "discoverSolution": "Découvrir la solution"
+    "closing": {
+      "line1": "Mettez ces conseils",
+      "line2": "en pratique.",
+      "body": "Seeklon prépare l’offre, organise les candidatures et construit votre guide d’entretien. Vous gardez la décision.",
+      "note": "Gratuit pendant toute la bêta, sans engagement.",
+      "cta": "Essayer Seeklon"
+    }
   },
   "Product": {
     "titleLine1": "Une suite complète pour",
@@ -446,7 +449,11 @@
     "pricingTitle": "Tarifs Seeklon – Gratuit pendant la bêta",
     "pricingDescription": "Seeklon est en bêta : l’accès est gratuit pour les premières entreprises. Découvrez les packs à venir, Brise, Tempête et Cyclone, et leur contenu.",
     "contactTitle": "Contact Seeklon – Demandez une démo",
-    "contactDescription": "Écrivez à l’équipe Seeklon pour une démo, une question sur la bêta gratuite ou pour être prévenu à l’ouverture des packs. Réponse sous 24 heures."
+    "contactDescription": "Écrivez à l’équipe Seeklon pour une démo, une question sur la bêta gratuite ou pour être prévenu à l’ouverture des packs. Réponse sous 24 heures.",
+    "aboutTitle": "À propos de Seeklon – Quatre personnes, un seul objectif",
+    "aboutDescription": "Seeklon est né pendant le hackathon Bpifrance sur l’IA et l’éthique. Découvrez pourquoi nous construisons un outil de recrutement qui laisse la décision au recruteur.",
+    "blogTitle": "Blog Seeklon – Conseils recrutement pour les PME",
+    "blogDescription": "Offres d’emploi, tri des candidatures, entretiens, onboarding : nos conseils concrets pour recruter sereinement, même sans équipe RH."
   },
   "Legal": {
     "titleBefore": "Mentions ",
@@ -475,31 +482,68 @@
     "securityContent": "Nous prenons la sécurité de vos données très au sérieux. Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles appropriées pour protéger vos données personnelles contre la destruction accidentelle ou illicite, la perte, l'altération, la divulgation ou l'accès non autorisé."
   },
   "About": {
-    "title": "Le recrutement,",
-    "titleHighlight": "enfin serein.",
-    "whyTitleBefore": "Pourquoi ",
-    "whyTitleAccent": "Seeklon ?",
-    "valuesTitleBefore": "Nos ",
-    "valuesTitleAccent": "Valeurs",
-    "teamTitleBefore": "L'équipe ",
-    "teamTitleAccent": "Fondatrice",
-    "ctaTitleBefore": "Prêt à simplifier vos ",
-    "ctaTitleAccent": "recrutements ?",
-    "intro": "Nous croyons que chaque PME mérite d'accéder aux mêmes technologies que les géants de la Tech pour trouver les meilleurs talents.",
-    "whyTitle": "Pourquoi Seeklon ?",
-    "whyP1": "Les dirigeants de PME sont des héros du quotidien, souvent débordés. Le recrutement devient vite une charge mentale qui freine la croissance.",
-    "whyQuote": "Seeklon filtre le bruit pour que l'humain puisse se concentrer sur la rencontre authentique.",
-    "valuesTitle": "Nos Valeurs",
-    "value1Title": "Simplicité",
-    "value1Text": "Des outils puissants qui s'utilisent comme une évidence. Pas de formation nécessaire.",
-    "value2Title": "Authenticité",
-    "value2Text": "L'IA gère le volume pour vous laisser gérer la relation humaine.",
-    "value3Title": "Efficacité",
-    "value3Text": "Chaque minute gagnée sur le tri est une minute investie dans votre croissance.",
-    "teamTitle": "L'équipe Fondatrice",
-    "coFounder": "Co-Founder",
-    "ctaTitle": "Prêt à simplifier vos recrutements ?",
-    "ctaButton": "Contactez-nous"
+    "hero": {
+      "line1": "Chaque entreprise doit pouvoir",
+      "line2": "bien recruter.",
+      "body": "Même sans expertise RH. C’est la conviction qui a donné naissance à Seeklon."
+    },
+    "pillars": {
+      "items": [
+        {
+          "title": "Pourquoi",
+          "body": "Bien recruter ne doit pas être réservé aux entreprises qui ont une équipe RH. Chaque entreprise doit pouvoir comprendre et améliorer ses décisions de recrutement."
+        },
+        {
+          "title": "Comment",
+          "body": "Une IA explicable, des guides d’entretien et l’analyse des données. Le premier tri est simplifié, la décision reste au recruteur."
+        },
+        {
+          "title": "Quoi",
+          "body": "Une plateforme de pilotage et d’aide à la décision, qui relie l’analyse des candidatures, la préparation des entretiens et la compréhension du processus."
+        }
+      ]
+    },
+    "vision": {
+      "label": "Notre vision",
+      "quote": "Recruter avec méthode, apprendre de ses décisions, et s’appuyer sur la technologie sans lui déléguer ses choix."
+    },
+    "hackathon": {
+      "line1": "Né d’un",
+      "line2": "hackathon.",
+      "award": "Prix Coup de Cœur du jury",
+      "caption": "Hackathon Bpifrance, thème IA et éthique",
+      "body": "Seeklon est né pendant le hackathon Bpifrance consacré à l’IA et à l’éthique. Bpifrance a créé le prix Coup de Cœur du jury spécialement pour notre projet.",
+      "after": "Depuis, nous en faisons un vrai produit, et nous le faisons grandir."
+    },
+    "team": {
+      "line1": "Quatre personnes,",
+      "line2": "un seul objectif.",
+      "members": [
+        {
+          "name": "Thomas",
+          "role": "Lead Marketing & IA"
+        },
+        {
+          "name": "Ilyes",
+          "role": "Lead Technique"
+        },
+        {
+          "name": "Deniz",
+          "role": "Lead Backend"
+        },
+        {
+          "name": "Robin",
+          "role": "Lead DevOps & SysAdmin"
+        }
+      ]
+    },
+    "closing": {
+      "line1": "Vous rencontrez.",
+      "line2": "Vous décidez.",
+      "body": "Seeklon prépare les éléments utiles à votre recrutement. La décision reste entre vos mains.",
+      "note": "Gratuit pendant toute la bêta, sans engagement.",
+      "cta": "Demander une démo"
+    }
   },
   "Rgpd": {
     "titleBefore": "Charte RGPD & ",

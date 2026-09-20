@@ -195,15 +195,18 @@
     }
   },
   "Blog": {
-    "titleBefore": "Tips & ",
-    "titleAccent": "News",
-    "title": "Tips & News",
-    "subtitle": "All the keys to modernize your hiring and attract top talent.",
-    "readArticle": "Read article",
-    "backToBlog": "Back to blog",
-    "aboutSeeklon": "About Seeklon",
-    "aboutSeeklonDesc": "Seeklon helps SMBs hire simply with AI.",
-    "discoverSolution": "Discover the solution"
+    "titleBefore": "Advice &",
+    "titleAccent": "news",
+    "subtitle": "Practical methods to hire calmly, even without an HR team.",
+    "readArticle": "Read the article",
+    "backToBlog": "Back to the blog",
+    "closing": {
+      "line1": "Put this advice",
+      "line2": "into practice.",
+      "body": "Seeklon drafts the job post, organises applications and builds your interview guide. You keep the decision.",
+      "note": "Free throughout the beta, no commitment.",
+      "cta": "Try Seeklon"
+    }
   },
   "Product": {
     "titleLine1": "A complete suite to",
@@ -446,7 +449,11 @@
     "pricingTitle": "Seeklon pricing – Free during the beta",
     "pricingDescription": "Seeklon is in beta: access is free for the first companies. See the upcoming Breeze, Storm and Cyclone packs and what they include.",
     "contactTitle": "Contact Seeklon – Book a demo",
-    "contactDescription": "Write to the Seeklon team for a demo, a question about the free beta, or to be notified when the packs open. Answer within 24 hours."
+    "contactDescription": "Write to the Seeklon team for a demo, a question about the free beta, or to be notified when the packs open. Answer within 24 hours.",
+    "aboutTitle": "About Seeklon – Four people, one goal",
+    "aboutDescription": "Seeklon was born at the Bpifrance hackathon on AI and ethics. Here is why we build a hiring tool that leaves the decision to the recruiter.",
+    "blogTitle": "Seeklon blog – Hiring advice for small companies",
+    "blogDescription": "Job posts, screening, interviews, onboarding: practical advice to hire calmly, even without an HR team."
   },
   "Legal": {
     "titleBefore": "Legal ",
@@ -475,31 +482,68 @@
     "securityContent": "We take the security of your data very seriously. We implement appropriate technical and organizational measures to protect your personal data against accidental or unlawful destruction, loss, alteration, disclosure or unauthorized access."
   },
   "About": {
-    "title": "Hiring,",
-    "titleHighlight": "finally stress-free.",
-    "whyTitleBefore": "Why ",
-    "whyTitleAccent": "Seeklon?",
-    "valuesTitleBefore": "Our ",
-    "valuesTitleAccent": "Values",
-    "teamTitleBefore": "Founding ",
-    "teamTitleAccent": "Team",
-    "ctaTitleBefore": "Ready to simplify your ",
-    "ctaTitleAccent": "hiring?",
-    "intro": "We believe every SMB deserves access to the same technology as tech giants to find the best talent.",
-    "whyTitle": "Why Seeklon?",
-    "whyP1": "SMB leaders are everyday heroes, often overwhelmed. Recruiting quickly becomes a mental burden that holds back growth.",
-    "whyQuote": "Seeklon filters out the noise so humans can focus on authentic connection.",
-    "valuesTitle": "Our Values",
-    "value1Title": "Simplicity",
-    "value1Text": "Powerful tools that feel obvious to use. No training required.",
-    "value2Title": "Authenticity",
-    "value2Text": "AI handles volume so you can focus on the human relationship.",
-    "value3Title": "Efficiency",
-    "value3Text": "Every minute saved on screening is a minute invested in your growth.",
-    "teamTitle": "Founding Team",
-    "coFounder": "Co-Founder",
-    "ctaTitle": "Ready to simplify your hiring?",
-    "ctaButton": "Contact us"
+    "hero": {
+      "line1": "Every company should be able",
+      "line2": "to hire well.",
+      "body": "No HR team required. That conviction is what gave birth to Seeklon."
+    },
+    "pillars": {
+      "items": [
+        {
+          "title": "Why",
+          "body": "Hiring well should not be reserved for companies with an HR team. Every company should be able to understand and improve its hiring decisions."
+        },
+        {
+          "title": "How",
+          "body": "Explainable AI, interview guides and data analysis. The first screening gets simpler, the decision stays with the recruiter."
+        },
+        {
+          "title": "What",
+          "body": "A steering and decision-support platform that connects application analysis, interview preparation and a clear view of the process."
+        }
+      ]
+    },
+    "vision": {
+      "label": "Our vision",
+      "quote": "Hire with method, learn from your decisions, and lean on technology without handing it your choices."
+    },
+    "hackathon": {
+      "line1": "Born at a",
+      "line2": "hackathon.",
+      "award": "Jury’s Favourite award",
+      "caption": "Bpifrance hackathon, on AI and ethics",
+      "body": "Seeklon was born during the Bpifrance hackathon devoted to AI and ethics. Bpifrance created the Jury’s Favourite award especially for our project.",
+      "after": "Since then, we have been turning it into a real product, and making it grow."
+    },
+    "team": {
+      "line1": "Four people,",
+      "line2": "one goal.",
+      "members": [
+        {
+          "name": "Thomas",
+          "role": "Marketing & AI Lead"
+        },
+        {
+          "name": "Ilyes",
+          "role": "Tech Lead"
+        },
+        {
+          "name": "Deniz",
+          "role": "Backend Lead"
+        },
+        {
+          "name": "Robin",
+          "role": "DevOps & SysAdmin Lead"
+        }
+      ]
+    },
+    "closing": {
+      "line1": "You meet.",
+      "line2": "You decide.",
+      "body": "Seeklon prepares everything useful for your hiring. The decision stays in your hands.",
+      "note": "Free throughout the beta, no commitment.",
+      "cta": "Book a demo"
+    }
   },
   "Rgpd": {
     "titleBefore": "GDPR & Cookie ",

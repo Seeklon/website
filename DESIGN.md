@@ -359,6 +359,20 @@ Des rectangles à coins tendres, sans fantaisie de forme.
   suivante qui dépasse, panneau piloté par les boutons, ou panneau épinglé au défilement.
 - **Tableau comparatif** : vrai `<table>` avec `<caption>` masquée et en-têtes de ligne ; sur
   mobile, il devient une carte de synthèse par plan, avec des coches.
+- **Carte d'article** : blanc 80%, rayon 20px, 28px de marge interne (32px à partir de
+  `md`). Catégorie et date en encre estompée au-dessus du titre, chapô en encre adoucie,
+  et « Lire l'article » collé en bas derrière un filet, avec la flèche qui avance au
+  survol. Pas de vignette : les articles n'ont pas d'image propre, et un logo répété dans
+  trente cartes ne dit rien.
+- **Article** : colonne de 860px, titre aligné à gauche, chapô sous le titre, puis le
+  corps dans une carte blanche à 90% (rayon 24px, 56px de marge interne à partir de `md`).
+  Le corps utilise le plugin `typography` rhabillé avec l'encre et le bleu du site
+  (`.home .prose` dans `globals.css`) ; les titres y restent en graisse 400–500. Le `# `
+  du markdown est retiré au rendu, le `h1` de la page suffit. Les tableaux GFM sortent de
+  `prose` pour pouvoir défiler sur mobile, en-têtes en encre pleine, filets 1px.
+- **Personne** : carte blanche, disque de 112px (132px à partir de `md`) en dégradé bleu
+  très clair avec l'initiale en bleu profond, puis le prénom et le rôle. Le disque est
+  décoratif (`aria-hidden`) tant que les portraits ne sont pas faits.
 - **Pied de page** : posé sur le bleu profond, texte blanc, colonnes de liens, filet à 25%
   de blanc au-dessus de la ligne de copyright.
 

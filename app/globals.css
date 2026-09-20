@@ -216,6 +216,62 @@ body {
   }
 }
 
+/* Articles de blog : le plugin typography, rhabillé avec l'encre et le bleu du site. */
+.home .prose {
+  --tw-prose-body: #4f4e49;
+  --tw-prose-headings: #0b0b0c;
+  --tw-prose-lead: #4f4e49;
+  --tw-prose-links: #0a56c4;
+  --tw-prose-bold: #0b0b0c;
+  --tw-prose-counters: #57554f;
+  --tw-prose-bullets: #9ac3ff;
+  --tw-prose-hr: #dddbd5;
+  --tw-prose-quotes: #0b0b0c;
+  --tw-prose-quote-borders: #b4d5ff;
+  --tw-prose-captions: #57554f;
+  --tw-prose-th-borders: #dddbd5;
+  --tw-prose-td-borders: #dddbd5;
+}
+
+.home .prose :is(h2, h3, h4) {
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.home .prose :is(h2, h3, h4) strong {
+  font-weight: 500;
+}
+
+.home .prose a {
+  text-underline-offset: 3px;
+}
+
+.home .prose blockquote {
+  font-style: normal;
+  font-weight: 400;
+}
+
+.home .prose blockquote p:first-of-type::before,
+.home .prose blockquote p:last-of-type::after {
+  content: '';
+}
+
+/* Tableaux comparatifs des articles (sortis de `prose` pour pouvoir défiler). */
+.home .prose .not-prose :is(th, td) {
+  border-bottom: 1px solid #dddbd5;
+  padding: 12px 20px 12px 0;
+  vertical-align: top;
+}
+
+.home .prose .not-prose th {
+  font-weight: 500;
+  color: #0b0b0c;
+}
+
+.home .prose .not-prose td {
+  color: #4f4e49;
+}
+
 .no-scrollbar {
   scrollbar-width: none;
 }
