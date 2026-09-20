@@ -77,7 +77,7 @@ export default function HomeNav() {
       <nav
         ref={navRef}
         aria-label={t('label')}
-        className="mx-auto max-w-[1040px] rounded-[14px] bg-white/95 shadow-[0_10px_30px_-18px_rgba(11,11,12,0.35)]"
+        className="mx-auto max-w-[1040px] rounded-[14px] bg-white shadow-[0_14px_34px_-20px_rgba(11,11,12,0.45)]"
       >
         <div className="flex h-14 items-center justify-between pl-5 pr-2 lg:grid lg:h-[60px] lg:grid-cols-[1fr_auto_1fr] lg:pl-6 lg:pr-3">
           <Link href="/" aria-label={t('home')} className="flex h-10 items-center text-ink" onClick={() => setOpen(false)}>

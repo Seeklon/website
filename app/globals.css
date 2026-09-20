@@ -20,7 +20,6 @@ body {
 .home :focus-visible {
   outline: 2px solid #0c6df8;
   outline-offset: 3px;
-  border-radius: 6px;
 }
 
 .home [data-sky-deep] :focus-visible,
@@ -136,19 +135,17 @@ body {
     animation: sky-drift 90s ease-in-out infinite alternate;
   }
 
-  /* Light passes over a button on hover. */
-  .home .sheen::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(100deg, transparent 42%, rgba(255, 255, 255, 0.34) 50%, transparent 58%);
-    background-size: 280% 100%;
-    background-position: 180% 0;
-    pointer-events: none;
-  }
-
+  /* Light passes over a button on hover. Nothing is painted at rest: the band used to
+     sit over the label and cost it contrast. */
   @media (hover: hover) {
     .home .sheen:hover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, transparent 42%, rgba(255, 255, 255, 0.34) 50%, transparent 58%);
+      background-size: 280% 100%;
+      background-position: 180% 0;
+      pointer-events: none;
       animation: accent-shine 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
   }

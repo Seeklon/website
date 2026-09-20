@@ -28,6 +28,7 @@
   "Home": {
     "nav": {
       "label": "Main navigation",
+      "skip": "Skip to content",
       "home": "Seeklon, back to home",
       "journey": "The journey",
       "pricing": "Pricing",
@@ -258,7 +259,6 @@
       "note": "Pack pricing is still being defined."
     },
     "beta": {
-      "badge": "Available today",
       "name": "Beta tester",
       "price": "€0",
       "period": "for the whole beta",
@@ -395,7 +395,8 @@
           ]
         }
       ],
-      "notIncluded": "Not included"
+      "notIncluded": "Not included",
+      "featureColumn": "Feature"
     },
     "faq": {
       "title": "Your questions.",

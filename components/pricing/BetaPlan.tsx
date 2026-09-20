@@ -9,12 +9,10 @@ export default function BetaPlan() {
 
   return (
     <section className="mx-auto mt-12 max-w-[1440px] px-6 md:mt-20 md:px-10 xl:px-20">
-      <article className="rounded-[24px] border border-azure bg-white/90 p-7 shadow-[0_40px_70px_-50px_rgba(12,109,248,0.7)] md:p-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 xl:p-12">
+      <article className="rounded-[24px] border border-azure bg-white/90 p-7 shadow-[0_24px_48px_-24px_rgba(12,109,248,0.35)] md:p-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 xl:p-12">
         <div>
-          <p className="inline-flex items-center rounded-full bg-azure/10 px-3 py-1.5 text-[13px] text-azure-deep">
-            {t('badge')}
-          </p>
-          <h2 className="mt-5 text-[28px] md:text-[32px]">{t('name')}</h2>
+          {/* No label above the heading: the price and the period already say it is live and free. */}
+          <h2 className="text-[28px] md:text-[32px]">{t('name')}</h2>
           <p className="mt-3 max-w-[26rem] text-base leading-[1.6] text-ink-soft md:text-[17px]">{t('description')}</p>
 
           <p className="mt-7 flex flex-wrap items-baseline gap-x-3 md:mt-9">
@@ -30,10 +28,10 @@ export default function BetaPlan() {
           </Link>
         </div>
 
-        <ul className="mt-10 grid gap-x-8 gap-y-3.5 text-base sm:grid-cols-2 lg:mt-2 lg:grid-cols-1 lg:self-center xl:grid-cols-2">
+        <ul className="mt-10 grid gap-x-8 gap-y-3.5 self-start text-base sm:grid-cols-2 lg:mt-1 lg:grid-cols-1">
           {features.map((feature) => (
             <li key={feature} className="flex gap-3">
-              <Check aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-azure" strokeWidth={2.25} />
+              <Check aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-azure" strokeWidth={2} />
               {feature}
             </li>
           ))}

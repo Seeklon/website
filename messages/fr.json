@@ -28,6 +28,7 @@
   "Home": {
     "nav": {
       "label": "Navigation principale",
+      "skip": "Aller au contenu",
       "home": "Seeklon, retour à l’accueil",
       "journey": "Le parcours",
       "pricing": "Tarifs",
@@ -254,13 +255,12 @@
     "hero": {
       "line1": "Gratuit pendant la bêta.",
       "line2": "Les packs arrivent.",
-      "body": "Seeklon est en version bêta : l’accès est gratuit pour les premières entreprises qui le testent avec nous. Les packs ci-dessous ouvriront ensuite.",
+      "body": "Seeklon est en version bêta : l’accès est gratuit pour les premières entreprises qui le testent avec nous. Les packs ci-dessous ouvriront ensuite.",
       "note": "Tarifs des packs en cours de définition."
     },
     "beta": {
-      "badge": "Disponible aujourd’hui",
       "name": "Bêta testeur",
-      "price": "0 €",
+      "price": "0 €",
       "period": "pendant toute la bêta",
       "description": "Pour les premières entreprises qui recrutent avec Seeklon et nous aident à le faire grandir.",
       "features": [
@@ -395,7 +395,8 @@
           ]
         }
       ],
-      "notIncluded": "Non inclus"
+      "notIncluded": "Non inclus",
+      "featureColumn": "Fonctionnalité"
     },
     "faq": {
       "title": "Vos questions.",

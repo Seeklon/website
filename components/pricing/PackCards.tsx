@@ -35,7 +35,7 @@ export default function PackCards() {
 
               <Link
                 href="/contact"
-                className="mt-8 flex h-[54px] items-center justify-center rounded-[10px] border border-ink-faint/50 bg-white text-base text-ink transition-colors duration-150 hover:border-ink"
+                className="mt-8 flex h-[54px] items-center justify-center rounded-[10px] border border-ink-faint/80 bg-white text-base text-ink transition-colors duration-150 hover:border-ink hover:bg-[#F6F9FF]"
               >
                 {t('cta')}
               </Link>

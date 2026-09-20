@@ -1,0 +1,330 @@
+---
+name: Seeklon — Site vitrine
+description: Un ciel qui se dégage — recruter sereinement, même sans équipe RH.
+colors:
+  ink: "#0B0B0C"
+  ink-soft: "#4F4E49"
+  ink-faint: "#5F5D57"
+  azure: "#0C6DF8"
+  azure-deep: "#0A56C4"
+  azure-mist: "#B4D5FF"
+  azure-wash: "#EEF4FF"
+  rule: "#DDDBD5"
+  rule-panel: "#D6D8DE"
+  sky-pale: "#F4F8FF"
+  sky-mid: "#E4EDFC"
+  sky-low: "#DAE7FB"
+  deep-top: "#0E62E6"
+  deep-mid: "#0C5AD9"
+  deep-bottom: "#0A52CC"
+  surface-card: "rgba(255,255,255,0.85)"
+  surface-panel: "rgba(255,255,255,0.75)"
+  surface-nav: "rgba(255,255,255,0.95)"
+  on-deep: "#FFFFFF"
+typography:
+  display:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(4rem, 2.6rem + 6.1vw, 8rem)"
+    fontWeight: 500
+    lineHeight: 0.94
+    letterSpacing: "-0.05em"
+  accent:
+    fontFamily: "Genoid, Host Grotesk, ui-sans-serif, sans-serif"
+    fontSize: "clamp(3.5rem, 2.3rem + 5.6vw, 6.5rem)"
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: "0.03em"
+  headline:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2.25rem, 0.9rem + 5.9vw, 6rem)"
+    fontWeight: 500
+    lineHeight: 1.02
+    letterSpacing: "-0.045em"
+  title:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2.25rem, 1.2rem + 3.4vw, 4rem)"
+    fontWeight: 500
+    lineHeight: 1.04
+    letterSpacing: "-0.04em"
+  subtitle:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "26px"
+    fontWeight: 400
+    lineHeight: 1.2
+    letterSpacing: "-0.02em"
+  body:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(1rem, 0.92rem + 0.3vw, 1.1875rem)"
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: "normal"
+  label:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "15px"
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: "normal"
+  caption:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: "normal"
+rounded:
+  xs: "6px"
+  sm: "8px"
+  md: "10px"
+  nav: "14px"
+  card: "20px"
+  panel: "24px"
+  hero-panel: "28px"
+  full: "9999px"
+spacing:
+  xs: "12px"
+  sm: "16px"
+  md: "20px"
+  lg: "24px"
+  xl: "36px"
+  card-gap: "24px"
+  section-mobile: "96px"
+  section-desktop: "180px"
+  gutter-mobile: "24px"
+  gutter-tablet: "40px"
+  gutter-desktop: "80px"
+components:
+  button-primary:
+    backgroundColor: "{colors.azure}"
+    textColor: "{colors.on-deep}"
+    rounded: "{rounded.md}"
+    padding: "0 30px"
+    height: "52px"
+    typography: "{typography.label}"
+  button-primary-hover:
+    backgroundColor: "{colors.azure-deep}"
+    textColor: "{colors.on-deep}"
+  button-ghost:
+    backgroundColor: "#FFFFFF"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.md}"
+    padding: "0 32px"
+    height: "54px"
+    typography: "{typography.label}"
+  button-on-deep:
+    backgroundColor: "#FFFFFF"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.md}"
+    padding: "0 32px"
+    height: "52px"
+  card:
+    backgroundColor: "{colors.surface-card}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    padding: "24px"
+  card-highlight:
+    backgroundColor: "rgba(255,255,255,0.9)"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.panel}"
+    padding: "28px"
+  nav-pill:
+    backgroundColor: "{colors.surface-nav}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.nav}"
+    padding: "0 12px 0 24px"
+    height: "60px"
+  nav-link-active:
+    backgroundColor: "{colors.azure-wash}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.sm}"
+    padding: "8px 14px"
+  step-control:
+    backgroundColor: "rgba(255,255,255,0.85)"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.full}"
+    size: "44px"
+---
+
+# Design System : Seeklon — Site vitrine
+
+## Overview
+
+**Creative North Star : « Le ciel dégagé »**
+
+Le site raconte le calme qui suit la tempête du recrutement. Le fond n'est pas un décor :
+c'est un vrai ciel, calculé une fois pour toute la hauteur de la page, qui s'éclaircit au
+premier écran, se charge de cumulus à mesure qu'on descend, puis bascule dans un bleu
+profond au moment où la page demande une décision. Le contenu flotte dessus sur des
+surfaces blanches translucides, jamais sur des boîtes opaques.
+
+La densité est basse et assumée : de très grands titres, beaucoup d'air entre les sections,
+des paragraphes courts. Le bleu ne sert qu'à deux choses, l'action et l'accent ; partout
+ailleurs, le texte est presque noir et les gris sont volontairement foncés, parce qu'ils
+doivent rester lisibles sur un fond qui bouge d'une section à l'autre. Les effets sont
+rares et courts : un reflet qui traverse un mot, une capture qui se pose, un titre qui se
+précise. Rien ne clignote, rien ne boucle.
+
+Anti-références confirmées : le fond qui défile à une autre vitesse que le texte (essayé,
+rejeté), les nuages en grille régulière, et les dégradés de couleur dans le texte — le seul
+dégradé toléré est la bande de lumière qui passe, une fois, sur le mot d'accent.
+
+**Key Characteristics :**
+- Un ciel procédural qui défile avec le contenu, jamais en parallaxe.
+- Des titres très grands, en Host Grotesk Medium, tracking serré.
+- Un seul bleu, réservé à l'action et à l'accent.
+- Des surfaces blanches translucides, des ombres bleutées et diffuses.
+- Le bleu profond comme récompense de fin de page.
+
+## Colors
+
+Une palette de ciel : beaucoup de blanc bleuté, un encre presque noir, un seul bleu franc.
+
+### Primary
+- **Bleu franc** (#0C6DF8) : boutons pleins, barres de progression actives, mot d'accent du
+  hero, prix mis en avant. Jamais en aplat de fond sur une grande surface, sauf la zone de
+  fin de page.
+- **Bleu profond de lecture** (#0A56C4) : bleu du texte court (étiquettes d'étape, petits
+  liens), et survol des boutons pleins. Il existe parce que #0C6DF8 descend sous 4,5:1 en
+  petit corps sur le ciel.
+
+### Secondary
+- **Bleu de fin** (#0E62E6 → #0C5AD9 → #0A52CC) : le dégradé vertical de la section finale
+  et du pied de page. C'est un fond CSS, pas une image : le texte blanc ne doit jamais
+  dépendre du WebGL.
+- **Brume bleue** (#B4D5FF) : pastilles d'avatar et petites surfaces calmes.
+- **Lavis bleu** (#EEF4FF) : onglet de navigation actif, pastille d'information discrète.
+
+### Neutral
+- **Encre** (#0B0B0C) : titres et texte courant sur fond clair.
+- **Encre adoucie** (#4F4E49) : paragraphes secondaires, à partir de 16px.
+- **Encre estompée** (#5F5D57) : légendes, compteurs, indications, 12 à 15px.
+- **Filets** (#DDDBD5 dans les cartes, #D6D8DE dans les panneaux) : séparateurs d'une
+  épaisseur de 1px, jamais de bordure colorée épaisse.
+- **Ciel de repli** (#F4F8FF → #E4EDFC → #DAE7FB) : le dégradé CSS affiché tant que l'image
+  du ciel n'est pas prête, ou si le WebGL est indisponible.
+
+### Named Rules
+
+**La règle du ciel lisible.** Le contraste d'un texte posé sur le ciel se mesure sur les
+pixels rendus, pas sur une couleur théorique : on masque le texte, on capture, on
+échantillonne le fond sous chaque bloc. Seuil : 4,5:1, y compris quand un nuage passe
+derrière. C'est pour ça que les gris du Figma (#5C5B57, #8A877F) ont été foncés.
+
+**La règle du bleu unique.** Un seul bouton plein bleu par écran visible. Les autres actions
+sont en contour blanc. Le bleu qui n'appelle pas à agir est une fausse piste.
+
+## Typography
+
+**Display / Body :** Host Grotesk (variable 300–800, auto-hébergée)
+**Accent :** Genoid Bold — version démo, licence commerciale à acquérir avant la mise en
+ligne
+**Autres pages du site (non reconstruites) :** Cabinet Grotesk + Plus Jakarta Sans
+
+**Character :** une grotesque contemporaine, presque neutre, qui laisse la taille faire
+l'emphase ; le Genoid n'intervient que sur un mot, pour donner le sourire que la grotesque
+ne donne pas.
+
+### Hierarchy
+- **Display** (500, `clamp(4rem, 2.6rem + 6.1vw, 8rem)`, 0.94, -0.05em) : le mot d'ouverture
+  du hero, une fois par page.
+- **Accent** (Genoid 700, `clamp(3.5rem, 2.3rem + 5.6vw, 6.5rem)`, 1, +0.03em, bleu) : la
+  suite du titre du hero, un seul groupe de mots sur toute la page.
+- **Headline** (500, `clamp(2.25rem, 0.9rem + 5.9vw, 6rem)`, 1.02, -0.045em) : le titre qui
+  ouvre une grande section.
+- **Title** (500, `clamp(2.25rem, 1.2rem + 3.4vw, 4rem)`, 1.04, -0.04em) : titre de
+  sous-section (détail des plans, FAQ, packs).
+- **Subtitle** (400, 26px, 1.2) : nom d'un plan, titre d'une carte.
+- **Body** (400, 16 → 19px, 1.6, encre adoucie) : paragraphes ; mesure courte, 30 à 36rem.
+- **Label** (400, 15px) : liens de navigation, libellés de boutons, items de liste.
+- **Caption** (400, 12 → 14px, encre estompée) : légendes, compteurs d'étape, mentions.
+
+### Named Rules
+
+**La règle des deux lignes.** Les titres sont écrits ligne par ligne dans les traductions
+(`line1`, `line2`), jamais avec un `<br>` ni laissés à la merci du retour automatique : la
+coupure fait partie du dessin.
+
+**La règle de l'apostrophe.** Typographie française : espace insécable avant `? ! : ;` et à
+l'intérieur des guillemets `«  »`.
+
+## Layout
+
+- Gouttières : 24px sur mobile, 40px à partir de `md`, 80px à partir de `xl`. Contenu centré
+  dans `max-width: 1440px` ; le panneau du parcours utilise `max-width: 1344px` avec 32px de
+  marge interne pour ne jamais toucher les bords à 1280.
+- Rythme vertical : 96px entre sections sur mobile, 180 à 200px sur grand écran. On garde un
+  grand écart avant une section majeure et un écart resserré à l'intérieur d'un groupe.
+- Mesure de lecture : les paragraphes plafonnent à 31–36rem. Sur mobile, ils sont alignés à
+  gauche (le centrage est réservé au hero) ; à partir de `md`, le centrage revient là où le
+  Figma le prévoit.
+- Points de rupture : `sm` 640, `md` 768, `lg` 1024, `xl` 1280, plus `pin`
+  (`min-width: 1024px and min-height: 620px`) qui décide si le parcours s'épingle. Toute
+  mise en page qui dépend de la hauteur passe par `pin`, jamais par `lg` seul.
+- Le gabarit partagé (`app/[locale]/(figma)/layout.tsx`) fournit ciel, navigation et pied de
+  page ; une page apporte ses sections et finit par `ClosingCta`, qui porte `data-sky-deep`
+  et `--deep-full`.
+
+## Elevation & Depth
+
+La profondeur vient de la transparence, pas de l'ombre portée. Les cartes sont du blanc à
+85% posé sur le ciel ; le panneau du parcours descend à 75% pour laisser passer les nuages.
+
+- `ambient-card` : `0 30px 60px -40px rgba(10,86,196,0.35)` — sous un panneau large.
+- `ambient-accent` : `0 40px 70px -50px rgba(12,109,248,0.7)` — sous la carte mise en avant
+  et le bouton principal.
+- `ambient-shot` : `0 40px 80px -24px rgba(12,109,248,0.45)` — sous les captures produit.
+- Navigation : blanc à 95%, ombre très basse `0 10px 30px -18px rgba(11,11,12,0.35)`.
+
+Toutes les ombres sont bleutées, décalées vers le bas, et très floues. Pas d'ombre nette,
+pas de halo centré sans décalage, pas de `backdrop-filter` décoratif.
+
+## Shapes
+
+Des rectangles à coins tendres, sans fantaisie de forme.
+
+- Rayons : 6px (focus), 8–10px (boutons, petits blocs), 14px (barre de navigation), 20px
+  (cartes), 24px (panneaux, tableau), 28px (panneau du parcours), plein (boutons ronds de
+  navigation entre étapes, avatars).
+- Séparation : un filet de 1px (#DDDBD5) plutôt qu'un encadré ; une carte est délimitée par
+  sa surface, pas par une bordure, sauf la carte mise en avant qui porte une bordure bleue
+  de 1px.
+- Les captures produit sont posées dans un cadre blanc translucide, coins supérieurs
+  arrondis, à l'intérieur d'un support bleu très clair.
+
+## Components
+
+- **Navigation** : pilule fixe en haut, largeur maximale 1040px, 60px de haut. Menu complet
+  à partir de `lg`, bouton « Démo » compact et menu hamburger en dessous. L'onglet courant
+  prend le lavis bleu et `aria-current="page"`. Le menu mobile se ferme sur Échap, au
+  défilement et au clic à l'extérieur.
+- **Bouton principal** : bleu plein, 52–54px de haut, rayon 10px, libellé 15–16px. Au
+  survol, bleu profond ; `sheen` fait passer une bande de lumière. Un seul par écran.
+- **Bouton secondaire** : fond blanc, filet gris, même gabarit. C'est le bouton par défaut
+  pour toutes les actions qui ne sont pas l'action principale.
+- **Carte** : blanc 85%, rayon 20px, 24px de marge interne (36px à partir de `md`) ; listes
+  séparées par des filets ; l'action se colle en bas de la carte pour que les cartes d'une
+  même rangée s'alignent.
+- **Carte mise en avant** : même gabarit, bordure bleue 1px, ombre bleutée, prix en bleu.
+- **Parcours (slide)** : barres d'étapes cliquables (`role="tab"`), boutons précédent /
+  suivant de 44px, et trois comportements selon l'écran — balayage natif avec la carte
+  suivante qui dépasse, panneau piloté par les boutons, ou panneau épinglé au défilement.
+- **Tableau comparatif** : vrai `<table>` avec `<caption>` masquée et en-têtes de ligne ; sur
+  mobile, il devient une carte de synthèse par plan, avec des coches.
+- **Pied de page** : posé sur le bleu profond, texte blanc, colonnes de liens, filet à 25%
+  de blanc au-dessus de la ligne de copyright.
+
+## Do's and Don'ts
+
+- **Do** mesurer le contraste sur le ciel rendu, à plusieurs positions de défilement, avant
+  de valider une couleur de texte.
+- **Do** écrire les deux langues dans le même changement, et les listes sous forme de
+  tableaux lus avec `t.raw`.
+- **Do** mettre chaque transition qui déplace un élément derrière `motion-safe:` — les
+  variantes `lg:` et `pin:` passent après `motion-reduce:` dans la feuille.
+- **Do** vérifier 360×740, 390×844, 820×1180, 1280×600, 1366×625 et 1440×900 : c'est sur les
+  écrans courts que le panneau épinglé casse.
+- **Don't** faire défiler le fond à une autre vitesse que le texte.
+- **Don't** poser une étiquette au-dessus d'un titre : le titre porte son propre poids.
+- **Don't** utiliser un dégradé dans le texte, sauf la bande de lumière du mot d'accent.
+- **Don't** faire dépendre la lisibilité d'un texte du canvas WebGL : le bleu de fin de page
+  est du CSS.
+- **Don't** empiler une carte dans une carte, ni ajouter une bordure colorée épaisse pour
+  détacher un bloc.
