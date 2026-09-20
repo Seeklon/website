@@ -94,16 +94,16 @@ compositor animates on its own. Rules that matter:
   a flash and nobody could tell what had happened. `.accent-shine-soft` (white closing
   headline) still sweeps once when the section comes into view, over 2.6s. `.sheen` does the same on
   a filled button (needs `relative overflow-hidden`).
-- Journey (`components/home/Journey.tsx`): `swipe` on phones and tablets (native
-  scroll-snap, next card peeking), `panel` from `lg` — tabs and arrows change the step and
-  the page does not move. Over the panel the wheel slides the steps instead of the page,
-  but only while a step remains in that direction, so the section is never a trap. Two
-  refs guard it: hovering (a step change re-runs the effect, and a local flag would reset)
-  and *armed* — the panel takes the wheel only after the pointer has actually moved over
-  it, and any scroll disarms it. Without that, scrolling the page with a still cursor
-  stopped dead the moment the panel slid underneath. The `pinned` runway is still in the file behind `usePinned`,
-  switched off: scrolling to change step slid the background while only the picture was
-  meant to change.
+- Journey (`components/home/Journey.tsx`): one native horizontal scroller at every width —
+  `swipe` on phones (finger, snap), `panel` from `lg` (tabs, arrows, and the wheel). The
+  tabs follow `scrollLeft`, they are not a separate state.
+- Over the panel, one notch of the wheel moves one slide, smoothly, and the page takes the
+  wheel back at either end. Two rules keep it from feeling stuck: every event the panel
+  takes starts a visible movement (no accumulating thresholds, nothing swallowed), and it
+  refuses the wheel while the page has scrolled in the last 240ms — otherwise it stops a
+  scroll the reader aimed elsewhere, just because the panel slid under a still cursor.
+  Snapping is lifted during the gesture; a leftover `scroll-snap-type: mandatory` pulls
+  every small move straight back and nothing appears to happen.
 - `ImageZoom` opens a product capture in a native `<dialog>`; an off-screen slide passes
   `focusable={false}` so its button leaves the tab order.
 - Blog: the index opens on a section headline, then the latest post as one full-width

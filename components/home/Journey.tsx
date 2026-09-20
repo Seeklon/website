@@ -21,10 +21,10 @@ const STEPS = [
 ] as const
 
 // Keep in sync with the `lg` and `pin` screens in tailwind.config.js.
-// How much wheel it takes to move one step, and how long the panel rests afterwards, so
-// one flick of a trackpad does not run through the whole slide.
-const WHEEL_PER_STEP = 90
-const WHEEL_REST_MS = 420
+// How long the page must have been still before the panel may take the wheel, and how
+// long one slide takes to travel.
+const PAGE_SETTLE_MS = 240
+const SLIDE_MS = 280
 
 const PANEL_QUERY = '(min-width: 1024px)'
 const PIN_QUERY = '(min-width: 1024px) and (min-height: 620px)'
@@ -49,7 +49,6 @@ export default function Journey() {
   const trackRef = useRef<HTMLDivElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
   const overRef = useRef(false)
-  const armedRef = useRef(false)
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   // Unknown until the first media query check; rendered like 'swipe' meanwhile.
   const [mode, setMode] = useState<Mode | null>(null)
@@ -119,7 +118,7 @@ export default function Journey() {
         const nearInnerBoundary = boundary > 0 && boundary < STEPS.length && Math.abs(value - boundary) < 0.06
         if (step !== activeRef.current && nearInnerBoundary) return
         setActive(step)
-      } else if (mode === 'swipe') {
+      } else if (mode === 'swipe' || mode === 'panel') {
         const pitch = slidePitch(track)
         const position = pitch ? viewport.scrollLeft / pitch : 0
         setProgress(position + 1)
@@ -134,7 +133,7 @@ export default function Journey() {
     const switched = lastModeRef.current !== null && lastModeRef.current !== mode
     lastModeRef.current = mode
     const step = activeRef.current
-    if (mode === 'swipe') viewport.scrollLeft = step * slidePitch(track)
+    if (mode !== 'pinned') viewport.scrollLeft = step * slidePitch(track)
     if (switched && inViewRef.current) {
       if (mode === 'pinned') {
         const travel = runway.offsetHeight - window.innerHeight
@@ -144,11 +143,10 @@ export default function Journey() {
         sectionRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
       }
     }
-    if (mode === 'panel') setProgress(step + 1)
     measure()
 
-    const scroller: HTMLElement | Window = mode === 'swipe' ? viewport : window
-    if (mode !== 'panel') scroller.addEventListener('scroll', schedule, { passive: true })
+    const scroller: HTMLElement | Window = mode === 'pinned' ? window : viewport
+    scroller.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', schedule)
     return () => {
       cancelAnimationFrame(frame)
@@ -156,11 +154,6 @@ export default function Journey() {
       window.removeEventListener('resize', schedule)
     }
   }, [mode])
-
-  // Panel mode has no scroll to follow: the bars simply fill up to the current step.
-  useEffect(() => {
-    if (mode === 'panel') runwayRef.current?.style.setProperty('--journey-progress', String(active + 1))
-  }, [mode, active])
 
   // First time the cards come into view on a phone, nudge them to show they swipe.
   useEffect(() => {
@@ -196,8 +189,6 @@ export default function Journey() {
       const travel = runway.offsetHeight - window.innerHeight
       const top = runway.getBoundingClientRect().top + window.scrollY + ((target + 0.1) / STEPS.length) * travel
       window.scrollTo({ top, behavior })
-    } else if (mode === 'panel') {
-      setActive(target)
     } else {
       viewport.scrollTo({ left: target * slidePitch(track), behavior })
     }
@@ -217,68 +208,69 @@ export default function Journey() {
     goTo(next)
   }
 
-  // The wheel changes step only while the pointer rests on the panel, and only while
-  // there is a step left in that direction: everywhere else, and at either end, the page
-  // scrolls as usual. Arriving at the section never traps the reader.
+  // Over the panel the wheel moves the slides, one notch one slide, and the panel hands
+  // the page straight back at either end. Two rules keep it honest: every event it takes
+  // starts a visible movement, and it takes nothing at all while the page itself is
+  // scrolling — the panel slides under a motionless cursor, and stopping a scroll the
+  // reader aimed elsewhere is what made it feel stuck.
   useEffect(() => {
     const panel = panelRef.current
-    if (!panel || mode !== 'panel') return
+    const viewport = viewportRef.current
+    const track = trackRef.current
+    if (!panel || !viewport || !track || mode !== 'panel') return
 
-    // Hovering has to outlive a render: a step change re-runs this effect, and a local
-    // flag would come back false — the next turn of the wheel then scrolled the page.
-    //
-    // And hovering is not enough. While the page scrolls, the panel slides under a
-    // motionless cursor; taking the wheel then would stop the page mid-gesture, which is
-    // exactly what it must never do. The panel only arms itself when the pointer actually
-    // moves over it, and any scroll disarms it again.
-    let travelled = 0
-    let restUntil = 0
+    let lastPageScroll = 0
+    let busyUntil = 0
+    let target: number | null = null
+    let release = 0
 
+    const onScroll = () => {
+      lastPageScroll = performance.now()
+    }
     const enter = () => {
       overRef.current = true
     }
     const leave = () => {
       overRef.current = false
-      armedRef.current = false
-      travelled = 0
-    }
-    const move = () => {
-      overRef.current = true
-      armedRef.current = true
-    }
-    const onScroll = () => {
-      armedRef.current = false
-      travelled = 0
     }
     const onWheel = (event: WheelEvent) => {
-      if (!overRef.current || !armedRef.current || document.querySelector('dialog[open]')) return
+      if (!overRef.current || document.querySelector('dialog[open]')) return
+      if (performance.now() - lastPageScroll < PAGE_SETTLE_MS) return
       const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY
       const direction = Math.sign(delta)
-      if (direction === 0) return
-      const next = activeRef.current + direction
-      // Let the page have the wheel back at the first and last step.
+      if (direction === 0 || Math.abs(delta) < 2) return
+
+      const pitch = slidePitch(track) || viewport.clientWidth
+      const current = target ?? Math.round(viewport.scrollLeft / pitch)
+      const next = current + direction
+      // Nothing left in that direction: the page takes the wheel back.
       if (next < 0 || next > STEPS.length - 1) return
       event.preventDefault()
-      const now = performance.now()
-      if (now < restUntil) return
-      travelled += delta
-      if (Math.abs(travelled) < WHEEL_PER_STEP) return
-      travelled = 0
-      restUntil = now + WHEEL_REST_MS
-      goTo(next)
+      // Mid-flight: the slide is already moving, so the gesture has its answer.
+      if (performance.now() < busyUntil) return
+
+      target = next
+      busyUntil = performance.now() + SLIDE_MS
+      viewport.style.scrollSnapType = 'none'
+      viewport.scrollTo({ left: next * pitch, behavior: reducedMotion() ? 'auto' : 'smooth' })
+      window.clearTimeout(release)
+      release = window.setTimeout(() => {
+        viewport.style.scrollSnapType = ''
+        target = null
+      }, SLIDE_MS + 120)
     }
 
     panel.addEventListener('pointerenter', enter)
     panel.addEventListener('pointerleave', leave)
-    panel.addEventListener('pointermove', move)
     panel.addEventListener('wheel', onWheel, { passive: false })
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       panel.removeEventListener('pointerenter', enter)
       panel.removeEventListener('pointerleave', leave)
-      panel.removeEventListener('pointermove', move)
       panel.removeEventListener('wheel', onWheel)
       window.removeEventListener('scroll', onScroll)
+      window.clearTimeout(release)
+      viewport.style.scrollSnapType = ''
     }
   }, [mode])
 
@@ -337,14 +329,14 @@ export default function Journey() {
 
               <div
                 ref={viewportRef}
-                className="no-scrollbar -mx-6 mt-5 snap-x snap-mandatory scroll-px-6 overflow-x-auto overscroll-x-contain px-6 md:-mx-10 md:scroll-px-10 md:px-10 lg:mx-0 lg:mt-[clamp(16px,3.5vh,32px)] lg:snap-none lg:scroll-px-0 lg:overflow-hidden lg:px-0"
+                className="no-scrollbar -mx-6 mt-5 snap-x snap-mandatory scroll-px-6 overflow-x-auto overscroll-x-contain px-6 md:-mx-10 md:scroll-px-10 md:px-10 lg:mx-0 lg:mt-[clamp(16px,3.5vh,32px)] lg:scroll-px-0 lg:px-0"
               >
                 <div
                   ref={trackRef}
                   // The ::after spacer lets the last card snap like the others: browsers leave
                   // the scroller's end padding out of the scroll range.
                   className="flex gap-3 after:w-7 after:shrink-0 after:content-[''] md:after:w-11 lg:gap-0 lg:after:hidden motion-safe:lg:transition-transform motion-safe:lg:duration-700 motion-safe:lg:ease-[cubic-bezier(0.16,1,0.3,1)]"
-                  style={mode === 'panel' || mode === 'pinned' ? { transform: `translateX(-${active * 100}%)` } : undefined}
+                  style={mode === 'pinned' ? { transform: `translateX(-${active * 100}%)` } : undefined}
                 >
                   {STEPS.map((step, i) => (
                     <article

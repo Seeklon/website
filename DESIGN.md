@@ -396,10 +396,11 @@ Des rectangles à coins tendres, sans fantaisie de forme.
   suivant de 44px, et deux comportements — balayage natif avec la carte suivante qui
   dépasse sur mobile, panneau piloté par les onglets et les flèches à partir de `lg`. On
   ne défile plus pour changer d'étape : le fond descendait pendant qu'on voulait seulement
-  changer d'image. La molette, elle, fait glisser les étapes **uniquement** quand le
-  curseur est sur le panneau, et **uniquement** tant qu'il reste une étape dans ce
-  sens-là : arriver sur la section ne piège jamais le lecteur, et on ressort par le haut
-  comme par le bas.
+  changer d'image. La molette fait glisser les étapes quand le curseur est sur
+  le panneau : un cran, une étape, tout de suite, et la page reprend la main aux deux
+  bouts. Elle ne prend jamais la molette pendant que la page défile — sinon elle arrête
+  net un défilement qui ne lui était pas destiné, simplement parce qu'elle est passée sous
+  un curseur immobile.
 - **Capture agrandissable** : une capture produit s'ouvre au clic dans un `<dialog>`
   (surface blanche, rayon 24px, légende et bouton de fermeture) ; une carte hors écran
   garde son bouton hors du parcours de tabulation.
