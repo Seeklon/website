@@ -9,10 +9,10 @@ export default function ClosingCta({ namespace = 'Home.closing' }: { namespace?:
   const t = useTranslations(namespace)
 
   return (
-    <section data-sky-deep className="relative text-white [--deep-full:150px] md:[--deep-full:240px]">
+    <section data-sky-deep className="relative text-white [--deep-full:150px] [--deep-lead:200px] md:[--deep-full:240px] md:[--deep-lead:300px]">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(180deg,rgba(14,98,230,0)_0px,#0E62E6_var(--deep-full),#0C5AD9_100%)]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 top-[calc(-1*var(--deep-lead))] -z-20 bg-[linear-gradient(180deg,rgba(14,98,230,0)_0px,rgba(14,98,230,0.22)_calc(var(--deep-lead)*0.55),rgba(14,98,230,0.72)_calc(var(--deep-lead)+var(--deep-full)*0.45),#0E62E6_calc(var(--deep-lead)+var(--deep-full)),#0C5AD9_100%)]"
       />
       <div className="mx-auto flex max-w-[1440px] flex-col gap-10 px-6 pt-[200px] md:px-10 md:pt-[300px] lg:flex-row lg:items-end lg:justify-between xl:px-20">
         <div>

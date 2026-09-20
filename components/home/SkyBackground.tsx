@@ -11,7 +11,8 @@ import { useEffect, useRef } from 'react'
  * smooth maximum and roughened with billow noise; lobes are shaded as if lit from the
  * upper left. The grid the clouds are placed on is warped and thinned by noise so it
  * does not read as a pattern. From the element marked `data-sky-deep` the sky blends
- * into deep blue over `--deep-full` pixels, then turns transparent: past that point
+ * into deep blue between `--deep-lead` px above it and `--deep-full` px below, then turns
+ * transparent: past that point
  * the blue is the section's own CSS background, so white copy never depends on WebGL.
  * Until the image is ready — or without WebGL — the page's CSS gradients show.
  */
@@ -215,9 +216,11 @@ function measureLayout(host: HTMLElement): SkyLayout {
   const marker = host.querySelector<HTMLElement>('[data-sky-deep]')
   const height = host.offsetHeight
   if (!marker) return { width: host.clientWidth, height, deepStart: height + 1, deepEnd: height + 2 }
-  const deepStart = marker.getBoundingClientRect().top - hostTop
-  const band = parseFloat(getComputedStyle(marker).getPropertyValue('--deep-full')) || 200
-  return { width: host.clientWidth, height, deepStart, deepEnd: deepStart + band }
+  const markerTop = marker.getBoundingClientRect().top - hostTop
+  const styles = getComputedStyle(marker)
+  const lead = parseFloat(styles.getPropertyValue('--deep-lead')) || 0
+  const band = parseFloat(styles.getPropertyValue('--deep-full')) || 200
+  return { width: host.clientWidth, height, deepStart: markerTop - lead, deepEnd: markerTop + band }
 }
 
 function compile(gl: WebGLRenderingContext, type: number, source: string) {

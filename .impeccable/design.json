@@ -147,7 +147,7 @@
       },
       "accent": {
         "displayName": "Accent Genoid",
-        "purpose": "Un seul groupe de mots par page, en bleu, avec le reflet qui le traverse. Police démo : licence commerciale à acquérir."
+        "purpose": "La seconde ligne du titre d'ouverture, une seule fois par page : pleine taille sur l'accueil, 0.85em de la ligne au-dessus sur les autres pages. Police démo : licence commerciale à acquérir."
       },
       "headline": {
         "displayName": "Headline",

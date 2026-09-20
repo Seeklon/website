@@ -267,8 +267,10 @@ ne donne pas.
 ### Hierarchy
 - **Display** (500, `clamp(4rem, 2.6rem + 6.1vw, 8rem)`, 0.94, -0.05em) : le mot d'ouverture
   du hero, une fois par page.
-- **Accent** (Genoid 700, `clamp(3.5rem, 2.3rem + 5.6vw, 6.5rem)`, 1, +0.03em, bleu) : la
-  suite du titre du hero, un seul groupe de mots sur toute la page.
+- **Accent** (Genoid 700, +0.03em, bleu) : la seconde ligne du titre d'ouverture, une
+  seule fois par page. Sur l'accueil elle fait sa propre taille
+  (`clamp(3.5rem, 2.3rem + 5.6vw, 6.5rem)`) ; sur les autres pages elle vaut `0.85em` de la
+  ligne au-dessus, pour garder la personnalité sans peser plus lourd que le titre.
 - **Headline** (500, `clamp(2.25rem, 0.9rem + 5.9vw, 6rem)`, 1.02, -0.045em) : le titre qui
   ouvre une grande section.
 - **Title** (500, `clamp(2.25rem, 1.2rem + 3.4vw, 4rem)`, 1.04, -0.04em) : titre de

@@ -21,7 +21,7 @@ function ContactHero() {
     <section className="px-6 pt-[136px] md:pt-[180px] md:text-center">
       <h1 className="text-balance text-[clamp(2.25rem,0.9rem+4.2vw,4.5rem)] font-medium leading-[1.04] tracking-[-0.045em]">
         <span className="block">{t('line1')}</span>
-        <span className="block text-azure">{t('line2')}</span>
+        <span className="block font-genoid text-[0.85em] font-bold tracking-[0.03em] text-azure">{t('line2')}</span>
       </h1>
       <p className="mt-7 max-w-[40rem] text-base leading-[1.6] text-ink-soft md:mx-auto md:mt-8 md:text-balance md:text-[19px]">
         {t('body')}
@@ -37,7 +37,7 @@ export default async function ContactPage({ params }: Props) {
   return (
     <>
       <ContactHero />
-      <section className="mx-auto mt-12 max-w-[1440px] px-6 md:mt-20 md:px-10 xl:px-20">
+      <section className="mx-auto mb-20 mt-12 max-w-[1440px] px-6 md:mb-32 md:mt-20 md:px-10 xl:px-20">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:gap-16">
           <ContactForm />
           <ContactAside />
