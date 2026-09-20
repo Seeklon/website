@@ -398,9 +398,10 @@ Des rectangles à coins tendres, sans fantaisie de forme.
   ne défile plus pour changer d'étape : le fond descendait pendant qu'on voulait seulement
   changer d'image. La molette fait glisser les étapes quand le curseur est sur
   le panneau : un cran, une étape, tout de suite, et la page reprend la main aux deux
-  bouts. Elle ne prend jamais la molette pendant que la page défile — sinon elle arrête
-  net un défilement qui ne lui était pas destiné, simplement parce qu'elle est passée sous
-  un curseur immobile.
+  bouts. Elle ne prend la molette que lorsque le bloc s'est posé près du centre
+  de la fenêtre (à un cinquième de sa hauteur près) et que la page est immobile depuis
+  120 ms — sinon elle arrête net un défilement qui ne lui était pas destiné, simplement
+  parce qu'elle est passée sous un curseur immobile.
 - **Capture agrandissable** : une capture produit s'ouvre au clic dans un `<dialog>`
   (surface blanche, rayon 24px, légende et bouton de fermeture) ; une carte hors écran
   garde son bouton hors du parcours de tabulation.

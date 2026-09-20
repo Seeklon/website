@@ -100,8 +100,9 @@ compositor animates on its own. Rules that matter:
 - Over the panel, one notch of the wheel moves one slide, smoothly, and the page takes the
   wheel back at either end. Two rules keep it from feeling stuck: every event the panel
   takes starts a visible movement (no accumulating thresholds, nothing swallowed), and it
-  refuses the wheel while the page has scrolled in the last 240ms — otherwise it stops a
-  scroll the reader aimed elsewhere, just because the panel slid under a still cursor.
+  refuses the wheel unless the panel has settled within a fifth of the window from its
+  centre and the page has been still for 120ms — otherwise it stops a scroll the reader
+  aimed elsewhere, just because the panel slid under a still cursor on its way past.
   Snapping is lifted during the gesture; a leftover `scroll-snap-type: mandatory` pulls
   every small move straight back and nothing appears to happen.
 - `ImageZoom` opens a product capture in a native `<dialog>`; an off-screen slide passes

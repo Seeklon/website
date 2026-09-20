@@ -21,9 +21,10 @@ const STEPS = [
 ] as const
 
 // Keep in sync with the `lg` and `pin` screens in tailwind.config.js.
-// How long the page must have been still before the panel may take the wheel, and how
-// long one slide takes to travel.
-const PAGE_SETTLE_MS = 240
+// How long the page must have been still before the panel may take the wheel, how far
+// off centre the panel may sit and still take it, and how long one slide takes to travel.
+const PAGE_SETTLE_MS = 120
+const CENTRE_BAND = 0.2
 const SLIDE_MS = 280
 
 const PANEL_QUERY = '(min-width: 1024px)'
@@ -236,6 +237,11 @@ export default function Journey() {
     const onWheel = (event: WheelEvent) => {
       if (!overRef.current || document.querySelector('dialog[open]')) return
       if (performance.now() - lastPageScroll < PAGE_SETTLE_MS) return
+      // Only once the panel has settled near the middle of the window: on its way in or
+      // out it is the page the reader is moving, not the slides.
+      const rect = panel.getBoundingClientRect()
+      const offCentre = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2)
+      if (offCentre > window.innerHeight * CENTRE_BAND) return
       const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY
       const direction = Math.sign(delta)
       if (direction === 0 || Math.abs(delta) < 2) return
