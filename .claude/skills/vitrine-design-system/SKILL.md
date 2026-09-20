@@ -64,25 +64,20 @@ A page provides only its sections and ends with `<ClosingCta />`, which carries
 
 ## Sky
 
-`components/home/SkyBackground.tsx` renders three layers once — the sky (`uLayer` 0), the
-far clouds (1) and the near clouds (2) — and places them in the document. The two cloud
-layers are 128% wide and drift with a CSS `transform` (54s and 96s, alternate), which the
-compositor animates on its own. Rules that matter:
+`components/home/SkyBackground.tsx` places the painted sky from the design canvas
+(`public/sky/sky.webp`, 39KB) in two stretches: the sky down to where the page turns blue,
+and the painting's own blue re-stretched over the end of the page, so the closing section
+and the footer keep their clouds. It measures `[data-sky-deep]` and its `--deep-lead` to
+line the painting's own turn up with the page's. Rules that matter:
 
-- **No parallax.** The user rejected clouds moving at a different speed from the text —
-  adding the scroll offset inside the shader is what keeps the sky anchored. Verified by
-  screenshotting the same document band at two scroll positions with motion reduced: the
-  pixels must be identical.
-- **Never animate the sky from JavaScript.** A fixed canvas redrawn per frame was tried:
-  it trails the scroll by a frame, and that lag reads as the background sliding on its
-  own. Movement belongs to the compositor; the render is one-off and budget-capped.
-- The sky deepens with page position (pale hero → bluer, larger cumulus lower down), then
-  blends into `#0E62E6` between `data-sky-deep` and `--deep-full` px below it, and turns
-  transparent past that point: from there the blue is plain CSS on the section and footer,
-  so white copy never depends on WebGL.
-- Cloud alpha is capped over the deep blue so white text keeps ≥4.5:1.
-- Without WebGL (or on software renderers), the CSS gradients stay — never make copy
-  legibility depend on the canvas.
+- **Nothing about the sky is drawn per frame.** A WebGL canvas redrawn each frame was
+  tried twice: fixed to the window it trails the scroll by a frame, and that lag reads as
+  the background sliding on its own. Movement comes from three very soft lights drifting
+  over it with a CSS transform (34–46s), which the compositor animates alone.
+- **No parallax.** The layers sit in the document, so scrolling is the browser's.
+- A wash of the deep blues over the bottom stretch keeps white copy at 4.5:1: the painted
+  blue alone measures 3:1 where its clouds are.
+- Without the image (slow network), the shell's CSS gradient is what shows.
 
 ## Components and classes
 

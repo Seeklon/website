@@ -228,6 +228,8 @@ Une palette de ciel : beaucoup de blanc bleuté, un encre presque noir, un seul 
   petit corps sur le ciel.
 
 ### Secondary
+- **Lumières du ciel** (#8CC4FF, #4DA2FF) : les trois halos très flous qui dérivent au-dessus
+  du ciel peint. Jamais sur du texte ni sur une surface : uniquement du fond.
 - **Bleu de fin** (#0E62E6 → #0C5AD9 → #0A52CC) : le dégradé vertical de la section finale
   et du pied de page. C'est un fond CSS, pas une image : le texte blanc ne doit jamais
   dépendre du WebGL.
@@ -304,32 +306,17 @@ dans `messages/*.json` ; pour les articles, écrits avec des espaces ordinaires,
 - Le fond n'est pas blanc : il ouvre sur un bleu pâle mais réel (#E7F0FE), sinon des
   nuages blancs n'ont rien contre quoi se détacher. Leur face à l'ombre descend assez bas
   pour qu'un cumulus ait un volume, jamais assez pour salir le ciel.
-- **Le ciel bouge, mais jamais en JavaScript.** Trois calques posés dans la page : le ciel
-  lui-même, puis deux bancs de nuages sur fond transparent, plus larges que la page (128%)
-  et animés par une simple `transform`. Le compositeur s'en charge, donc le défilement
-  reste celui du navigateur. Un canvas redessiné à chaque image a été essayé : il traîne
-  d'une frame derrière le texte, et ce retard se voit — c'est ce qui donnait l'impression
-  que le fond « lague » et part tout seul.
-- **Le ciel cède avant la page.** Le rendu initial baisse sa résolution au-delà de son
-  budget de pixels ; en mouvement réduit les calques ne dérivent pas ; sans WebGL, le
-  dégradé CSS reste.
-- **Le bleu de fin est du ciel, pas un aplat.** Les nuages continuent dedans, éclaircis
-  au lieu d'être teintés du même bleu (sinon ils deviennent invisibles), et le couloir
-  calme y est renforcé pour que le texte blanc garde ses 4,5:1. Attention au contexte
-  d'empilement : un `view-transition-name` sur `main` suffisait à faire passer le dégradé
-  bleu de la section finale par-dessus le ciel, et les nuages s'arrêtaient net au pied de
-  page.
-- **Un cumulus, pas une rangée de bosses.** Quatre lobes posés sur la base, trois empilés
-  au-dessus, fondus par un maximum doux (`k = 7.5`) : c'est ce qui donne le volume et la
-  base plate. Sept bosses alignées côte à côte, c'est ce qui donnait des nuages larges et
-  écrasés.
-- **Une seule grille pour toute la page.** L'échelle des nuages ne doit jamais dépendre de
-  la position du pixel dessiné : elle étirait les nuages verticalement et déplaçait les
-  frontières de cellules avec le pixel, ce qui coupait un nuage en plein milieu le long
-  d'une ligne droite. Tout ce qui varie avec la profondeur (densité, taille) se lit par
-  cellule, jamais au fragment.
-- Le ciel continue dans le bleu profond : les nuages s'y estompent sur 900px au lieu de
-  s'arrêter net, sinon la fin de page est un aplat et plus un ciel.
+- **Le ciel est peint, pas calculé.** `public/sky/sky.webp` (39 Ko) vient du canvas de
+  design : pâle et brumeux en haut, chargé de cumulus, puis basculant dans un bleu profond
+  qui garde ses nuages. Il est posé dans la page en deux tronçons — au-dessus du bleu, et
+  le bleu lui-même réétiré sur la fin de page — et mis à l'échelle pour que sa bascule
+  tombe exactement sur `[data-sky-deep]`.
+- **Le mouvement vient de trois halos**, très flous, qui dérivent au-dessus (34 à 46 s,
+  `alternate`). Le fond, lui, ne bouge jamais : c'est ce qui garantit qu'il ne peut pas
+  traîner derrière le texte au défilement. Un shader redessiné à chaque image a été essayé
+  et abandonné pour cette raison.
+- **Un voile bleu sur le tronçon du bas** (#0C5AD9 puis #0A52CC, 42 à 72 %) : le bleu peint
+  seul est trop clair là où passent ses nuages, et le texte blanc y tombait à 3:1.
 - Le couloir calme suit la colonne de contenu, pas le centre de l'écran : les titres de
   section sont alignés à gauche, c'est là qu'il faut de l'air, et la météo garde sa
   dramaturgie dans les marges.
