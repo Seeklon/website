@@ -84,13 +84,17 @@ content. Rules that matter:
   active link `bg-[#EEF4FF]` + `aria-current="page"`.
 - `Reveal`: adds `data-reveal`/`data-visible` for the blur-and-rise entrance. Use it below
   the fold only — above the fold, prefer a CSS `animation` so nothing flashes.
-- `.accent-shine` (blue accent word) and `.accent-shine-soft` (white closing headline):
-  a band of light sweeping once, and again on hover for the hero. `.sheen` does the same on
+- `.accent-shine` (blue accent word) sweeps only on hover, slowly: on arrival it read as
+  a flash and nobody could tell what had happened. `.accent-shine-soft` (white closing
+  headline) still sweeps once when the section comes into view, over 2.6s. `.sheen` does the same on
   a filled button (needs `relative overflow-hidden`).
-- Journey (`components/home/Journey.tsx`) has three modes: `swipe` (phones/tablets, native
-  scroll-snap, next card peeking, `snap-always`), `panel` (≥1024 but short), `pinned`
-  (`pin` screen = `(min-width:1024px) and (min-height:620px)`, sticky runway drives the
-  steps). Keep `PANEL_QUERY`/`PIN_QUERY` in sync with `tailwind.config.js`.
+- Journey (`components/home/Journey.tsx`): `swipe` on phones and tablets (native
+  scroll-snap, next card peeking), `panel` from `lg` — tabs and arrows change the step and
+  the page does not move. The `pinned` runway is still in the file behind `usePinned`,
+  switched off: scrolling to change step slid the background while only the picture was
+  meant to change.
+- `ImageZoom` opens a product capture in a native `<dialog>`; an off-screen slide passes
+  `focusable={false}` so its button leaves the tab order.
 - Blog: the index opens on a section headline, then the latest post as one full-width
   card (title left, excerpt and link right, like the beta plan on Tarifs), then the rest
   in two columns — typographic cards with meta, title, excerpt and the read link pinned to

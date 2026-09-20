@@ -304,6 +304,13 @@ dans `messages/*.json` ; pour les articles, écrits avec des espaces ordinaires,
 - Le fond n'est pas blanc : il ouvre sur un bleu pâle mais réel (#E7F0FE), sinon des
   nuages blancs n'ont rien contre quoi se détacher. Leur face à l'ombre descend assez bas
   pour qu'un cumulus ait un volume, jamais assez pour salir le ciel.
+- **Une seule grille pour toute la page.** L'échelle des nuages ne doit jamais dépendre de
+  la position du pixel dessiné : elle étirait les nuages verticalement et déplaçait les
+  frontières de cellules avec le pixel, ce qui coupait un nuage en plein milieu le long
+  d'une ligne droite. Tout ce qui varie avec la profondeur (densité, taille) se lit par
+  cellule, jamais au fragment.
+- Le ciel continue dans le bleu profond : les nuages s'y estompent sur 900px au lieu de
+  s'arrêter net, sinon la fin de page est un aplat et plus un ciel.
 - Le couloir calme suit la colonne de contenu, pas le centre de l'écran : les titres de
   section sont alignés à gauche, c'est là qu'il faut de l'air, et la météo garde sa
   dramaturgie dans les marges.
@@ -373,8 +380,13 @@ Des rectangles à coins tendres, sans fantaisie de forme.
   même rangée s'alignent.
 - **Carte mise en avant** : même gabarit, bordure bleue 1px, ombre bleutée, prix en bleu.
 - **Parcours (slide)** : barres d'étapes cliquables (`role="tab"`), boutons précédent /
-  suivant de 44px, et trois comportements selon l'écran — balayage natif avec la carte
-  suivante qui dépasse, panneau piloté par les boutons, ou panneau épinglé au défilement.
+  suivant de 44px, et deux comportements — balayage natif avec la carte suivante qui
+  dépasse sur mobile, panneau piloté par les onglets et les flèches à partir de `lg`. On
+  ne défile plus pour changer d'étape : le fond descendait pendant qu'on voulait seulement
+  changer d'image.
+- **Capture agrandissable** : une capture produit s'ouvre au clic dans un `<dialog>`
+  (surface blanche, rayon 24px, légende et bouton de fermeture) ; une carte hors écran
+  garde son bouton hors du parcours de tabulation.
 - **Tableau comparatif** : vrai `<table>` avec `<caption>` masquée et en-têtes de ligne ; sur
   mobile, il devient une carte de synthèse par plan, avec des coches.
 - **Carte d'article** : blanc 85%, rayon 24px, 28px de marge interne (36px à partir de

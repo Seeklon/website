@@ -37,7 +37,7 @@ uniform float uMode;      // 0 = the page sky, 1 = the drifting wisps over the h
 
 // Same colour as the CSS blue under the closing section (#0E62E6).
 const vec3 DEEP = vec3(0.0549, 0.3843, 0.9020);
-const float FADE_OUT = 160.0;
+const float FADE_OUT = 900.0;
 
 // 2D simplex noise — Ian McEwan, Ashima Arts (MIT).
 vec3 permute(vec3 x) { return mod(((x * 34.0) + 1.0) * x, 289.0); }
@@ -80,19 +80,24 @@ float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
 // the tallest near the middle. Lobes are merged with a smooth maximum so the cloud reads
 // as one volume; each lobe is shaded like a sphere lit from the upper left.
 // Returns (density, light).
-vec2 cumulus(vec2 p, float fluff, float coverage) {
+vec2 cumulus(vec2 p, float fluff, float coverage, float cellToCss, float cellYOffset) {
   vec2 cell = floor(p);
   vec2 sun = normalize(vec2(-0.45, -1.0));
   float weight = 0.0;
   float lightSum = 0.0;
-  float k = 9.0;
+  float k = 11.0;
   for (int j = -1; j <= 1; j++) {
     for (int i = -1; i <= 1; i++) {
       vec2 c = cell + vec2(float(i), float(j));
+      // How far down the page this cell sits. Everything that grows with depth is read
+      // here, per cell — read at the fragment, the test flipped in the middle of a cloud
+      // and popped it into existence along a straight line.
+      float cellCss = (c.y + 0.5 + cellYOffset) * cellToCss;
+      float cellLow = smoothstep(0.5, 1.0, clamp(cellCss / max(uDeep.x, 1.0), 0.0, 1.0));
       // Coverage drifts across the page: clusters here, open sky there.
-      if (hash(c + 7.13) > coverage + 0.22 * snoise(c * 0.37 + 4.0)) continue;
+      if (hash(c + 7.13) > coverage + 0.1 * cellLow + 0.22 * snoise(c * 0.37 + 4.0)) continue;
       vec2 base = c + vec2(0.25 + 0.5 * hash(c + 1.1), 0.62 + 0.25 * hash(c + 2.3));
-      float size = 0.2 + 0.22 * hash(c + 3.7);
+      float size = (0.2 + 0.22 * hash(c + 3.7)) * mix(0.86, 1.22, cellLow);
       float stretch = 0.8 + 0.8 * hash(c + 4.9);  // wide, low banks … compact towers
       float tall = 0.7 + 0.6 * hash(c + 6.1);
       float lean = hash(c + 8.3) - 0.5;          // the tallest lobe is not always centred
@@ -109,13 +114,17 @@ vec2 cumulus(vec2 p, float fluff, float coverage) {
                                   -r * 0.7 - max(peak, 0.0) * size * 0.28 * tall);
         vec2 d = (p - center) / r;
         float lobe = mix(-1.0, 1.0 - dot(d, d) + fluff, baseFade);
-        float w = exp(k * lobe);
+        // The soft maximum sums every lobe, so far tails still add up; with sixty of them
+        // the total crossed the visible threshold, and the cut at the edge of the sampled
+        // cells drew a rectangle across a cloud. A lobe now fades out of the sum well
+        // before that edge, and the neighbourhood is no longer a border.
+        float w = exp(k * lobe) * smoothstep(-0.8, -0.45, lobe);
         weight += w;
         lightSum += w * (0.5 + 0.5 * dot(d, sun)) * (1.0 - 0.45 * underside);
       }
     }
   }
-  if (weight <= 0.0) return vec2(-1.0, 0.0);
+  if (weight <= 1e-5) return vec2(-1.0, 0.0);
   return vec2(log(weight) / k, lightSum / weight);
 }
 
@@ -130,10 +139,10 @@ void main() {
     vec2 p = css / vec2(clamp(uWidth * 0.75, 420.0, 1100.0), clamp(uWidth * 0.2, 130.0, 300.0));
     p += 0.3 * vec2(snoise(p * 0.3 + 5.5), snoise(p * 0.3 + 2.2));
     float fluff = (billow(p * 2.4) - 0.32) * 0.7;
-    vec2 c = cumulus(p, fluff, 0.42);
-    float a = smoothstep(0.0, 0.45, c.x) * 0.5;
+    vec2 c = cumulus(p, fluff, 0.42, clamp(uWidth * 0.2, 130.0, 300.0), 0.0);
+    float a = smoothstep(0.0, 0.45, c.x) * 0.6;
     a *= smoothstep(0.0, 0.14, xn) * smoothstep(1.0, 0.86, xn);
-    a *= smoothstep(0.0, 0.18, css.y / height) * smoothstep(1.0, 0.55, css.y / height);
+    a *= smoothstep(0.0, 0.16, css.y / height) * smoothstep(1.0, 0.84, css.y / height);
     vec3 col = mix(vec3(0.86, 0.91, 0.98), vec3(1.0), clamp(c.y + fluff * 0.4, 0.0, 1.0));
     gl_FragColor = vec4(col * a, a);
     return;
@@ -154,8 +163,8 @@ void main() {
   float lowest = smoothstep(0.5, 1.0, pageT);
   // The hero sky used to start at 0.93 — near white, so white clouds had nothing to stand
   // against. It now opens on a real, if pale, blue, and the haze whitens it less.
-  vec3 sky = mix(vec3(0.874, 0.919, 0.992), vec3(0.755, 0.849, 0.984), lower);
-  sky = mix(sky, vec3(0.695, 0.815, 0.975), lowest);
+  vec3 sky = mix(vec3(0.827, 0.898, 0.996), vec3(0.678, 0.808, 0.988), lower);
+  sky = mix(sky, vec3(0.588, 0.749, 0.976), lowest);
   float haze = smoothstep(0.0, 0.9, snoise(css / 900.0 + 2.0) * 0.5 + 0.5);
   sky = mix(sky, vec3(0.955, 0.972, 1.0), haze * mix(0.24, 0.12, lowest));
   // Sun glow behind the hero.
@@ -168,8 +177,11 @@ void main() {
   // cumulus by the testimonials. The unit follows the viewport width so a phone gets its
   // own share of clouds across the screen rather than one vague mass: at a fixed 320px a
   // cloud covered two thirds of a 390px screen and read as haze.
-  float unit = clamp(uWidth * 0.55, 230.0, 560.0) * mix(0.82, 1.25, pageT);
-  float coverage = mix(0.60, 0.64, wide) + 0.1 * lowest;
+  // One grid for the whole page. It used to be scaled by the fragment's own progression
+  // down the page, which stretched every cloud vertically and moved the cell boundaries
+  // with the pixel being drawn. Clouds grow with depth through their own size instead.
+  float unit = clamp(uWidth * 0.55, 230.0, 560.0);
+  float coverage = mix(0.60, 0.64, wide);
   // Calmer sky behind the copy. The plateau covers the content column — headlines sit on
   // its left edge, not in its middle — and the weather keeps its drama in the margins.
   float calm = mix(1.0, 1.0 - smoothstep(0.24, 0.52, abs(xn - 0.5)), wide);
@@ -180,9 +192,9 @@ void main() {
     vec2 p = css / (unit * 0.55) + vec2(13.0, 5.0);
     p += 0.35 * vec2(snoise(p * 0.21 + 3.1), snoise(p * 0.21 + 9.7));
     float fluff = (billow(p * 3.6) - 0.32) * 0.6;
-    vec2 c = cumulus(p, fluff, coverage - 0.1);
-    float a = smoothstep(0.0, 0.3, c.x) * mix(0.5, 0.1, deep) * (1.0 - calmStrength * calm);
-    vec3 col = mix(mix(vec3(0.775, 0.845, 0.955), vec3(0.985, 0.992, 1.0), clamp(c.y + fluff * 0.35, 0.0, 1.0)),
+    vec2 c = cumulus(p, fluff, coverage - 0.1, unit * 0.55, -5.0);
+    float a = smoothstep(0.0, 0.3, c.x) * mix(0.5, 0.16, deep) * (1.0 - calmStrength * calm);
+    vec3 col = mix(mix(vec3(0.792, 0.867, 0.973), vec3(0.985, 0.992, 1.0), clamp(c.y + fluff * 0.35, 0.0, 1.0)),
                    vec3(0.32, 0.53, 0.94), deep);
     acc = vec4(col * a, a) + acc * (1.0 - a);
   }
@@ -193,12 +205,12 @@ void main() {
     p += 0.4 * vec2(snoise(p * 0.19 + 1.3), snoise(p * 0.19 + 6.1));
     float fluff = (billow(p * 4.2) - 0.32) * 0.6;
     float grain = billow(p * 6.5 + 3.0);
-    vec2 c = cumulus(p, fluff, coverage);
+    vec2 c = cumulus(p, fluff, coverage, unit, 0.0);
     float body = smoothstep(0.0, mix(0.24, 0.36, deep), c.x);
     // Over the deep blue, clouds stay faint so white copy keeps at least 4.5:1.
-    float a = body * mix(mix(0.9, 1.0, wide), 0.32, deep) * (1.0 - calmStrength * calm);
-    vec3 lit = mix(vec3(1.0, 1.0, 0.995), vec3(0.32, 0.53, 0.94), deep);
-    vec3 shade = mix(vec3(0.682, 0.762, 0.906), vec3(0.26, 0.45, 0.90), deep);
+    float a = body * mix(mix(0.9, 1.0, wide), 0.42, deep) * (1.0 - calmStrength * calm);
+    vec3 lit = mix(vec3(1.0, 1.0, 0.995), vec3(0.27, 0.49, 0.92), deep);
+    vec3 shade = mix(vec3(0.717, 0.804, 0.941), vec3(0.20, 0.41, 0.88), deep);
     vec3 cloud = mix(shade, lit, clamp(c.y + fluff * 0.2 + (grain - 0.3) * 0.2, 0.0, 1.0));
     cloud = mix(cloud, lit, smoothstep(0.35, 0.8, c.x) * 0.15);
     acc = vec4(cloud * a, a) + acc * (1.0 - a);
@@ -222,6 +234,9 @@ const STRIP_BUDGET_MS = 250
 type SkyLayout = { width: number; height: number; deepStart: number; deepEnd: number }
 // The drifting layer is wider than the page so the sideways motion never shows its edge.
 const DRIFT_OVERSCAN = 1.12
+// One strip of wisps, tiled down the page: the whole height would double the render for
+// a layer nobody looks at directly.
+const DRIFT_STRIP = 900
 
 function measureLayout(host: HTMLElement): SkyLayout {
   const hostTop = host.getBoundingClientRect().top
@@ -315,7 +330,7 @@ async function renderSky(
     }
     if (isCancelled() || gl.isContextLost()) return null
 
-    return await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/webp', 0.9))
+    return await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/webp', 0.92))
   } finally {
     gl.getExtension('WEBGL_lose_context')?.loseContext()
   }
@@ -376,7 +391,7 @@ export default function SkyBackground() {
         resizeObserver.disconnect()
         return
       }
-      const driftSize = { width: layout.width * DRIFT_OVERSCAN, height: drift.offsetHeight }
+      const driftSize = { width: layout.width * DRIFT_OVERSCAN, height: DRIFT_STRIP }
       const driftBlob = await renderSky(layout, () => disposed, 1, driftSize)
       running = false
       if (disposed) return
@@ -421,7 +436,7 @@ export default function SkyBackground() {
       <div
         ref={driftRef}
         aria-hidden="true"
-        className="sky-drift pointer-events-none absolute -left-[6%] top-0 -z-10 h-[820px] w-[112%] bg-no-repeat opacity-0 transition-opacity duration-1000 [background-size:100%_100%] data-[ready=true]:opacity-100 md:h-[1000px]"
+        className="sky-drift pointer-events-none absolute -left-[6%] top-0 -z-10 h-full w-[112%] opacity-0 transition-opacity duration-1000 [background-repeat:repeat-y] [background-size:100%_900px] data-[ready=true]:opacity-100"
       />
     </>
   )

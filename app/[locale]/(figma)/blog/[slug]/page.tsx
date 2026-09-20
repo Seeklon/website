@@ -67,6 +67,16 @@ export default async function BlogPostPage({ params }: Props) {
   const body = post.content.replace(/^﻿?\s*#\s+[^\n]*\n+/, '').replace(/'/g, '’')
   const article = frenchSpacing(body, locale)
   const related = getRelatedPosts(slug, locale)
+  // Two thousand words is a lot of scrolling to find one section. The headings the author
+  // already wrote become the way in.
+  const headings = (article.match(/^##\s+.+$/gm) ?? []).map((line) => line.replace(/^##\s+/, '').trim())
+  const slugify = (text: string) =>
+    text
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '')
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -111,6 +121,26 @@ export default async function BlogPostPage({ params }: Props) {
 
       <div className="mx-auto max-w-[860px] px-6 pt-10 md:pt-14">
         <div className="rounded-[24px] bg-white/90 px-6 py-10 md:px-14 md:py-14">
+          {headings.length >= 3 ? (
+            <nav aria-labelledby="sommaire" className="mb-10 border-b border-[#DDDBD5] pb-8 md:mb-12 md:pb-10">
+              <h2 id="sommaire" className="text-[15px] text-ink-faint">
+                {t('tocTitle')}
+              </h2>
+              <ol className="mt-4 space-y-2.5">
+                {headings.map((heading, i) => (
+                  <li key={heading} className="flex gap-3 text-base leading-[1.5]">
+                    <span aria-hidden="true" className="tabular-nums text-ink-faint">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <a href={`#${slugify(heading)}`} className="text-ink underline-offset-4 hover:underline">
+                      {heading}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          ) : null}
+
           <div className="prose prose-lg max-w-none">
             {/* remark-gfm: several articles compare options in a table, which needs room
                 to scroll sideways on a phone rather than push the page out of shape.
@@ -123,6 +153,11 @@ export default async function BlogPostPage({ params }: Props) {
                   <div className="not-prose my-8 overflow-x-auto">
                     <table className="w-full min-w-[520px] text-left text-[15px] leading-[1.5]" {...props} />
                   </div>
+                ),
+                h2: ({ children }) => (
+                  <h2 id={slugify(String(children))} className="scroll-mt-28">
+                    {children}
+                  </h2>
                 ),
                 a: ({ href, children }) => {
                   const target = href ?? ''

@@ -15,7 +15,7 @@ export default function ClosingCta({
   const t = useTranslations(namespace)
 
   return (
-    <section data-sky-deep className="relative text-white [--deep-full:150px] [--deep-lead:200px] md:[--deep-full:240px] md:[--deep-lead:300px]">
+    <section data-sky-deep className="relative text-white [--deep-full:260px] [--deep-lead:340px] md:[--deep-full:420px] md:[--deep-lead:560px]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 top-[calc(-1*var(--deep-lead))] -z-20 bg-[linear-gradient(180deg,rgba(14,98,230,0)_0px,rgba(14,98,230,0.22)_calc(var(--deep-lead)*0.55),rgba(14,98,230,0.72)_calc(var(--deep-lead)+var(--deep-full)*0.45),#0E62E6_calc(var(--deep-lead)+var(--deep-full)),#0C5AD9_100%)]"
@@ -23,7 +23,7 @@ export default function ClosingCta({
       {/* One column, in reading order: the headline, what it means, then the way out.
           The button used to face the headline across the page, which read as two
           unrelated blocks on the one screen people leave with. */}
-      <div className="mx-auto max-w-[1440px] px-6 pb-24 pt-[200px] md:px-10 md:pb-32 md:pt-[300px] xl:px-20">
+      <div className="mx-auto max-w-[1440px] px-6 pb-24 pt-[300px] md:px-10 md:pb-32 md:pt-[460px] xl:px-20">
         <Reveal>
           <h2 className="text-[clamp(2.625rem,1rem+6.7vw,7rem)] font-medium leading-none tracking-[-0.045em] md:leading-[0.95] md:tracking-[-0.05em]">
             <span className="block">{t('line1')}</span>

@@ -94,7 +94,9 @@
           "caption": "The interview",
           "alt": "Seeklon: interview guide prepared for a candidate"
         }
-      }
+      },
+      "zoom": "Enlarge the screenshot",
+      "close": "Close"
     },
     "excerpt": {
       "quote": "“How did you structure a design system and get several product teams to adopt it?”",
@@ -216,7 +218,8 @@
       "cta": "Try Seeklon"
     },
     "readingTime": "{minutes} min read",
-    "relatedTitle": "Read next."
+    "relatedTitle": "Read next.",
+    "tocTitle": "In this article"
   },
   "Product": {
     "titleLine1": "A complete suite to",

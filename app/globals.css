@@ -50,12 +50,13 @@ body {
       background-clip: text;
       color: transparent;
       -webkit-text-fill-color: transparent;
-      animation: accent-shine 1.7s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+      /* No sweep on arrival: at 1.7s it read as a flash and nobody could tell what had
+         happened. The light now passes only when the word is hovered, slowly. */
     }
 
     @media (hover: hover) {
       .home .accent-shine:hover {
-        animation: accent-shine-again 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation: accent-shine-again 2.4s cubic-bezier(0.32, 0.72, 0.36, 1) both;
       }
     }
   }
@@ -87,6 +88,10 @@ body {
   .home [data-reveal] .reveal-stagger > *,
   .home [data-reveal]:not(:has(:is(h1, h2, h3) > span)):not(:has(.reveal-stagger)) {
     --reveal-delay: 0ms;
+    /* The mask stops at the box, and a descender hangs below it: the g of "Vous gardez la
+       décision." came out shaved. The box is extended, the layout is not. */
+    padding-bottom: 0.16em;
+    margin-bottom: -0.16em;
     opacity: 0;
     transform: translateY(14px);
     filter: blur(12px);
@@ -149,7 +154,7 @@ body {
     }
 
     .home [data-visible] .accent-shine-soft {
-      animation: accent-shine 2.1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+      animation: accent-shine 2.6s cubic-bezier(0.32, 0.72, 0.36, 1) 0.45s both;
     }
   }
 
@@ -168,7 +173,7 @@ body {
 
   /* Slow horizontal breath of the high clouds behind the hero. */
   .home .sky-drift {
-    animation: sky-drift 90s ease-in-out infinite alternate;
+    animation: sky-drift 62s ease-in-out infinite alternate;
   }
 
   /* Brise, Tempête, Cyclone: the packs are named after winds, so the wind passes over
@@ -347,7 +352,7 @@ body {
     transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translate3d(-7%, 0, 0);
+    transform: translate3d(-9%, 0, 0);
   }
 }
 

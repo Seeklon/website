@@ -94,7 +94,9 @@
           "caption": "L’entretien",
           "alt": "Seeklon : guide d’entretien préparé pour une candidate"
         }
-      }
+      },
+      "zoom": "Agrandir la capture",
+      "close": "Fermer"
     },
     "excerpt": {
       "quote": "« Comment avez-vous structuré et fait adopter un design system par plusieurs équipes produit ? »",
@@ -216,7 +218,8 @@
       "cta": "Essayer Seeklon"
     },
     "readingTime": "{minutes} min de lecture",
-    "relatedTitle": "À lire ensuite."
+    "relatedTitle": "À lire ensuite.",
+    "tocTitle": "Dans cet article"
   },
   "Product": {
     "titleLine1": "Une suite complète pour",

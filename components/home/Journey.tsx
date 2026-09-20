@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Link } from '@/i18n/navigation'
 import Reveal from './Reveal'
+import ImageZoom from './ImageZoom'
 import offerShot from '@/public/home/capture-offre.png'
 import offerCrop from '@/public/home/capture-offre-mobile.png'
 import candidatesShot from '@/public/home/capture-candidatures.png'
@@ -55,7 +56,12 @@ export default function Journey() {
   useEffect(() => {
     const panel = window.matchMedia(PANEL_QUERY)
     const pin = window.matchMedia(PIN_QUERY)
-    const update = () => setMode(pin.matches ? 'pinned' : panel.matches ? 'panel' : 'swipe')
+    // The pinned runway made the page scroll to change step, so the background slid by
+    // while only the picture was meant to change. Steps are driven by the tabs and the
+    // arrows now; `pinned` stays in the file because the runway is what the section falls
+    // back to if we ever want scroll-driven steps again.
+    const usePinned = false
+    const update = () => setMode(usePinned && pin.matches ? 'pinned' : panel.matches ? 'panel' : 'swipe')
     update()
     panel.addEventListener('change', update)
     pin.addEventListener('change', update)
@@ -282,6 +288,8 @@ export default function Journey() {
                         caption={t(`steps.${step.key}.caption`)}
                         active={i === active}
                         offset={i - active}
+                        openLabel={t('zoom')}
+                        closeLabel={t('close')}
                       />
 
                       <div className="flex flex-1 flex-col p-5 md:p-7 lg:justify-center lg:p-0">
@@ -347,11 +355,15 @@ function StepMedia({
   caption,
   active,
   offset,
+  openLabel,
+  closeLabel,
 }: {
   step: { image: StaticImageData; crop: StaticImageData }
   alt: string
   caption: string
   active: boolean
+  openLabel: string
+  closeLabel: string
   /** Where this step sits relative to the current one: the capture waits on the side it
    *  will come from, so the slide moves with the gesture instead of dissolving. */
   offset: number
@@ -370,6 +382,15 @@ function StepMedia({
     <figure className="md:order-last lg:flex lg:flex-col">
       <div className="lg:rounded-[24px] lg:bg-[linear-gradient(135deg,#EAF2FF_0%,#D4E4FE_100%)] lg:p-6 xl:p-8">
         <div className="lg:mx-auto lg:rounded-[14px] lg:bg-white/80 lg:p-2 pin:max-w-[calc((100vh-400px)*16/9)]">
+          <ImageZoom
+            src={wide.src}
+            srcSet={wide.srcSet}
+            alt={alt}
+            caption={caption}
+            openLabel={openLabel}
+            closeLabel={closeLabel}
+            focusable={active}
+          >
           <picture
             data-active={active}
             style={{ '--shift': offset === 0 ? '0px' : offset < 0 ? '-18px' : '18px' } as React.CSSProperties}
@@ -378,6 +399,7 @@ function StepMedia({
             <source media="(min-width: 1024px)" srcSet={wide.srcSet} sizes={wide.sizes} />
             <img {...narrow} alt={alt} className="h-full w-full object-cover object-left-top" />
           </picture>
+          </ImageZoom>
         </div>
       </div>
       <figcaption className="hidden text-sm text-ink-faint lg:mt-3 lg:block lg:self-end">{caption}</figcaption>
