@@ -49,6 +49,7 @@ export default function Journey() {
   const trackRef = useRef<HTMLDivElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
   const overRef = useRef(false)
+  const armedRef = useRef(false)
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   // Unknown until the first media query check; rendered like 'swipe' meanwhile.
   const [mode, setMode] = useState<Mode | null>(null)
@@ -225,6 +226,11 @@ export default function Journey() {
 
     // Hovering has to outlive a render: a step change re-runs this effect, and a local
     // flag would come back false — the next turn of the wheel then scrolled the page.
+    //
+    // And hovering is not enough. While the page scrolls, the panel slides under a
+    // motionless cursor; taking the wheel then would stop the page mid-gesture, which is
+    // exactly what it must never do. The panel only arms itself when the pointer actually
+    // moves over it, and any scroll disarms it again.
     let travelled = 0
     let restUntil = 0
 
@@ -233,10 +239,19 @@ export default function Journey() {
     }
     const leave = () => {
       overRef.current = false
+      armedRef.current = false
+      travelled = 0
+    }
+    const move = () => {
+      overRef.current = true
+      armedRef.current = true
+    }
+    const onScroll = () => {
+      armedRef.current = false
       travelled = 0
     }
     const onWheel = (event: WheelEvent) => {
-      if (!overRef.current || document.querySelector('dialog[open]')) return
+      if (!overRef.current || !armedRef.current || document.querySelector('dialog[open]')) return
       const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY
       const direction = Math.sign(delta)
       if (direction === 0) return
@@ -255,11 +270,15 @@ export default function Journey() {
 
     panel.addEventListener('pointerenter', enter)
     panel.addEventListener('pointerleave', leave)
+    panel.addEventListener('pointermove', move)
     panel.addEventListener('wheel', onWheel, { passive: false })
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       panel.removeEventListener('pointerenter', enter)
       panel.removeEventListener('pointerleave', leave)
+      panel.removeEventListener('pointermove', move)
       panel.removeEventListener('wheel', onWheel)
+      window.removeEventListener('scroll', onScroll)
     }
   }, [mode])
 

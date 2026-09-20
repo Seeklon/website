@@ -313,6 +313,10 @@ dans `messages/*.json` ; pour les articles, écrits avec des espaces ordinaires,
 - **Le ciel cède avant la page.** Le rendu initial baisse sa résolution au-delà de son
   budget de pixels ; en mouvement réduit les calques ne dérivent pas ; sans WebGL, le
   dégradé CSS reste.
+- **Un cumulus, pas une rangée de bosses.** Quatre lobes posés sur la base, trois empilés
+  au-dessus, fondus par un maximum doux (`k = 7.5`) : c'est ce qui donne le volume et la
+  base plate. Sept bosses alignées côte à côte, c'est ce qui donnait des nuages larges et
+  écrasés.
 - **Une seule grille pour toute la page.** L'échelle des nuages ne doit jamais dépendre de
   la position du pixel dessiné : elle étirait les nuages verticalement et déplaçait les
   frontières de cellules avec le pixel, ce qui coupait un nuage en plein milieu le long

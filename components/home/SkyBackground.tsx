@@ -85,7 +85,9 @@ vec2 cumulus(vec2 p, float fluff, float coverage, float cellToCss, float cellYOf
   vec2 sun = normalize(vec2(-0.45, -1.0));
   float weight = 0.0;
   float lightSum = 0.0;
-  float k = 11.0;
+  // Lower k, softer maximum: the lobes melt into one mass instead of reading as a pile
+  // of balls.
+  float k = 7.5;
   for (int j = -1; j <= 1; j++) {
     for (int i = -1; i <= 1; i++) {
       vec2 c = cell + vec2(float(i), float(j));
@@ -96,22 +98,29 @@ vec2 cumulus(vec2 p, float fluff, float coverage, float cellToCss, float cellYOf
       float cellLow = smoothstep(0.5, 1.0, clamp(cellCss / max(uDeep.x, 1.0), 0.0, 1.0));
       // Coverage drifts across the page: clusters here, open sky there.
       if (hash(c + 7.13) > coverage + 0.1 * cellLow + 0.22 * snoise(c * 0.37 + 4.0)) continue;
-      vec2 base = c + vec2(0.25 + 0.5 * hash(c + 1.1), 0.62 + 0.25 * hash(c + 2.3));
-      float size = (0.2 + 0.22 * hash(c + 3.7)) * mix(0.86, 1.22, cellLow);
-      float stretch = 0.8 + 0.8 * hash(c + 4.9);  // wide, low banks … compact towers
-      float tall = 0.7 + 0.6 * hash(c + 6.1);
-      float lean = hash(c + 8.3) - 0.5;          // the tallest lobe is not always centred
+      vec2 base = c + vec2(0.3 + 0.4 * hash(c + 1.1), 0.68 + 0.22 * hash(c + 2.3));
+      float size = (0.27 + 0.25 * hash(c + 3.7)) * mix(0.88, 1.15, cellLow);
+      float stretch = 0.82 + 0.4 * hash(c + 4.9);  // a wide bank … a compact tower
+      float tall = 0.85 + 0.55 * hash(c + 6.1);
+      float lean = hash(c + 8.3) - 0.5;           // the crown is not always centred
       float ground = base.y - p.y + fluff * 0.35 * size;
       float baseFade = smoothstep(-0.03, 0.14 * size, ground);
       float underside = smoothstep(0.45 * size, -0.02, ground);
+      // Four lobes resting on the base and three stacked above them: a cauliflower with a
+      // flat bottom, not a row of bumps. Seven bumps side by side is what made the clouds
+      // read as wide, flat smears.
       for (int n = 0; n < 7; n++) {
-        float fn = float(n) - 3.0;
-        float h = hash(c + float(n) * 1.37);
-        float h2 = hash(c + float(n) * 2.71 + 0.5);
-        float peak = 1.0 - 0.17 * abs(fn - lean * 2.0);
-        float r = size * (0.5 + 0.38 * h) * peak;
-        vec2 center = base + vec2(fn * size * 0.34 * stretch + (h2 - 0.5) * size * 0.2,
-                                  -r * 0.7 - max(peak, 0.0) * size * 0.28 * tall);
+        float fn = float(n);
+        float upper = step(3.5, fn);
+        float slot = fn - 4.0 * upper;                    // 0..3 on the base, 0..2 above
+        float span = mix(3.0, 2.0, upper);
+        float u = slot - span * 0.5 + lean * mix(0.5, 1.1, upper);
+        float h = hash(c + fn * 1.37);
+        float h2 = hash(c + fn * 2.71 + 0.5);
+        float crown = 1.0 - 0.2 * abs(u) / max(span * 0.5, 0.5);
+        float r = size * (0.46 + 0.32 * h) * mix(1.0, 0.74, upper) * crown;
+        vec2 center = base + vec2(u * size * mix(0.44, 0.37, upper) * stretch + (h2 - 0.5) * size * 0.12,
+                                  -r * 0.82 - upper * size * (0.52 + 0.28 * h2) * tall);
         vec2 d = (p - center) / r;
         float lobe = mix(-1.0, 1.0 - dot(d, d) + fluff, baseFade);
         // The soft maximum sums every lobe, so far tails still add up; with sixty of them
@@ -167,19 +176,19 @@ void main() {
   // One grid for the whole page. It used to be scaled by the fragment's own progression
   // down the page, which stretched every cloud vertically and moved the cell boundaries
   // with the pixel being drawn. Clouds grow with depth through their own size instead.
-  float unit = clamp(uWidth * 0.55, 230.0, 560.0);
-  float coverage = mix(0.60, 0.64, wide);
+  float unit = clamp(uWidth * 0.40, 190.0, 420.0);
+  float coverage = mix(0.80, 0.84, wide);
   // Calmer sky behind the copy. The plateau covers the content column — headlines sit on
   // its left edge, not in its middle — and the weather keeps its drama in the margins.
   float calm = mix(1.0, 1.0 - smoothstep(0.24, 0.52, abs(xn - 0.5)), wide);
-  float calmStrength = mix(0.24, 0.36, wide) * (1.0 - deep);
+  float calmStrength = mix(0.16, 0.24, wide) * (1.0 - deep);
 
   // Far layer: smaller, hazier.
   if (uLayer > 0.5 && uLayer < 1.5) {
     vec2 p = css / (unit * 0.55) + vec2(13.0, 5.0);
     p += 0.35 * vec2(snoise(p * 0.21 + 3.1), snoise(p * 0.21 + 9.7));
     float fluff = (billow(p * 3.6) - 0.32) * 0.6;
-    vec2 c = cumulus(p, fluff, coverage - 0.1, unit * 0.55, -5.0);
+    vec2 c = cumulus(p, fluff, coverage - 0.06, unit * 0.55, -5.0);
     float a = smoothstep(0.0, 0.3, c.x) * mix(0.5, 0.16, deep) * (1.0 - calmStrength * calm);
     vec3 col = mix(mix(vec3(0.792, 0.867, 0.973), vec3(0.985, 0.992, 1.0), clamp(c.y + fluff * 0.35, 0.0, 1.0)),
                    vec3(0.32, 0.53, 0.94), deep);
@@ -211,7 +220,7 @@ void main() {
 
 // Canvas pixels per css pixel; soft clouds lose nothing at this resolution.
 const SKY_SCALE = 0.5
-const CLOUD_SCALE = 0.34
+const CLOUD_SCALE = 0.38
 // Canvas pixels one render may cost, however tall the page is.
 const PIXEL_BUDGET = 2_200_000
 // Rows drawn per frame, so the one-off render never blocks a frame for long.
@@ -317,7 +326,10 @@ async function renderLayer(
     }
     if (isCancelled() || gl.isContextLost()) return null
 
-    return await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/webp', 0.92))
+    // The sky carries a long gradient and needs the quality; the clouds are soft shapes on
+    // transparent ground and compress much harder without anything showing.
+    const quality = layer === 0 ? 0.92 : 0.8
+    return await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/webp', quality))
   } finally {
     gl.getExtension('WEBGL_lose_context')?.loseContext()
   }

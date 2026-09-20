@@ -97,8 +97,11 @@ compositor animates on its own. Rules that matter:
 - Journey (`components/home/Journey.tsx`): `swipe` on phones and tablets (native
   scroll-snap, next card peeking), `panel` from `lg` — tabs and arrows change the step and
   the page does not move. Over the panel the wheel slides the steps instead of the page,
-  but only while a step remains in that direction, so the section is never a trap. Hover
-  state lives in a ref: a step change re-runs the effect, and a local flag would reset. The `pinned` runway is still in the file behind `usePinned`,
+  but only while a step remains in that direction, so the section is never a trap. Two
+  refs guard it: hovering (a step change re-runs the effect, and a local flag would reset)
+  and *armed* — the panel takes the wheel only after the pointer has actually moved over
+  it, and any scroll disarms it. Without that, scrolling the page with a still cursor
+  stopped dead the moment the panel slid underneath. The `pinned` runway is still in the file behind `usePinned`,
   switched off: scrolling to change step slid the background while only the picture was
   meant to change.
 - `ImageZoom` opens a product capture in a native `<dialog>`; an off-screen slide passes
