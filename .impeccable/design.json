@@ -246,11 +246,6 @@
         "purpose": "Passage d'une étape à l'autre du parcours."
       },
       {
-        "name": "duration-reveal",
-        "value": "700ms",
-        "purpose": "Apparition d'un titre de section (flou qui se dissipe)."
-      },
-      {
         "name": "duration-shine",
         "value": "1700ms",
         "purpose": "Reflet du mot d'accent, une seule fois au chargement."
@@ -259,6 +254,11 @@
         "name": "drift",
         "value": "90s ease-in-out infinite alternate",
         "purpose": "Dérive horizontale des nuages hauts du hero, seule animation en boucle du site."
+      },
+      {
+        "name": "duration-reveal-mist",
+        "value": "900ms → 1300ms cubic-bezier(0.16, 1, 0.3, 1), lignes décalées de 180ms",
+        "purpose": "Apparition d'un titre : un voile doux se retire dans le sens de lecture pendant que le flou se résorbe, ligne par ligne."
       }
     ],
     "breakpoints": [
@@ -390,7 +390,7 @@
     ],
     "donts": [
       "Don't faire défiler le fond à une autre vitesse que le texte.",
-      "Don't poser une étiquette au-dessus d'un titre : le titre porte son propre poids.",
+      "Don't poser une étiquette au-dessus d'un titre, ni une pastille à côté : le titre porte son propre poids, et une carte se distingue par sa matière, pas par un badge.",
       "Don't utiliser un dégradé dans le texte, sauf la bande de lumière du mot d'accent.",
       "Don't faire dépendre la lisibilité d'un texte du canvas WebGL : le bleu de fin de page est du CSS.",
       "Don't empiler une carte dans une carte, ni ajouter une bordure colorée épaisse pour détacher un bloc."

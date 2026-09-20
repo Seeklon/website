@@ -371,7 +371,8 @@ Des rectangles à coins tendres, sans fantaisie de forme.
 - **Do** vérifier 360×740, 390×844, 820×1180, 1280×600, 1366×625 et 1440×900 : c'est sur les
   écrans courts que le panneau épinglé casse.
 - **Don't** faire défiler le fond à une autre vitesse que le texte.
-- **Don't** poser une étiquette au-dessus d'un titre : le titre porte son propre poids.
+- **Don't** poser une étiquette au-dessus d'un titre, ni une pastille à côté : le titre
+  porte son propre poids, et une carte se distingue par sa matière, pas par un badge.
 - **Don't** utiliser un dégradé dans le texte, sauf la bande de lumière du mot d'accent.
 - **Don't** faire dépendre la lisibilité d'un texte du canvas WebGL : le bleu de fin de page
   est du CSS.

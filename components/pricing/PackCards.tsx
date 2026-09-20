@@ -7,18 +7,16 @@ import PlanDetails from './PlanDetails'
 // from Brise to Cyclone. No prices yet, on purpose — the detail lives in the table below,
 // so the cards carry only what separates one pack from the next.
 const PACKS = [
-  { key: 'breeze', card: 'border-white bg-white/70', name: 'text-2xl', recommended: false },
+  { key: 'breeze', card: 'border-white bg-white/70', name: 'text-2xl' },
   {
     key: 'storm',
     card: 'border-azure/30 bg-white/90 shadow-[0_24px_48px_-28px_rgba(12,109,248,0.35)]',
     name: 'text-[26px]',
-    recommended: true,
   },
   {
     key: 'cyclone',
     card: 'border-ink/15 bg-white/95 shadow-[0_28px_56px_-30px_rgba(11,11,12,0.3)]',
     name: 'text-[28px]',
-    recommended: false,
   },
 ] as const
 
@@ -34,16 +32,9 @@ export default function PackCards() {
       </Reveal>
 
       <ul className="mt-8 grid gap-5 md:mt-12 lg:grid-cols-3 lg:gap-6">
-        {PACKS.map(({ key, card, name, recommended }) => (
+        {PACKS.map(({ key, card, name }) => (
           <li key={key} className={`flex flex-col rounded-[20px] border p-7 md:p-8 ${card}`}>
-            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-              <h3 className={name}>{t(`items.${key}.name`)}</h3>
-              {recommended ? (
-                <span className="rounded-full bg-azure/10 px-3 py-1 text-[13px] text-azure-deep">
-                  {t('recommended')}
-                </span>
-              ) : null}
-            </div>
+            <h3 className={name}>{t(`items.${key}.name`)}</h3>
             <p className="mt-3 max-w-[20rem] text-base leading-[1.6] text-ink-soft">{t(`items.${key}.description`)}</p>
             <p className="mt-6 border-t border-[#DDDBD5] pt-5 text-base">{t(`items.${key}.highlight`)}</p>
 
