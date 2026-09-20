@@ -255,11 +255,10 @@
     "hero": {
       "line1": "Free during the beta.",
       "line2": "Packs are coming.",
-      "body": "Seeklon is in beta: access is free for the first companies testing it with us. The packs below will open afterwards.",
-      "note": "Pack pricing is still being defined."
+      "body": "Seeklon is in beta: access is free for the first companies testing it with us. Pack pricing will be announced before the beta ends."
     },
     "beta": {
-      "name": "Beta tester",
+      "name": "Beta access",
       "price": "€0",
       "period": "for the whole beta",
       "description": "For the first companies hiring with Seeklon and helping us grow it.",
@@ -275,7 +274,6 @@
     },
     "packs": {
       "title": "The packs to come.",
-      "soon": "Price to come",
       "cta": "Get notified",
       "items": {
         "breeze": {
@@ -288,7 +286,8 @@
             "Application sorting",
             "Interview guides",
             "1 user"
-          ]
+          ],
+          "highlight": "1 active job post · 1 user"
         },
         "storm": {
           "name": "Storm",
@@ -301,7 +300,8 @@
             "Interview guides",
             "3 users",
             "Email support"
-          ]
+          ],
+          "highlight": "5 active job posts · 3 users"
         },
         "cyclone": {
           "name": "Cyclone",
@@ -313,12 +313,14 @@
             "10 users",
             "Hiring follow-up",
             "Onboarding support"
-          ]
+          ],
+          "highlight": "Unlimited job posts · 10 users"
         }
-      }
+      },
+      "recommended": "Most common for a small company",
+      "lead": "The detail, line by line."
     },
     "details": {
-      "title": "The packs in detail.",
       "caption": "The three upcoming packs compared, line by line.",
       "note": "Indicative content, which may change before the packs open.",
       "rows": [
@@ -418,6 +420,13 @@
           "a": "Yes, on request. Write to us and we'll look at your situation together."
         }
       ]
+    },
+    "closing": {
+      "line1": "Start now.",
+      "line2": "It's free.",
+      "body": "Seeklon is free for the whole beta. You write your job posts, sort your applications and prepare your interviews — and you keep the decision.",
+      "note": "Free for the whole beta, no commitment.",
+      "cta": "Join the beta"
     }
   },
   "Metadata": {

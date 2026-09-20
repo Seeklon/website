@@ -5,8 +5,8 @@ import Reveal from './Reveal'
 // First section of the deep-blue sky. SkyBackground reads `data-sky-deep` and
 // `--deep-full` to blend its clouds into this blue; the blue itself is plain CSS so the
 // white copy keeps its contrast with or without WebGL.
-export default function ClosingCta() {
-  const t = useTranslations('Home.closing')
+export default function ClosingCta({ namespace = 'Home.closing' }: { namespace?: string }) {
+  const t = useTranslations(namespace)
 
   return (
     <section data-sky-deep className="relative text-white [--deep-full:150px] md:[--deep-full:240px]">

@@ -8,88 +8,280 @@
         "role": "primary",
         "displayName": "Bleu franc",
         "canonical": "#0C6DF8",
-        "tonalRamp": ["#052C69", "#073B8D", "#0A4BB1", "#0A56C4", "#0C6DF8", "#5794FB", "#9CC0FD", "#E3EDFE"]
+        "tonalRamp": [
+          "#052C69",
+          "#073B8D",
+          "#0A4BB1",
+          "#0A56C4",
+          "#0C6DF8",
+          "#5794FB",
+          "#9CC0FD",
+          "#E3EDFE"
+        ]
       },
       "azure-deep": {
         "role": "primary",
         "displayName": "Bleu profond de lecture",
         "canonical": "#0A56C4",
-        "tonalRamp": ["#04214B", "#062F6C", "#08428F", "#0A56C4", "#3B7BD8", "#7BA6E8", "#B6CCF3", "#E6EEFB"]
+        "tonalRamp": [
+          "#04214B",
+          "#062F6C",
+          "#08428F",
+          "#0A56C4",
+          "#3B7BD8",
+          "#7BA6E8",
+          "#B6CCF3",
+          "#E6EEFB"
+        ]
       },
       "azure-mist": {
         "role": "secondary",
         "displayName": "Brume bleue",
         "canonical": "#B4D5FF",
-        "tonalRamp": ["#123B6B", "#1B5395", "#276FC4", "#4C90E4", "#7DB1F2", "#B4D5FF", "#D6E7FF", "#EFF6FF"]
+        "tonalRamp": [
+          "#123B6B",
+          "#1B5395",
+          "#276FC4",
+          "#4C90E4",
+          "#7DB1F2",
+          "#B4D5FF",
+          "#D6E7FF",
+          "#EFF6FF"
+        ]
       },
       "deep-top": {
         "role": "secondary",
         "displayName": "Bleu de fin",
         "canonical": "#0E62E6",
-        "tonalRamp": ["#04204F", "#062E74", "#083E9C", "#0A52CC", "#0E62E6", "#4A8BEE", "#8FB7F5", "#D5E5FC"]
+        "tonalRamp": [
+          "#04204F",
+          "#062E74",
+          "#083E9C",
+          "#0A52CC",
+          "#0E62E6",
+          "#4A8BEE",
+          "#8FB7F5",
+          "#D5E5FC"
+        ]
       },
       "ink": {
         "role": "neutral",
         "displayName": "Encre",
         "canonical": "#0B0B0C",
-        "tonalRamp": ["#0B0B0C", "#24231F", "#3A3833", "#4F4E49", "#5F5D57", "#8C8A83", "#C5C3BC", "#F2F1ED"]
+        "tonalRamp": [
+          "#0B0B0C",
+          "#24231F",
+          "#3A3833",
+          "#4F4E49",
+          "#5F5D57",
+          "#8C8A83",
+          "#C5C3BC",
+          "#F2F1ED"
+        ]
       },
       "ink-soft": {
         "role": "neutral",
         "displayName": "Encre adoucie",
         "canonical": "#4F4E49",
-        "tonalRamp": ["#171614", "#2C2B27", "#3E3D38", "#4F4E49", "#6E6C65", "#9A988F", "#CAC8C1", "#F1F0EC"]
+        "tonalRamp": [
+          "#171614",
+          "#2C2B27",
+          "#3E3D38",
+          "#4F4E49",
+          "#6E6C65",
+          "#9A988F",
+          "#CAC8C1",
+          "#F1F0EC"
+        ]
       },
       "ink-faint": {
         "role": "neutral",
         "displayName": "Encre estompée",
         "canonical": "#5F5D57",
-        "tonalRamp": ["#1B1A18", "#302F2B", "#47453F", "#5F5D57", "#807E76", "#A8A69E", "#D0CEC7", "#F3F2EE"]
+        "tonalRamp": [
+          "#1B1A18",
+          "#302F2B",
+          "#47453F",
+          "#5F5D57",
+          "#807E76",
+          "#A8A69E",
+          "#D0CEC7",
+          "#F3F2EE"
+        ]
       },
       "rule": {
         "role": "neutral",
         "displayName": "Filet",
         "canonical": "#DDDBD5",
-        "tonalRamp": ["#3B3A35", "#55534C", "#726F67", "#9A978E", "#BEBBB3", "#DDDBD5", "#EDECE8", "#F8F7F5"]
+        "tonalRamp": [
+          "#3B3A35",
+          "#55534C",
+          "#726F67",
+          "#9A978E",
+          "#BEBBB3",
+          "#DDDBD5",
+          "#EDECE8",
+          "#F8F7F5"
+        ]
       },
       "sky-pale": {
         "role": "neutral",
         "displayName": "Ciel pâle",
         "canonical": "#F4F8FF",
-        "tonalRamp": ["#1B3866", "#28518F", "#3A70BD", "#6A9AE0", "#A6C6F1", "#DAE7FB", "#E4EDFC", "#F4F8FF"]
+        "tonalRamp": [
+          "#1B3866",
+          "#28518F",
+          "#3A70BD",
+          "#6A9AE0",
+          "#A6C6F1",
+          "#DAE7FB",
+          "#E4EDFC",
+          "#F4F8FF"
+        ]
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Mot d'ouverture du hero, une seule fois par page." },
-      "accent": { "displayName": "Accent Genoid", "purpose": "Un seul groupe de mots par page, en bleu, avec le reflet qui le traverse. Police démo : licence commerciale à acquérir." },
-      "headline": { "displayName": "Headline", "purpose": "Titre d'ouverture d'une grande section." },
-      "title": { "displayName": "Title", "purpose": "Titre de sous-section : détail des plans, FAQ, packs." },
-      "subtitle": { "displayName": "Subtitle", "purpose": "Nom d'un plan, titre d'une carte." },
-      "body": { "displayName": "Body", "purpose": "Paragraphes, en encre adoucie, mesure 30 à 36rem." },
-      "label": { "displayName": "Label", "purpose": "Liens de navigation, libellés de boutons, items de liste." },
-      "caption": { "displayName": "Caption", "purpose": "Légendes, compteurs d'étape, mentions, en encre estompée." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Mot d'ouverture du hero, une seule fois par page."
+      },
+      "accent": {
+        "displayName": "Accent Genoid",
+        "purpose": "Un seul groupe de mots par page, en bleu, avec le reflet qui le traverse. Police démo : licence commerciale à acquérir."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titre d'ouverture d'une grande section."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Titre de sous-section : détail des plans, FAQ, packs."
+      },
+      "subtitle": {
+        "displayName": "Subtitle",
+        "purpose": "Nom d'un plan, titre d'une carte."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphes, en encre adoucie, mesure 30 à 36rem."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Liens de navigation, libellés de boutons, items de liste."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Légendes, compteurs d'étape, mentions, en encre estompée."
+      },
+      "plan-name": {
+        "displayName": "Plan name",
+        "purpose": "Nom d'un pack ; 28px quand le pack pèse plus lourd que le précédent."
+      },
+      "plan-name-lead": {
+        "displayName": "Plan name (lead)",
+        "purpose": "Nom de l'offre mise en avant."
+      },
+      "question": {
+        "displayName": "Question",
+        "purpose": "Question de FAQ."
+      },
+      "body-large": {
+        "displayName": "Body large",
+        "purpose": "Description d'une offre, réponse de FAQ."
+      },
+      "chip": {
+        "displayName": "Chip",
+        "purpose": "Pastille d'information sur la ligne d'un titre, jamais au-dessus."
+      },
+      "title-compact": {
+        "displayName": "Title compact",
+        "purpose": "Titre d'une section qui vit dans un panneau, comme le parcours."
+      },
+      "subtitle-hero": {
+        "displayName": "Subtitle hero",
+        "purpose": "La ligne qui suit le titre d'ouverture du hero."
+      }
     },
     "shadows": [
-      { "name": "ambient-card", "value": "0 30px 60px -40px rgba(10,86,196,0.35)", "purpose": "Sous un panneau large posé sur le ciel." },
-      { "name": "ambient-accent", "value": "0 40px 70px -50px rgba(12,109,248,0.7)", "purpose": "Sous la carte mise en avant et le bouton principal." },
-      { "name": "ambient-shot", "value": "0 40px 80px -24px rgba(12,109,248,0.45)", "purpose": "Sous les captures produit du hero." },
-      { "name": "ambient-nav", "value": "0 10px 30px -18px rgba(11,11,12,0.35)", "purpose": "Sous la pilule de navigation fixe." }
+      {
+        "name": "ambient-card",
+        "value": "0 30px 60px -40px rgba(10,86,196,0.35)",
+        "purpose": "Sous un panneau large posé sur le ciel."
+      },
+      {
+        "name": "ambient-accent",
+        "value": "0 40px 70px -50px rgba(12,109,248,0.7)",
+        "purpose": "Sous la carte mise en avant et le bouton principal."
+      },
+      {
+        "name": "ambient-shot",
+        "value": "0 40px 80px -24px rgba(12,109,248,0.45)",
+        "purpose": "Sous les captures produit du hero."
+      },
+      {
+        "name": "ambient-nav",
+        "value": "0 10px 30px -18px rgba(11,11,12,0.35)",
+        "purpose": "Sous la pilule de navigation fixe."
+      }
     ],
     "motion": [
-      { "name": "ease-settle", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Arrivées et transitions de diapositive : 0,7s." },
-      { "name": "ease-sweep", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Bande de lumière sur le mot d'accent et sur les boutons." },
-      { "name": "duration-hover", "value": "150ms", "purpose": "Changements de couleur au survol." },
-      { "name": "duration-slide", "value": "700ms", "purpose": "Passage d'une étape à l'autre du parcours." },
-      { "name": "duration-reveal", "value": "700ms", "purpose": "Apparition d'un titre de section (flou qui se dissipe)." },
-      { "name": "duration-shine", "value": "1700ms", "purpose": "Reflet du mot d'accent, une seule fois au chargement." },
-      { "name": "drift", "value": "90s ease-in-out infinite alternate", "purpose": "Dérive horizontale des nuages hauts du hero, seule animation en boucle du site." }
+      {
+        "name": "ease-settle",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Arrivées et transitions de diapositive : 0,7s."
+      },
+      {
+        "name": "ease-sweep",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Bande de lumière sur le mot d'accent et sur les boutons."
+      },
+      {
+        "name": "duration-hover",
+        "value": "150ms",
+        "purpose": "Changements de couleur au survol."
+      },
+      {
+        "name": "duration-slide",
+        "value": "700ms",
+        "purpose": "Passage d'une étape à l'autre du parcours."
+      },
+      {
+        "name": "duration-reveal",
+        "value": "700ms",
+        "purpose": "Apparition d'un titre de section (flou qui se dissipe)."
+      },
+      {
+        "name": "duration-shine",
+        "value": "1700ms",
+        "purpose": "Reflet du mot d'accent, une seule fois au chargement."
+      },
+      {
+        "name": "drift",
+        "value": "90s ease-in-out infinite alternate",
+        "purpose": "Dérive horizontale des nuages hauts du hero, seule animation en boucle du site."
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px" },
-      { "name": "md", "value": "768px" },
-      { "name": "lg", "value": "1024px" },
-      { "name": "xl", "value": "1280px" },
-      { "name": "pin", "value": "(min-width: 1024px) and (min-height: 620px)" }
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "pin",
+        "value": "(min-width: 1024px) and (min-height: 620px)"
+      }
     ]
   },
   "components": [

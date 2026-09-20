@@ -255,11 +255,10 @@
     "hero": {
       "line1": "Gratuit pendant la bêta.",
       "line2": "Les packs arrivent.",
-      "body": "Seeklon est en version bêta : l’accès est gratuit pour les premières entreprises qui le testent avec nous. Les packs ci-dessous ouvriront ensuite.",
-      "note": "Tarifs des packs en cours de définition."
+      "body": "Seeklon est en version bêta : l’accès est gratuit pour les premières entreprises qui le testent avec nous. Les tarifs des packs seront annoncés avant la fin de la bêta."
     },
     "beta": {
-      "name": "Bêta testeur",
+      "name": "Accès bêta",
       "price": "0 €",
       "period": "pendant toute la bêta",
       "description": "Pour les premières entreprises qui recrutent avec Seeklon et nous aident à le faire grandir.",
@@ -275,7 +274,6 @@
     },
     "packs": {
       "title": "Les packs à venir.",
-      "soon": "Tarif à venir",
       "cta": "Être prévenu",
       "items": {
         "breeze": {
@@ -288,7 +286,8 @@
             "Tri des candidatures",
             "Guides d’entretien",
             "1 utilisateur"
-          ]
+          ],
+          "highlight": "1 offre active · 1 utilisateur"
         },
         "storm": {
           "name": "Tempête",
@@ -301,7 +300,8 @@
             "Guides d’entretien",
             "3 utilisateurs",
             "Support par e-mail"
-          ]
+          ],
+          "highlight": "5 offres actives · 3 utilisateurs"
         },
         "cyclone": {
           "name": "Cyclone",
@@ -313,12 +313,14 @@
             "10 utilisateurs",
             "Suivi de vos recrutements",
             "Accompagnement au démarrage"
-          ]
+          ],
+          "highlight": "Offres illimitées · 10 utilisateurs"
         }
-      }
+      },
+      "recommended": "Le plus courant pour une PME",
+      "lead": "Le détail, ligne par ligne."
     },
     "details": {
-      "title": "Le détail des packs.",
       "caption": "Comparatif des trois packs à venir, ligne par ligne.",
       "note": "Contenu indicatif, susceptible d’évoluer d’ici l’ouverture des packs.",
       "rows": [
@@ -418,6 +420,13 @@
           "a": "Oui, sur demande. Écrivez-nous et nous regardons votre situation ensemble."
         }
       ]
+    },
+    "closing": {
+      "line1": "Commencez maintenant.",
+      "line2": "C’est gratuit.",
+      "body": "L’accès à Seeklon est gratuit pendant toute la bêta. Vous rédigez vos offres, vous triez vos candidatures, vous préparez vos entretiens — et vous gardez la décision.",
+      "note": "Gratuit pendant toute la bêta, sans engagement.",
+      "cta": "Rejoindre la bêta"
     }
   },
   "Metadata": {

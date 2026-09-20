@@ -52,6 +52,48 @@ typography:
     fontWeight: 400
     lineHeight: 1.2
     letterSpacing: "-0.02em"
+  plan-name:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "28px"
+    fontWeight: 400
+    lineHeight: 1.2
+    letterSpacing: "-0.02em"
+  plan-name-lead:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "32px"
+    fontWeight: 400
+    lineHeight: 1.2
+    letterSpacing: "-0.02em"
+  title-compact:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(1.875rem, 1.1rem + 2.6vw, 3.25rem)"
+    fontWeight: 500
+    lineHeight: 1.08
+    letterSpacing: "-0.035em"
+  subtitle-hero:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "30px"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "-0.02em"
+  question:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "22px"
+    fontWeight: 400
+    lineHeight: 1.3
+    letterSpacing: "normal"
+  body-large:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "17px"
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: "normal"
+  chip:
+    fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "13px"
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: "normal"
   body:
     fontFamily: "Host Grotesk, ui-sans-serif, system-ui, sans-serif"
     fontSize: "clamp(1rem, 0.92rem + 0.3vw, 1.1875rem)"
@@ -231,7 +273,14 @@ ne donne pas.
   ouvre une grande section.
 - **Title** (500, `clamp(2.25rem, 1.2rem + 3.4vw, 4rem)`, 1.04, -0.04em) : titre de
   sous-section (détail des plans, FAQ, packs).
-- **Subtitle** (400, 26px, 1.2) : nom d'un plan, titre d'une carte.
+- **Subtitle / Plan name** (400, 26 → 32px, 1.2) : nom d'un plan ou d'un pack ; 32px pour
+  l'offre mise en avant, 26 à 28px pour les autres — la taille monte avec le poids du pack.
+- **Title compact** (500, `clamp(1.875rem, 1.1rem + 2.6vw, 3.25rem)`, 1.08, -0.035em) :
+  titre d'une section qui vit dans un panneau, comme le parcours.
+- **Subtitle hero** (500, 30px, 1.2) : la ligne qui suit le titre d'ouverture.
+- **Question** (400, 22px) : question de FAQ.
+- **Body large** (400, 17px) : description d'une offre, réponse de FAQ.
+- **Chip** (400, 13px) : pastille d'information posée sur la ligne d'un titre.
 - **Body** (400, 16 → 19px, 1.6, encre adoucie) : paragraphes ; mesure courte, 30 à 36rem.
 - **Label** (400, 15px) : liens de navigation, libellés de boutons, items de liste.
 - **Caption** (400, 12 → 14px, encre estompée) : légendes, compteurs d'étape, mentions.

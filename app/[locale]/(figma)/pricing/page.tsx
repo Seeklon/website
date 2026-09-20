@@ -2,7 +2,6 @@ import { setRequestLocale, getTranslations } from 'next-intl/server'
 import PricingHero from '@/components/pricing/PricingHero'
 import BetaPlan from '@/components/pricing/BetaPlan'
 import PackCards from '@/components/pricing/PackCards'
-import PlanDetails from '@/components/pricing/PlanDetails'
 import PricingFaq from '@/components/pricing/PricingFaq'
 import ClosingCta from '@/components/home/ClosingCta'
 
@@ -26,9 +25,8 @@ export default async function PricingPage({ params }: Props) {
       <PricingHero />
       <BetaPlan />
       <PackCards />
-      <PlanDetails />
       <PricingFaq />
-      <ClosingCta />
+      <ClosingCta namespace="Pricing.closing" />
     </>
   )
 }
