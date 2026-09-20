@@ -171,11 +171,6 @@ body {
     animation: hero-shot-right 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
   }
 
-  /* Slow horizontal breath of the high clouds behind the hero. */
-  .home .sky-drift {
-    animation: sky-drift 62s ease-in-out infinite alternate;
-  }
-
   /* Brise, Tempête, Cyclone: the packs are named after winds, so the wind passes over
      them once as they arrive — a short lull on Brise, a wide gust on Cyclone. Never a
      loop, and nothing painted at rest. */
@@ -344,15 +339,6 @@ body {
   to {
     opacity: 1;
     transform: rotateY(-28deg);
-  }
-}
-
-@keyframes sky-drift {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-9%, 0, 0);
   }
 }
 

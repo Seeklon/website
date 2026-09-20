@@ -64,12 +64,18 @@ A page provides only its sections and ends with `<ClosingCta />`, which carries
 
 ## Sky
 
-`components/home/SkyBackground.tsx` renders the whole page height once with WebGL, turns it
-into an image, releases the GPU context, and shows it as a background that scrolls with the
-content. Rules that matter:
+`components/home/SkyBackground.tsx` draws a live sky: a window-sized canvas, fixed, redrawn
+every frame with `uScroll` so the clouds are anchored to the document while `uTime` drifts
+them sideways (11 px/s near, 6 px/s far) and turns their shapes over. Rules that matter:
 
-- **No parallax.** The user rejected clouds moving at a different speed from the text. The
-  only motion is `.sky-drift`, a separate wisp layer over the hero drifting horizontally.
+- **No parallax.** The user rejected clouds moving at a different speed from the text —
+  adding the scroll offset inside the shader is what keeps the sky anchored. Verified by
+  screenshotting the same document band at two scroll positions with motion reduced: the
+  pixels must be identical.
+- **It gives way before the page does.** Frame cost is sampled (at frame 4, then every 40);
+  too slow and it drops resolution to 0.24, then frame rate to 10fps. Phones and
+  four-core machines start at 0.34 and 20fps. Reduced motion draws one frame and redraws
+  it on scroll.
 - The sky deepens with page position (pale hero → bluer, larger cumulus lower down), then
   blends into `#0E62E6` between `data-sky-deep` and `--deep-full` px below it, and turns
   transparent past that point: from there the blue is plain CSS on the section and footer,
