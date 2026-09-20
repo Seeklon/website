@@ -37,6 +37,7 @@ uniform float uMode;      // 0 = the page sky, 1 = the drifting wisps over the h
 
 // Same colour as the CSS blue under the closing section (#0E62E6).
 const vec3 DEEP = vec3(0.0549, 0.3843, 0.9020);
+const float FADE_OUT = 160.0;
 
 // 2D simplex noise — Ian McEwan, Ashima Arts (MIT).
 vec3 permute(vec3 x) { return mod(((x * 34.0) + 1.0) * x, 289.0); }
@@ -140,7 +141,11 @@ void main() {
 
   float wide = smoothstep(500.0, 1200.0, uWidth);
   float deep = smoothstep(uDeep.x, uDeep.y, css.y);
-  bool open = css.y >= uDeep.y; // past the band the section's CSS blue shows through
+  // Past the band the section's CSS blue shows through. The canvas does not stop dead
+  // there: it fades over FADE_OUT px, because a hard alpha edge resamples into a visible
+  // dark line when the image is stretched back to page size.
+  float openFade = smoothstep(uDeep.y, uDeep.y + FADE_OUT, css.y);
+  bool open = openFade >= 1.0;
 
   // The sky deepens as the page goes down: hazy white at the hero, a real blue by the
   // time the closing section arrives (kept light enough for the grey copy on top of it).
@@ -196,7 +201,7 @@ void main() {
 
   // Dither the opaque part to keep long gradients free of banding.
   if (!open) acc.rgb += (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) / 255.0;
-  gl_FragColor = acc;
+  gl_FragColor = acc * (1.0 - openFade); // premultiplied, so one factor fades colour and alpha together
 }
 `
 

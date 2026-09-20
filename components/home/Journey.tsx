@@ -211,7 +211,7 @@ export default function Journey() {
       <Reveal>
         <h2
           id={titleId}
-          className="px-6 text-center text-[clamp(1.875rem,1.1rem+2.6vw,3.25rem)] font-medium leading-[1.08] tracking-[-0.035em]"
+          className="px-6 md:text-center text-[clamp(1.875rem,1.1rem+2.6vw,3.25rem)] font-medium leading-[1.08] tracking-[-0.035em]"
         >
           <span className="block">{t('line1')}</span>
           <span className="block">{t('line2')}</span>

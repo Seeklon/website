@@ -36,11 +36,11 @@ export default function PackCards() {
           <li key={key} className={`flex flex-col rounded-[20px] border p-7 md:p-8 ${card}`}>
             <h3 className={name}>{t(`items.${key}.name`)}</h3>
             <p className="mt-3 max-w-[20rem] text-base leading-[1.6] text-ink-soft">{t(`items.${key}.description`)}</p>
-            <p className="mt-6 border-t border-[#DDDBD5] pt-5 text-base">{t(`items.${key}.highlight`)}</p>
+            <p className="mt-6 mb-7 border-t border-[#DDDBD5] pt-5 text-base">{t(`items.${key}.highlight`)}</p>
 
             <Link
               href="/contact"
-              className="mt-7 flex h-[54px] items-center justify-center rounded-[10px] border border-ink-faint/80 bg-white text-base text-ink transition-colors duration-150 hover:border-ink hover:bg-[#F6F9FF]"
+              className="mt-auto flex h-[54px] items-center justify-center rounded-[10px] border border-ink-faint/80 bg-white text-base text-ink transition-colors duration-150 hover:border-ink hover:bg-[#F6F9FF]"
             >
               {t('cta')}
             </Link>
