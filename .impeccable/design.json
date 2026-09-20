@@ -138,22 +138,6 @@
           "#D8E6FB",
           "#E7F0FE"
         ]
-      },
-      "sky-light": {
-        "role": "neutral",
-        "displayName": "Lumière du ciel",
-        "canonical": "#8CC4FF",
-        "tonalRamp": [
-          "#8CC4FF"
-        ]
-      },
-      "sky-light-deep": {
-        "role": "neutral",
-        "displayName": "Lumière du ciel, profonde",
-        "canonical": "#4DA2FF",
-        "tonalRamp": [
-          "#4DA2FF"
-        ]
       }
     },
     "typographyMeta": {

@@ -249,6 +249,14 @@ body {
   /* The two banks of cloud drift sideways, each at its own pace. A transform is all the
      compositor needs, so the sky never asks the main thread for a frame and never trails
      the text while the page scrolls. */
+  .home .sky-near {
+    animation: cloud-near 54s ease-in-out infinite alternate;
+  }
+
+  .home .sky-far {
+    animation: cloud-far 96s ease-in-out infinite alternate;
+  }
+
   /* Light passes over a button on hover. Nothing is painted at rest: the band used to
      sit over the label and cost it contrast. */
   @media (hover: hover) {
@@ -353,65 +361,6 @@ body {
   to {
     opacity: 1;
     transform: rotateY(-28deg);
-  }
-}
-
-/* Le ciel peint (public/sky/sky.webp), posé dans la page : il s'arrête là où le bleu de
-   fin prend le relais, et s'y fond sur ses 340 derniers pixels. */
-.home .sky-paint {
-  background-image: url('/sky/sky.webp');
-  background-repeat: no-repeat;
-  background-position: 0 0;
-}
-
-/* The two stretches meet: the top one fades into the blue one over their seam. The wash
-   over the painting's blue is what keeps white copy at 4.5:1 — the painted blue alone is
-   too light where its clouds are. */
-.home .sky-paint-deep {
-  background-image: linear-gradient(180deg, rgba(12, 90, 217, 0.42) 0%, rgba(10, 82, 204, 0.62) 55%, rgba(10, 82, 204, 0.72) 100%), url('/sky/sky.webp');
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #0b0b0c 160px);
-  mask-image: linear-gradient(180deg, transparent 0, #0b0b0c 160px);
-}
-
-/* Trois lumières douces qui traversent le ciel — le mouvement vient d'elles, pas du fond,
-   donc le compositeur s'en charge seul. */
-.home .sky-light {
-  filter: blur(18px);
-  opacity: 0.75;
-}
-
-.home .sky-light-a {
-  background: radial-gradient(closest-side, rgba(140, 196, 255, 0.5) 0%, rgba(140, 196, 255, 0.22) 45%, rgba(140, 196, 255, 0) 100%);
-}
-
-.home .sky-light-b {
-  background: radial-gradient(closest-side, rgba(77, 162, 255, 0.32) 0%, rgba(77, 162, 255, 0.14) 45%, rgba(77, 162, 255, 0) 100%);
-}
-
-.home .sky-light-c {
-  background: radial-gradient(closest-side, rgba(12, 109, 248, 0.26) 0%, rgba(12, 109, 248, 0.11) 45%, rgba(12, 109, 248, 0) 100%);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .home .sky-light-a {
-    animation: sky-light 34s ease-in-out infinite alternate;
-  }
-
-  .home .sky-light-b {
-    animation: sky-light 46s ease-in-out infinite alternate-reverse;
-  }
-
-  .home .sky-light-c {
-    animation: sky-light 40s ease-in-out infinite alternate;
-  }
-}
-
-@keyframes sky-light {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  to {
-    transform: translate3d(46px, -34px, 0) scale(1.09);
   }
 }
 
