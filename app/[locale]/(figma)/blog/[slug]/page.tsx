@@ -7,6 +7,8 @@ import { notFound } from 'next/navigation'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import ClosingCta from '@/components/home/ClosingCta'
+import GlowGrid from '@/components/home/GlowGrid'
+import ReadingProgress from '@/components/blog/ReadingProgress'
 import { frenchSpacing } from '@/lib/typography'
 import { pageMetadata, localeUrl } from '@/lib/metadata'
 import { SITE_URL } from '@/lib/site'
@@ -81,6 +83,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <article>
+      <ReadingProgress />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <header className="mx-auto max-w-[860px] px-6 pt-[120px] md:pt-[170px]">
@@ -144,14 +147,14 @@ export default async function BlogPostPage({ params }: Props) {
           <h2 className="text-[clamp(2.25rem,1.2rem+3.4vw,4rem)] leading-[1.04] tracking-[-0.04em]">
             {t('relatedTitle')}
           </h2>
-          <ul className="mt-8 grid gap-5 md:mt-12 md:grid-cols-3 lg:gap-6">
+          <GlowGrid className="reveal-stagger mt-8 grid gap-5 md:mt-12 md:grid-cols-3 lg:gap-6">
             {related.map((other) => {
               const otherDate = other.publishDate ?? other.date
               return (
                 <li key={other.slug} className="flex">
                   <Link
                     href={`/blog/${other.slug}`}
-                    className="group flex w-full flex-col rounded-[24px] border border-white bg-white/85 p-7 transition-colors duration-150 hover:bg-white md:p-8"
+                    className="glow group relative flex w-full flex-col overflow-hidden rounded-[24px] border border-white bg-white/85 p-7 transition-colors duration-150 hover:bg-white md:p-8"
                   >
                     <p className="flex flex-wrap items-center gap-2 text-sm text-ink-faint">
                       <span>{other.category}</span>
@@ -173,7 +176,7 @@ export default async function BlogPostPage({ params }: Props) {
                 </li>
               )
             })}
-          </ul>
+          </GlowGrid>
           <Link
             href="/blog"
             className="mt-10 inline-flex items-center gap-2 text-base text-ink-soft transition-colors duration-150 hover:text-ink md:mt-12"

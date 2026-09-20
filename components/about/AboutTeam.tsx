@@ -18,23 +18,25 @@ export default function AboutTeam() {
         </h2>
       </Reveal>
 
-      <ul className="mt-8 grid gap-5 sm:grid-cols-2 md:mt-12 lg:grid-cols-4 lg:gap-6">
-        {members.map((member) => (
-          <li
-            key={member.name}
-            className="flex flex-col items-center rounded-[20px] border border-white bg-white/80 px-6 py-9 text-center"
-          >
-            <span
-              aria-hidden="true"
-              className="flex h-[112px] w-[112px] items-center justify-center rounded-full bg-[linear-gradient(160deg,#EEF4FF_0%,#D8E6FF_100%)] text-[26px] text-azure-deep md:h-[132px] md:w-[132px] md:text-[32px]"
+      <Reveal>
+        <ul className="reveal-stagger mt-8 grid gap-5 sm:grid-cols-2 md:mt-12 lg:grid-cols-4 lg:gap-6">
+          {members.map((member) => (
+            <li
+              key={member.name}
+              className="flex flex-col items-center rounded-[20px] border border-white bg-white/80 px-6 py-9 text-center"
             >
-              {member.name.slice(0, 1)}
-            </span>
-            <p className="mt-6 text-[22px] tracking-[-0.02em] md:text-2xl">{member.name}</p>
-            <p className="mt-1.5 text-[15px] text-ink-soft">{member.role}</p>
-          </li>
-        ))}
-      </ul>
+              <span
+                aria-hidden="true"
+                className="flex h-[112px] w-[112px] items-center justify-center rounded-full bg-[linear-gradient(160deg,#EEF4FF_0%,#D8E6FF_100%)] text-[26px] text-azure-deep md:h-[132px] md:w-[132px] md:text-[32px]"
+              >
+                {member.name.slice(0, 1)}
+              </span>
+              <p className="mt-6 text-[22px] tracking-[-0.02em] md:text-2xl">{member.name}</p>
+              <p className="mt-1.5 text-[15px] text-ink-soft">{member.role}</p>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
     </section>
   )
 }

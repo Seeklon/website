@@ -3,6 +3,8 @@ import { Link } from '@/i18n/navigation'
 import SkyShell from '@/components/home/SkyShell'
 import ClosingCta from '@/components/home/ClosingCta'
 import { ArrowRight } from 'lucide-react'
+import GlowGrid from '@/components/home/GlowGrid'
+import Reveal from '@/components/home/Reveal'
 
 const EXITS = [
   { key: 'home', href: '/' },
@@ -28,13 +30,14 @@ export default function NotFound() {
         </p>
       </section>
 
-      <nav aria-label={t('exitsLabel')} className="mx-auto mt-12 max-w-[1440px] px-6 md:mt-16 md:px-10 xl:px-20">
-        <ul className="grid gap-5 md:grid-cols-3 lg:gap-6">
+      <Reveal>
+        <nav aria-label={t('exitsLabel')} className="mx-auto mt-12 max-w-[1440px] px-6 md:mt-16 md:px-10 xl:px-20">
+        <GlowGrid className="reveal-stagger grid gap-5 md:grid-cols-3 lg:gap-6">
           {EXITS.map(({ key, href }) => (
             <li key={key} className="flex">
               <Link
                 href={href}
-                className="group flex w-full flex-col rounded-[24px] border border-white bg-white/85 p-7 transition-colors duration-150 hover:bg-white md:p-9"
+                className="glow group relative flex w-full flex-col overflow-hidden rounded-[24px] border border-white bg-white/85 p-7 transition-colors duration-150 hover:bg-white md:p-9"
               >
                 <span className="text-[26px] tracking-[-0.03em]">{t(`exits.${key}.title`)}</span>
                 <span className="mt-3 text-base leading-[1.6] text-ink-soft">{t(`exits.${key}.body`)}</span>
@@ -49,8 +52,9 @@ export default function NotFound() {
               </Link>
             </li>
           ))}
-        </ul>
-      </nav>
+          </GlowGrid>
+        </nav>
+      </Reveal>
 
       <ClosingCta namespace="NotFound.closing" href="/contact" />
     </SkyShell>

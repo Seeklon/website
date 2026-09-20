@@ -4,6 +4,7 @@ import { getAllPosts, type Post } from '@/lib/blog'
 import { ArrowRight } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import Reveal from '@/components/home/Reveal'
+import GlowGrid from '@/components/home/GlowGrid'
 import { frenchSpacing } from '@/lib/typography'
 import ClosingCta from '@/components/home/ClosingCta'
 
@@ -74,9 +75,10 @@ export default async function BlogIndexPage({ params }: Props) {
 
         {/* The latest article gets the large surface, the way the beta plan does on Tarifs. */}
         {featured ? (
+          <GlowGrid as="div" className="contents">
           <Link
             href={`/blog/${featured.slug}`}
-            className="group mt-8 block rounded-[24px] border border-white bg-white/85 p-7 transition-colors duration-150 hover:bg-white md:mt-12 md:p-10 xl:p-12"
+            className="glow group relative mt-8 block overflow-hidden rounded-[24px] border border-white bg-white/85 p-7 transition-colors duration-150 hover:bg-white md:mt-12 md:p-10 xl:p-12"
           >
             <div className="lg:grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-end lg:gap-16">
               <div>
@@ -93,14 +95,16 @@ export default async function BlogIndexPage({ params }: Props) {
               </div>
             </div>
           </Link>
+          </GlowGrid>
         ) : null}
 
-        <ul className="mt-5 grid gap-5 md:grid-cols-2 lg:mt-6 lg:gap-6">
+        <Reveal>
+          <GlowGrid className="reveal-stagger mt-5 grid gap-5 md:grid-cols-2 lg:mt-6 lg:gap-6">
           {rest.map((post) => (
             <li key={post.slug} className="flex">
               <Link
                 href={`/blog/${post.slug}`}
-                className="group flex w-full flex-col rounded-[24px] border border-white bg-white/85 p-7 transition-colors duration-150 hover:bg-white md:p-9"
+                className="glow group relative flex w-full flex-col overflow-hidden rounded-[24px] border border-white bg-white/85 p-7 transition-colors duration-150 hover:bg-white md:p-9"
               >
                 {meta(post)}
                 <h3 className="mt-4 text-[26px] leading-[1.2] tracking-[-0.03em] md:text-[28px]">{frenchSpacing(post.title, locale)}</h3>
@@ -108,8 +112,9 @@ export default async function BlogIndexPage({ params }: Props) {
                 <span className="mt-auto border-t border-[#DDDBD5] pt-6">{readMore}</span>
               </Link>
             </li>
-          ))}
-        </ul>
+            ))}
+          </GlowGrid>
+        </Reveal>
       </section>
 
       <ClosingCta namespace="Blog.closing" />

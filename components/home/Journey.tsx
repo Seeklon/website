@@ -276,7 +276,13 @@ export default function Journey() {
                       aria-hidden={i !== active}
                       className="flex w-[calc(100%-16px)] shrink-0 snap-start snap-always flex-col overflow-hidden rounded-[20px] bg-white/85 md:grid md:grid-cols-2 lg:w-full lg:grid-cols-[minmax(0,430px)_minmax(0,1fr)] lg:gap-[52px] lg:overflow-visible lg:rounded-none lg:bg-transparent"
                     >
-                      <StepMedia step={step} alt={t(`steps.${step.key}.alt`)} caption={t(`steps.${step.key}.caption`)} active={i === active} />
+                      <StepMedia
+                        step={step}
+                        alt={t(`steps.${step.key}.alt`)}
+                        caption={t(`steps.${step.key}.caption`)}
+                        active={i === active}
+                        offset={i - active}
+                      />
 
                       <div className="flex flex-1 flex-col p-5 md:p-7 lg:justify-center lg:p-0">
                         <p className="hidden text-base lg:block">
@@ -340,11 +346,15 @@ function StepMedia({
   alt,
   caption,
   active,
+  offset,
 }: {
   step: { image: StaticImageData; crop: StaticImageData }
   alt: string
   caption: string
   active: boolean
+  /** Where this step sits relative to the current one: the capture waits on the side it
+   *  will come from, so the slide moves with the gesture instead of dissolving. */
+  offset: number
 }) {
   // Phones and tablets get a readable crop; wide screens the whole screen. Both load
   // up front so a slide never arrives empty.
@@ -362,7 +372,8 @@ function StepMedia({
         <div className="lg:mx-auto lg:rounded-[14px] lg:bg-white/80 lg:p-2 pin:max-w-[calc((100vh-400px)*16/9)]">
           <picture
             data-active={active}
-            className="block aspect-[4/3] overflow-hidden bg-white md:h-full lg:aspect-[16/9] lg:h-auto lg:rounded-[8px] motion-safe:lg:scale-[1.03] motion-safe:lg:opacity-60 motion-safe:lg:transition-[transform,opacity] motion-safe:lg:duration-700 motion-safe:lg:ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:lg:data-[active=true]:scale-100 motion-safe:lg:data-[active=true]:opacity-100"
+            style={{ '--shift': offset === 0 ? '0px' : offset < 0 ? '-18px' : '18px' } as React.CSSProperties}
+            className="block aspect-[4/3] overflow-hidden bg-white md:h-full lg:aspect-[16/9] lg:h-auto lg:rounded-[8px] motion-safe:lg:translate-x-[var(--shift)] motion-safe:lg:scale-[1.03] motion-safe:lg:opacity-60 motion-safe:lg:transition-[transform,opacity] motion-safe:lg:duration-700 motion-safe:lg:ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:lg:data-[active=true]:translate-x-0 motion-safe:lg:data-[active=true]:scale-100 motion-safe:lg:data-[active=true]:opacity-100"
           >
             <source media="(min-width: 1024px)" srcSet={wide.srcSet} sizes={wide.sizes} />
             <img {...narrow} alt={alt} className="h-full w-full object-cover object-left-top" />

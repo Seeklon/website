@@ -7,15 +7,15 @@ import PlanDetails from './PlanDetails'
 // from Brise to Cyclone. No prices yet, on purpose — the detail lives in the table below,
 // so the cards carry only what separates one pack from the next.
 const PACKS = [
-  { key: 'breeze', card: 'border-white bg-white/70', name: 'text-2xl' },
+  { key: 'breeze', card: 'border-white bg-white/70 gust gust-1', name: 'text-2xl' },
   {
     key: 'storm',
-    card: 'border-azure/30 bg-white/90 shadow-[0_24px_48px_-28px_rgba(12,109,248,0.35)]',
+    card: 'border-azure/30 bg-white/90 shadow-[0_24px_48px_-28px_rgba(12,109,248,0.35)] gust gust-2',
     name: 'text-[26px]',
   },
   {
     key: 'cyclone',
-    card: 'border-ink/15 bg-white/95 shadow-[0_28px_56px_-30px_rgba(11,11,12,0.3)]',
+    card: 'border-ink/15 bg-white/95 shadow-[0_28px_56px_-30px_rgba(11,11,12,0.3)] gust gust-3',
     name: 'text-[28px]',
   },
 ] as const
@@ -31,22 +31,26 @@ export default function PackCards() {
         </h2>
       </Reveal>
 
-      <ul className="mt-8 grid gap-5 md:mt-12 lg:grid-cols-3 lg:gap-6">
-        {PACKS.map(({ key, card, name }) => (
-          <li key={key} className={`flex flex-col rounded-[20px] border p-7 md:p-8 ${card}`}>
-            <h3 className={name}>{t(`items.${key}.name`)}</h3>
-            <p className="mt-3 max-w-[20rem] text-base leading-[1.6] text-ink-soft">{t(`items.${key}.description`)}</p>
-            <p className="mt-6 mb-7 border-t border-[#DDDBD5] pt-5 text-base">{t(`items.${key}.highlight`)}</p>
+      <Reveal>
+        <ul className="reveal-stagger mt-8 grid gap-5 md:mt-12 lg:grid-cols-3 lg:gap-6">
+          {PACKS.map(({ key, card, name }) => (
+            <li key={key} className={`flex flex-col rounded-[20px] border p-7 md:p-8 ${card}`}>
+              <h3 className={name}>{t(`items.${key}.name`)}</h3>
+              <p className="mt-3 max-w-[20rem] text-base leading-[1.6] text-ink-soft">
+                {t(`items.${key}.description`)}
+              </p>
+              <p className="mt-6 mb-7 border-t border-[#DDDBD5] pt-5 text-base">{t(`items.${key}.highlight`)}</p>
 
-            <Link
-              href="/contact#newsletter"
-              className="mt-auto flex h-[54px] items-center justify-center rounded-[10px] border border-ink-faint/80 bg-white text-base text-ink transition-colors duration-150 hover:border-ink hover:bg-[#F6F9FF]"
-            >
-              {t('cta')}
-            </Link>
-          </li>
-        ))}
-      </ul>
+              <Link
+                href="/contact#newsletter"
+                className="mt-auto flex h-[54px] items-center justify-center rounded-[10px] border border-ink-faint/80 bg-white text-base text-ink transition-colors duration-150 hover:border-ink hover:bg-[#F6F9FF]"
+              >
+                {t('cta')}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
 
       <PlanDetails />
     </section>

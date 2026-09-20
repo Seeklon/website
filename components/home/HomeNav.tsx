@@ -24,6 +24,7 @@ export default function HomeNav({ postSlugs }: { postSlugs?: Record<string, stri
   const locale = useLocale()
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [lifted, setLifted] = useState(false)
   const menuId = useId()
   const toggleRef = useRef<HTMLButtonElement>(null)
   const navRef = useRef<HTMLElement>(null)
@@ -52,6 +53,15 @@ export default function HomeNav({ postSlugs }: { postSlugs?: Record<string, stri
       document.removeEventListener('pointerdown', onPointerDown)
     }
   }, [open])
+
+  // Past the hero the pill settles: a touch smaller, a touch heavier. It never hides, and
+  // nothing moves while you read.
+  useEffect(() => {
+    const onScroll = () => setLifted(window.scrollY > 120)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const switchHref = (loc: string) => {
     const article = pathname.match(/^\/blog\/(.+)$/)
@@ -86,9 +96,10 @@ export default function HomeNav({ postSlugs }: { postSlugs?: Record<string, stri
       <nav
         ref={navRef}
         aria-label={t('label')}
-        className="mx-auto max-w-[1040px] rounded-[14px] bg-white shadow-[0_14px_34px_-20px_rgba(11,11,12,0.45)]"
+        data-lifted={lifted}
+        className="group/nav mx-auto max-w-[1040px] rounded-[14px] bg-white shadow-[0_14px_34px_-20px_rgba(11,11,12,0.45)] motion-safe:transition-shadow motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.16,1,0.3,1)] data-[lifted=true]:shadow-[0_18px_44px_-22px_rgba(12,109,248,0.5)]"
       >
-        <div className="flex h-14 items-center justify-between pl-5 pr-2 lg:grid lg:h-[60px] lg:grid-cols-[1fr_auto_1fr] lg:pl-6 lg:pr-3">
+        <div className="flex h-14 items-center justify-between pl-5 pr-2 motion-safe:transition-[height] motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.16,1,0.3,1)] lg:grid lg:h-[60px] lg:grid-cols-[1fr_auto_1fr] lg:pl-6 lg:pr-3 lg:group-data-[lifted=true]/nav:h-[54px]">
           <Link href="/" aria-label={t('home')} className="flex h-10 items-center text-ink" onClick={() => setOpen(false)}>
             <SeeklonWordmark className="h-[15px] w-auto" />
           </Link>

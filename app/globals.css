@@ -84,7 +84,8 @@ body {
    blur resolves. Headings reveal line by line. */
 @media (prefers-reduced-motion: no-preference) {
   .home [data-reveal] :is(h1, h2, h3) > span,
-  .home [data-reveal]:not(:has(:is(h1, h2, h3) > span)) {
+  .home [data-reveal] .reveal-stagger > *,
+  .home [data-reveal]:not(:has(:is(h1, h2, h3) > span)):not(:has(.reveal-stagger)) {
     --reveal-delay: 0ms;
     opacity: 0;
     transform: translateY(14px);
@@ -112,13 +113,25 @@ body {
   }
 
   .home [data-reveal][data-visible] :is(h1, h2, h3) > span,
-  .home [data-reveal][data-visible]:not(:has(:is(h1, h2, h3) > span)) {
+  .home [data-reveal][data-visible] .reveal-stagger > *,
+  .home [data-reveal][data-visible]:not(:has(:is(h1, h2, h3) > span)):not(:has(.reveal-stagger)) {
     opacity: 1;
     transform: none;
     filter: none;
     -webkit-mask-position: 0 0;
     mask-position: 0 0;
   }
+
+
+  /* Cards of a grid arrive one after the other, in reading order, rather than as one
+     block. Capped at eight steps: past that a long list would crawl. */
+  .home .reveal-stagger > *:nth-child(2) { --reveal-delay: 70ms; }
+  .home .reveal-stagger > *:nth-child(3) { --reveal-delay: 140ms; }
+  .home .reveal-stagger > *:nth-child(4) { --reveal-delay: 210ms; }
+  .home .reveal-stagger > *:nth-child(5) { --reveal-delay: 280ms; }
+  .home .reveal-stagger > *:nth-child(6) { --reveal-delay: 350ms; }
+  .home .reveal-stagger > *:nth-child(7) { --reveal-delay: 420ms; }
+  .home .reveal-stagger > *:nth-child(n + 8) { --reveal-delay: 490ms; }
 
   /* The closing headline catches the same light as the hero, once it is in view. */
   @supports ((-webkit-background-clip: text) or (background-clip: text)) {
@@ -158,6 +171,88 @@ body {
     animation: sky-drift 90s ease-in-out infinite alternate;
   }
 
+  /* Brise, Tempête, Cyclone: the packs are named after winds, so the wind passes over
+     them once as they arrive — a short lull on Brise, a wide gust on Cyclone. Never a
+     loop, and nothing painted at rest. */
+  .home .gust {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .home .gust::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: 280% 100%;
+    background-position: 190% 0;
+    opacity: 0;
+  }
+
+  .home .gust-1::after {
+    background-image: linear-gradient(100deg, transparent 45%, rgba(255, 255, 255, 0.42) 50%, transparent 55%);
+  }
+
+  .home .gust-2::after {
+    background-image: linear-gradient(100deg, transparent 40%, rgba(255, 255, 255, 0.6) 50%, transparent 60%);
+  }
+
+  .home .gust-3::after {
+    background-image:
+      linear-gradient(100deg, transparent 32%, rgba(214, 233, 255, 0.5) 44%, rgba(255, 255, 255, 0.8) 50%, rgba(214, 233, 255, 0.5) 56%, transparent 68%);
+  }
+
+  .home [data-visible] .gust-1::after {
+    animation: gust 1.7s cubic-bezier(0.32, 0.72, 0.4, 1) 0.15s both;
+  }
+
+  .home [data-visible] .gust-2::after {
+    animation: gust 1.15s cubic-bezier(0.26, 0.9, 0.36, 1) 0.25s both;
+  }
+
+  .home [data-visible] .gust-3::after {
+    animation: gust 0.8s cubic-bezier(0.2, 1, 0.3, 1) 0.35s both;
+  }
+
+  /* A card lights up softly under the pointer, like paper catching the light. */
+  @media (hover: hover) {
+    .home .glow::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, 0.55), transparent 62%);
+      opacity: 0;
+      transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .home .glow:hover::before {
+      opacity: 1;
+    }
+  }
+
+  /* Page to page, the sky stays put and only the content changes hands. Browsers without
+     the View Transitions API simply swap, as before. */
+  .home main {
+    view-transition-name: page;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-old(page) {
+    animation: page-leave 180ms ease both;
+  }
+
+  ::view-transition-new(page) {
+    animation: page-enter 340ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
   /* Light passes over a button on hover. Nothing is painted at rest: the band used to
      sit over the label and cost it contrast. */
   @media (hover: hover) {
@@ -172,6 +267,46 @@ body {
       animation: accent-shine 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
   }
+}
+
+@keyframes gust {
+  0% {
+    background-position: 190% 0;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    background-position: -90% 0;
+    opacity: 0;
+  }
+}
+
+@keyframes page-leave {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* A hairline of the site's blue, filling as the article scrolls past. */
+.home .reading-progress {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 60;
+  height: 2px;
+  background: #0c6df8;
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left center;
 }
 
 @keyframes hero-shot {
