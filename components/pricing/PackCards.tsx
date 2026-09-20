@@ -39,7 +39,7 @@ export default function PackCards() {
             <p className="mt-6 mb-7 border-t border-[#DDDBD5] pt-5 text-base">{t(`items.${key}.highlight`)}</p>
 
             <Link
-              href="/contact"
+              href="/contact#newsletter"
               className="mt-auto flex h-[54px] items-center justify-center rounded-[10px] border border-ink-faint/80 bg-white text-base text-ink transition-colors duration-150 hover:border-ink hover:bg-[#F6F9FF]"
             >
               {t('cta')}

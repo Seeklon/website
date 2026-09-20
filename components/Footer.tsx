@@ -54,7 +54,7 @@ export default function Footer() {
             <div className="md:col-span-2">
               <h3 className="font-heading font-semibold text-white mb-6"><span className="font-accent italic">{t('product')}</span></h3>
               <ul className="space-y-4 text-sm font-medium">
-                <li><Link href="/#product" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('features')}</Link></li>
+                <li><Link href="/#parcours" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('features')}</Link></li>
                 <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('requestDemo')}</Link></li>
               </ul>
             </div>
@@ -84,7 +84,7 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-6">
-              <Link href="https://www.linkedin.com/company/seeklon/" target="_blank" className="hover:text-white transition-colors">LinkedIn</Link>
+              <Link href="https://www.linkedin.com/company/seeklon/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</Link>
             </div>
           </div>
         </div>

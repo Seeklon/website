@@ -1,4 +1,5 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
+import { pageMetadata } from '@/lib/metadata'
 import { useTranslations } from 'next-intl'
 import AboutPillars from '@/components/about/AboutPillars'
 import AboutVision from '@/components/about/AboutVision'
@@ -11,10 +12,13 @@ type Props = { params: Promise<{ locale: string }> }
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'Metadata' })
-  return {
+  return pageMetadata({
+    locale,
+    path: '/about',
     title: t('aboutTitle'),
     description: t('aboutDescription'),
-  }
+    image: 'about',
+  })
 }
 
 function AboutHero() {

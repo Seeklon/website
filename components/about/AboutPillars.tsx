@@ -16,7 +16,7 @@ export default function AboutPillars() {
         <h2 className="text-[clamp(2.25rem,1.2rem+3.4vw,4rem)] leading-[1.04] tracking-[-0.04em]">{t('title')}</h2>
       </Reveal>
 
-      <ul className="mt-8 grid gap-10 md:mt-12 md:grid-cols-3 md:gap-8">
+      <ul className="mt-8 grid gap-10 rounded-[24px] bg-white/85 p-7 md:mt-12 md:grid-cols-3 md:gap-8 md:p-10 xl:p-12">
         {items.map((item) => (
           <li key={item.title} className="border-t border-ink/20 pt-6 md:pt-7">
             <h3 className="text-[26px] tracking-[-0.03em] md:text-[32px]">{item.title}</h3>

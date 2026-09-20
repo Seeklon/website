@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
+import { ArrowRight } from 'lucide-react'
 import SeeklonWordmark from './SeeklonWordmark'
 
 const COLUMNS = [
@@ -18,13 +19,19 @@ export default function HomeFooter() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(180deg,#0C5AD9_0%,#0A52CC_100%)]"
       />
-      <div className="mx-auto max-w-[1440px] px-6 pb-10 pt-[140px] md:px-10 md:pt-[220px] xl:px-20">
+      <div className="mx-auto max-w-[1440px] px-6 pb-10 pt-[96px] md:px-10 md:pt-[130px] xl:px-20">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,710px)] lg:gap-10">
           <div>
             <Link href="/" aria-label={t('home')} className="inline-flex text-white">
               <SeeklonWordmark className="h-[22px] w-auto" />
             </Link>
-            <p className="mt-8 text-[15px]">{t('tagline')}</p>
+            <Link
+              href="/contact"
+              className="mt-8 inline-flex items-center gap-2 text-[15px] underline-offset-4 hover:underline"
+            >
+              {t('tagline')}
+              <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} />
+            </Link>
           </div>
 
           <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3">

@@ -1,7 +1,8 @@
 'use client'
 
-import { useId, useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useEffect, useId, useRef, useState } from 'react'
+import { useTranslations, useLocale } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { Check } from 'lucide-react'
 
 const FORMSPREE_CONTACT_ID = 'xpqqzzan'
@@ -11,8 +12,16 @@ const FIELD =
 
 export default function ContactForm() {
   const t = useTranslations('Contact.form')
+  const locale = useLocale()
   const uid = useId()
   const [state, setState] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle')
+  const successRef = useRef<HTMLHeadingElement>(null)
+
+  // The form is replaced by the confirmation, so without this a screen reader is left on
+  // a page whose content changed under it silently.
+  useEffect(() => {
+    if (state === 'sent') successRef.current?.focus()
+  }, [state])
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -32,11 +41,13 @@ export default function ContactForm() {
 
   if (state === 'sent') {
     return (
-      <div className="rounded-[24px] bg-white/90 p-7 md:p-10">
+      <div role="status" aria-live="polite" className="rounded-[24px] bg-white/90 p-7 md:p-10">
         <p className="flex h-12 w-12 items-center justify-center rounded-full bg-azure/10">
           <Check aria-hidden="true" className="h-6 w-6 text-azure-deep" strokeWidth={2} />
         </p>
-        <h2 className="mt-6 text-[26px]">{t('successTitle')}</h2>
+        <h2 ref={successRef} tabIndex={-1} className="mt-6 text-[26px] focus-visible:outline-none">
+          {t('successTitle')}
+        </h2>
         <p className="mt-3 max-w-[26rem] text-base leading-[1.6] text-ink-soft">{t('successBody')}</p>
         <button
           type="button"
@@ -52,6 +63,15 @@ export default function ContactForm() {
   return (
     <form onSubmit={onSubmit} className="rounded-[24px] bg-white/90 p-7 md:p-10">
       <h2 className="text-[26px]">{t('title')}</h2>
+
+      <input type="hidden" name="_subject" value={t('subject')} />
+      <input type="hidden" name="_language" value={locale} />
+      <p className="hidden" aria-hidden="true">
+        <label>
+          {t('honeypot')}
+          <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
+        </label>
+      </p>
 
       <div className="mt-8 grid gap-5 md:grid-cols-2">
         <p className="flex flex-col gap-2">
@@ -94,6 +114,16 @@ export default function ContactForm() {
           {t('error')}
         </p>
       ) : null}
+
+      <p className="mt-6 text-[14px] leading-[1.6] text-ink-soft">
+        {t.rich('consent', {
+          privacy: (chunks) => (
+            <Link href="/privacy" className="text-azure-deep underline underline-offset-4">
+              {chunks}
+            </Link>
+          ),
+        })}
+      </p>
 
       <button
         type="submit"

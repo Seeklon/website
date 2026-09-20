@@ -2,8 +2,15 @@ import { Link } from '@/i18n/navigation'
 import Button from '@/components/Button'
 import { Bot, Share2, MessageSquare, CheckCircle2, XCircle, Star, ArrowRight } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { pageMetadata } from '@/lib/metadata'
 
 type Props = { params: Promise<{ locale: string }> }
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata' })
+  return pageMetadata({ locale, path: '/product', title: t('homeTitle'), description: t('homeDescription') })
+}
 
 export default async function ProductPage({ params }: Props) {
   const { locale } = await params
@@ -25,13 +32,16 @@ export default async function ProductPage({ params }: Props) {
               {t('intro')}
             </p>
             <div className="relative w-full aspect-video bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden group">
+              {/* 7.3 MB of video used to download on arrival. It now waits for a play,
+                  behind a poster. */}
               <video
                 src="/prez.webm"
                 poster="/capdshbrdseeklon.png"
+                controls
                 muted
-                autoPlay
                 loop
                 playsInline
+                preload="none"
                 className="absolute inset-0 w-full h-full object-cover"
                 aria-label={t('aiActive')}
               />

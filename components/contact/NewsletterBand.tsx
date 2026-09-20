@@ -1,7 +1,8 @@
 'use client'
 
 import { useId, useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { Check } from 'lucide-react'
 
 const FORMSPREE_NEWSLETTER_ID = 'xdaaoooe'
@@ -10,6 +11,7 @@ const FORMSPREE_NEWSLETTER_ID = 'xdaaoooe'
 // the way it does under the other pages' final call to action.
 export default function NewsletterBand() {
   const t = useTranslations('Contact.news')
+  const locale = useLocale()
   const uid = useId()
   const [state, setState] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle')
 
@@ -30,7 +32,7 @@ export default function NewsletterBand() {
   }
 
   return (
-    <section data-sky-deep className="relative text-white [--deep-full:150px] [--deep-lead:200px] md:[--deep-full:240px] md:[--deep-lead:300px]">
+    <section id="newsletter" data-sky-deep className="relative scroll-mt-24 text-white [--deep-full:150px] [--deep-lead:200px] md:[--deep-full:240px] md:[--deep-lead:300px]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 top-[calc(-1*var(--deep-lead))] -z-20 bg-[linear-gradient(180deg,rgba(14,98,230,0)_0px,rgba(14,98,230,0.22)_calc(var(--deep-lead)*0.55),rgba(14,98,230,0.72)_calc(var(--deep-lead)+var(--deep-full)*0.45),#0E62E6_calc(var(--deep-lead)+var(--deep-full)),#0C5AD9_100%)]"
@@ -51,6 +53,14 @@ export default function NewsletterBand() {
             </p>
           ) : (
             <form onSubmit={onSubmit} className="mt-8 lg:mt-0">
+              <input type="hidden" name="_subject" value={t('subject')} />
+              <input type="hidden" name="_language" value={locale} />
+              <p className="hidden" aria-hidden="true">
+                <label>
+                  {t('honeypot')}
+                  <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
+                </label>
+              </p>
               <label htmlFor={`${uid}-email`} className="block text-[15px] text-white/90">
                 {t('label')}
               </label>
@@ -72,6 +82,15 @@ export default function NewsletterBand() {
                   {state === 'sending' ? t('sending') : t('submit')}
                 </button>
               </div>
+              <p className="mt-4 text-[14px] leading-[1.6] text-white/90">
+                {t.rich('consent', {
+                  privacy: (chunks) => (
+                    <Link href="/privacy" className="underline underline-offset-4">
+                      {chunks}
+                    </Link>
+                  ),
+                })}
+              </p>
               {state === 'failed' ? (
                 <p role="alert" className="mt-3 text-[15px] text-white">
                   {t('error')}

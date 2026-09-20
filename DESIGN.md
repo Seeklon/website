@@ -299,6 +299,18 @@ deux-points, fine avant les autres. Dans les textes d'interface, elle est écrit
 dans `messages/*.json` ; pour les articles, écrits avec des espaces ordinaires,
 `frenchSpacing` (`lib/typography.ts`) la pose au rendu, en français seulement.
 
+### Le ciel, en pratique
+
+- Le couloir calme suit la colonne de contenu, pas le centre de l'écran : les titres de
+  section sont alignés à gauche, c'est là qu'il faut de l'air, et la météo garde sa
+  dramaturgie dans les marges.
+- L'échelle des nuages suit la largeur du viewport (`uWidth * 0.55`, borné) : à taille
+  fixe, un nuage couvrait les deux tiers d'un écran de 390 px et se lisait comme une brume.
+- Le canvas ne s'arrête jamais net. Il s'éteint en fondu sur 160 px après `--deep-full`,
+  sinon le bord d'alpha se ré-échantillonne en trait sombre en travers de la page.
+- Une seule passe de rendu, plafonnée à 2,2 Mpx : au-delà, c'est la résolution qui baisse,
+  pas le ciel qui disparaît.
+
 ## Layout
 
 - Gouttières : 24px sur mobile, 40px à partir de `md`, 80px à partir de `xl`. Contenu centré
@@ -399,3 +411,8 @@ Des rectangles à coins tendres, sans fantaisie de forme.
   est du CSS.
 - **Don't** empiler une carte dans une carte, ni ajouter une bordure colorée épaisse pour
   détacher un bloc.
+- **Don't** imiter le ciel : pas de dégradé bleu avec de faux nuages sur une carte, à
+  quelques centaines de pixels des vrais. Une carte se pose sur du blanc translucide et
+  laisse passer le ciel de la page ; le bleu plein est réservé à la fin de page.
+- **Don't** laisser un bloc de texte nu sur le ciel quand la section a du contenu à
+  lire : une grande surface blanche par section, jamais trois petites boîtes.

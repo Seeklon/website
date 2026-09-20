@@ -171,7 +171,10 @@
       "error": "Sending failed. Try again, or write to us on LinkedIn.",
       "successTitle": "Message received.",
       "successBody": "We'll get back to you within 24 hours, Monday to Friday.",
-      "again": "Send another message"
+      "again": "Send another message",
+      "subject": "New message from the Seeklon site",
+      "honeypot": "Do not fill this field",
+      "consent": "By sending this message you agree that your details are used to reply to you. <privacy>Privacy policy</privacy>."
     },
     "aside": {
       "title": "In practice",
@@ -181,7 +184,8 @@
       "betaBody": "Access is free for the whole beta, with no commitment.",
       "placeTitle": "Paris, France",
       "placeBody": "Seeklon was born at the Bpifrance hackathon on AI and ethics.",
-      "linkedin": "Follow Seeklon on LinkedIn"
+      "linkedin": "Follow Seeklon on LinkedIn",
+      "emailLabel": "Or by email:"
     },
     "news": {
       "title": "Get notified when the packs open.",
@@ -191,7 +195,10 @@
       "submit": "Sign me up",
       "sending": "Signing up…",
       "success": "Noted — we'll let you know.",
-      "error": "Sign-up failed. Try again in a moment."
+      "error": "Sign-up failed. Try again in a moment.",
+      "subject": "New sign-up to the Seeklon list",
+      "honeypot": "Do not fill this field",
+      "consent": "One address, so we can tell you. Nothing else, and you can leave whenever you like. <privacy>Privacy policy</privacy>."
     }
   },
   "Blog": {
@@ -207,7 +214,9 @@
       "body": "Seeklon drafts the job post, organises applications and builds your interview guide. You keep the decision.",
       "note": "Free throughout the beta, no commitment.",
       "cta": "Try Seeklon"
-    }
+    },
+    "readingTime": "{minutes} min read",
+    "relatedTitle": "Read next."
   },
   "Product": {
     "titleLine1": "A complete suite to",
@@ -480,7 +489,9 @@
     "useLi3": "Understand and analyze how you use our website",
     "useLi4": "Communicate with you, including for customer service",
     "securityTitle": "3. Security",
-    "securityContent": "We take the security of your data very seriously. We implement appropriate technical and organizational measures to protect your personal data against accidental or unlawful destruction, loss, alteration, disclosure or unauthorized access."
+    "securityContent": "We take the security of your data very seriously. We implement appropriate technical and organizational measures to protect your personal data against accidental or unlawful destruction, loss, alteration, disclosure or unauthorized access.",
+    "formsTitle": "The forms on this site",
+    "formsContent": "The contact form and the mailing-list sign-up are handled by Formspree (Formspree Inc., United States), which receives what you type and forwards it to us by email. That data is only used to reply to you or to keep you posted, is never sold or used for anything else, and is deleted on request at contact@seeklon.com."
   },
   "About": {
     "hero": {
@@ -557,8 +568,39 @@
     "rightsLi2": "Right to rectification: You have the right to ask us to correct any information you believe is inaccurate.",
     "rightsLi3": "Right to erasure: You have the right to ask us to erase your personal data, under certain conditions.",
     "cookiesTitle": "2. Cookies",
-    "cookiesContent": "Our site uses cookies to improve your browsing experience. These cookies are essential for the site to function and help us understand how you use it. You can configure your browser to refuse cookies at any time.",
+    "cookiesContent": "This site sets no advertising and no analytics cookies. The only cookie it uses remembers the language you picked, so the next visit starts in it: it is strictly necessary and cannot identify you. You can refuse it in your browser; the site will simply ask for the language again on each visit.",
     "dpoTitle": "3. DPO contact",
     "dpoContent": "For any questions regarding the protection of your data or to exercise your rights, you can contact our Data Protection Officer at: contact@seeklon.com"
+  },
+  "NotFound": {
+    "code": "Error 404",
+    "line1": "This page has",
+    "line2": "drifted off.",
+    "body": "The link may be old, or the address changed. Here is where to pick up again.",
+    "exitsLabel": "Where to go next",
+    "exits": {
+      "home": {
+        "title": "Home",
+        "body": "The whole journey, from the job post to the interview.",
+        "action": "See the journey"
+      },
+      "blog": {
+        "title": "The blog",
+        "body": "Our methods for hiring calmly, without an HR team.",
+        "action": "Read the articles"
+      },
+      "contact": {
+        "title": "Write to us",
+        "body": "A question, a demo, access to the free beta.",
+        "action": "Open the form"
+      }
+    },
+    "closing": {
+      "line1": "You were looking",
+      "line2": "for something.",
+      "body": "Tell us what: if a page is missing, we would rather know than leave you searching.",
+      "note": "We reply within 24 hours.",
+      "cta": "Write to us"
+    }
   }
 }

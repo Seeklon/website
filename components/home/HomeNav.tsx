@@ -16,7 +16,10 @@ const LINKS = [
 // Language names are written in their own language, whatever the page locale.
 const LANGUAGE_NAMES: Record<string, string> = { fr: 'Français', en: 'English' }
 
-export default function HomeNav() {
+// `postSlugs` comes from the shell: 33 of the 49 articles exist in one language only, and
+// switching language on those used to land on a 404. Without a match, the switch falls
+// back to the other language's blog index.
+export default function HomeNav({ postSlugs }: { postSlugs?: Record<string, string[]> }) {
   const t = useTranslations('Home.nav')
   const locale = useLocale()
   const pathname = usePathname()
@@ -50,12 +53,18 @@ export default function HomeNav() {
     }
   }, [open])
 
+  const switchHref = (loc: string) => {
+    const article = pathname.match(/^\/blog\/(.+)$/)
+    if (!article) return pathname
+    return postSlugs?.[loc]?.includes(article[1]) ? pathname : '/blog'
+  }
+
   const localeSwitch = (
     <ul className="flex items-center gap-1 text-sm" aria-label={t('language')}>
       {routing.locales.map((loc) => (
         <li key={loc}>
           <Link
-            href={pathname}
+            href={switchHref(loc)}
             locale={loc}
             lang={loc}
             hrefLang={loc}

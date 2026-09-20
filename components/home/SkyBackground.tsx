@@ -163,12 +163,15 @@ void main() {
   vec4 acc = open ? vec4(0.0) : vec4(sky, 1.0); // premultiplied
 
   // Clouds grow and gather as the page goes down: high and sparse at the hero, a bank of
-  // cumulus by the testimonials.
-  float unit = clamp(uWidth * 0.4, 320.0, 560.0) * mix(0.82, 1.25, pageT);
-  float coverage = mix(0.55, 0.64, wide) + 0.1 * lowest;
-  // Calmer sky behind copy: a centred column on wide screens, everywhere on phones.
-  float calm = mix(1.0, 1.0 - smoothstep(0.1, 0.42, abs(xn - 0.5)), wide);
-  float calmStrength = mix(0.22, 0.34, wide) * (1.0 - deep);
+  // cumulus by the testimonials. The unit follows the viewport width so a phone gets its
+  // own share of clouds across the screen rather than one vague mass: at a fixed 320px a
+  // cloud covered two thirds of a 390px screen and read as haze.
+  float unit = clamp(uWidth * 0.55, 230.0, 560.0) * mix(0.82, 1.25, pageT);
+  float coverage = mix(0.60, 0.64, wide) + 0.1 * lowest;
+  // Calmer sky behind the copy. The plateau covers the content column — headlines sit on
+  // its left edge, not in its middle — and the weather keeps its drama in the margins.
+  float calm = mix(1.0, 1.0 - smoothstep(0.24, 0.52, abs(xn - 0.5)), wide);
+  float calmStrength = mix(0.24, 0.36, wide) * (1.0 - deep);
 
   // Far layer: smaller, hazier.
   {
@@ -207,6 +210,8 @@ void main() {
 
 // Canvas pixels per css pixel; soft clouds lose nothing at this resolution.
 const RENDER_SCALE = 0.5
+// Canvas pixels one render may cost, however tall the page is.
+const PIXEL_BUDGET = 2_200_000
 // Rows drawn per frame, so the one-off render never blocks a frame for long.
 const STRIP_ROWS = 128
 // A strip slower than this means software rendering: keep the CSS sky instead.
@@ -261,7 +266,11 @@ async function renderSky(
   try {
     const maxViewport = gl.getParameter(gl.MAX_VIEWPORT_DIMS) as Int32Array
     const maxSide = Math.min(4096, maxViewport[0], maxViewport[1], gl.getParameter(gl.MAX_RENDERBUFFER_SIZE))
-    const scale = Math.min(RENDER_SCALE, maxSide / size.height, maxSide / size.width)
+    // A blog article is 10 000px tall, which at half scale is 3.7M pixels of shader — the
+    // sky then arrives seconds late, or gives up on a slow machine. Past the budget the
+    // resolution drops instead; the clouds are soft enough that nothing shows.
+    const budget = Math.sqrt(PIXEL_BUDGET / (size.width * size.height))
+    const scale = Math.min(RENDER_SCALE, budget, maxSide / size.height, maxSide / size.width)
     canvas.width = Math.max(1, Math.round(size.width * scale))
     canvas.height = Math.max(1, Math.round(size.height * scale))
 

@@ -6,7 +6,7 @@ export default function ContactAside() {
   const t = useTranslations('Contact.aside')
 
   return (
-    <aside className="lg:pt-2">
+    <aside className="rounded-[24px] bg-white/75 p-7 md:p-8">
       <h2 className="text-xl md:text-2xl">{t('title')}</h2>
       <dl className="mt-6 divide-y divide-[#DDDBD5] border-t border-[#DDDBD5]">
         {POINTS.map((point) => (
@@ -16,11 +16,17 @@ export default function ContactAside() {
           </div>
         ))}
       </dl>
+      <p className="mt-6 text-[15px] text-ink-soft">
+        {t('emailLabel')}{' '}
+        <a href="mailto:contact@seeklon.com" className="text-azure-deep underline-offset-4 hover:underline">
+          contact@seeklon.com
+        </a>
+      </p>
       <a
         href="https://www.linkedin.com/company/seeklon/"
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-6 inline-flex items-center text-[15px] text-azure-deep underline-offset-4 hover:underline"
+        className="mt-3 inline-flex items-center text-[15px] text-azure-deep underline-offset-4 hover:underline"
       >
         {t('linkedin')}
       </a>

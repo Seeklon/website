@@ -1,4 +1,5 @@
 import { Link } from '@/i18n/navigation'
+import { pageMetadata } from '@/lib/metadata'
 import { getAllPosts, type Post } from '@/lib/blog'
 import { ArrowRight } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
@@ -11,10 +12,13 @@ type Props = { params: Promise<{ locale: string }> }
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'Metadata' })
-  return {
+  return pageMetadata({
+    locale,
+    path: '/blog',
     title: t('blogTitle'),
     description: t('blogDescription'),
-  }
+    image: 'blog',
+  })
 }
 
 export default async function BlogIndexPage({ params }: Props) {

@@ -278,7 +278,7 @@ export default function Journey() {
                     >
                       <StepMedia step={step} alt={t(`steps.${step.key}.alt`)} caption={t(`steps.${step.key}.caption`)} active={i === active} />
 
-                      <div className="flex flex-1 flex-col p-5 md:p-7 lg:p-0">
+                      <div className="flex flex-1 flex-col p-5 md:p-7 lg:justify-center lg:p-0">
                         <p className="hidden text-base lg:block">
                           <span className="text-azure-deep">{t(`steps.${step.key}.tab`)}</span>
                           <span className="ml-3 tabular-nums text-ink-faint">
@@ -292,7 +292,7 @@ export default function Journey() {
                         <p className="mb-5 mt-3 max-w-[27rem] text-[15px] leading-[1.6] text-ink-soft md:mt-5 md:text-base lg:my-[clamp(12px,3vh,28px)] lg:text-[clamp(15px,1.9vh,17px)]">
                           {t(`steps.${step.key}.body`)}
                         </p>
-                        <p className="mt-auto border-t border-[#D6D8DE] pt-4 text-[15px] text-ink md:text-base lg:pt-5 lg:text-lg">
+                        <p className="mt-auto border-t border-[#D6D8DE] pt-4 text-[15px] text-ink md:text-base lg:mt-0 lg:pt-5 lg:text-lg">
                           {t(`steps.${step.key}.outcome`)}
                         </p>
                       </div>

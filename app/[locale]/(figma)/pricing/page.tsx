@@ -1,4 +1,5 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server'
+import { pageMetadata } from '@/lib/metadata'
 import PricingHero from '@/components/pricing/PricingHero'
 import BetaPlan from '@/components/pricing/BetaPlan'
 import PackCards from '@/components/pricing/PackCards'
@@ -10,10 +11,13 @@ type Props = { params: Promise<{ locale: string }> }
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'Metadata' })
-  return {
+  return pageMetadata({
+    locale,
+    path: '/pricing',
     title: t('pricingTitle'),
     description: t('pricingDescription'),
-  }
+    image: 'pricing',
+  })
 }
 
 export default async function PricingPage({ params }: Props) {
