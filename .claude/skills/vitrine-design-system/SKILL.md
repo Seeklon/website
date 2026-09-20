@@ -97,6 +97,10 @@ compositor animates on its own. Rules that matter:
 - Journey (`components/home/Journey.tsx`): one native horizontal scroller at every width —
   `swipe` on phones (finger, snap), `panel` from `lg` (tabs, arrows, and the wheel). The
   tabs follow `scrollLeft`, they are not a separate state.
+- The `pin:` classes are gone from the markup: they kept the section 280vh tall with a
+  sticky child at every size ≥1024×620 even with the pinned mode off, so the page scrolled
+  1980px with the panel frozen mid-window and only the sky moving. That is what "the
+  background scrolls, not the site" meant.
 - Over the panel, one notch of the wheel moves one slide, smoothly, and the page takes the
   wheel back at either end. Two rules keep it from feeling stuck: every event the panel
   takes starts a visible movement (no accumulating thresholds, nothing swallowed), and it
@@ -104,7 +108,9 @@ compositor animates on its own. Rules that matter:
   centre and the page has been still for 120ms — otherwise it stops a scroll the reader
   aimed elsewhere, just because the panel slid under a still cursor on its way past.
   Snapping is lifted during the gesture; a leftover `scroll-snap-type: mandatory` pulls
-  every small move straight back and nothing appears to happen.
+  every small move straight back and nothing appears to happen. A burst is one gesture:
+  events arrive every 17–24ms while a slide takes ~590ms to fly, so a new slide is only
+  accepted after 100ms of silence — otherwise one swipe ran through two.
 - `ImageZoom` opens a product capture in a native `<dialog>`; an off-screen slide passes
   `focusable={false}` so its button leaves the tab order.
 - Blog: the index opens on a section headline, then the latest post as one full-width

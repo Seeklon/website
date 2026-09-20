@@ -37,7 +37,9 @@ uniform float uLayer;     // 0 = the sky itself, 1 = far clouds, 2 = near clouds
 
 // Same colour as the CSS blue under the closing section (#0E62E6).
 const vec3 DEEP = vec3(0.0549, 0.3843, 0.9020);
-const float FADE_OUT = 900.0;
+// The canvas thins out over this distance past the band. Long, so the weather carries
+// into the closing section and the footer instead of stopping at a colour change.
+const float FADE_OUT = 2200.0;
 
 // 2D simplex noise — Ian McEwan, Ashima Arts (MIT).
 vec3 permute(vec3 x) { return mod(((x * 34.0) + 1.0) * x, 289.0); }
@@ -97,10 +99,10 @@ vec2 cumulus(vec2 p, float fluff, float coverage, float cellToCss, float cellYOf
       float cellCss = (c.y + 0.5 + cellYOffset) * cellToCss;
       float cellLow = smoothstep(0.5, 1.0, clamp(cellCss / max(uDeep.x, 1.0), 0.0, 1.0));
       // Coverage drifts across the page: clusters here, open sky there.
-      if (hash(c + 7.13) > coverage + 0.1 * cellLow + 0.22 * snoise(c * 0.37 + 4.0)) continue;
+      if (hash(c + 7.13) > coverage + 0.2 * cellLow + 0.22 * snoise(c * 0.37 + 4.0)) continue;
       vec2 base = c + vec2(0.3 + 0.4 * hash(c + 1.1), 0.68 + 0.22 * hash(c + 2.3));
       float size = (0.27 + 0.25 * hash(c + 3.7)) * mix(0.88, 1.15, cellLow);
-      float stretch = 0.82 + 0.4 * hash(c + 4.9);  // a wide bank … a compact tower
+      float stretch = 0.8 + 0.22 * hash(c + 4.9);  // barely wider than tall, never a smear
       float tall = 0.85 + 0.55 * hash(c + 6.1);
       float lean = hash(c + 8.3) - 0.5;           // the crown is not always centred
       float ground = base.y - p.y + fluff * 0.35 * size;
@@ -181,7 +183,9 @@ void main() {
   // Calmer sky behind the copy. The plateau covers the content column — headlines sit on
   // its left edge, not in its middle — and the weather keeps its drama in the margins.
   float calm = mix(1.0, 1.0 - smoothstep(0.24, 0.52, abs(xn - 0.5)), wide);
-  float calmStrength = mix(0.16, 0.24, wide) * (1.0 - deep);
+  // The corridor holds in the blue too: that is where the white copy sits, and clouds
+  // light enough to read as weather would eat its contrast.
+  float calmStrength = mix(0.16, 0.24, wide) * mix(1.0, 1.75, deep);
 
   // Far layer: smaller, hazier.
   if (uLayer > 0.5 && uLayer < 1.5) {
@@ -189,9 +193,11 @@ void main() {
     p += 0.35 * vec2(snoise(p * 0.21 + 3.1), snoise(p * 0.21 + 9.7));
     float fluff = (billow(p * 3.6) - 0.32) * 0.6;
     vec2 c = cumulus(p, fluff, coverage - 0.06, unit * 0.55, -5.0);
-    float a = smoothstep(0.0, 0.3, c.x) * mix(0.5, 0.16, deep) * (1.0 - calmStrength * calm);
+    float a = smoothstep(-0.08, 0.36, c.x) * mix(0.5, 0.22, deep) * (1.0 - calmStrength * calm);
     vec3 col = mix(mix(vec3(0.792, 0.867, 0.973), vec3(0.985, 0.992, 1.0), clamp(c.y + fluff * 0.35, 0.0, 1.0)),
-                   vec3(0.32, 0.53, 0.94), deep);
+                   vec3(0.42, 0.62, 0.96), deep);
+    // The far bank sits in the haze: it takes a third of the sky's own colour.
+    col = mix(col, sky, 0.3 * (1.0 - deep));
     acc = vec4(col * a, a) + acc * (1.0 - a);
   }
 
@@ -202,13 +208,15 @@ void main() {
     float fluff = (billow(p * 4.2) - 0.32) * 0.6;
     float grain = billow(p * 6.5 + 3.0);
     vec2 c = cumulus(p, fluff, coverage, unit, 0.0);
-    float body = smoothstep(0.0, mix(0.24, 0.36, deep), c.x);
+    // A wide ramp feathers the edge: a narrow one cuts the cloud out like a sticker.
+    float body = smoothstep(-0.06, mix(0.34, 0.46, deep), c.x);
     // Over the deep blue, clouds stay faint so white copy keeps at least 4.5:1.
-    float a = body * mix(mix(0.9, 1.0, wide), 0.42, deep) * (1.0 - calmStrength * calm);
-    vec3 lit = mix(vec3(1.0, 1.0, 0.995), vec3(0.27, 0.49, 0.92), deep);
-    vec3 shade = mix(vec3(0.717, 0.804, 0.941), vec3(0.20, 0.41, 0.88), deep);
+    float a = body * mix(mix(0.9, 1.0, wide), 0.5, deep) * (1.0 - calmStrength * calm);
+    vec3 lit = mix(vec3(1.0, 1.0, 0.995), vec3(0.47, 0.67, 0.98), deep);
+    vec3 shade = mix(vec3(0.717, 0.804, 0.941), vec3(0.28, 0.52, 0.94), deep);
     vec3 cloud = mix(shade, lit, clamp(c.y + fluff * 0.2 + (grain - 0.3) * 0.2, 0.0, 1.0));
     cloud = mix(cloud, lit, smoothstep(0.35, 0.8, c.x) * 0.15);
+    cloud = mix(cloud, sky, 0.12 * (1.0 - deep));
     acc = vec4(cloud * a, a) + acc * (1.0 - a);
   }
 
@@ -220,7 +228,7 @@ void main() {
 
 // Canvas pixels per css pixel; soft clouds lose nothing at this resolution.
 const SKY_SCALE = 0.5
-const CLOUD_SCALE = 0.38
+const CLOUD_SCALE = 0.3
 // Canvas pixels one render may cost, however tall the page is.
 const PIXEL_BUDGET = 2_200_000
 // Rows drawn per frame, so the one-off render never blocks a frame for long.
@@ -328,7 +336,7 @@ async function renderLayer(
 
     // The sky carries a long gradient and needs the quality; the clouds are soft shapes on
     // transparent ground and compress much harder without anything showing.
-    const quality = layer === 0 ? 0.92 : 0.8
+    const quality = layer === 0 ? 0.9 : 0.68
     return await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/webp', quality))
   } finally {
     gl.getExtension('WEBGL_lose_context')?.loseContext()

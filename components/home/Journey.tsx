@@ -25,7 +25,9 @@ const STEPS = [
 // off centre the panel may sit and still take it, and how long one slide takes to travel.
 const PAGE_SETTLE_MS = 120
 const CENTRE_BAND = 0.2
-const SLIDE_MS = 280
+const SLIDE_MS = 560
+// Silence between two wheel events that ends a gesture (a burst runs at 17–24ms).
+const GESTURE_GAP_MS = 100
 
 const PANEL_QUERY = '(min-width: 1024px)'
 const PIN_QUERY = '(min-width: 1024px) and (min-height: 620px)'
@@ -221,6 +223,7 @@ export default function Journey() {
     if (!panel || !viewport || !track || mode !== 'panel') return
 
     let lastPageScroll = 0
+    let lastWheel = 0
     let busyUntil = 0
     let target: number | null = null
     let release = 0
@@ -252,11 +255,15 @@ export default function Journey() {
       // Nothing left in that direction: the page takes the wheel back.
       if (next < 0 || next > STEPS.length - 1) return
       event.preventDefault()
-      // Mid-flight: the slide is already moving, so the gesture has its answer.
-      if (performance.now() < busyUntil) return
+      // One burst of the trackpad is one gesture. Events keep coming every 17–24ms while
+      // a slide takes about 590ms to fly; counting each one ran two slides per swipe.
+      const now = performance.now()
+      const continuing = now - lastWheel < GESTURE_GAP_MS
+      lastWheel = now
+      if (continuing || now < busyUntil) return
 
       target = next
-      busyUntil = performance.now() + SLIDE_MS
+      busyUntil = now + SLIDE_MS
       viewport.style.scrollSnapType = 'none'
       viewport.scrollTo({ left: next * pitch, behavior: reducedMotion() ? 'auto' : 'smooth' })
       window.clearTimeout(release)
@@ -295,8 +302,8 @@ export default function Journey() {
         </h2>
       </Reveal>
 
-      <div ref={runwayRef} className="relative mt-8 md:mt-14 pin:mt-0 pin:h-[280vh]">
-        <div className="pin:sticky pin:top-0 pin:flex pin:h-screen pin:flex-col pin:justify-center pin:pb-5 pin:pt-[88px]">
+      <div ref={runwayRef} className="relative mt-8 md:mt-14">
+        <div>
           <div className="mx-auto w-full max-w-[1344px] px-6 md:px-10 lg:px-8">
             <div ref={panelRef} className="lg:rounded-[28px] lg:bg-white/75 lg:px-8 lg:py-[clamp(20px,3.5vh,40px)] lg:shadow-[0_30px_60px_-40px_rgba(10,86,196,0.35)] xl:px-[52px]">
               <div role="tablist" aria-label={t('tabsLabel')} className="grid grid-cols-3 gap-3 md:gap-6 lg:gap-10">
@@ -389,8 +396,7 @@ export default function Journey() {
 
             <div className="mt-4 flex items-center justify-between gap-4 lg:mt-5">
               <p className="text-sm text-ink-faint">
-                <span className="hidden pin:inline">{t('hintScroll')}</span>
-                <span className="tabular-nums pin:hidden">{counter}</span>
+                                <span className="tabular-nums">{counter}</span>
               </p>
               <div className="flex gap-2">
                 <StepButton label={t('prev')} disabled={active === 0} onClick={() => goTo(active - 1)}>
@@ -452,7 +458,7 @@ function StepMedia({
   return (
     <figure className="md:order-last lg:flex lg:flex-col">
       <div className="lg:rounded-[24px] lg:bg-[linear-gradient(135deg,#EAF2FF_0%,#D4E4FE_100%)] lg:p-6 xl:p-8">
-        <div className="lg:mx-auto lg:rounded-[14px] lg:bg-white/80 lg:p-2 pin:max-w-[calc((100vh-400px)*16/9)]">
+        <div className="lg:mx-auto lg:rounded-[14px] lg:bg-white/80 lg:p-2">
           <ImageZoom
             src={wide.src}
             srcSet={wide.srcSet}

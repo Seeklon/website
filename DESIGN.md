@@ -313,6 +313,12 @@ dans `messages/*.json` ; pour les articles, écrits avec des espaces ordinaires,
 - **Le ciel cède avant la page.** Le rendu initial baisse sa résolution au-delà de son
   budget de pixels ; en mouvement réduit les calques ne dérivent pas ; sans WebGL, le
   dégradé CSS reste.
+- **Le bleu de fin est du ciel, pas un aplat.** Les nuages continuent dedans, éclaircis
+  au lieu d'être teintés du même bleu (sinon ils deviennent invisibles), et le couloir
+  calme y est renforcé pour que le texte blanc garde ses 4,5:1. Attention au contexte
+  d'empilement : un `view-transition-name` sur `main` suffisait à faire passer le dégradé
+  bleu de la section finale par-dessus le ciel, et les nuages s'arrêtaient net au pied de
+  page.
 - **Un cumulus, pas une rangée de bosses.** Quatre lobes posés sur la base, trois empilés
   au-dessus, fondus par un maximum doux (`k = 7.5`) : c'est ce qui donne le volume et la
   base plate. Sept bosses alignées côte à côte, c'est ce qui donnait des nuages larges et
