@@ -3,14 +3,208 @@
 @tailwind utilities;
 
 :root {
-  --font-jakarta: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  /* Overridden by next/font (app/fonts) where Plus Jakarta Sans is loaded. */
+  --font-jakarta: ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
   @apply text-slate-800 bg-white;
 }
 
-/* Force titres à utiliser Cabinet Grotesk (chargé via <link> dans layout) */
+/* Page d'accueil (Figma « Site vitrine ») */
+.home ::selection {
+  background: #0c6df8;
+  color: #fff;
+}
+
+.home :focus-visible {
+  outline: 2px solid #0c6df8;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.home [data-sky-deep] :focus-visible,
+.home footer :focus-visible {
+  outline-color: #fff;
+}
+
+/* A single band of light sweeps across the accent word once the page settles, and
+   again on hover. The word stays plain text; without background-clip support, or
+   with reduced motion, it is simply the flat blue of the design. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  @media (prefers-reduced-motion: no-preference) {
+    .home .accent-shine {
+      background-image:
+        linear-gradient(
+          100deg,
+          transparent 46%,
+          rgba(173, 214, 255, 0.85) 49%,
+          rgba(255, 255, 255, 0.92) 50.5%,
+          rgba(173, 214, 255, 0.85) 52%,
+          transparent 55%
+        ),
+        linear-gradient(#0c6df8, #0c6df8);
+      background-repeat: no-repeat;
+      background-size: 300% 100%, 100% 100%;
+      background-position: 185% 0, 0 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: accent-shine 1.7s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+    }
+
+    @media (hover: hover) {
+      .home .accent-shine:hover {
+        animation: accent-shine-again 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+    }
+  }
+}
+
+@keyframes accent-shine {
+  from {
+    background-position: 185% 0, 0 0;
+  }
+  to {
+    background-position: -85% 0, 0 0;
+  }
+}
+
+@keyframes accent-shine-again {
+  from {
+    background-position: 185% 0, 0 0;
+  }
+  to {
+    background-position: -85% 0, 0 0;
+  }
+}
+
+/* Sections sharpen into place as they arrive (Reveal.tsx adds the markers). */
+@media (prefers-reduced-motion: no-preference) {
+  .home [data-reveal] {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(7px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .home [data-reveal][data-visible] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  /* The closing headline catches the same light as the hero, once it is in view. */
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .home .accent-shine-soft {
+      background-image:
+        linear-gradient(100deg, transparent 44%, rgba(150, 196, 255, 0.95) 50.5%, transparent 57%),
+        linear-gradient(#ffffff, #ffffff);
+      background-repeat: no-repeat;
+      background-size: 300% 100%, 100% 100%;
+      background-position: 185% 0, 0 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .home [data-visible] .accent-shine-soft {
+      animation: accent-shine 2.1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+    }
+  }
+
+  /* Hero screenshots settle into place on arrival. */
+  .home .hero-shot {
+    animation: hero-shot 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  }
+
+  .home .hero-shot-left {
+    animation: hero-shot-left 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  }
+
+  .home .hero-shot-right {
+    animation: hero-shot-right 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+  }
+
+  /* Slow horizontal breath of the high clouds behind the hero. */
+  .home .sky-drift {
+    animation: sky-drift 90s ease-in-out infinite alternate;
+  }
+
+  /* Light passes over a button on hover. */
+  .home .sheen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 42%, rgba(255, 255, 255, 0.34) 50%, transparent 58%);
+    background-size: 280% 100%;
+    background-position: 180% 0;
+    pointer-events: none;
+  }
+
+  @media (hover: hover) {
+    .home .sheen:hover::after {
+      animation: accent-shine 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+  }
+}
+
+@keyframes hero-shot {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-shot-left {
+  from {
+    opacity: 0;
+    transform: rotateY(28deg) translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(28deg);
+  }
+}
+
+@keyframes hero-shot-right {
+  from {
+    opacity: 0;
+    transform: rotateY(-28deg) translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(-28deg);
+  }
+}
+
+@keyframes sky-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-7%, 0, 0);
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Force titres à utiliser Cabinet Grotesk (auto-hébergée via next/font, app/fonts) */
 .font-heading {
-  font-family: 'Cabinet Grotesk', var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-cabinet), var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 }

@@ -9,8 +9,24 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        // Wide and tall enough to pin the journey slider while the page scrolls.
+        pin: { raw: "(min-width: 1024px) and (min-height: 620px)" },
+      },
       colors: {
         background: "#F0F5FF",
+
+        // Home (Figma "Seeklon — Site vitrine")
+        ink: {
+          DEFAULT: "#0B0B0C",
+          soft: "#4F4E49",
+          faint: "#5F5D57",
+        },
+        azure: {
+          DEFAULT: "#0C6DF8",
+          deep: "#0A56C4",
+          mist: "#B4D5FF",
+        },
 
         primary: {
           DEFAULT: "#1A459C", // Deep Royal
@@ -31,9 +47,11 @@ const config: Config = {
         }
       },
       fontFamily: {
-        heading: ['"Cabinet Grotesk"', 'sans-serif'],
+        heading: ["var(--font-cabinet)", "sans-serif"],
         sans: ["var(--font-jakarta)", ...fontFamily.sans],
         accent: ['"Swear Display"', 'serif'],
+        grotesk: ["var(--font-host-grotesk)", ...fontFamily.sans],
+        genoid: ["var(--font-genoid)", "var(--font-host-grotesk)", ...fontFamily.sans],
       },
       animation: {
         'blob': 'blob 10s infinite',
