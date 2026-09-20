@@ -20,7 +20,7 @@ const config: Config = {
         ink: {
           DEFAULT: "#0B0B0C",
           soft: "#4F4E49",
-          faint: "#5F5D57",
+          faint: "#57554F",
         },
         azure: {
           DEFAULT: "#0C6DF8",

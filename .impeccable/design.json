@@ -97,12 +97,12 @@
       "ink-faint": {
         "role": "neutral",
         "displayName": "Encre estompée",
-        "canonical": "#5F5D57",
+        "canonical": "#57554F",
         "tonalRamp": [
           "#1B1A18",
           "#302F2B",
           "#47453F",
-          "#5F5D57",
+          "#57554F",
           "#807E76",
           "#A8A69E",
           "#D0CEC7",

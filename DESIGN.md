@@ -4,7 +4,7 @@ description: Un ciel qui se dégage — recruter sereinement, même sans équipe
 colors:
   ink: "#0B0B0C"
   ink-soft: "#4F4E49"
-  ink-faint: "#5F5D57"
+  ink-faint: "#57554F"
   azure: "#0C6DF8"
   azure-deep: "#0A56C4"
   azure-mist: "#B4D5FF"
@@ -237,7 +237,7 @@ Une palette de ciel : beaucoup de blanc bleuté, un encre presque noir, un seul 
 ### Neutral
 - **Encre** (#0B0B0C) : titres et texte courant sur fond clair.
 - **Encre adoucie** (#4F4E49) : paragraphes secondaires, à partir de 16px.
-- **Encre estompée** (#5F5D57) : légendes, compteurs, indications, 12 à 15px.
+- **Encre estompée** (#57554F) : légendes, compteurs, indications, 12 à 15px.
 - **Filets** (#DDDBD5 dans les cartes, #D6D8DE dans les panneaux) : séparateurs d'une
   épaisseur de 1px, jamais de bordure colorée épaisse.
 - **Ciel de repli** (#F4F8FF → #E4EDFC → #DAE7FB) : le dégradé CSS affiché tant que l'image
