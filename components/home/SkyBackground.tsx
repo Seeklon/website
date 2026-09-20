@@ -228,9 +228,9 @@ void main() {
 
 // Canvas pixels per css pixel; soft clouds lose nothing at this resolution.
 const SKY_SCALE = 0.5
-const CLOUD_SCALE = 0.3
+const CLOUD_SCALE = 0.44
 // Canvas pixels one render may cost, however tall the page is.
-const PIXEL_BUDGET = 2_200_000
+const PIXEL_BUDGET = 3_400_000
 // Rows drawn per frame, so the one-off render never blocks a frame for long.
 const STRIP_ROWS = 128
 // A strip slower than this means software rendering: keep the CSS sky instead.
@@ -336,7 +336,7 @@ async function renderLayer(
 
     // The sky carries a long gradient and needs the quality; the clouds are soft shapes on
     // transparent ground and compress much harder without anything showing.
-    const quality = layer === 0 ? 0.9 : 0.68
+    const quality = layer === 0 ? 0.9 : 0.74
     return await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/webp', quality))
   } finally {
     gl.getExtension('WEBGL_lose_context')?.loseContext()
