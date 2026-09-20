@@ -15,7 +15,7 @@ make deliberately, and to add here afterwards.
 `app/[locale]/(figma)/layout.tsx` wraps every rebuilt page:
 
 - wrapper: `home` class + font variables + `relative isolate overflow-x-clip`, fallback
-  background `linear-gradient(180deg,#F4F8FF_0%,#E4EDFC_55%,#DAE7FB_100%)`;
+  background `linear-gradient(180deg,#E7F0FE_0%,#D8E6FB_55%,#CFE0FA_100%)`;
 - `<SkyBackground />` (procedural sky, see below), `<HomeNav />`, `<main>`, `<HomeFooter />`.
 
 A page provides only its sections and ends with `<ClosingCta />`, which carries

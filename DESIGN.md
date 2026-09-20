@@ -11,9 +11,9 @@ colors:
   azure-wash: "#EEF4FF"
   rule: "#DDDBD5"
   rule-panel: "#D6D8DE"
-  sky-pale: "#F4F8FF"
-  sky-mid: "#E4EDFC"
-  sky-low: "#DAE7FB"
+  sky-pale: "#E7F0FE"
+  sky-mid: "#D8E6FB"
+  sky-low: "#CFE0FA"
   deep-top: "#0E62E6"
   deep-mid: "#0C5AD9"
   deep-bottom: "#0A52CC"
@@ -240,7 +240,7 @@ Une palette de ciel : beaucoup de blanc bleuté, un encre presque noir, un seul 
 - **Encre estompée** (#57554F) : légendes, compteurs, indications, 12 à 15px.
 - **Filets** (#DDDBD5 dans les cartes, #D6D8DE dans les panneaux) : séparateurs d'une
   épaisseur de 1px, jamais de bordure colorée épaisse.
-- **Ciel de repli** (#F4F8FF → #E4EDFC → #DAE7FB) : le dégradé CSS affiché tant que l'image
+- **Ciel de repli** (#E7F0FE → #D8E6FB → #CFE0FA) : le dégradé CSS affiché tant que l'image
   du ciel n'est pas prête, ou si le WebGL est indisponible.
 
 ### Named Rules
@@ -301,6 +301,9 @@ dans `messages/*.json` ; pour les articles, écrits avec des espaces ordinaires,
 
 ### Le ciel, en pratique
 
+- Le fond n'est pas blanc : il ouvre sur un bleu pâle mais réel (#E7F0FE), sinon des
+  nuages blancs n'ont rien contre quoi se détacher. Leur face à l'ombre descend assez bas
+  pour qu'un cumulus ait un volume, jamais assez pour salir le ciel.
 - Le couloir calme suit la colonne de contenu, pas le centre de l'écran : les titres de
   section sont alignés à gauche, c'est là qu'il faut de l'air, et la météo garde sa
   dramaturgie dans les marges.

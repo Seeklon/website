@@ -14,7 +14,7 @@ export default function SkyShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className={`home ${hostGrotesk.variable} ${genoid.variable} relative isolate overflow-x-clip bg-[linear-gradient(180deg,#F4F8FF_0%,#E4EDFC_55%,#DAE7FB_100%)] font-grotesk text-ink`}
+      className={`home ${hostGrotesk.variable} ${genoid.variable} relative isolate overflow-x-clip bg-[linear-gradient(180deg,#E7F0FE_0%,#D8E6FB_55%,#CFE0FA_100%)] font-grotesk text-ink`}
     >
       <SkyBackground />
       <PageTransitions />

@@ -127,16 +127,16 @@
       "sky-pale": {
         "role": "neutral",
         "displayName": "Ciel pâle",
-        "canonical": "#F4F8FF",
+        "canonical": "#E7F0FE",
         "tonalRamp": [
           "#1B3866",
           "#28518F",
           "#3A70BD",
           "#6A9AE0",
           "#A6C6F1",
-          "#DAE7FB",
-          "#E4EDFC",
-          "#F4F8FF"
+          "#CFE0FA",
+          "#D8E6FB",
+          "#E7F0FE"
         ]
       }
     },

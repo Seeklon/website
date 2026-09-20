@@ -152,10 +152,12 @@ void main() {
   float pageT = clamp(css.y / max(uDeep.x, 1.0), 0.0, 1.0);
   float lower = smoothstep(0.02, 0.55, pageT);
   float lowest = smoothstep(0.5, 1.0, pageT);
-  vec3 sky = mix(vec3(0.93, 0.955, 1.0), vec3(0.80, 0.88, 0.99), lower);
-  sky = mix(sky, vec3(0.74, 0.85, 0.98), lowest);
+  // The hero sky used to start at 0.93 — near white, so white clouds had nothing to stand
+  // against. It now opens on a real, if pale, blue, and the haze whitens it less.
+  vec3 sky = mix(vec3(0.874, 0.919, 0.992), vec3(0.755, 0.849, 0.984), lower);
+  sky = mix(sky, vec3(0.695, 0.815, 0.975), lowest);
   float haze = smoothstep(0.0, 0.9, snoise(css / 900.0 + 2.0) * 0.5 + 0.5);
-  sky = mix(sky, vec3(0.97, 0.98, 1.0), haze * mix(0.35, 0.16, lowest));
+  sky = mix(sky, vec3(0.955, 0.972, 1.0), haze * mix(0.24, 0.12, lowest));
   // Sun glow behind the hero.
   float sun = 1.0 - smoothstep(0.0, 1.0, length((css - vec2(uWidth * 0.22, 40.0)) / vec2(760.0, 620.0)));
   sky = mix(sky, vec3(1.0), sun * 0.16 * (1.0 - lower));
@@ -180,7 +182,7 @@ void main() {
     float fluff = (billow(p * 3.6) - 0.32) * 0.6;
     vec2 c = cumulus(p, fluff, coverage - 0.1);
     float a = smoothstep(0.0, 0.3, c.x) * mix(0.5, 0.1, deep) * (1.0 - calmStrength * calm);
-    vec3 col = mix(mix(vec3(0.84, 0.89, 0.97), vec3(0.98, 0.99, 1.0), clamp(c.y + fluff * 0.35, 0.0, 1.0)),
+    vec3 col = mix(mix(vec3(0.775, 0.845, 0.955), vec3(0.985, 0.992, 1.0), clamp(c.y + fluff * 0.35, 0.0, 1.0)),
                    vec3(0.32, 0.53, 0.94), deep);
     acc = vec4(col * a, a) + acc * (1.0 - a);
   }
@@ -196,7 +198,7 @@ void main() {
     // Over the deep blue, clouds stay faint so white copy keeps at least 4.5:1.
     float a = body * mix(mix(0.9, 1.0, wide), 0.32, deep) * (1.0 - calmStrength * calm);
     vec3 lit = mix(vec3(1.0, 1.0, 0.995), vec3(0.32, 0.53, 0.94), deep);
-    vec3 shade = mix(vec3(0.76, 0.82, 0.93), vec3(0.26, 0.45, 0.90), deep);
+    vec3 shade = mix(vec3(0.682, 0.762, 0.906), vec3(0.26, 0.45, 0.90), deep);
     vec3 cloud = mix(shade, lit, clamp(c.y + fluff * 0.2 + (grain - 0.3) * 0.2, 0.0, 1.0));
     cloud = mix(cloud, lit, smoothstep(0.35, 0.8, c.x) * 0.15);
     acc = vec4(cloud * a, a) + acc * (1.0 - a);
