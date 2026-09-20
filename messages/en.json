@@ -198,6 +198,7 @@
     "titleBefore": "Advice &",
     "titleAccent": "news",
     "subtitle": "Practical methods to hire calmly, even without an HR team.",
+    "listTitle": "The latest articles.",
     "readArticle": "Read the article",
     "backToBlog": "Back to the blog",
     "closing": {
@@ -488,6 +489,7 @@
       "body": "No HR team required. That conviction is what gave birth to Seeklon."
     },
     "pillars": {
+      "title": "Why we exist.",
       "items": [
         {
           "title": "Why",
@@ -504,7 +506,7 @@
       ]
     },
     "vision": {
-      "label": "Our vision",
+      "title": "Our vision.",
       "quote": "Hire with method, learn from your decisions, and lean on technology without handing it your choices."
     },
     "hackathon": {

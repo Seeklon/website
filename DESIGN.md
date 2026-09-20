@@ -293,8 +293,11 @@ ne donne pas.
 (`line1`, `line2`), jamais avec un `<br>` ni laissés à la merci du retour automatique : la
 coupure fait partie du dessin.
 
-**La règle de l'apostrophe.** Typographie française : espace insécable avant `? ! : ;` et à
-l'intérieur des guillemets `«  »`.
+**La règle de l'apostrophe.** Typographie française : apostrophe courbe `’`, espace
+insécable avant `? ! : ;` et à l'intérieur des guillemets `«  »` — pleine avant le
+deux-points, fine avant les autres. Dans les textes d'interface, elle est écrite à la main
+dans `messages/*.json` ; pour les articles, écrits avec des espaces ordinaires,
+`frenchSpacing` (`lib/typography.ts`) la pose au rendu, en français seulement.
 
 ## Layout
 
@@ -359,11 +362,13 @@ Des rectangles à coins tendres, sans fantaisie de forme.
   suivante qui dépasse, panneau piloté par les boutons, ou panneau épinglé au défilement.
 - **Tableau comparatif** : vrai `<table>` avec `<caption>` masquée et en-têtes de ligne ; sur
   mobile, il devient une carte de synthèse par plan, avec des coches.
-- **Carte d'article** : blanc 80%, rayon 20px, 28px de marge interne (32px à partir de
+- **Carte d'article** : blanc 85%, rayon 24px, 28px de marge interne (36px à partir de
   `md`). Catégorie et date en encre estompée au-dessus du titre, chapô en encre adoucie,
   et « Lire l'article » collé en bas derrière un filet, avec la flèche qui avance au
   survol. Pas de vignette : les articles n'ont pas d'image propre, et un logo répété dans
-  trente cartes ne dit rien.
+  trente cartes ne dit rien. La liste ouvre sur le dernier article en grande carte pleine
+  largeur — titre à gauche, chapô et lien à droite, comme la carte bêta sur Tarifs — puis
+  continue en deux colonnes.
 - **Article** : colonne de 860px, titre aligné à gauche, chapô sous le titre, puis le
   corps dans une carte blanche à 90% (rayon 24px, 56px de marge interne à partir de `md`).
   Le corps utilise le plugin `typography` rhabillé avec l'encre et le bleu du site

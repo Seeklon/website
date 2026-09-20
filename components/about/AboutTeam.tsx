@@ -18,7 +18,7 @@ export default function AboutTeam() {
         </h2>
       </Reveal>
 
-      <ul className="mt-9 grid gap-5 sm:grid-cols-2 md:mt-14 lg:grid-cols-4 lg:gap-6">
+      <ul className="mt-8 grid gap-5 sm:grid-cols-2 md:mt-12 lg:grid-cols-4 lg:gap-6">
         {members.map((member) => (
           <li
             key={member.name}

@@ -198,6 +198,7 @@
     "titleBefore": "Conseils &",
     "titleAccent": "actualités",
     "subtitle": "Des méthodes concrètes pour recruter sereinement, même sans équipe RH.",
+    "listTitle": "Les derniers articles.",
     "readArticle": "Lire l’article",
     "backToBlog": "Retour au blog",
     "closing": {
@@ -488,6 +489,7 @@
       "body": "Même sans expertise RH. C’est la conviction qui a donné naissance à Seeklon."
     },
     "pillars": {
+      "title": "Notre raison d’être.",
       "items": [
         {
           "title": "Pourquoi",
@@ -504,7 +506,7 @@
       ]
     },
     "vision": {
-      "label": "Notre vision",
+      "title": "Notre vision.",
       "quote": "Recruter avec méthode, apprendre de ses décisions, et s’appuyer sur la technologie sans lui déléguer ses choix."
     },
     "hackathon": {

@@ -8,7 +8,14 @@ export default function AboutHackathon() {
 
   return (
     <section className="mx-auto max-w-[1440px] px-6 pt-24 md:px-10 md:pt-[150px] xl:px-20">
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,608fr)_minmax(0,540fr)] lg:items-center lg:gap-20">
+      <Reveal>
+        <h2 className="text-[clamp(2.25rem,1.2rem+3.4vw,4rem)] leading-[1.04] tracking-[-0.04em]">
+          <span className="block">{t('line1')}</span>
+          <span className="block">{t('line2')}</span>
+        </h2>
+      </Reveal>
+
+      <div className="mt-8 grid gap-10 md:mt-12 lg:grid-cols-[minmax(0,608fr)_minmax(0,540fr)] lg:items-start lg:gap-20">
         <div className="relative flex min-h-[300px] flex-col justify-end overflow-hidden rounded-[24px] bg-[linear-gradient(168deg,#2C86FF_0%,#0E62E6_45%,#0A4EBC_100%)] p-8 text-white md:min-h-[400px] md:p-10 lg:aspect-[608/460] lg:min-h-0">
           <div
             aria-hidden="true"
@@ -27,13 +34,7 @@ export default function AboutHackathon() {
         </div>
 
         <div>
-          <Reveal>
-            <h2 className="text-[clamp(2rem,1.2rem+2.8vw,4rem)] leading-[1.04] tracking-[-0.04em]">
-              <span className="block">{t('line1')}</span>
-              <span className="block">{t('line2')}</span>
-            </h2>
-          </Reveal>
-          <p className="mt-6 max-w-[34rem] text-base leading-[1.6] text-ink-soft md:mt-8 md:text-[19px]">{t('body')}</p>
+          <p className="max-w-[34rem] text-base leading-[1.6] text-ink-soft md:text-[19px]">{t('body')}</p>
           <p className="mt-5 max-w-[34rem] text-base leading-[1.6] text-ink-soft md:text-[19px]">{t('after')}</p>
         </div>
       </div>

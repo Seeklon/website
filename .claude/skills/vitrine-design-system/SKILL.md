@@ -5,7 +5,8 @@ description: Use when building, editing or reviewing any page of the Seeklon mar
 
 # Site vitrine — design system
 
-The pages rebuilt from Figma (home, pricing) share one shell and one set of tokens. Match
+The pages rebuilt from Figma (home, pricing, contact, about, blog) share one shell, one
+set of tokens and one rhythm (see **Page rhythm** below). Match
 them exactly rather than inventing new values; anything not listed here is a decision to
 make deliberately, and to add here afterwards.
 
@@ -90,13 +91,16 @@ content. Rules that matter:
   scroll-snap, next card peeking, `snap-always`), `panel` (≥1024 but short), `pinned`
   (`pin` screen = `(min-width:1024px) and (min-height:620px)`, sticky runway drives the
   steps). Keep `PANEL_QUERY`/`PIN_QUERY` in sync with `tailwind.config.js`.
-- Blog: the index is a three-column grid of typographic cards (meta, title, excerpt, and
-  the read link pinned to the bottom behind a rule) — no thumbnails, the posts have no
-  artwork of their own. An article is an 860px column with the body in a white card; the
+- Blog: the index opens on a section headline, then the latest post as one full-width
+  card (title left, excerpt and link right, like the beta plan on Tarifs), then the rest
+  in two columns — typographic cards with meta, title, excerpt and the read link pinned to
+  the bottom behind a rule. No thumbnails, the posts have no artwork of their own.
+- Article: an 860px column with the body in a white card; the
   `typography` plugin is retuned in `globals.css` under `.home .prose`, the markdown's
   leading `# ` is stripped at render (the page already has the `h1`), apostrophes are
   swapped for the curly one, and GFM tables are wrapped in `not-prose` so they scroll
-  sideways on a phone.
+  sideways on a phone. `frenchSpacing` (`lib/typography.ts`) puts the no-break space back
+  before French high punctuation — without it a title breaks in front of its colon.
 
 ## Motion
 
@@ -115,6 +119,17 @@ content. Rules that matter:
 - Lists (features, table rows, FAQ) are arrays read with `t.raw(...)` and typed at the call
   site.
 - Headings are split into `line1` / `line2` keys rather than `<br>`.
+
+## Page rhythm
+
+Every rebuilt page follows the same beats, and a new one that skips them reads like
+another site: hero (`pt-[136px] md:pt-[180px]`, two-line title, `md:text-center`) → first
+section at `mt-12 md:mt-20` → each following section at `pt-24 md:pt-[150px]` (180–220px
+on the longer pages) → the deep-blue `ClosingCta`, which every page needs or the footer's
+blue arrives with no transition. Each section opens with its own headline at
+`clamp(2.25rem,1.2rem+3.4vw,4rem)` wrapped in `Reveal`, then its content at
+`mt-8 md:mt-12`. Content sits on large white surfaces (`rounded-[24px] bg-white/85`),
+not small boxes.
 
 ## Before calling a page done
 

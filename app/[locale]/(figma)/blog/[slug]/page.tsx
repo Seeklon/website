@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import ClosingCta from '@/components/home/ClosingCta'
+import { frenchSpacing } from '@/lib/typography'
 
 type Props = { params: Promise<{ locale: string; slug: string }> }
 
@@ -52,6 +53,7 @@ export default async function BlogPostPage({ params }: Props) {
   // articles were written with become the curly one the rest of the site uses — there is
   // no code in this content, so nothing else can be caught by the swap.
   const body = post.content.replace(/^﻿?\s*#\s+[^\n]*\n+/, '').replace(/'/g, '’')
+  const article = frenchSpacing(body, locale)
 
   return (
     <article>
@@ -69,9 +71,9 @@ export default async function BlogPostPage({ params }: Props) {
           <time dateTime={date}>{formattedDate}</time>
         </p>
         <h1 className="mt-4 text-balance text-[clamp(2rem,1.2rem+2.9vw,3.75rem)] font-medium leading-[1.06] tracking-[-0.04em]">
-          {post.title}
+          {frenchSpacing(post.title, locale)}
         </h1>
-        <p className="mt-6 max-w-[38rem] text-base leading-[1.6] text-ink-soft md:text-[19px]">{post.excerpt}</p>
+        <p className="mt-6 max-w-[38rem] text-base leading-[1.6] text-ink-soft md:text-[19px]">{frenchSpacing(post.excerpt, locale)}</p>
       </header>
 
       <div className="mx-auto max-w-[860px] px-6 pt-10 md:pt-14">
@@ -89,7 +91,7 @@ export default async function BlogPostPage({ params }: Props) {
                 ),
               }}
             >
-              {body}
+              {article}
             </ReactMarkdown>
           </div>
         </div>
