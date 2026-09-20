@@ -21,6 +21,11 @@ const STEPS = [
 ] as const
 
 // Keep in sync with the `lg` and `pin` screens in tailwind.config.js.
+// How much wheel it takes to move one step, and how long the panel rests afterwards, so
+// one flick of a trackpad does not run through the whole slide.
+const WHEEL_PER_STEP = 90
+const WHEEL_REST_MS = 420
+
 const PANEL_QUERY = '(min-width: 1024px)'
 const PIN_QUERY = '(min-width: 1024px) and (min-height: 620px)'
 const pad = (n: number) => String(n).padStart(2, '0')
@@ -42,6 +47,8 @@ export default function Journey() {
   const runwayRef = useRef<HTMLDivElement>(null)
   const viewportRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const overRef = useRef(false)
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   // Unknown until the first media query check; rendered like 'swipe' meanwhile.
   const [mode, setMode] = useState<Mode | null>(null)
@@ -209,6 +216,53 @@ export default function Journey() {
     goTo(next)
   }
 
+  // The wheel changes step only while the pointer rests on the panel, and only while
+  // there is a step left in that direction: everywhere else, and at either end, the page
+  // scrolls as usual. Arriving at the section never traps the reader.
+  useEffect(() => {
+    const panel = panelRef.current
+    if (!panel || mode !== 'panel') return
+
+    // Hovering has to outlive a render: a step change re-runs this effect, and a local
+    // flag would come back false — the next turn of the wheel then scrolled the page.
+    let travelled = 0
+    let restUntil = 0
+
+    const enter = () => {
+      overRef.current = true
+    }
+    const leave = () => {
+      overRef.current = false
+      travelled = 0
+    }
+    const onWheel = (event: WheelEvent) => {
+      if (!overRef.current || document.querySelector('dialog[open]')) return
+      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY
+      const direction = Math.sign(delta)
+      if (direction === 0) return
+      const next = activeRef.current + direction
+      // Let the page have the wheel back at the first and last step.
+      if (next < 0 || next > STEPS.length - 1) return
+      event.preventDefault()
+      const now = performance.now()
+      if (now < restUntil) return
+      travelled += delta
+      if (Math.abs(travelled) < WHEEL_PER_STEP) return
+      travelled = 0
+      restUntil = now + WHEEL_REST_MS
+      goTo(next)
+    }
+
+    panel.addEventListener('pointerenter', enter)
+    panel.addEventListener('pointerleave', leave)
+    panel.addEventListener('wheel', onWheel, { passive: false })
+    return () => {
+      panel.removeEventListener('pointerenter', enter)
+      panel.removeEventListener('pointerleave', leave)
+      panel.removeEventListener('wheel', onWheel)
+    }
+  }, [mode])
+
   const titleId = `${uid}-title`
   const counter = `${pad(active + 1)} / ${pad(STEPS.length)}`
 
@@ -227,7 +281,7 @@ export default function Journey() {
       <div ref={runwayRef} className="relative mt-8 md:mt-14 pin:mt-0 pin:h-[280vh]">
         <div className="pin:sticky pin:top-0 pin:flex pin:h-screen pin:flex-col pin:justify-center pin:pb-5 pin:pt-[88px]">
           <div className="mx-auto w-full max-w-[1344px] px-6 md:px-10 lg:px-8">
-            <div className="lg:rounded-[28px] lg:bg-white/75 lg:px-8 lg:py-[clamp(20px,3.5vh,40px)] lg:shadow-[0_30px_60px_-40px_rgba(10,86,196,0.35)] xl:px-[52px]">
+            <div ref={panelRef} className="lg:rounded-[28px] lg:bg-white/75 lg:px-8 lg:py-[clamp(20px,3.5vh,40px)] lg:shadow-[0_30px_60px_-40px_rgba(10,86,196,0.35)] xl:px-[52px]">
               <div role="tablist" aria-label={t('tabsLabel')} className="grid grid-cols-3 gap-3 md:gap-6 lg:gap-10">
                 {STEPS.map(({ key }, i) => (
                   <button

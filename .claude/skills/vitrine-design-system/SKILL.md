@@ -96,7 +96,9 @@ them sideways (11 px/s near, 6 px/s far) and turns their shapes over. Rules that
   a filled button (needs `relative overflow-hidden`).
 - Journey (`components/home/Journey.tsx`): `swipe` on phones and tablets (native
   scroll-snap, next card peeking), `panel` from `lg` — tabs and arrows change the step and
-  the page does not move. The `pinned` runway is still in the file behind `usePinned`,
+  the page does not move. Over the panel the wheel slides the steps instead of the page,
+  but only while a step remains in that direction, so the section is never a trap. Hover
+  state lives in a ref: a step change re-runs the effect, and a local flag would reset. The `pinned` runway is still in the file behind `usePinned`,
   switched off: scrolling to change step slid the background while only the picture was
   meant to change.
 - `ImageZoom` opens a product capture in a native `<dialog>`; an off-screen slide passes
