@@ -33,16 +33,11 @@ uniform vec2 uResolution; // canvas pixels
 uniform float uCssPerPixel;
 uniform vec2 uDeep;       // deep-blue band: start and end, css px from the page top
 uniform float uWidth;     // page width, css px
-uniform float uScroll;    // how far the page is scrolled, css px
-uniform float uTime;      // seconds since the sky started, for the drift
+uniform float uLayer;     // 0 = the sky itself, 1 = far clouds, 2 = near clouds
 
 // Same colour as the CSS blue under the closing section (#0E62E6).
 const vec3 DEEP = vec3(0.0549, 0.3843, 0.9020);
 const float FADE_OUT = 900.0;
-// css px per second. Real cumulus cross a window in a couple of minutes; anything faster
-// reads as a screensaver.
-const float NEAR_DRIFT = 11.0;
-const float FAR_DRIFT = 6.0;
 
 // 2D simplex noise — Ian McEwan, Ashima Arts (MIT).
 vec3 permute(vec3 x) { return mod(((x * 34.0) + 1.0) * x, 289.0); }
@@ -134,11 +129,10 @@ vec2 cumulus(vec2 p, float fluff, float coverage, float cellToCss, float cellYOf
 }
 
 void main() {
-  // The canvas covers the window, the sky belongs to the document: adding the scroll puts
-  // every cloud back at its place on the page, so the sky still travels with the text
-  // while the wind keeps blowing through it.
+  // Three passes over the same page: the sky, then each bank of clouds on its own
+  // transparent layer. The layers are placed in the document and drift with a CSS
+  // transform, so scrolling stays the browser's business and never lags behind the text.
   vec2 css = vec2(gl_FragCoord.x, uResolution.y - gl_FragCoord.y) * uCssPerPixel;
-  css.y += uScroll;
   float xn = css.x / uWidth;
 
   float wide = smoothstep(500.0, 1200.0, uWidth);
@@ -164,7 +158,7 @@ void main() {
   float sun = 1.0 - smoothstep(0.0, 1.0, length((css - vec2(uWidth * 0.22, 40.0)) / vec2(760.0, 620.0)));
   sky = mix(sky, vec3(1.0), sun * 0.16 * (1.0 - lower));
   sky = mix(sky, DEEP, deep);
-  vec4 acc = open ? vec4(0.0) : vec4(sky, 1.0); // premultiplied
+  vec4 acc = (open || uLayer > 0.5) ? vec4(0.0) : vec4(sky, 1.0); // premultiplied
 
   // Clouds grow and gather as the page goes down: high and sparse at the hero, a bank of
   // cumulus by the testimonials. The unit follows the viewport width so a phone gets its
@@ -181,10 +175,9 @@ void main() {
   float calmStrength = mix(0.24, 0.36, wide) * (1.0 - deep);
 
   // Far layer: smaller, hazier.
-  {
+  if (uLayer > 0.5 && uLayer < 1.5) {
     vec2 p = css / (unit * 0.55) + vec2(13.0, 5.0);
-    p.x -= uTime * FAR_DRIFT / (unit * 0.55);
-    p += 0.35 * vec2(snoise(p * 0.21 + 3.1 + uTime * 0.006), snoise(p * 0.21 + 9.7 + uTime * 0.004));
+    p += 0.35 * vec2(snoise(p * 0.21 + 3.1), snoise(p * 0.21 + 9.7));
     float fluff = (billow(p * 3.6) - 0.32) * 0.6;
     vec2 c = cumulus(p, fluff, coverage - 0.1, unit * 0.55, -5.0);
     float a = smoothstep(0.0, 0.3, c.x) * mix(0.5, 0.16, deep) * (1.0 - calmStrength * calm);
@@ -194,10 +187,9 @@ void main() {
   }
 
   // Main layer.
-  {
+  if (uLayer > 1.5) {
     vec2 p = css / unit;
-    p.x -= uTime * NEAR_DRIFT / unit;
-    p += 0.4 * vec2(snoise(p * 0.19 + 1.3 + uTime * 0.008), snoise(p * 0.19 + 6.1 + uTime * 0.005));
+    p += 0.4 * vec2(snoise(p * 0.19 + 1.3), snoise(p * 0.19 + 6.1));
     float fluff = (billow(p * 4.2) - 0.32) * 0.6;
     float grain = billow(p * 6.5 + 3.0);
     vec2 c = cumulus(p, fluff, coverage, unit, 0.0);
@@ -212,37 +204,36 @@ void main() {
   }
 
   // Dither the opaque part to keep long gradients free of banding.
-  if (!open) acc.rgb += (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) / 255.0;
+  if (!open && uLayer < 0.5) acc.rgb += (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) / 255.0;
   gl_FragColor = acc * (1.0 - openFade); // premultiplied, so one factor fades colour and alpha together
 }
 `
 
-// Canvas pixels per css pixel. The clouds are soft, so half resolution costs nothing to
-// look at and buys the frame rate that makes them move.
-const START_SCALE = 0.5
-const MIN_SCALE = 0.24
-// Frames per second: a cloud crossing a window in two minutes does not need sixty.
-const TARGET_FPS = 30
-const SLOW_FPS = 10
-// A phone does not need the same sky as a workstation, and it pays for it in battery.
-const SMALL_DEVICE_FPS = 20
-const SMALL_DEVICE_SCALE = 0.34
-// A frame slower than this means the machine cannot afford the sky at this size.
-const FRAME_BUDGET_MS = 26
+// Canvas pixels per css pixel; soft clouds lose nothing at this resolution.
+const SKY_SCALE = 0.5
+const CLOUD_SCALE = 0.34
+// Canvas pixels one render may cost, however tall the page is.
+const PIXEL_BUDGET = 2_200_000
+// Rows drawn per frame, so the one-off render never blocks a frame for long.
+const STRIP_ROWS = 128
+// A strip slower than this means software rendering: keep the CSS sky instead.
+const STRIP_BUDGET_MS = 250
+// The cloud layers are wider than the page: they drift sideways, and the edge must never
+// come into view.
+const CLOUD_OVERSCAN = 1.28
 
-type SkyLayout = { width: number; deepStart: number; deepEnd: number }
+type SkyLayout = { width: number; height: number; deepStart: number; deepEnd: number }
 
-/** Where the page turns deep blue, in document pixels. */
 function measureLayout(host: HTMLElement): SkyLayout {
-  const width = host.clientWidth
+  const hostTop = host.getBoundingClientRect().top
   const marker = host.querySelector<HTMLElement>('[data-sky-deep]')
   const height = host.offsetHeight
-  if (!marker) return { width, deepStart: height + 1, deepEnd: height + 2 }
-  const markerTop = marker.getBoundingClientRect().top + window.scrollY
+  if (!marker) return { width: host.clientWidth, height, deepStart: height + 1, deepEnd: height + 2 }
+  const markerTop = marker.getBoundingClientRect().top - hostTop
   const styles = getComputedStyle(marker)
   const lead = parseFloat(styles.getPropertyValue('--deep-lead')) || 0
   const band = parseFloat(styles.getPropertyValue('--deep-full')) || 200
-  return { width, deepStart: markerTop - lead, deepEnd: markerTop + band }
+  return { width: host.clientWidth, height, deepStart: markerTop - lead, deepEnd: markerTop + band }
 }
 
 function compile(gl: WebGLRenderingContext, type: number, source: string) {
@@ -253,41 +244,48 @@ function compile(gl: WebGLRenderingContext, type: number, source: string) {
   return gl.getShaderParameter(shader, gl.COMPILE_STATUS) ? shader : null
 }
 
-/**
- * A live sky. The canvas covers the window and is redrawn every frame with the page's
- * scroll offset, so the clouds stay anchored to the document — they never slide against
- * the text — while the wind moves them sideways and their shapes turn over slowly.
- *
- * It costs a frame, so it gives up gracefully: it drops resolution, then frame rate, and
- * with reduced motion it draws once and stops. Without WebGL the CSS sky stays.
- */
-export default function SkyBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 
-  useEffect(() => {
-    const canvas = canvasRef.current
-    const host = canvas?.parentElement
-    if (!canvas || !host) return
+/** Renders one layer of the sky; resolves to an image, or null to keep the CSS sky. */
+async function renderLayer(
+  layout: SkyLayout,
+  isCancelled: () => boolean,
+  layer: 0 | 1 | 2,
+  size: { width: number; height: number },
+  targetScale: number,
+): Promise<Blob | null> {
+  const canvas = document.createElement('canvas')
+  const gl = canvas.getContext('webgl', {
+    alpha: true,
+    premultipliedAlpha: true,
+    preserveDrawingBuffer: true,
+    antialias: false,
+    depth: false,
+    stencil: false,
+    powerPreference: 'low-power',
+    failIfMajorPerformanceCaveat: true,
+  })
+  if (!gl) return null
 
-    const gl = canvas.getContext('webgl', {
-      alpha: true,
-      premultipliedAlpha: true,
-      antialias: false,
-      depth: false,
-      stencil: false,
-      powerPreference: 'low-power',
-      failIfMajorPerformanceCaveat: true,
-    })
-    if (!gl) return
+  try {
+    const maxViewport = gl.getParameter(gl.MAX_VIEWPORT_DIMS) as Int32Array
+    const maxSide = Math.min(4096, maxViewport[0], maxViewport[1], gl.getParameter(gl.MAX_RENDERBUFFER_SIZE))
+    // A blog article is 10 000px tall, which at half scale is millions of pixels of
+    // shader. Past the budget the resolution drops instead; the clouds are soft enough
+    // that nothing shows.
+    const budget = Math.sqrt(PIXEL_BUDGET / (size.width * size.height))
+    const scale = Math.min(targetScale, budget, maxSide / size.height, maxSide / size.width)
+    canvas.width = Math.max(1, Math.round(size.width * scale))
+    canvas.height = Math.max(1, Math.round(size.height * scale))
 
     const vertex = compile(gl, gl.VERTEX_SHADER, VERTEX)
     const fragment = compile(gl, gl.FRAGMENT_SHADER, FRAGMENT)
     const program = gl.createProgram()
-    if (!vertex || !fragment || !program) return
+    if (!vertex || !fragment || !program) return null
     gl.attachShader(program, vertex)
     gl.attachShader(program, fragment)
     gl.linkProgram(program)
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return null
     gl.useProgram(program)
 
     gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer())
@@ -296,132 +294,156 @@ export default function SkyBackground() {
     gl.enableVertexAttribArray(position)
     gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0)
 
-    const uniform = (name: string) => gl.getUniformLocation(program, name)
-    const uResolution = uniform('uResolution')
-    const uCssPerPixel = uniform('uCssPerPixel')
-    const uDeep = uniform('uDeep')
-    const uWidth = uniform('uWidth')
-    const uScroll = uniform('uScroll')
-    const uTime = uniform('uTime')
+    gl.uniform2f(gl.getUniformLocation(program, 'uResolution'), canvas.width, canvas.height)
+    gl.uniform1f(gl.getUniformLocation(program, 'uCssPerPixel'), size.width / canvas.width)
+    gl.uniform2f(gl.getUniformLocation(program, 'uDeep'), layout.deepStart, layout.deepEnd)
+    gl.uniform1f(gl.getUniformLocation(program, 'uWidth'), layout.width)
+    gl.uniform1f(gl.getUniformLocation(program, 'uLayer'), layer)
+    gl.viewport(0, 0, canvas.width, canvas.height)
+    gl.clearColor(0, 0, 0, 0)
+    gl.clear(gl.COLOR_BUFFER_BIT)
+    gl.enable(gl.SCISSOR_TEST)
 
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const small =
-      window.matchMedia('(pointer: coarse)').matches || (navigator.hardwareConcurrency ?? 8) <= 4
-    let scale = small ? SMALL_DEVICE_SCALE : START_SCALE
-    let layout = measureLayout(host)
-    let disposed = false
-    let raf = 0
-    let last = -Infinity
-    let started = 0
-    let slowFrames = 0
-    let frames = 0
-    let interval = 1000 / (small ? SMALL_DEVICE_FPS : TARGET_FPS)
-    let stillCleanup: (() => void) | null = null
-
-    const resize = () => {
-      const width = Math.max(1, Math.round(window.innerWidth * scale))
-      const height = Math.max(1, Math.round(window.innerHeight * scale))
-      if (canvas.width === width && canvas.height === height) return
-      canvas.width = width
-      canvas.height = height
-      gl.viewport(0, 0, width, height)
-    }
-
-    const draw = (seconds: number) => {
-      gl.uniform2f(uResolution, canvas.width, canvas.height)
-      gl.uniform1f(uCssPerPixel, window.innerWidth / canvas.width)
-      gl.uniform2f(uDeep, layout.deepStart, layout.deepEnd)
-      gl.uniform1f(uWidth, layout.width)
-      gl.uniform1f(uScroll, window.scrollY)
-      gl.uniform1f(uTime, seconds)
-      gl.clearColor(0, 0, 0, 0)
-      gl.clear(gl.COLOR_BUFFER_BIT)
+    // Top strips first (GL rows count from the bottom).
+    for (let top = 0; top < canvas.height; top += STRIP_ROWS) {
+      if (isCancelled() || gl.isContextLost()) return null
+      const rows = Math.min(STRIP_ROWS, canvas.height - top)
+      const started = performance.now()
+      gl.scissor(0, canvas.height - top - rows, canvas.width, rows)
       gl.drawArrays(gl.TRIANGLES, 0, 3)
-      canvas.dataset.ready = 'true'
-    }
-
-    const frame = (now: number) => {
-      if (disposed) return
-      raf = requestAnimationFrame(frame)
-      if (now - last < interval) return
-      last = now
-      if (document.hidden) return
-      resize()
-      // gl.finish() is what turns a draw into a blocking task, so the cost is sampled once
-      // in a while rather than every frame; the rest of the time the GPU is left alone.
-      // Sample early, so a machine that cannot afford this size finds out in a second.
-      const measuring = frames === 4 || frames % 40 === 0
-      frames += 1
-      const t0 = measuring ? performance.now() : 0
-      draw((now - started) / 1000)
-      if (!measuring) return
       gl.finish()
-      const cost = performance.now() - t0
-      // Too slow: give up resolution first, then frame rate. The sky never disappears.
-      if (cost > FRAME_BUDGET_MS) {
-        slowFrames += 1
-        if (slowFrames > 1) {
-          slowFrames = 0
-          if (scale > MIN_SCALE) scale = Math.max(MIN_SCALE, scale * 0.72)
-          else interval = 1000 / SLOW_FPS
-        }
-      } else if (slowFrames > 0) {
-        slowFrames -= 1
+      if (performance.now() - started > STRIP_BUDGET_MS) return null
+      await nextFrame()
+    }
+    if (isCancelled() || gl.isContextLost()) return null
+
+    return await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/webp', 0.92))
+  } finally {
+    gl.getExtension('WEBGL_lose_context')?.loseContext()
+  }
+}
+
+/**
+ * The sky is three layers pinned to the document: the sky itself, then two banks of cloud
+ * on transparent ground. Scrolling is left entirely to the browser — a canvas redrawn in
+ * JavaScript always trails the text by a frame — and the clouds move on their own, with a
+ * CSS transform the compositor animates without asking the main thread for anything.
+ */
+export default function SkyBackground() {
+  const skyRef = useRef<HTMLDivElement>(null)
+  const farRef = useRef<HTMLDivElement>(null)
+  const nearRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const sky = skyRef.current
+    const far = farRef.current
+    const near = nearRef.current
+    const host = sky?.parentElement
+    if (!sky || !far || !near || !host) return
+
+    let disposed = false
+    let running = false
+    let queued = false
+    let renderedKey = ''
+    let debounce = 0
+    const urls = new Map<HTMLElement, string>()
+
+    const show = async (element: HTMLElement, blob: Blob) => {
+      const url = URL.createObjectURL(blob)
+      const image = new Image()
+      image.src = url
+      try {
+        await image.decode()
+      } catch {
+        URL.revokeObjectURL(url)
+        return
+      }
+      if (disposed) {
+        URL.revokeObjectURL(url)
+        return
+      }
+      element.style.backgroundImage = `url("${url}")`
+      element.dataset.ready = 'true'
+      const previous = urls.get(element)
+      if (previous) URL.revokeObjectURL(previous)
+      urls.set(element, url)
+    }
+
+    const run = async () => {
+      if (running) {
+        queued = true
+        return
+      }
+      const layout = measureLayout(host)
+      // Rounded so sub-pixel reflows don't trigger a new render.
+      const key = [layout.width, layout.height, layout.deepStart, layout.deepEnd].map((v) => Math.round(v / 4)).join(':')
+      if (key === renderedKey) return
+      running = true
+
+      const pageSize = { width: layout.width, height: layout.height }
+      const cloudSize = { width: layout.width * CLOUD_OVERSCAN, height: layout.height }
+
+      const skyBlob = await renderLayer(layout, () => disposed, 0, pageSize, SKY_SCALE)
+      if (!skyBlob) {
+        // No usable GPU: the CSS sky stays, and there is no point retrying on resize.
+        running = false
+        resizeObserver.disconnect()
+        return
+      }
+      await show(sky, skyBlob)
+
+      const nearBlob = await renderLayer(layout, () => disposed, 2, cloudSize, CLOUD_SCALE)
+      if (nearBlob) await show(near, nearBlob)
+      const farBlob = await renderLayer(layout, () => disposed, 1, cloudSize, CLOUD_SCALE)
+      if (farBlob) await show(far, farBlob)
+
+      running = false
+      if (disposed) return
+      renderedKey = key
+      if (queued) {
+        queued = false
+        run()
       }
     }
 
-    const remeasure = () => {
-      layout = measureLayout(host)
+    const schedule = () => {
+      window.clearTimeout(debounce)
+      debounce = window.setTimeout(run, 250)
     }
-    const observer = new ResizeObserver(remeasure)
-    observer.observe(host)
-    window.addEventListener('resize', remeasure)
+    const resizeObserver = new ResizeObserver(schedule)
 
-    if (reduced.matches) {
-      // Nothing moves on its own, but the canvas is fixed to the window: without a redraw
-      // on scroll the sky would hang there while the page slid under it — the parallax we
-      // are careful never to show.
-      const still = () => {
-        if (disposed) return
-        resize()
-        draw(0)
-      }
-      still()
-      let pending = 0
-      const onScroll = () => {
-        if (pending) return
-        pending = requestAnimationFrame(() => {
-          pending = 0
-          still()
-        })
-      }
-      window.addEventListener('scroll', onScroll, { passive: true })
-      window.addEventListener('resize', onScroll)
-      stillCleanup = () => {
-        cancelAnimationFrame(pending)
-        window.removeEventListener('scroll', onScroll)
-        window.removeEventListener('resize', onScroll)
-      }
-    } else {
-      started = performance.now()
-      raf = requestAnimationFrame(frame)
-    }
+    // Wait for web fonts so the first render matches the final layout.
+    document.fonts.ready.then(() => {
+      if (disposed) return
+      run()
+      resizeObserver.observe(host)
+    })
 
     return () => {
       disposed = true
-      cancelAnimationFrame(raf)
-      stillCleanup?.()
-      observer.disconnect()
-      window.removeEventListener('resize', remeasure)
-      gl.getExtension('WEBGL_lose_context')?.loseContext()
+      window.clearTimeout(debounce)
+      resizeObserver.disconnect()
+      urls.forEach((url) => URL.revokeObjectURL(url))
     }
   }, [])
 
   return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-10 h-full w-full opacity-0 transition-opacity duration-700 data-[ready=true]:opacity-100"
-    />
+    <>
+      <div
+        ref={skyRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-no-repeat opacity-0 transition-opacity duration-700 [background-size:100%_100%] data-[ready=true]:opacity-100"
+      />
+      <div
+        ref={farRef}
+        aria-hidden="true"
+        className="sky-far pointer-events-none absolute inset-y-0 -left-[14%] -z-10 w-[128%] bg-no-repeat opacity-0 transition-opacity duration-1000 [background-size:100%_100%] data-[ready=true]:opacity-100"
+      />
+      <div
+        ref={nearRef}
+        aria-hidden="true"
+        className="sky-near pointer-events-none absolute inset-y-0 -left-[14%] -z-10 w-[128%] bg-no-repeat opacity-0 transition-opacity duration-1000 [background-size:100%_100%] data-[ready=true]:opacity-100"
+      />
+    </>
   )
 }

@@ -253,6 +253,17 @@ body {
     animation: page-enter 340ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
+  /* The two banks of cloud drift sideways, each at its own pace. A transform is all the
+     compositor needs, so the sky never asks the main thread for a frame and never trails
+     the text while the page scrolls. */
+  .home .sky-near {
+    animation: cloud-near 54s ease-in-out infinite alternate;
+  }
+
+  .home .sky-far {
+    animation: cloud-far 96s ease-in-out infinite alternate;
+  }
+
   /* Light passes over a button on hover. Nothing is painted at rest: the band used to
      sit over the label and cost it contrast. */
   @media (hover: hover) {
@@ -307,6 +318,24 @@ body {
   background: #0c6df8;
   transform: scaleX(var(--progress, 0));
   transform-origin: left center;
+}
+
+@keyframes cloud-near {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-10%, 0, 0);
+  }
+}
+
+@keyframes cloud-far {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-6%, 0, 0);
+  }
 }
 
 @keyframes hero-shot {

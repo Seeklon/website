@@ -304,14 +304,15 @@ dans `messages/*.json` ; pour les articles, écrits avec des espaces ordinaires,
 - Le fond n'est pas blanc : il ouvre sur un bleu pâle mais réel (#E7F0FE), sinon des
   nuages blancs n'ont rien contre quoi se détacher. Leur face à l'ombre descend assez bas
   pour qu'un cumulus ait un volume, jamais assez pour salir le ciel.
-- **Le ciel est vivant.** Il n'est plus une image calculée une fois : un canvas de la
-  taille de la fenêtre est redessiné en continu, avec le défilement passé au shader. Les
-  nuages dérivent donc vraiment (11 px/s au premier plan, 6 px/s au fond) et leurs formes
-  se retournent lentement — mais ils restent collés au document : à défilement égal, le
-  même point de la page rend exactement les mêmes pixels. Jamais de parallaxe.
-- **Le ciel cède avant la page.** Trop lent ? Il baisse sa résolution, puis sa cadence, et
-  en mouvement réduit il se fige sur une image (redessinée au défilement, sinon il
-  flotterait devant le texte). Sans WebGL, le dégradé CSS reste.
+- **Le ciel bouge, mais jamais en JavaScript.** Trois calques posés dans la page : le ciel
+  lui-même, puis deux bancs de nuages sur fond transparent, plus larges que la page (128%)
+  et animés par une simple `transform`. Le compositeur s'en charge, donc le défilement
+  reste celui du navigateur. Un canvas redessiné à chaque image a été essayé : il traîne
+  d'une frame derrière le texte, et ce retard se voit — c'est ce qui donnait l'impression
+  que le fond « lague » et part tout seul.
+- **Le ciel cède avant la page.** Le rendu initial baisse sa résolution au-delà de son
+  budget de pixels ; en mouvement réduit les calques ne dérivent pas ; sans WebGL, le
+  dégradé CSS reste.
 - **Une seule grille pour toute la page.** L'échelle des nuages ne doit jamais dépendre de
   la position du pixel dessiné : elle étirait les nuages verticalement et déplaçait les
   frontières de cellules avec le pixel, ce qui coupait un nuage en plein milieu le long

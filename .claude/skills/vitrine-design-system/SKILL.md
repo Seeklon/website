@@ -64,18 +64,18 @@ A page provides only its sections and ends with `<ClosingCta />`, which carries
 
 ## Sky
 
-`components/home/SkyBackground.tsx` draws a live sky: a window-sized canvas, fixed, redrawn
-every frame with `uScroll` so the clouds are anchored to the document while `uTime` drifts
-them sideways (11 px/s near, 6 px/s far) and turns their shapes over. Rules that matter:
+`components/home/SkyBackground.tsx` renders three layers once — the sky (`uLayer` 0), the
+far clouds (1) and the near clouds (2) — and places them in the document. The two cloud
+layers are 128% wide and drift with a CSS `transform` (54s and 96s, alternate), which the
+compositor animates on its own. Rules that matter:
 
 - **No parallax.** The user rejected clouds moving at a different speed from the text —
   adding the scroll offset inside the shader is what keeps the sky anchored. Verified by
   screenshotting the same document band at two scroll positions with motion reduced: the
   pixels must be identical.
-- **It gives way before the page does.** Frame cost is sampled (at frame 4, then every 40);
-  too slow and it drops resolution to 0.24, then frame rate to 10fps. Phones and
-  four-core machines start at 0.34 and 20fps. Reduced motion draws one frame and redraws
-  it on scroll.
+- **Never animate the sky from JavaScript.** A fixed canvas redrawn per frame was tried:
+  it trails the scroll by a frame, and that lag reads as the background sliding on its
+  own. Movement belongs to the compositor; the render is one-off and budget-capped.
 - The sky deepens with page position (pale hero → bluer, larger cumulus lower down), then
   blends into `#0E62E6` between `data-sky-deep` and `--deep-full` px below it, and turns
   transparent past that point: from there the blue is plain CSS on the section and footer,
