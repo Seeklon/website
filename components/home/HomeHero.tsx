@@ -7,6 +7,7 @@ import interviewShot from '@/public/home/capture-entretien.png'
 
 export default function HomeHero() {
   const t = useTranslations('Home.hero')
+  const accent = t('accent')
 
   return (
     <section className="px-6 pt-[136px] text-center md:pt-[180px]">
@@ -14,8 +15,25 @@ export default function HomeHero() {
         <span className="block text-[clamp(4rem,2.6rem+6.1vw,8rem)] font-medium leading-[0.94] tracking-[-0.05em]">
           {t('title')}
         </span>
-        <span className="accent-shine mt-2.5 block font-genoid text-[clamp(3.5rem,2.3rem+5.6vw,6.5rem)] font-bold leading-none tracking-[0.03em] text-azure">
-          {t('accent')}
+        {/* Read as one phrase; drawn letter by letter so each can arrive at speed. */}
+        <span className="sr-only"> {accent}</span>
+        <span
+          aria-hidden="true"
+          className="accent-shine accent-rush mt-2.5 block font-genoid text-[clamp(3.5rem,2.3rem+5.6vw,6.5rem)] font-bold leading-none tracking-[0.03em] text-azure"
+        >
+          {accent.split(' ').map((word, w, words) => {
+            const start = words.slice(0, w).join('').length
+            return (
+              <span key={w} className="inline-block whitespace-nowrap">
+                {Array.from(word).map((letter, i) => (
+                  <span key={i} className="accent-rush-letter" style={{ '--i': start + i } as React.CSSProperties}>
+                    {letter}
+                  </span>
+                ))}
+                {w < words.length - 1 ? '\u00A0' : null}
+              </span>
+            )
+          })}
         </span>
       </h1>
 

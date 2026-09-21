@@ -278,11 +278,19 @@ export default function Journey() {
       }
       event.preventDefault()
 
+      // The band is wide, so the panel was claimed wherever the gesture found it — up to a
+      // fifth of the window off the middle — and sat there, off-centre, for as long as the
+      // slides lasted. It settles in the middle as the slide leaves.
+      const behavior = reducedMotion() ? 'auto' : 'smooth'
+      const rect = panel.getBoundingClientRect()
+      const drift = rect.top + rect.height / 2 - window.innerHeight / 2
+      if (Math.abs(drift) > 2) window.scrollBy({ top: drift, behavior })
+
       slid = true
       target = current + direction
       busyUntil = now + SLIDE_MS
       viewport.style.scrollSnapType = 'none'
-      viewport.scrollTo({ left: target * pitch, behavior: reducedMotion() ? 'auto' : 'smooth' })
+      viewport.scrollTo({ left: target * pitch, behavior })
       window.clearTimeout(release)
       release = window.setTimeout(() => {
         viewport.style.scrollSnapType = ''

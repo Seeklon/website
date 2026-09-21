@@ -36,11 +36,11 @@ body {
       background-image:
         linear-gradient(
           100deg,
-          transparent 46%,
-          rgba(173, 214, 255, 0.85) 49%,
-          rgba(255, 255, 255, 0.92) 50.5%,
-          rgba(173, 214, 255, 0.85) 52%,
-          transparent 55%
+          transparent 47%,
+          rgba(173, 214, 255, 0.8) 49.4%,
+          rgba(255, 255, 255, 0.9) 50.2%,
+          rgba(173, 214, 255, 0.8) 51%,
+          transparent 53.4%
         ),
         linear-gradient(#0c6df8, #0c6df8);
       background-repeat: no-repeat;
@@ -59,6 +59,57 @@ body {
         animation: accent-shine-again 2.4s cubic-bezier(0.32, 0.72, 0.36, 1) both;
       }
     }
+  }
+}
+
+/* "plus vite." arrives the way it reads: each letter is thrown in from the left, leaning
+   and smeared by its own speed, runs a hair past its place and settles; then one band of
+   light crosses the word in the same direction. While a letter flies it is painted in the
+   flat blue — a transformed child drops out of its parent's text clip in Safari — and it
+   hands back to the clipped gradient, the same blue, the moment it lands. */
+@media (prefers-reduced-motion: no-preference) {
+  .home .accent-rush-letter {
+    display: inline-block;
+    animation: accent-rush 0.85s cubic-bezier(0.16, 1, 0.3, 1) calc(0.2s + var(--i) * 0.05s) backwards;
+  }
+
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .home .accent-rush {
+      animation: accent-pass 1.3s cubic-bezier(0.4, 0, 0.3, 1) 1.15s backwards;
+    }
+  }
+}
+
+@keyframes accent-rush {
+  0% {
+    opacity: 0;
+    transform: translate3d(-1.1em, 0, 0) skewX(-22deg) scaleX(1.35);
+    filter: blur(10px);
+    -webkit-text-fill-color: #0c6df8;
+  }
+  35% {
+    opacity: 1;
+  }
+  62% {
+    transform: translate3d(0.05em, 0, 0) skewX(5deg) scaleX(0.98);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+    -webkit-text-fill-color: #0c6df8;
+  }
+}
+
+/* The band is on screen for the whole pass. The older sweep ran its position from 185% to
+   -85%, of which the word only sees 75% to 25%: a fifth of the time, hence the flash. */
+@keyframes accent-pass {
+  from {
+    background-position: 80% 0, 0 0;
+  }
+  to {
+    background-position: 20% 0, 0 0;
   }
 }
 
