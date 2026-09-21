@@ -1,7 +1,15 @@
 import { useTranslations } from 'next-intl'
 import Reveal from './Reveal'
 
-const ITEMS = ['one', 'two', 'three'] as const
+// Who signs each quote, shown beside the name: a portrait for a person, the wordmark on a
+// white tile for an organisation. An item without either shows its name alone — an empty
+// circle said "missing photo" louder than nothing at all.
+type Mark = { src: string; width: number; height: number; kind: 'portrait' | 'logo' }
+const ITEMS: { key: string; mark?: Mark }[] = [
+  { key: 'one' },
+  { key: 'two', mark: { src: '/home/logo-bpifrance.svg', width: 77, height: 22, kind: 'logo' } },
+  { key: 'three', mark: { src: '/home/logo-epitech.svg', width: 167, height: 42, kind: 'logo' } },
+]
 
 export default function Testimonials() {
   const t = useTranslations('Home.testimonials')
@@ -25,14 +33,22 @@ export default function Testimonials() {
 
       {/* Two shared rows (quote, author) so the names line up across the cards. */}
       <ul className="mt-8 grid gap-4 md:mt-14 lg:grid-cols-3 lg:grid-rows-[auto_auto] lg:gap-x-6 lg:gap-y-12">
-        {ITEMS.map((key) => (
+        {ITEMS.map(({ key, mark }) => (
           <li key={key} className="lg:row-span-2 lg:grid lg:grid-rows-subgrid">
             <figure className="flex h-full flex-col gap-7 rounded-[20px] bg-white/80 p-6 md:p-9 lg:row-span-2 lg:grid lg:grid-rows-subgrid lg:gap-12">
               <blockquote className="text-lg leading-[1.4] md:text-2xl md:leading-[1.33]">
                 {t(`items.${key}.quote`)}
               </blockquote>
               <figcaption className="flex items-center gap-4">
-                <span aria-hidden="true" className="h-11 w-11 shrink-0 rounded-full bg-azure-mist" />
+                {mark?.kind === 'logo' ? (
+                  <span className="flex h-11 shrink-0 items-center rounded-[10px] bg-white px-3">
+                    {/* eslint-disable-next-line @next/next/no-img-element -- a 2 to 5 KB SVG */}
+                    <img src={mark.src} alt="" width={mark.width} height={mark.height} loading="lazy" className="h-[18px] w-auto" />
+                  </span>
+                ) : mark ? (
+                  // eslint-disable-next-line @next/next/no-img-element -- already a 320px WebP
+                  <img src={mark.src} alt="" width={mark.width} height={mark.height} loading="lazy" className="h-11 w-11 shrink-0 rounded-full object-cover" />
+                ) : null}
                 <span>
                   <span className="block text-[15px] text-ink">{t(`items.${key}.name`)}</span>
                   <span className="mt-0.5 block text-[13px] leading-snug text-ink-soft">{t(`items.${key}.role`)}</span>
