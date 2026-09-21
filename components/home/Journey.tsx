@@ -475,7 +475,7 @@ function StepMedia({
 }) {
   // Phones and tablets get a readable crop; wide screens the whole screen. Both load
   // up front so a slide never arrives empty.
-  const { props: wide } = getImageProps({ src: step.image, alt, sizes: '(min-width: 1280px) 640px, 50vw' })
+  const { props: wide } = getImageProps({ src: step.image, alt, sizes: '(min-width: 1280px) 736px, 55vw' })
   const { props: narrow } = getImageProps({
     src: step.crop,
     alt,
