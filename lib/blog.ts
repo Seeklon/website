@@ -117,3 +117,31 @@ export function getPostBySlug(
     return null
   }
 }
+
+/** Does the same slug exist in the other language? Most of them do not: 33 of the 49
+ *  posts are published in one language only, and the locale switch used to send readers
+ *  of those to a 404. */
+export function hasPost(slug: string, locale: string): boolean {
+  return fs.existsSync(path.join(getPostsDirectory(locale), `${slug}.md`))
+}
+
+/** Slugs per locale, for the nav's language switch (it runs in the browser and cannot
+ *  read the content directory). */
+export function getSlugsByLocale(): Record<string, string[]> {
+  return Object.fromEntries(routing.locales.map((locale) => [locale, getAllPosts(locale).map((post) => post.slug)]))
+}
+
+/** Reading time in minutes, from the markdown itself: 200 words per minute, rounded up. */
+export function readingMinutes(content: string): number {
+  const words = content.trim().split(/\s+/).length
+  return Math.max(1, Math.round(words / 200))
+}
+
+/** Up to `limit` other posts, same category first, then the most recent. */
+export function getRelatedPosts(slug: string, locale: string, limit = 3): Post[] {
+  const post = getPostBySlug(slug, locale)
+  const others = getAllPosts(locale).filter((p) => p.slug !== slug)
+  if (!post) return others.slice(0, limit)
+  const sameCategory = others.filter((p) => p.category === post.category)
+  return [...sameCategory, ...others.filter((p) => p.category !== post.category)].slice(0, limit)
+}

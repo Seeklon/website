@@ -1,0 +1,423 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-20T00:00:00Z",
+  "title": "Design System: Seeklon — Site vitrine",
+  "extensions": {
+    "colorMeta": {
+      "azure": {
+        "role": "primary",
+        "displayName": "Bleu franc",
+        "canonical": "#0C6DF8",
+        "tonalRamp": [
+          "#052C69",
+          "#073B8D",
+          "#0A4BB1",
+          "#0A56C4",
+          "#0C6DF8",
+          "#5794FB",
+          "#9CC0FD",
+          "#E3EDFE"
+        ]
+      },
+      "azure-deep": {
+        "role": "primary",
+        "displayName": "Bleu profond de lecture",
+        "canonical": "#0A56C4",
+        "tonalRamp": [
+          "#04214B",
+          "#062F6C",
+          "#08428F",
+          "#0A56C4",
+          "#3B7BD8",
+          "#7BA6E8",
+          "#B6CCF3",
+          "#E6EEFB"
+        ]
+      },
+      "azure-mist": {
+        "role": "secondary",
+        "displayName": "Brume bleue",
+        "canonical": "#B4D5FF",
+        "tonalRamp": [
+          "#123B6B",
+          "#1B5395",
+          "#276FC4",
+          "#4C90E4",
+          "#7DB1F2",
+          "#B4D5FF",
+          "#D6E7FF",
+          "#EFF6FF"
+        ]
+      },
+      "deep-top": {
+        "role": "secondary",
+        "displayName": "Bleu de fin",
+        "canonical": "#0E62E6",
+        "tonalRamp": [
+          "#04204F",
+          "#062E74",
+          "#083E9C",
+          "#0A52CC",
+          "#0E62E6",
+          "#4A8BEE",
+          "#8FB7F5",
+          "#D5E5FC"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Encre",
+        "canonical": "#0B0B0C",
+        "tonalRamp": [
+          "#0B0B0C",
+          "#24231F",
+          "#3A3833",
+          "#4F4E49",
+          "#5F5D57",
+          "#8C8A83",
+          "#C5C3BC",
+          "#F2F1ED"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Encre adoucie",
+        "canonical": "#4F4E49",
+        "tonalRamp": [
+          "#171614",
+          "#2C2B27",
+          "#3E3D38",
+          "#4F4E49",
+          "#6E6C65",
+          "#9A988F",
+          "#CAC8C1",
+          "#F1F0EC"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Encre estompée",
+        "canonical": "#57554F",
+        "tonalRamp": [
+          "#1B1A18",
+          "#302F2B",
+          "#47453F",
+          "#57554F",
+          "#807E76",
+          "#A8A69E",
+          "#D0CEC7",
+          "#F3F2EE"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Filet",
+        "canonical": "#DDDBD5",
+        "tonalRamp": [
+          "#3B3A35",
+          "#55534C",
+          "#726F67",
+          "#9A978E",
+          "#BEBBB3",
+          "#DDDBD5",
+          "#EDECE8",
+          "#F8F7F5"
+        ]
+      },
+      "sky-pale": {
+        "role": "neutral",
+        "displayName": "Ciel pâle",
+        "canonical": "#E7F0FE",
+        "tonalRamp": [
+          "#1B3866",
+          "#28518F",
+          "#3A70BD",
+          "#6A9AE0",
+          "#A6C6F1",
+          "#CFE0FA",
+          "#D8E6FB",
+          "#E7F0FE"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Mot d'ouverture du hero, une seule fois par page."
+      },
+      "accent": {
+        "displayName": "Accent Genoid",
+        "purpose": "La seconde ligne du titre d'ouverture, une seule fois par page : pleine taille sur l'accueil, 0.85em de la ligne au-dessus sur les autres pages. Police démo : licence commerciale à acquérir."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titre d'ouverture d'une grande section."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Titre de sous-section : détail des plans, FAQ, packs."
+      },
+      "subtitle": {
+        "displayName": "Subtitle",
+        "purpose": "Nom d'un plan, titre d'une carte."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphes, en encre adoucie, mesure 30 à 36rem."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Liens de navigation, libellés de boutons, items de liste."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Légendes, compteurs d'étape, mentions, en encre estompée."
+      },
+      "plan-name": {
+        "displayName": "Plan name",
+        "purpose": "Nom d'un pack ; 28px quand le pack pèse plus lourd que le précédent."
+      },
+      "plan-name-lead": {
+        "displayName": "Plan name (lead)",
+        "purpose": "Nom de l'offre mise en avant."
+      },
+      "question": {
+        "displayName": "Question",
+        "purpose": "Question de FAQ."
+      },
+      "body-large": {
+        "displayName": "Body large",
+        "purpose": "Description d'une offre, réponse de FAQ."
+      },
+      "chip": {
+        "displayName": "Chip",
+        "purpose": "Pastille d'information sur la ligne d'un titre, jamais au-dessus."
+      },
+      "title-compact": {
+        "displayName": "Title compact",
+        "purpose": "Titre d'une section qui vit dans un panneau, comme le parcours."
+      },
+      "subtitle-hero": {
+        "displayName": "Subtitle hero",
+        "purpose": "La ligne qui suit le titre d'ouverture du hero."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient-card",
+        "value": "0 30px 60px -40px rgba(10,86,196,0.35)",
+        "purpose": "Sous un panneau large posé sur le ciel."
+      },
+      {
+        "name": "ambient-accent",
+        "value": "0 40px 70px -50px rgba(12,109,248,0.7)",
+        "purpose": "Sous la carte mise en avant et le bouton principal."
+      },
+      {
+        "name": "ambient-shot",
+        "value": "0 40px 80px -24px rgba(12,109,248,0.45)",
+        "purpose": "Sous les captures produit du hero."
+      },
+      {
+        "name": "ambient-nav",
+        "value": "0 10px 30px -18px rgba(11,11,12,0.35)",
+        "purpose": "Sous la pilule de navigation fixe."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-settle",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Arrivées et transitions de diapositive : 0,7s."
+      },
+      {
+        "name": "ease-sweep",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Bande de lumière sur le mot d'accent et sur les boutons."
+      },
+      {
+        "name": "duration-hover",
+        "value": "150ms",
+        "purpose": "Changements de couleur au survol."
+      },
+      {
+        "name": "duration-slide",
+        "value": "700ms",
+        "purpose": "Passage d'une étape à l'autre du parcours."
+      },
+      {
+        "name": "duration-shine",
+        "value": "1700ms",
+        "purpose": "Reflet du mot d'accent, une seule fois au chargement."
+      },
+      {
+        "name": "drift",
+        "value": "90s ease-in-out infinite alternate",
+        "purpose": "Dérive horizontale des nuages hauts du hero, seule animation en boucle du site."
+      },
+      {
+        "name": "duration-reveal-mist",
+        "value": "900ms → 1300ms cubic-bezier(0.16, 1, 0.3, 1), lignes décalées de 180ms",
+        "purpose": "Apparition d'un titre : un voile doux se retire dans le sens de lecture pendant que le flou se résorbe, ligne par ligne."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "pin",
+        "value": "(min-width: 1024px) and (min-height: 620px)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Bouton principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "L'action principale d'un écran, en bleu plein. Un seul à la fois.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Demander une démo</a>",
+      "css": ".ds-btn-primary { position: relative; overflow: hidden; display: inline-flex; align-items: center; height: 52px; padding: 0 30px; border-radius: 10px; background: #0C6DF8; color: #fff; font: 500 16px/1 'Host Grotesk', ui-sans-serif, sans-serif; text-decoration: none; box-shadow: 0 12px 24px -12px rgba(12,109,248,0.7); transition: background 150ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 42%, rgba(255,255,255,0.34) 50%, transparent 58%); background-size: 280% 100%; background-position: 180% 0; } .ds-btn-primary:hover { background: #0A56C4; } .ds-btn-primary:hover::after { animation: ds-sweep 900ms cubic-bezier(0.22,1,0.36,1) both; } .ds-btn-primary:focus-visible { outline: 2px solid #0C6DF8; outline-offset: 3px; } @keyframes ds-sweep { from { background-position: 185% 0; } to { background-position: -85% 0; } }"
+    },
+    {
+      "name": "Bouton secondaire",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Toutes les actions qui ne sont pas l'action principale.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Nous contacter</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; height: 54px; padding: 0 32px; border-radius: 10px; border: 1px solid rgba(95,93,87,0.5); background: #fff; color: #0B0B0C; font: 400 16px/1 'Host Grotesk', ui-sans-serif, sans-serif; text-decoration: none; transition: border-color 150ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-ghost:hover { border-color: #0B0B0C; } .ds-btn-ghost:focus-visible { outline: 2px solid #0C6DF8; outline-offset: 3px; }"
+    },
+    {
+      "name": "Carte de plan",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Une offre : nom, description, prix, liste de contenus séparés par des filets, action collée en bas.",
+      "html": "<article class=\"ds-plan\"><h3 class=\"ds-plan-name\">Brise</h3><p class=\"ds-plan-desc\">Pour un premier recrutement, de temps en temps.</p><p class=\"ds-plan-price\">Tarif à venir</p><ul class=\"ds-plan-list\"><li>1 offre active</li><li>50 candidatures par offre</li><li>Rédaction guidée de l'offre</li></ul><a class=\"ds-btn-ghost\" href=\"#\">Être prévenu</a></article>",
+      "css": ".ds-plan { display: flex; flex-direction: column; width: 320px; padding: 36px; border-radius: 20px; border: 1px solid #fff; background: rgba(255,255,255,0.85); color: #0B0B0C; font-family: 'Host Grotesk', ui-sans-serif, sans-serif; } .ds-plan-name { margin: 0; font: 400 26px/1.2 inherit; letter-spacing: -0.02em; } .ds-plan-desc { margin: 12px 0 0; max-width: 18rem; font: 400 16px/1.6 inherit; color: #4F4E49; } .ds-plan-price { margin: 32px 0 0; font: 400 18px/1.4 inherit; color: #57554F; } .ds-plan-list { flex: 1; margin: 28px 0 0; padding: 0; list-style: none; border-top: 1px solid #DDDBD5; font: 400 16px/1.5 inherit; } .ds-plan-list li { padding: 12px 0; border-bottom: 1px solid #DDDBD5; } .ds-plan .ds-btn-ghost { margin-top: 32px; }"
+    },
+    {
+      "name": "Carte mise en avant",
+      "kind": "card",
+      "refersTo": "card-highlight",
+      "description": "L'offre que la page recommande : bordure bleue, prix en bleu, ombre bleutée.",
+      "html": "<article class=\"ds-plan-featured\"><h3 class=\"ds-plan-name\">Bêta testeur</h3><p class=\"ds-plan-desc\">Pour les premières entreprises qui recrutent avec Seeklon.</p><p class=\"ds-plan-amount\">0 €<span> pendant toute la bêta</span></p><a class=\"ds-btn-primary\" href=\"#\">Rejoindre la bêta</a></article>",
+      "css": ".ds-plan-featured { display: flex; flex-direction: column; width: 360px; padding: 40px; border-radius: 24px; border: 1px solid #0C6DF8; background: rgba(255,255,255,0.9); color: #0B0B0C; font-family: 'Host Grotesk', ui-sans-serif, sans-serif; box-shadow: 0 40px 70px -50px rgba(12,109,248,0.7); } .ds-plan-featured .ds-plan-name { margin: 0; font: 400 32px/1.2 inherit; letter-spacing: -0.02em; } .ds-plan-featured .ds-plan-desc { margin: 12px 0 0; font: 400 17px/1.6 inherit; color: #4F4E49; } .ds-plan-amount { display: flex; align-items: baseline; gap: 12px; margin: 36px 0 0; font: 400 72px/1 inherit; color: #0C6DF8; } .ds-plan-amount span { font: 400 15px/1.4 inherit; color: #4F4E49; } .ds-plan-featured .ds-btn-primary { align-self: flex-start; margin-top: 32px; height: 54px; }"
+    },
+    {
+      "name": "Navigation flottante",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "Pilule fixe en haut de page ; l'onglet courant prend le lavis bleu.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navigation principale\"><span class=\"ds-nav-logo\">Seeklon</span><ul class=\"ds-nav-links\"><li><a href=\"#\">Le parcours</a></li><li><a class=\"is-current\" aria-current=\"page\" href=\"#\">Tarifs</a></li><li><a href=\"#\">Blog</a></li></ul><a class=\"ds-btn-primary ds-nav-cta\" href=\"#\">Demander une démo</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 1040px; max-width: 100%; height: 60px; padding: 0 12px 0 24px; border-radius: 14px; background: rgba(255,255,255,0.95); box-shadow: 0 10px 30px -18px rgba(11,11,12,0.35); font-family: 'Host Grotesk', ui-sans-serif, sans-serif; } .ds-nav-logo { font: 700 18px/1 inherit; letter-spacing: -0.02em; color: #0B0B0C; } .ds-nav-links { display: flex; gap: 4px; margin: 0; padding: 0; list-style: none; } .ds-nav-links a { display: block; padding: 8px 14px; border-radius: 8px; color: #0B0B0C; font: 400 15px/1 inherit; text-decoration: none; transition: background 150ms, color 150ms; } .ds-nav-links a:hover { background: rgba(12,109,248,0.07); color: #0A56C4; } .ds-nav-links a.is-current { background: #EEF4FF; } .ds-nav-cta { height: 36px; padding: 0 16px; font-size: 14px; box-shadow: none; }"
+    },
+    {
+      "name": "Barre d'étape",
+      "kind": "chip",
+      "refersTo": "step-control",
+      "description": "Une étape du parcours : filet de progression qui se remplit, libellé dessous. Les trois forment un role=tablist.",
+      "html": "<div class=\"ds-steps\" role=\"tablist\" aria-label=\"Les trois étapes du parcours\"><button class=\"ds-step is-active\" role=\"tab\" aria-selected=\"true\"><span class=\"ds-step-bar\"><span style=\"transform:scaleX(0.6)\"></span></span><span class=\"ds-step-label\">Rédiger</span></button><button class=\"ds-step\" role=\"tab\" aria-selected=\"false\"><span class=\"ds-step-bar\"><span style=\"transform:scaleX(0)\"></span></span><span class=\"ds-step-label\">Trier</span></button></div>",
+      "css": ".ds-steps { display: grid; grid-template-columns: repeat(2, 240px); gap: 40px; font-family: 'Host Grotesk', ui-sans-serif, sans-serif; } .ds-step { padding: 12px 0 4px; border: 0; background: none; text-align: left; cursor: pointer; } .ds-step-bar { display: block; height: 3px; border-radius: 999px; background: #D9DDE5; overflow: hidden; } .ds-step-bar > span { display: block; height: 100%; background: #0C6DF8; transform-origin: left; } .ds-step-label { display: block; margin-top: 12px; font: 400 15px/1.4 inherit; color: #57554F; transition: color 200ms; } .ds-step.is-active .ds-step-label { color: #0B0B0C; } .ds-step:hover .ds-step-label { color: #0B0B0C; } .ds-step:focus-visible { outline: 2px solid #0C6DF8; outline-offset: 3px; border-radius: 6px; }"
+    },
+    {
+      "name": "Bouton d'étape",
+      "kind": "button",
+      "refersTo": "step-control",
+      "description": "Précédent / suivant du parcours : 44px, rond, chevron incliné au survol.",
+      "html": "<button class=\"ds-step-nav\" aria-label=\"Étape suivante\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m9 18 6-6-6-6\"/></svg></button>",
+      "css": ".ds-step-nav { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(11,11,12,0.1); background: rgba(255,255,255,0.85); color: #0B0B0C; cursor: pointer; transition: border-color 150ms, color 150ms; } .ds-step-nav:hover { border-color: rgba(12,109,248,0.4); color: #0A56C4; } .ds-step-nav:hover svg { transform: translateX(2px); } .ds-step-nav svg { transition: transform 200ms cubic-bezier(0.16,1,0.3,1); } .ds-step-nav:disabled { opacity: 0.4; cursor: default; } .ds-step-nav:focus-visible { outline: 2px solid #0C6DF8; outline-offset: 3px; }"
+    },
+    {
+      "name": "Bloc de fin sur ciel profond",
+      "kind": "custom",
+      "refersTo": "button-on-deep",
+      "description": "La bascule en bleu profond qui ferme chaque page : titre blanc, texte blanc, bouton blanc.",
+      "html": "<section class=\"ds-closing\"><h2>Vous rencontrez.<br><span class=\"ds-closing-shine\">Vous décidez.</span></h2><p>Seeklon prépare l'offre, organise les CV et construit votre guide d'entretien. Vous gardez la main.</p><a class=\"ds-btn-on-deep\" href=\"#\">Voir ce parcours en démo</a></section>",
+      "css": ".ds-closing { padding: 64px; border-radius: 24px; background: linear-gradient(180deg, #0E62E6 0%, #0A52CC 100%); color: #fff; font-family: 'Host Grotesk', ui-sans-serif, sans-serif; } .ds-closing h2 { margin: 0; font: 500 64px/0.95 inherit; letter-spacing: -0.05em; } .ds-closing p { margin: 24px 0 0; max-width: 34rem; font: 400 19px/1.6 inherit; } .ds-closing-shine { background-image: linear-gradient(100deg, transparent 44%, rgba(150,196,255,0.95) 50.5%, transparent 57%), linear-gradient(#fff, #fff); background-size: 300% 100%, 100% 100%; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; animation: ds-sweep 2100ms cubic-bezier(0.22,1,0.36,1) 300ms both; } .ds-btn-on-deep { display: inline-flex; align-items: center; height: 52px; margin-top: 32px; padding: 0 32px; border-radius: 10px; background: #fff; color: #0B0B0C; font: 400 16px/1 inherit; text-decoration: none; transition: background 150ms; } .ds-btn-on-deep:hover { background: #EAF2FF; } .ds-btn-on-deep:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Carte d'article",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Un article du blog : catégorie et date, titre, chapô, et le lien de lecture collé en bas derrière un filet. Pas de vignette.",
+      "html": "<a class=\"ds-post\" href=\"#\"><p class=\"ds-post-meta\">Conseils Recrutement · 31 août 2026</p><h3 class=\"ds-post-title\">Plan recrutement de rentrée : préparer septembre sans recruter dans l’urgence</h3><p class=\"ds-post-excerpt\">Septembre ne doit pas être un redémarrage chaotique. Voici comment préparer un plan de recrutement clair avant la reprise.</p><span class=\"ds-post-more\">Lire l’article →</span></a>",
+      "css": ".ds-post { display: flex; flex-direction: column; width: 380px; padding: 32px; border-radius: 20px; border: 1px solid #fff; background: rgba(255,255,255,0.8); color: #0B0B0C; text-decoration: none; font-family: 'Host Grotesk', ui-sans-serif, sans-serif; transition: background-color 150ms; } .ds-post:hover { background: #fff; } .ds-post-meta { margin: 0; font: 400 14px/1.4 inherit; color: #57554F; } .ds-post-title { margin: 16px 0 0; font: 400 24px/1.22 inherit; letter-spacing: -0.025em; } .ds-post-excerpt { margin: 12px 0 0; font: 400 16px/1.6 inherit; color: #4F4E49; } .ds-post-more { margin-top: auto; padding-top: 20px; border-top: 1px solid #DDDBD5; font: 400 16px/1.4 inherit; color: #0A56C4; }"
+    },
+    {
+      "name": "Corps d'article",
+      "kind": "custom",
+      "refersTo": "prose",
+      "description": "Le markdown d'un article, posé dans une carte blanche : plugin typography rhabillé avec l'encre et le bleu du site, titres en graisse 400-500, tableaux sortis de prose pour défiler sur mobile.",
+      "html": "<div class=\"ds-article\"><h2 class=\"ds-article-h2\">Le temps perdu est massif</h2><p class=\"ds-article-p\">Voici un calcul simple, basé sur un recrutement type en PME sans outil dédié.</p><div class=\"ds-article-table\"><table><thead><tr><th>Tâche</th><th>Temps estimé</th></tr></thead><tbody><tr><td>Publication manuelle sur chaque jobboard</td><td>2 – 3 h</td></tr><tr><td>Tri des candidatures reçues par mail</td><td>3 – 5 h</td></tr></tbody></table></div></div>",
+      "css": ".ds-article { max-width: 720px; padding: 56px; border-radius: 24px; background: rgba(255,255,255,0.9); font-family: 'Host Grotesk', ui-sans-serif, sans-serif; } .ds-article-h2 { margin: 0; font: 500 30px/1.25 inherit; letter-spacing: -0.03em; color: #0B0B0C; } .ds-article-p { margin: 20px 0 0; font: 400 18px/1.75 inherit; color: #4F4E49; } .ds-article-table { margin: 32px 0 0; overflow-x: auto; } .ds-article-table table { width: 100%; min-width: 520px; border-collapse: collapse; text-align: left; font: 400 15px/1.5 inherit; } .ds-article-table :is(th, td) { padding: 12px 20px 12px 0; border-bottom: 1px solid #DDDBD5; vertical-align: top; } .ds-article-table th { font-weight: 500; color: #0B0B0C; } .ds-article-table td { color: #4F4E49; }"
+    },
+    {
+      "name": "Carte de personne",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Un membre de l'équipe : disque décoratif portant l'initiale, prénom, rôle. Le disque remplace un portrait tant qu'il n'est pas photographié.",
+      "html": "<article class=\"ds-person\"><span class=\"ds-person-avatar\" aria-hidden=\"true\">T</span><p class=\"ds-person-name\">Thomas</p><p class=\"ds-person-role\">Lead Marketing &amp; IA</p></article>",
+      "css": ".ds-person { display: flex; flex-direction: column; align-items: center; width: 302px; padding: 36px 24px; border-radius: 20px; border: 1px solid #fff; background: rgba(255,255,255,0.8); text-align: center; color: #0B0B0C; font-family: 'Host Grotesk', ui-sans-serif, sans-serif; } .ds-person-avatar { display: flex; align-items: center; justify-content: center; width: 132px; height: 132px; border-radius: 999px; background: linear-gradient(160deg, #EEF4FF 0%, #D8E6FF 100%); font: 400 32px/1 inherit; color: #0A56C4; } .ds-person-name { margin: 24px 0 0; font: 400 24px/1.2 inherit; letter-spacing: -0.02em; } .ds-person-role { margin: 6px 0 0; font: 400 15px/1.5 inherit; color: #4F4E49; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Le ciel dégagé",
+    "overview": "Le site raconte le calme qui suit la tempête du recrutement. Le fond n'est pas un décor : c'est un vrai ciel, calculé une fois pour toute la hauteur de la page, qui s'éclaircit au premier écran, se charge de cumulus à mesure qu'on descend, puis bascule dans un bleu profond au moment où la page demande une décision. Le contenu flotte dessus sur des surfaces blanches translucides, jamais sur des boîtes opaques.\n\nLa densité est basse et assumée : de très grands titres, beaucoup d'air entre les sections, des paragraphes courts. Le bleu ne sert qu'à deux choses, l'action et l'accent ; partout ailleurs, le texte est presque noir et les gris sont volontairement foncés, parce qu'ils doivent rester lisibles sur un fond qui bouge d'une section à l'autre. Les effets sont rares et courts : un reflet qui traverse un mot, une capture qui se pose, un titre qui se précise. Rien ne clignote, rien ne boucle.\n\nAnti-références confirmées : le fond qui défile à une autre vitesse que le texte (essayé, rejeté), les nuages en grille régulière, et les dégradés de couleur dans le texte — le seul dégradé toléré est la bande de lumière qui passe, une fois, sur le mot d'accent.",
+    "keyCharacteristics": [
+      "Un ciel procédural qui défile avec le contenu, jamais en parallaxe.",
+      "Des titres très grands, en Host Grotesk Medium, tracking serré.",
+      "Un seul bleu, réservé à l'action et à l'accent.",
+      "Des surfaces blanches translucides, des ombres bleutées et diffuses.",
+      "Le bleu profond comme récompense de fin de page."
+    ],
+    "rules": [
+      {
+        "name": "La règle du ciel lisible",
+        "body": "Le contraste d'un texte posé sur le ciel se mesure sur les pixels rendus, pas sur une couleur théorique : on masque le texte, on capture, on échantillonne le fond sous chaque bloc. Seuil : 4,5:1, y compris quand un nuage passe derrière. C'est pour ça que les gris du Figma (#5C5B57, #8A877F) ont été foncés.",
+        "section": "colors"
+      },
+      {
+        "name": "La règle du bleu unique",
+        "body": "Un seul bouton plein bleu par écran visible. Les autres actions sont en contour blanc. Le bleu qui n'appelle pas à agir est une fausse piste.",
+        "section": "colors"
+      },
+      {
+        "name": "La règle des deux lignes",
+        "body": "Les titres sont écrits ligne par ligne dans les traductions (line1, line2), jamais avec un <br> ni laissés à la merci du retour automatique : la coupure fait partie du dessin.",
+        "section": "typography"
+      },
+      {
+        "name": "La règle de l'apostrophe",
+        "body": "Typographie française : espace insécable avant ? ! : ; et à l'intérieur des guillemets « ».",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do mesurer le contraste sur le ciel rendu, à plusieurs positions de défilement, avant de valider une couleur de texte.",
+      "Do écrire les deux langues dans le même changement, et les listes sous forme de tableaux lus avec t.raw.",
+      "Do mettre chaque transition qui déplace un élément derrière motion-safe: — les variantes lg: et pin: passent après motion-reduce: dans la feuille.",
+      "Do vérifier 360×740, 390×844, 820×1180, 1280×600, 1366×625 et 1440×900 : c'est sur les écrans courts que le panneau épinglé casse."
+    ],
+    "donts": [
+      "Don't faire défiler le fond à une autre vitesse que le texte.",
+      "Don't poser une étiquette au-dessus d'un titre, ni une pastille à côté : le titre porte son propre poids, et une carte se distingue par sa matière, pas par un badge.",
+      "Don't utiliser un dégradé dans le texte, sauf la bande de lumière du mot d'accent.",
+      "Don't faire dépendre la lisibilité d'un texte du canvas WebGL : le bleu de fin de page est du CSS.",
+      "Don't empiler une carte dans une carte, ni ajouter une bordure colorée épaisse pour détacher un bloc."
+    ]
+  }
+}

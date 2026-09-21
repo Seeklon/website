@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
 import { routing } from '@/i18n/routing'
+import { SITE_URL } from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://landing.seeklon.com'
+  const baseUrl = SITE_URL
   const routes = [
     '',
     '/about',

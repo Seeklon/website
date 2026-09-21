@@ -25,135 +25,199 @@
     "copyright": "All rights reserved.",
     "logoAlt": "Seeklon Logo"
   },
-  "Hero": {
-    "titleBefore": "Recruit",
-    "titleAccent": "faster.",
-    "subtitle": "Seeklon is an AI-powered ATS that can sort your applications in seconds.",
-    "tryProduct": "Try the product",
-    "howItWorks": "See how it works",
-    "dashboardAlt": "Seeklon Dashboard interface"
-  },
-  "WhyAtsIA": {
-    "titleBefore": "Why choose an ",
-    "titleAccent": "AI ATS",
-    "titleEnd": " over a classic ATS?",
-    "title": "Why choose an AI ATS over a classic ATS?",
-    "intro": "Traditional ATS only search for keywords in CVs, ruling out qualified talent for technical reasons. Seeklon's semantic AI",
-    "highlight": "identifies 3x more relevant candidates",
-    "introEnd": "by analyzing meaning, not words.",
-    "bodyStart": "Seeklon's AI ATS analyzes meaning",
-    "bodyMiddle": "not words. Using natural language processing, our algorithm understands the context of experience, detects soft skills and identifies transferable skills. Result:",
-    "zeroFalseNegative": "zero false negatives",
-    "bodyEnd": "due to wording variations.",
-    "savingsTitle": "12h saved",
-    "savingsTitleStat": "12h",
-    "savingsTitleRest": " saved",
-    "savingsDesc": "per hire: automation of sourcing (4h), CV screening (5h) and interview scheduling (3h).",
-    "costTitle": "-60% costs",
-    "costTitleStat": "-60%",
-    "costTitleRest": " costs",
-    "costDesc": "By handling screening in-house with AI, you save on headhunter fees (15-20% of gross salary) while keeping quality.",
-    "qualityTitle": "Top 1% talent",
-    "qualityTitleBefore": "Top ",
-    "qualityTitleAccent": "1%",
-    "qualityTitleEnd": " talent",
-    "qualityDesc": "Our AI analyzes soft skills and culture fit to reduce early turnover by 40%.",
-    "trustTitle": "100% French, GDPR-compliant solution",
-    "trustTitleBefore": "100% French, ",
-    "trustTitleAccent": "GDPR-compliant solution",
-    "trustDesc": "Seeklon centralizes applications from LinkedIn, Indeed, Monster and generates personalized interview guides. Data hosted in France, GDPR compliance guaranteed."
-  },
-  "Features": {
-    "titleBefore": "How does ",
-    "titleAccent": "it work?",
-    "title": "How does it work?",
-    "subtitle": "A full process, from job posting to interview.",
-    "step1Title": "Assisted writing",
-    "step1TitleBefore": "Assisted ",
-    "step1TitleAccent": "writing",
-    "step1Desc": "Draft your job posting in seconds with Seeklon's matrix.",
-    "step2Title": "Multi-posting",
-    "step2TitleBefore": "",
-    "step2TitleAccent": "Multi-posting",
-    "step2Desc": "Publish your job on all job boards (Indeed, LinkedIn, etc.) and Seeklon centralizes all applications.",
-    "step3Title": "AI screening & scoring",
-    "step3TitleBefore": "AI screening & ",
-    "step3TitleAccent": "scoring",
-    "step3Desc": "Our algorithm analyzes and ranks CVs instantly to surface the best fits for your criteria.",
-    "step4Title": "Interview support",
-    "step4TitleBefore": "Interview ",
-    "step4TitleAccent": "support",
-    "step4Desc": "Seeklon generates a hiring interview guide. Confirm strengths and dig into areas to improve."
-  },
-  "TrustBar": {
-    "label": "Compatible with all major platforms"
-  },
-  "SocialProof": {
-    "title": "Testimonials",
-    "quote1": "Seeklon transforms how SMBs approach recruiting. The tool saves precious time by surfacing only relevant profiles.",
-    "author1": "Mentor testimonial",
-    "role1": "Business expert",
-    "quote2": "A major innovation to tackle recruiting challenges: screen with precision and qualify talent effectively.",
-    "author2": "Jury favorite, BPI Hackathon 2024",
-    "role2": "BPI Jury",
-    "quote3": "A promising innovation that addresses real screening and candidate qualification needs.",
-    "author3": "Epitech pedagogy team testimonial",
-    "role3": "Management"
-  },
-  "Newsletter": {
-    "titleBefore": "Get the ",
-    "titleAccent": "newsletter",
-    "title": "Get the newsletter",
-    "subtitle": "Get tips to optimize your hiring.",
-    "placeholder": "Your work email",
-    "submit": "Subscribe",
-    "disclaimer": "We respect your data. Unsubscribe anytime."
+  "Home": {
+    "nav": {
+      "label": "Main navigation",
+      "skip": "Skip to content",
+      "home": "Seeklon, back to home",
+      "journey": "The journey",
+      "pricing": "Pricing",
+      "blog": "Blog",
+      "about": "About",
+      "demo": "Book a demo",
+      "demoShort": "Demo",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "language": "Site language"
+    },
+    "hero": {
+      "title": "Hire",
+      "accent": "faster.",
+      "subtitle": "Even without an HR team.",
+      "body": "A clear job post, organised CVs, prepared interviews. Seeklon guides you, you decide.",
+      "cta": "Book a demo",
+      "shotCandidates": "Seeklon: applications received for the Senior Product Designer role",
+      "shotOffer": "Seeklon: creating a job post",
+      "shotInterview": "Seeklon: interview guide for a candidate"
+    },
+    "problem": {
+      "line1": "You need to hire.",
+      "line2": "Where do you start?",
+      "body": "A job post to write tonight. Dozens of CVs by Thursday. An interview tomorrow morning, and no one to tell you what to ask.",
+      "strong": "Seeklon prepares each of those steps with you."
+    },
+    "journey": {
+      "line1": "One role. Three steps.",
+      "line2": "You keep the decision.",
+      "tabsLabel": "The three steps of the journey",
+      "hintScroll": "Scroll to move from Write to Sort, then Prepare",
+      "hintSwipe": "Swipe to move between steps",
+      "prev": "Previous step",
+      "next": "Next step",
+      "announce": "Step {current} of {total}: {name}",
+      "steps": {
+        "draft": {
+          "tab": "Write",
+          "title1": "Put words",
+          "title2": "to your need.",
+          "body": "Which tasks? Which skills? What really matters for this role? Guided writing helps you build a clear job post from your answers.",
+          "outcome": "A clear job post to start with.",
+          "caption": "The job post",
+          "alt": "Seeklon: job post creation form"
+        },
+        "sort": {
+          "tab": "Sort",
+          "title1": "The CVs arrive.",
+          "title2": "Find what matters.",
+          "body": "Gather the applications, review each background and sort them against the role. The information stays at hand to choose who to meet.",
+          "outcome": "Organised applications to move forward.",
+          "caption": "The CVs",
+          "alt": "Seeklon: applications received for a role"
+        },
+        "prepare": {
+          "tab": "Prepare",
+          "title1": "Prepare a real",
+          "title2": "conversation.",
+          "body": "Seeklon prepares a guide from the CV and the role: questions to ask, experience to explore and points to check together during the interview.",
+          "outcome": "A guide to lead your interview.",
+          "caption": "The interview",
+          "alt": "Seeklon: interview guide prepared for a candidate"
+        }
+      },
+      "zoom": "Enlarge the screenshot",
+      "close": "Close"
+    },
+    "excerpt": {
+      "quote": "“How did you structure a design system and get several product teams to adopt it?”",
+      "source": "From Léa Moreau’s interview guide",
+      "context": "A question tied to her experience. A concrete point to explore together. Your interview can begin."
+    },
+    "testimonials": {
+      "line1": "What it changes,",
+      "line2": "told by those who saw it start.",
+      "items": {
+        "one": {
+          "quote": "“Seeklon transforms how SMBs approach recruiting. The tool saves precious time by surfacing only relevant profiles.”",
+          "name": "Nihal Mougamadou",
+          "role": "Seeklon mentor, Innowant"
+        },
+        "two": {
+          "quote": "“A major innovation to tackle recruiting challenges: screen with precision and qualify talent effectively.”",
+          "name": "Bpifrance",
+          "role": "Jury’s favourite award, 2024 hackathon"
+        },
+        "three": {
+          "quote": "“A promising innovation that addresses real screening and candidate qualification needs.”",
+          "name": "Epitech",
+          "role": "Management"
+        }
+      }
+    },
+    "closing": {
+      "line1": "You meet.",
+      "line2": "You decide.",
+      "body": "Seeklon prepares the job post, organises the CVs and builds your interview guide. You stay in charge.",
+      "note": "Free demo, no commitment.",
+      "cta": "See this journey in a demo"
+    },
+    "footer": {
+      "home": "Seeklon, back to home",
+      "tagline": "Ready to hire more easily?",
+      "product": "Product",
+      "company": "Company",
+      "legal": "Legal",
+      "journey": "The journey",
+      "pricing": "Pricing",
+      "demo": "Book a demo",
+      "about": "About",
+      "blog": "Blog",
+      "contact": "Contact",
+      "legalNotice": "Legal notice",
+      "privacy": "Privacy",
+      "cookies": "Cookie settings",
+      "copyright": "© {year} Seeklon. All rights reserved.",
+      "linkedin": "LinkedIn"
+    }
   },
   "Contact": {
-    "badge": "Let's talk recruiting",
-    "title": "Have a question?",
-    "titleHighlight": "Request a demo.",
-    "coordinatesBefore": "Contact ",
-    "coordinatesAccent": "details",
-    "stayInformedBefore": "Stay ",
-    "stayInformedAccent": "informed",
-    "successTitleBefore": "Message ",
-    "successTitleAccent": "received!",
-    "subtitle": "Contact our team for a demo or to learn more.",
-    "coordinates": "Contact details",
-    "social": "Social",
-    "linkedin": "Follow us on LinkedIn",
-    "office": "Office",
-    "stayInformed": "Stay informed",
-    "stayInformedDesc": "Get our recruiting tips.",
-    "emailPlaceholder": "Your work email",
-    "subscribed": "You're subscribed!",
-    "sendMessage": "Send us a message",
-    "name": "Full name",
-    "company": "Company",
-    "companyPlaceholder": "Your company",
-    "email": "Work email",
-    "message": "Message",
-    "messagePlaceholder": "I'd like a product demo...",
-    "sending": "Sending...",
-    "submit": "Send message",
-    "successTitle": "Message received!",
-    "successMessage": "Thank you for reaching out. The Seeklon team has received your request and will get back to you within 24 hours.",
-    "sendAnother": "Send another message",
-    "errorSend": "Error sending message.",
-    "errorSubscribe": "Error subscribing.",
-    "errorConnection": "Connection error."
+    "hero": {
+      "line1": "Let's talk about your next hire.",
+      "line2": "Answer within 24 hours.",
+      "body": "A demo, a question about the beta, or a heads-up when the packs open: write to us."
+    },
+    "form": {
+      "title": "Write to us",
+      "name": "Full name",
+      "namePlaceholder": "Camille Bernard",
+      "company": "Company",
+      "companyPlaceholder": "Your company name",
+      "optional": "optional",
+      "email": "Work email",
+      "emailPlaceholder": "camille@company.com",
+      "message": "Your message",
+      "messagePlaceholder": "We're hiring two people this quarter and would like a demo…",
+      "submit": "Send the message",
+      "sending": "Sending…",
+      "error": "Sending failed. Try again, or write to us on LinkedIn.",
+      "successTitle": "Message received.",
+      "successBody": "We'll get back to you within 24 hours, Monday to Friday.",
+      "again": "Send another message",
+      "subject": "New message from the Seeklon site",
+      "honeypot": "Do not fill this field",
+      "consent": "By sending this message you agree that your details are used to reply to you. <privacy>Privacy policy</privacy>."
+    },
+    "aside": {
+      "title": "In practice",
+      "responseTitle": "Answer within 24 hours",
+      "responseBody": "From someone on the team, not from a bot.",
+      "betaTitle": "Free beta",
+      "betaBody": "Access is free for the whole beta, with no commitment.",
+      "placeTitle": "Paris, France",
+      "placeBody": "Seeklon was born at the Bpifrance hackathon on AI and ethics.",
+      "linkedin": "Follow Seeklon on LinkedIn",
+      "emailLabel": "Or by email:"
+    },
+    "news": {
+      "title": "Get notified when the packs open.",
+      "body": "One email when pricing is announced, and our hiring tips now and then. Nothing else.",
+      "label": "Work email",
+      "placeholder": "camille@company.com",
+      "submit": "Sign me up",
+      "sending": "Signing up…",
+      "success": "Noted — we'll let you know.",
+      "error": "Sign-up failed. Try again in a moment.",
+      "subject": "New sign-up to the Seeklon list",
+      "honeypot": "Do not fill this field",
+      "consent": "One address, so we can tell you. Nothing else, and you can leave whenever you like. <privacy>Privacy policy</privacy>."
+    }
   },
   "Blog": {
-    "titleBefore": "Tips & ",
-    "titleAccent": "News",
-    "title": "Tips & News",
-    "subtitle": "All the keys to modernize your hiring and attract top talent.",
-    "readArticle": "Read article",
-    "backToBlog": "Back to blog",
-    "aboutSeeklon": "About Seeklon",
-    "aboutSeeklonDesc": "Seeklon helps SMBs hire simply with AI.",
-    "discoverSolution": "Discover the solution"
+    "titleBefore": "Advice &",
+    "titleAccent": "news",
+    "subtitle": "Practical methods to hire calmly, even without an HR team.",
+    "listTitle": "The latest articles.",
+    "readArticle": "Read the article",
+    "backToBlog": "Back to the blog",
+    "closing": {
+      "line1": "Put this advice",
+      "line2": "into practice.",
+      "body": "Seeklon drafts the job post, organises applications and builds your interview guide. You keep the decision.",
+      "note": "Free throughout the beta, no commitment.",
+      "cta": "Try Seeklon"
+    },
+    "readingTime": "{minutes} min read",
+    "relatedTitle": "Read next.",
+    "tocTitle": "In this article"
   },
   "Product": {
     "titleLine1": "A complete suite to",
@@ -212,39 +276,195 @@
     "ctaLearn": "Learn more"
   },
   "Pricing": {
-    "titleBefore": "Simple ",
-    "titleAccent": "pricing",
-    "title": "Simple pricing",
-    "subtitle": "Choose the plan that fits your hiring needs.",
-    "beta": "Beta",
-    "free": "Free",
-    "betaDesc": "To discover Seeklon's AI power.",
-    "beta1": "1 active job posting",
-    "beta2": "Standard AI screening",
-    "beta3": "Email support",
-    "betaCta": "Beta access",
-    "recommended": "Recommended",
-    "standard": "Standard",
-    "month": "month",
-    "standardDesc": "For SMBs that hire regularly.",
-    "standard1": "Unlimited job posts",
-    "standard2": "Advanced AI screening & scoring",
-    "standard3": "Multi-posting included",
-    "standard4": "AI interview guides",
-    "standardCta": "Start trial",
-    "enterprise": "Enterprise",
-    "custom": "Custom",
-    "enterpriseDesc": "For high-volume hiring.",
-    "enterprise1": "Unlimited volume",
-    "enterprise2": "Dedicated support",
-    "enterprise3": "Centralized billing",
-    "enterpriseCta": "Contact sales"
+    "hero": {
+      "line1": "Free during the beta.",
+      "line2": "Packs are coming.",
+      "body": "Seeklon is in beta: access is free for the first companies testing it with us. Pack pricing will be announced before the beta ends."
+    },
+    "beta": {
+      "name": "Beta access",
+      "price": "€0",
+      "period": "for the whole beta",
+      "description": "For the first companies hiring with Seeklon and helping us grow it.",
+      "features": [
+        "Access to Seeklon on real hiring",
+        "Guided job post writing",
+        "Application sorting",
+        "Interview guides",
+        "Onboarding support",
+        "Your feedback shapes the product"
+      ],
+      "cta": "Join the beta"
+    },
+    "packs": {
+      "title": "The packs to come.",
+      "cta": "Get notified",
+      "items": {
+        "breeze": {
+          "name": "Breeze",
+          "description": "For a first hire, now and then.",
+          "features": [
+            "1 active job post",
+            "50 applications per post",
+            "Guided job post writing",
+            "Application sorting",
+            "Interview guides",
+            "1 user"
+          ],
+          "highlight": "Pack contents coming soon"
+        },
+        "storm": {
+          "name": "Storm",
+          "description": "For small companies hiring regularly.",
+          "features": [
+            "5 active job posts",
+            "Unlimited applications",
+            "Guided job post writing",
+            "Application sorting",
+            "Interview guides",
+            "3 users",
+            "Email support"
+          ],
+          "highlight": "Pack contents coming soon"
+        },
+        "cyclone": {
+          "name": "Cyclone",
+          "description": "For companies hiring across several teams.",
+          "features": [
+            "Unlimited job posts",
+            "Unlimited applications",
+            "Everything in Storm",
+            "10 users",
+            "Hiring follow-up",
+            "Onboarding support"
+          ],
+          "highlight": "Pack contents coming soon"
+        }
+      },
+      "lead": "The detail, line by line."
+    },
+    "details": {
+      "caption": "The three upcoming packs compared, line by line.",
+      "note": "Indicative content, which may change before the packs open.",
+      "rows": [
+        {
+          "label": "Active job posts",
+          "values": [
+            "1",
+            "5",
+            "Unlimited"
+          ]
+        },
+        {
+          "label": "Applications",
+          "values": [
+            "50 per post",
+            "Unlimited",
+            "Unlimited"
+          ]
+        },
+        {
+          "label": "Users",
+          "values": [
+            "1",
+            "3",
+            "10"
+          ]
+        },
+        {
+          "label": "Guided job post writing",
+          "values": [
+            "Included",
+            "Included",
+            "Included"
+          ]
+        },
+        {
+          "label": "Application sorting",
+          "values": [
+            "Included",
+            "Included",
+            "Included"
+          ]
+        },
+        {
+          "label": "Interview guides",
+          "values": [
+            "Included",
+            "Included",
+            "Included"
+          ]
+        },
+        {
+          "label": "Hiring follow-up",
+          "values": [
+            "—",
+            "—",
+            "Included"
+          ]
+        },
+        {
+          "label": "Onboarding support",
+          "values": [
+            "—",
+            "—",
+            "Included"
+          ]
+        },
+        {
+          "label": "Support",
+          "values": [
+            "Help centre",
+            "Email",
+            "Email and phone"
+          ]
+        }
+      ],
+      "notIncluded": "Not included",
+      "featureColumn": "Feature"
+    },
+    "faq": {
+      "title": "Your questions.",
+      "items": [
+        {
+          "q": "Is the beta really free?",
+          "a": "Yes. During the beta, access is free with no commitment. We will let you know before any paid pack opens."
+        },
+        {
+          "q": "Is there a commitment?",
+          "a": "No. The packs will be monthly and can be cancelled at any time from your account."
+        },
+        {
+          "q": "What happens when a role is filled?",
+          "a": "You archive the job post: it no longer counts towards your active posts and its history stays available."
+        },
+        {
+          "q": "Do you have a rate for non-profits?",
+          "a": "Yes, on request. Write to us and we'll look at your situation together."
+        }
+      ]
+    },
+    "closing": {
+      "line1": "Start now.",
+      "line2": "It's free.",
+      "body": "Seeklon is free for the whole beta. You write your job posts, sort your applications and prepare your interviews — and you keep the decision.",
+      "note": "Free for the whole beta, no commitment.",
+      "cta": "Join the beta"
+    }
   },
   "Metadata": {
     "siteTitle": "Seeklon - Smart candidate screening",
     "siteDescription": "Simplify hiring for SMBs with our ATS powered by AI screening.",
-    "homeTitle": "AI ATS for SMBs | Seeklon – Recruit faster",
-    "homeDescription": "Sort your applications in seconds with Seeklon, the AI ATS for SMBs. Scoring, multi-posting, interview guides. Request a free demo."
+    "homeTitle": "Seeklon – Hire faster, even without an HR team",
+    "homeDescription": "Write a clear job post, organise CVs and prepare your interviews with Seeklon, the hiring software for small companies. Free demo.",
+    "pricingTitle": "Seeklon pricing – Free during the beta",
+    "pricingDescription": "Seeklon is in beta: access is free for the first companies. See the upcoming Breeze, Storm and Cyclone packs and what they include.",
+    "contactTitle": "Contact Seeklon – Book a demo",
+    "contactDescription": "Write to the Seeklon team for a demo, a question about the free beta, or to be notified when the packs open. Answer within 24 hours.",
+    "aboutTitle": "About Seeklon – Four people, one goal",
+    "aboutDescription": "Seeklon was born at the Bpifrance hackathon on AI and ethics. Here is why we build a hiring tool that leaves the decision to the recruiter.",
+    "blogTitle": "Seeklon blog – Hiring advice for small companies",
+    "blogDescription": "Job posts, screening, interviews, onboarding: practical advice to hire calmly, even without an HR team."
   },
   "Legal": {
     "titleBefore": "Legal ",
@@ -270,34 +490,74 @@
     "useLi3": "Understand and analyze how you use our website",
     "useLi4": "Communicate with you, including for customer service",
     "securityTitle": "3. Security",
-    "securityContent": "We take the security of your data very seriously. We implement appropriate technical and organizational measures to protect your personal data against accidental or unlawful destruction, loss, alteration, disclosure or unauthorized access."
+    "securityContent": "We take the security of your data very seriously. We implement appropriate technical and organizational measures to protect your personal data against accidental or unlawful destruction, loss, alteration, disclosure or unauthorized access.",
+    "formsTitle": "The forms on this site",
+    "formsContent": "The contact form and the mailing-list sign-up are handled by Formspree (Formspree Inc., United States), which receives what you type and forwards it to us by email. That data is only used to reply to you or to keep you posted, is never sold or used for anything else, and is deleted on request at contact@seeklon.com."
   },
   "About": {
-    "title": "Hiring,",
-    "titleHighlight": "finally stress-free.",
-    "whyTitleBefore": "Why ",
-    "whyTitleAccent": "Seeklon?",
-    "valuesTitleBefore": "Our ",
-    "valuesTitleAccent": "Values",
-    "teamTitleBefore": "Founding ",
-    "teamTitleAccent": "Team",
-    "ctaTitleBefore": "Ready to simplify your ",
-    "ctaTitleAccent": "hiring?",
-    "intro": "We believe every SMB deserves access to the same technology as tech giants to find the best talent.",
-    "whyTitle": "Why Seeklon?",
-    "whyP1": "SMB leaders are everyday heroes, often overwhelmed. Recruiting quickly becomes a mental burden that holds back growth.",
-    "whyQuote": "Seeklon filters out the noise so humans can focus on authentic connection.",
-    "valuesTitle": "Our Values",
-    "value1Title": "Simplicity",
-    "value1Text": "Powerful tools that feel obvious to use. No training required.",
-    "value2Title": "Authenticity",
-    "value2Text": "AI handles volume so you can focus on the human relationship.",
-    "value3Title": "Efficiency",
-    "value3Text": "Every minute saved on screening is a minute invested in your growth.",
-    "teamTitle": "Founding Team",
-    "coFounder": "Co-Founder",
-    "ctaTitle": "Ready to simplify your hiring?",
-    "ctaButton": "Contact us"
+    "hero": {
+      "line1": "Every company should be able",
+      "line2": "to hire well.",
+      "body": "No HR team required. That conviction is what gave birth to Seeklon."
+    },
+    "pillars": {
+      "title": "Why we exist.",
+      "items": [
+        {
+          "title": "Why",
+          "body": "Hiring well should not be reserved for companies with an HR team. Every company should be able to understand and improve its hiring decisions."
+        },
+        {
+          "title": "How",
+          "body": "Explainable AI, interview guides and data analysis. The first screening gets simpler, the decision stays with the recruiter."
+        },
+        {
+          "title": "What",
+          "body": "A steering and decision-support platform that connects application analysis, interview preparation and a clear view of the process."
+        }
+      ]
+    },
+    "vision": {
+      "title": "Our vision.",
+      "quote": "Hire with method, learn from your decisions, and lean on technology without handing it your choices."
+    },
+    "hackathon": {
+      "line1": "Born at a",
+      "line2": "hackathon.",
+      "award": "Jury’s Favourite award",
+      "caption": "Bpifrance hackathon, on AI and ethics",
+      "body": "Seeklon was born during the Bpifrance hackathon devoted to AI and ethics. Bpifrance created the Jury’s Favourite award especially for our project.",
+      "after": "Since then, we have been turning it into a real product, and making it grow."
+    },
+    "team": {
+      "line1": "Four people,",
+      "line2": "one goal.",
+      "members": [
+        {
+          "name": "Thomas",
+          "role": "Marketing & AI Lead"
+        },
+        {
+          "name": "Ilyes",
+          "role": "Tech Lead"
+        },
+        {
+          "name": "Deniz",
+          "role": "Backend Lead"
+        },
+        {
+          "name": "Robin",
+          "role": "DevOps & SysAdmin Lead"
+        }
+      ]
+    },
+    "closing": {
+      "line1": "You meet.",
+      "line2": "You decide.",
+      "body": "Seeklon prepares everything useful for your hiring. The decision stays in your hands.",
+      "note": "Free throughout the beta, no commitment.",
+      "cta": "Book a demo"
+    }
   },
   "Rgpd": {
     "titleBefore": "GDPR & Cookie ",
@@ -309,8 +569,39 @@
     "rightsLi2": "Right to rectification: You have the right to ask us to correct any information you believe is inaccurate.",
     "rightsLi3": "Right to erasure: You have the right to ask us to erase your personal data, under certain conditions.",
     "cookiesTitle": "2. Cookies",
-    "cookiesContent": "Our site uses cookies to improve your browsing experience. These cookies are essential for the site to function and help us understand how you use it. You can configure your browser to refuse cookies at any time.",
+    "cookiesContent": "This site sets no advertising and no analytics cookies. The only cookie it uses remembers the language you picked, so the next visit starts in it: it is strictly necessary and cannot identify you. You can refuse it in your browser; the site will simply ask for the language again on each visit.",
     "dpoTitle": "3. DPO contact",
     "dpoContent": "For any questions regarding the protection of your data or to exercise your rights, you can contact our Data Protection Officer at: contact@seeklon.com"
+  },
+  "NotFound": {
+    "code": "Error 404",
+    "line1": "This page has",
+    "line2": "drifted off.",
+    "body": "The link may be old, or the address changed. Here is where to pick up again.",
+    "exitsLabel": "Where to go next",
+    "exits": {
+      "home": {
+        "title": "Home",
+        "body": "The whole journey, from the job post to the interview.",
+        "action": "See the journey"
+      },
+      "blog": {
+        "title": "The blog",
+        "body": "Our methods for hiring calmly, without an HR team.",
+        "action": "Read the articles"
+      },
+      "contact": {
+        "title": "Write to us",
+        "body": "A question, a demo, access to the free beta.",
+        "action": "Open the form"
+      }
+    },
+    "closing": {
+      "line1": "You were looking",
+      "line2": "for something.",
+      "body": "Tell us what: if a page is missing, we would rather know than leave you searching.",
+      "note": "We reply within 24 hours.",
+      "cta": "Write to us"
+    }
   }
 }
