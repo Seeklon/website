@@ -75,9 +75,6 @@ export default function HomeHero() {
           sizes="(min-width: 1010px) 962px, calc(100vw - 48px)"
           className="hero-shot relative w-full rounded-lg shadow-[0_24px_48px_-16px_rgba(12,109,248,0.4)] md:rounded-[10px] md:shadow-[0_40px_80px_-24px_rgba(12,109,248,0.45)]"
         />
-        <figcaption className="mx-auto mt-7 max-w-[15rem] text-xs text-ink-faint md:mt-10 md:max-w-none md:text-sm">
-          {t('caption')}
-        </figcaption>
       </figure>
 
     </section>

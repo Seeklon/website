@@ -48,8 +48,7 @@
       "cta": "Demander une démo",
       "shotCandidates": "Seeklon : candidatures reçues pour le poste de Product Designer Senior",
       "shotOffer": "Seeklon : création d’une offre",
-      "shotInterview": "Seeklon : guide d’entretien d’une candidate",
-      "caption": "Données de démonstration"
+      "shotInterview": "Seeklon : guide d’entretien d’une candidate"
     },
     "problem": {
       "line1": "Vous devez recruter.",
@@ -100,7 +99,7 @@
     },
     "excerpt": {
       "quote": "« Comment avez-vous structuré et fait adopter un design system par plusieurs équipes produit ? »",
-      "source": "Extrait du guide d’entretien de Léa Moreau — données de démonstration",
+      "source": "Extrait du guide d’entretien de Léa Moreau",
       "context": "Une question liée à son expérience. Un point concret à approfondir ensemble. Votre entretien peut commencer."
     },
     "testimonials": {

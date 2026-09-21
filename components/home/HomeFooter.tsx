@@ -12,16 +12,25 @@ const COLUMNS = [
 export default function HomeFooter() {
   const t = useTranslations('Home.footer')
 
-  // White copy throughout: light blues fall under 4.5:1 once a cloud drifts behind them.
+  // The page ends at night: the sky goes pale blue, deep blue, then this navy, which is what
+  // says "footer" without a line or a box. It comes in over the first 220px so the blue
+  // above melts into it, and it sits over the clouds (-z-[5], the sky is at -10) — weather
+  // belongs to the page, not to the list of links under it.
   return (
     <footer className="relative text-white">
+      {/* Two grounds. The blue one lies under the sky, as the closing section's does, so the
+          clouds that cross into the footer still have their blue behind them; the navy one
+          lies over the sky and takes over from it. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-20 bg-[#0C5AD9]" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(180deg,#0C5AD9_0%,#0A52CC_100%)]"
+        className="pointer-events-none absolute inset-0 -z-[5] bg-[linear-gradient(180deg,rgba(7,24,64,0)_0px,rgba(7,24,64,0.55)_90px,#071840_220px,#05112E_100%)]"
       />
-      <div className="mx-auto max-w-[1440px] px-6 pb-10 pt-[96px] md:px-10 md:pt-[130px] xl:px-20">
+      <div className="mx-auto max-w-[1440px] px-6 pb-10 pt-[150px] md:px-10 md:pt-[210px] xl:px-20">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,710px)] lg:gap-10">
-          <div>
+          {/* A column: as two inline links they sat side by side, and the margin between them
+              did nothing. */}
+          <div className="flex flex-col items-start">
             <Link href="/" aria-label={t('home')} className="inline-flex text-white">
               <SeeklonWordmark className="h-[22px] w-auto" />
             </Link>
@@ -54,7 +63,7 @@ export default function HomeFooter() {
           </div>
         </div>
 
-        <div className="mt-16 flex items-start justify-between gap-6 border-t border-white/25 pt-6 text-sm md:mt-24">
+        <div className="mt-16 flex items-start justify-between gap-6 border-t border-white/15 pt-6 text-sm md:mt-24">
           <p>{t('copyright', { year: new Date().getFullYear() })}</p>
           <a
             href="https://www.linkedin.com/company/seeklon/"

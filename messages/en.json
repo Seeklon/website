@@ -48,8 +48,7 @@
       "cta": "Book a demo",
       "shotCandidates": "Seeklon: applications received for the Senior Product Designer role",
       "shotOffer": "Seeklon: creating a job post",
-      "shotInterview": "Seeklon: interview guide for a candidate",
-      "caption": "Demo data"
+      "shotInterview": "Seeklon: interview guide for a candidate"
     },
     "problem": {
       "line1": "You need to hire.",
@@ -100,7 +99,7 @@
     },
     "excerpt": {
       "quote": "“How did you structure a design system and get several product teams to adopt it?”",
-      "source": "From Léa Moreau’s interview guide — demo data",
+      "source": "From Léa Moreau’s interview guide",
       "context": "A question tied to her experience. A concrete point to explore together. Your interview can begin."
     },
     "testimonials": {
