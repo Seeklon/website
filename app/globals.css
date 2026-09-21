@@ -236,10 +236,39 @@ body {
   /* Page to page, the sky stays put and only the content changes hands. Browsers without
      the View Transitions API simply swap, as before. */
   /* Only `main` changes hands; the sky, the nav and the footer stay put. Naming it gives
-     it a stacking context, which is why the closing section's gradient then paints over
-     the sky — the clouds stop at the footer until that gradient moves behind it. */
+     it a stacking context, so nothing inside `main` can sit behind the sky — which is why
+     the closing section's blue is drawn out here instead. */
   .home main {
     view-transition-name: page;
+  }
+
+  /* The deep-blue band under the closing section, measured by SkyBackground and drawn as
+     a sibling of `main`, where a negative z-index really does land behind the sky. The
+     section keeps an identical copy for the no-JS case; exactly one of the two shows. */
+  .home .sky-deep {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--deep-top);
+    height: var(--deep-height);
+    z-index: -20;
+    background: linear-gradient(
+      180deg,
+      rgba(14, 98, 230, 0) 0px,
+      rgba(14, 98, 230, 0.22) calc(var(--deep-lead-px) * 0.55),
+      rgba(14, 98, 230, 0.72) calc(var(--deep-lead-px) + var(--deep-full-px) * 0.45),
+      #0e62e6 calc(var(--deep-lead-px) + var(--deep-full-px)),
+      #0c5ad9 100%
+    );
+  }
+
+  .home[data-deep-hoisted] .sky-deep {
+    display: block;
+  }
+
+  .home[data-deep-hoisted] [data-deep-fallback] {
+    display: none;
   }
 
   ::view-transition-old(root),

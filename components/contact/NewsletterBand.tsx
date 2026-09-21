@@ -35,6 +35,7 @@ export default function NewsletterBand() {
     <section id="newsletter" data-sky-deep className="relative scroll-mt-24 text-white [--deep-full:260px] [--deep-lead:340px] md:[--deep-full:420px] md:[--deep-lead:560px]">
       <div
         aria-hidden="true"
+        data-deep-fallback
         className="pointer-events-none absolute inset-x-0 bottom-0 top-[calc(-1*var(--deep-lead))] -z-20 bg-[linear-gradient(180deg,rgba(14,98,230,0)_0px,rgba(14,98,230,0.22)_calc(var(--deep-lead)*0.55),rgba(14,98,230,0.72)_calc(var(--deep-lead)+var(--deep-full)*0.45),#0E62E6_calc(var(--deep-lead)+var(--deep-full)),#0C5AD9_100%)]"
       />
       <div className="mx-auto max-w-[1440px] px-6 pt-[300px] md:px-10 md:pt-[460px] xl:px-20">

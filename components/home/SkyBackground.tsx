@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 
 /**
  * Procedural cloudy sky for the home page, rendered once for the whole page height
@@ -11,10 +12,10 @@ import { useEffect, useRef } from 'react'
  * smooth maximum and roughened with billow noise; lobes are shaded as if lit from the
  * upper left. The grid the clouds are placed on is warped and thinned by noise so it
  * does not read as a pattern. From the element marked `data-sky-deep` the sky blends
- * into deep blue between `--deep-lead` px above it and `--deep-full` px below, then turns
- * transparent: past that point
- * the blue is the section's own CSS background, so white copy never depends on WebGL.
- * Until the image is ready — or without WebGL — the page's CSS gradients show.
+ * into deep blue between `--deep-lead` px above it and `--deep-full` px below, then thins
+ * out over the footer; the blue underneath it is a plain CSS gradient, so white copy never
+ * depends on WebGL. Until the image is ready — or without WebGL — that gradient is all
+ * there is.
  */
 
 const VERTEX = `
@@ -195,7 +196,7 @@ void main() {
     vec2 c = cumulus(p, fluff, coverage - 0.06, unit * 0.55, -5.0);
     float a = smoothstep(-0.08, 0.36, c.x) * mix(0.5, 0.22, deep) * (1.0 - calmStrength * calm);
     vec3 col = mix(mix(vec3(0.792, 0.867, 0.973), vec3(0.985, 0.992, 1.0), clamp(c.y + fluff * 0.35, 0.0, 1.0)),
-                   vec3(0.42, 0.62, 0.96), deep);
+                   vec3(0.30, 0.52, 0.95), deep);
     // The far bank sits in the haze: it takes a third of the sky's own colour.
     col = mix(col, sky, 0.3 * (1.0 - deep));
     acc = vec4(col * a, a) + acc * (1.0 - a);
@@ -210,10 +211,13 @@ void main() {
     vec2 c = cumulus(p, fluff, coverage, unit, 0.0);
     // A wide ramp feathers the edge: a narrow one cuts the cloud out like a sticker.
     float body = smoothstep(-0.06, mix(0.34, 0.46, deep), c.x);
-    // Over the deep blue, clouds stay faint so white copy keeps at least 4.5:1.
     float a = body * mix(mix(0.9, 1.0, wide), 0.5, deep) * (1.0 - calmStrength * calm);
-    vec3 lit = mix(vec3(1.0, 1.0, 0.995), vec3(0.47, 0.67, 0.98), deep);
-    vec3 shade = mix(vec3(0.717, 0.804, 0.941), vec3(0.28, 0.52, 0.94), deep);
+    // Over the deep blue the copy is white, so a cloud may not be lighter than the blue by
+    // much: it keeps its full presence and loses its brightness instead, modelled around
+    // the base colour rather than above it. Fading the clouds out would have read as the
+    // blue going empty again — the very thing the band is there to avoid.
+    vec3 lit = mix(vec3(1.0, 1.0, 0.995), vec3(0.32, 0.54, 0.95), deep);
+    vec3 shade = mix(vec3(0.717, 0.804, 0.941), vec3(0.11, 0.36, 0.87), deep);
     vec3 cloud = mix(shade, lit, clamp(c.y + fluff * 0.2 + (grain - 0.3) * 0.2, 0.0, 1.0));
     cloud = mix(cloud, lit, smoothstep(0.35, 0.8, c.x) * 0.15);
     cloud = mix(cloud, sky, 0.12 * (1.0 - deep));
@@ -251,6 +255,33 @@ function measureLayout(host: HTMLElement): SkyLayout {
   const lead = parseFloat(styles.getPropertyValue('--deep-lead')) || 0
   const band = parseFloat(styles.getPropertyValue('--deep-full')) || 200
   return { width: host.clientWidth, height, deepStart: markerTop - lead, deepEnd: markerTop + band }
+}
+
+/**
+ * The deep blue behind the closing section is drawn twice, and only one of the two shows.
+ * The section carries its own copy so white copy is never stranded on a light sky without
+ * scripts — but `main` is the view-transition root, and naming it makes it a stacking
+ * context, so that copy paints over the sky and the clouds stop dead at the footer. This
+ * measures the section and redraws the same gradient out here, a sibling of `main`, where
+ * a negative z-index really does land behind the sky; the section's copy then hides.
+ */
+function placeDeep(host: HTMLElement) {
+  const marker = host.querySelector<HTMLElement>('[data-sky-deep]')
+  // A page without a closing band — an article, a legal page — must not keep the one
+  // measured on the page before it.
+  if (!marker) {
+    delete host.dataset.deepHoisted
+    return
+  }
+  const rect = marker.getBoundingClientRect()
+  const styles = getComputedStyle(marker)
+  const lead = parseFloat(styles.getPropertyValue('--deep-lead')) || 0
+  const band = parseFloat(styles.getPropertyValue('--deep-full')) || 200
+  host.style.setProperty('--deep-top', `${rect.top - host.getBoundingClientRect().top - lead}px`)
+  host.style.setProperty('--deep-height', `${rect.height + lead}px`)
+  host.style.setProperty('--deep-lead-px', `${lead}px`)
+  host.style.setProperty('--deep-full-px', `${band}px`)
+  host.dataset.deepHoisted = 'true'
 }
 
 function compile(gl: WebGLRenderingContext, type: number, source: string) {
@@ -353,6 +384,18 @@ export default function SkyBackground() {
   const skyRef = useRef<HTMLDivElement>(null)
   const farRef = useRef<HTMLDivElement>(null)
   const nearRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
+
+  // The blue band follows the layout, not the render: it must be in place before the
+  // first paint of a new page, and it must stay right even where the sky never renders.
+  useEffect(() => {
+    const host = skyRef.current?.parentElement
+    if (!host) return
+    placeDeep(host)
+    const observer = new ResizeObserver(() => placeDeep(host))
+    observer.observe(host)
+    return () => observer.disconnect()
+  }, [pathname])
 
   useEffect(() => {
     const sky = skyRef.current
@@ -449,6 +492,7 @@ export default function SkyBackground() {
 
   return (
     <>
+      <div aria-hidden="true" className="sky-deep pointer-events-none" />
       <div
         ref={skyRef}
         aria-hidden="true"
