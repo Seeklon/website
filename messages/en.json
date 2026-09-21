@@ -109,17 +109,17 @@
       "items": {
         "one": {
           "quote": "“Seeklon transforms how SMBs approach recruiting. The tool saves precious time by surfacing only relevant profiles.”",
-          "name": "Mentor testimonial",
-          "role": "Business expert"
+          "name": "Nihal Mougamadou",
+          "role": "Seeklon mentor, innowant"
         },
         "two": {
           "quote": "“A major innovation to tackle recruiting challenges: screen with precision and qualify talent effectively.”",
-          "name": "Jury favorite, BPI Hackathon 2024",
-          "role": "BPI Jury"
+          "name": "Bpifrance",
+          "role": "Jury’s favourite award, 2024 hackathon"
         },
         "three": {
           "quote": "“A promising innovation that addresses real screening and candidate qualification needs.”",
-          "name": "Epitech pedagogy team testimonial",
+          "name": "Epitech",
           "role": "Management"
         }
       }

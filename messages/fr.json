@@ -109,17 +109,17 @@
       "items": {
         "one": {
           "quote": "« Seeklon transforme l’approche du recrutement PME. L’outil fait gagner un temps précieux en ne présentant que les profils pertinents. »",
-          "name": "Témoignage Mentor",
-          "role": "Expert Business"
+          "name": "Nihal Mougamadou",
+          "role": "Mentor de Seeklon, innowant"
         },
         "two": {
           "quote": "« Une innovation majeure pour relever les défis du recrutement : trier avec précision et qualifier les talents avec pertinence. »",
-          "name": "Prix Coup de cœur du Jury Hackathon BPI 2024",
-          "role": "Jury BPI"
+          "name": "Bpifrance",
+          "role": "Prix Coup de cœur du jury, hackathon 2024"
         },
         "three": {
           "quote": "« Une innovation prometteuse qui répond aux vrais besoins de tri et de qualification des candidats. »",
-          "name": "Témoignage Équipe Pédagogique Epitech",
+          "name": "Epitech",
           "role": "Direction"
         }
       }
