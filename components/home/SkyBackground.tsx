@@ -280,12 +280,16 @@ const SKY_SCALE = 0.5
 const CLOUD_SCALE = 0.75
 // Canvas pixels one render may cost, however tall the page is.
 const PIXEL_BUDGET = 10_000_000
-// Rows drawn per frame, so the one-off render never blocks a frame for long. At 128 a
-// layer took thirty-odd frames whatever the GPU, and the three layers came one after the
-// other: the reader had scrolled past the hero before its clouds arrived.
-const STRIP_ROWS = 512
+// The render goes in strips, one per frame, sized to what this GPU does in STRIP_TARGET_MS:
+// a fixed 128 rows took thirty-odd frames per layer on any machine, a fixed 512 blocked a
+// slow one for a second at a time. The first strip is a small probe.
+const STRIP_PROBE_ROWS = 24
+const STRIP_MAX_ROWS = 1024
+const STRIP_TARGET_MS = 10
 // A strip slower than this means software rendering: keep the CSS sky instead.
 const STRIP_BUDGET_MS = 250
+// A whole layer slower than this, going by its first strip, is not worth its cost either.
+const LAYER_BUDGET_MS = 2500
 // The cloud layers are wider than the page: they drift sideways, and the edge must never
 // come into view.
 const CLOUD_OVERSCAN = 1.28
@@ -335,12 +339,24 @@ function placeDeep(host: HTMLElement) {
   host.dataset.deepHoisted = 'true'
 }
 
+// The status is not read here: asking for it waits for the compiler, and this shader takes
+// it a while. The link status, read once the driver says it is done, covers both.
 function compile(gl: WebGLRenderingContext, type: number, source: string) {
   const shader = gl.createShader(type)
   if (!shader) return null
   gl.shaderSource(shader, source)
   gl.compileShader(shader)
-  return gl.getShaderParameter(shader, gl.COMPILE_STATUS) ? shader : null
+  return shader
+}
+
+// Without a GPU the shader runs on the CPU, on the main thread: a second or more of
+// blocked page for a sky nobody is waiting for. That is every lab tool — Lighthouse,
+// PageSpeed Insights — and a few real machines. `failIfMajorPerformanceCaveat` is meant to
+// catch it and does not in headless Chrome, so the renderer is asked for its name.
+function isSoftwareRenderer(gl: WebGLRenderingContext) {
+  const info = gl.getExtension('WEBGL_debug_renderer_info')
+  const name = String(gl.getParameter(info ? info.UNMASKED_RENDERER_WEBGL : gl.RENDERER) ?? '')
+  return /swiftshader|llvmpipe|softpipe|software|basic render/i.test(name)
 }
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
@@ -367,6 +383,7 @@ async function renderLayer(
   if (!gl) return null
 
   try {
+    if (isSoftwareRenderer(gl)) return null
     const maxViewport = gl.getParameter(gl.MAX_VIEWPORT_DIMS) as Int32Array
     const maxSide = Math.min(4096, maxViewport[0], maxViewport[1], gl.getParameter(gl.MAX_RENDERBUFFER_SIZE))
     // A blog article is 10 000px tall, which at half scale is millions of pixels of
@@ -384,6 +401,15 @@ async function renderLayer(
     gl.attachShader(program, vertex)
     gl.attachShader(program, fragment)
     gl.linkProgram(program)
+    // Where the driver compiles in the background, wait for it a frame at a time instead
+    // of stalling the page on the first question asked of the program.
+    const parallel = gl.getExtension('KHR_parallel_shader_compile')
+    if (parallel) {
+      while (!gl.getProgramParameter(program, parallel.COMPLETION_STATUS_KHR)) {
+        await nextFrame()
+        if (isCancelled() || gl.isContextLost()) return null
+      }
+    }
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return null
     gl.useProgram(program)
 
@@ -409,14 +435,20 @@ async function renderLayer(
     gl.enable(gl.SCISSOR_TEST)
 
     // Top strips first (GL rows count from the bottom).
-    for (let top = 0; top < canvas.height; top += STRIP_ROWS) {
+    let stripRows = STRIP_PROBE_ROWS
+    for (let top = 0; top < canvas.height; ) {
       if (isCancelled() || gl.isContextLost()) return null
-      const rows = Math.min(STRIP_ROWS, canvas.height - top)
+      const rows = Math.min(stripRows, canvas.height - top)
       const started = performance.now()
       gl.scissor(0, canvas.height - top - rows, canvas.width, rows)
       gl.drawArrays(gl.TRIANGLES, 0, 3)
       gl.finish()
-      if (performance.now() - started > STRIP_BUDGET_MS) return null
+      const elapsed = performance.now() - started
+      if (elapsed > STRIP_BUDGET_MS) return null
+      // A GPU in name only: if the probe says the layer would take seconds, the CSS sky stays.
+      if (top === 0 && (elapsed * canvas.height) / rows > LAYER_BUDGET_MS) return null
+      top += rows
+      stripRows = Math.round(Math.min(STRIP_MAX_ROWS, Math.max(STRIP_PROBE_ROWS, (rows * STRIP_TARGET_MS) / Math.max(elapsed, 0.5))))
       await nextFrame()
     }
     if (isCancelled() || gl.isContextLost()) return null
