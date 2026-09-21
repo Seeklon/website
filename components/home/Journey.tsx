@@ -333,7 +333,7 @@ export default function Journey() {
       <div ref={runwayRef} className="relative mt-8 md:mt-14">
         <div>
           <div className="mx-auto w-full max-w-[1344px] px-6 md:px-10 lg:px-8">
-            <div ref={panelRef} className="lg:rounded-[28px] lg:bg-white/75 lg:px-8 lg:py-[clamp(20px,3.5vh,40px)] lg:shadow-[0_30px_60px_-40px_rgba(10,86,196,0.35)] xl:px-[52px]">
+            <div ref={panelRef} className="lg:rounded-[28px] lg:bg-white/75 lg:px-8 lg:py-[clamp(20px,3.5vh,40px)] lg:shadow-[0_30px_60px_-40px_rgba(10,86,196,0.35)] xl:px-10">
               <div role="tablist" aria-label={t('tabsLabel')} className="grid grid-cols-3 gap-3 md:gap-6 lg:gap-10">
                 {STEPS.map(({ key }, i) => (
                   <button
@@ -386,7 +386,7 @@ export default function Journey() {
                       id={`${uid}-panel-${i}`}
                       aria-labelledby={`${uid}-tab-${i}`}
                       aria-hidden={i !== active}
-                      className="flex w-[calc(100%-16px)] shrink-0 snap-start snap-always flex-col overflow-hidden rounded-[20px] bg-white/85 md:grid md:grid-cols-2 lg:w-full lg:grid-cols-[minmax(0,430px)_minmax(0,1fr)] lg:gap-[52px] lg:overflow-visible lg:rounded-none lg:bg-transparent"
+                      className="flex w-[calc(100%-16px)] shrink-0 snap-start snap-always flex-col overflow-hidden rounded-[20px] bg-white/85 md:grid md:grid-cols-2 lg:w-full lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-10 lg:overflow-visible lg:rounded-none lg:bg-transparent"
                     >
                       <StepMedia
                         step={step}
@@ -485,8 +485,8 @@ function StepMedia({
 
   return (
     <figure className="md:order-last lg:flex lg:flex-col">
-      <div className="lg:rounded-[24px] lg:bg-[linear-gradient(135deg,#EAF2FF_0%,#D4E4FE_100%)] lg:p-6 xl:p-8">
-        <div className="lg:mx-auto lg:rounded-[14px] lg:bg-white/80 lg:p-2">
+      <div className="lg:rounded-[24px] lg:bg-[linear-gradient(135deg,#EAF2FF_0%,#D4E4FE_100%)] lg:p-3 xl:p-4">
+        <div className="lg:mx-auto lg:rounded-[14px] lg:bg-white/80 lg:p-1.5">
           <ImageZoom
             src={wide.src}
             srcSet={wide.srcSet}
@@ -495,6 +495,7 @@ function StepMedia({
             openLabel={openLabel}
             closeLabel={closeLabel}
             focusable={active}
+            video={step.video?.wide}
           >
           <span className="relative block overflow-hidden md:h-full lg:h-auto lg:rounded-[8px]">
           <picture
