@@ -1,12 +1,12 @@
 import { useTranslations } from 'next-intl'
 import Reveal from './Reveal'
 
-// Who signs each quote, shown beside the name: a portrait for a person, the wordmark on a
-// white tile for an organisation. An item without either shows its name alone — an empty
+// Who signs each quote, shown beside the name: a portrait for a person, the wordmark in a
+// white disc for an organisation. An item without either shows its name alone — an empty
 // circle said "missing photo" louder than nothing at all.
 type Mark = { src: string; width: number; height: number; kind: 'portrait' | 'logo' }
 const ITEMS: { key: string; mark?: Mark }[] = [
-  { key: 'one' },
+  { key: 'one', mark: { src: '/home/mentor-nihal.webp', width: 176, height: 176, kind: 'portrait' } },
   { key: 'two', mark: { src: '/home/logo-bpifrance.svg', width: 77, height: 22, kind: 'logo' } },
   { key: 'three', mark: { src: '/home/logo-epitech.svg', width: 167, height: 42, kind: 'logo' } },
 ]
@@ -41,13 +41,13 @@ export default function Testimonials() {
               </blockquote>
               <figcaption className="flex items-center gap-4">
                 {mark?.kind === 'logo' ? (
-                  <span className="flex h-11 shrink-0 items-center rounded-[10px] bg-white px-3">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white">
                     {/* eslint-disable-next-line @next/next/no-img-element -- a 2 to 5 KB SVG */}
-                    <img src={mark.src} alt="" width={mark.width} height={mark.height} loading="lazy" className="h-[18px] w-auto" />
+                    <img src={mark.src} alt="" width={mark.width} height={mark.height} loading="lazy" className="h-auto w-[44px]" />
                   </span>
                 ) : mark ? (
                   // eslint-disable-next-line @next/next/no-img-element -- already a 320px WebP
-                  <img src={mark.src} alt="" width={mark.width} height={mark.height} loading="lazy" className="h-11 w-11 shrink-0 rounded-full object-cover" />
+                  <img src={mark.src} alt="" width={mark.width} height={mark.height} loading="lazy" className="h-14 w-14 shrink-0 rounded-full object-cover" />
                 ) : null}
                 <span>
                   <span className="block text-[15px] text-ink">{t(`items.${key}.name`)}</span>
