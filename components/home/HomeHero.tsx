@@ -3,8 +3,8 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import LoopVideo from './LoopVideo'
 import candidatesShot from '@/public/home/capture-candidatures.png'
-import offerShot from '@/public/home/capture-offre.png'
-import interviewShot from '@/public/home/capture-entretien.png'
+import offerShot from '@/public/home/hero-lateral-gauche.webp'
+import interviewShot from '@/public/home/hero-lateral-droite.webp'
 
 export default function HomeHero() {
   const t = useTranslations('Home.hero')
