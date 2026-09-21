@@ -70,10 +70,10 @@
           "tab": "Rédiger",
           "title1": "Mettre des mots",
           "title2": "sur votre besoin.",
-          "body": "Quelles missions ? Quelles compétences ? Qu’est-ce qui compte vraiment pour ce poste ? La rédaction guidée vous aide à construire une offre claire à partir de vos réponses.",
+          "body": "Vous avez déjà une fiche de poste ? Déposez-la : Seeklon en tire l’intitulé, le lieu et les compétences, et prépare une offre claire que vous relisez et ajustez.",
           "outcome": "Une offre claire pour commencer.",
           "caption": "L’offre",
-          "alt": "Seeklon : formulaire de création d’une offre"
+          "alt": "Seeklon : import d’une fiche de poste et création de l’offre"
         },
         "sort": {
           "tab": "Trier",

@@ -70,10 +70,10 @@
           "tab": "Write",
           "title1": "Put words",
           "title2": "to your need.",
-          "body": "Which tasks? Which skills? What really matters for this role? Guided writing helps you build a clear job post from your answers.",
+          "body": "Already have a job description? Drop it in: Seeklon pulls out the title, location and skills, and drafts a clear job post for you to review and adjust.",
           "outcome": "A clear job post to start with.",
           "caption": "The job post",
-          "alt": "Seeklon: job post creation form"
+          "alt": "Seeklon: importing a job description and creating the job post"
         },
         "sort": {
           "tab": "Sort",
