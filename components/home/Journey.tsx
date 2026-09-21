@@ -20,7 +20,8 @@ import interviewCrop from '@/public/home/capture-entretien-mobile.png'
 // whole screen, drawn for 1920px, came out at 38% in a 736px slot — 8px text, a blur on any
 // 1x display whatever the encoding. So the slide shows a framing on what matters (`frame`
 // and `video.wide`, 16:9; `crop` and `video.narrow`, 4:3 on small screens) and keeps the
-// whole screen (`image`, `video.zoom`) for the enlarged view.
+// whole screen (`image`, `video.zoom`) for the enlarged view. The 16:9 framing keeps
+// everything that moves — the full table with its actions — and drops the app chrome.
 type Step = {
   key: string
   image: StaticImageData
