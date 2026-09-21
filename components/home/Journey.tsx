@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Link } from '@/i18n/navigation'
 import Reveal from './Reveal'
 import ImageZoom from './ImageZoom'
+import LoopVideo from './LoopVideo'
 import offerShot from '@/public/home/capture-offre.png'
 import offerCrop from '@/public/home/capture-offre-mobile.png'
 import candidatesShot from '@/public/home/capture-candidatures.png'
@@ -14,11 +15,19 @@ import candidatesCrop from '@/public/home/capture-candidatures-mobile.png'
 import interviewShot from '@/public/home/capture-entretien.png'
 import interviewCrop from '@/public/home/capture-entretien-mobile.png'
 
-const STEPS = [
+// A step with a `video` plays it over its capture, which is the loop's first frame: the
+// 16:9 file on wide screens, the 4:3 one where the slide shows the crop.
+type Step = { key: string; image: StaticImageData; crop: StaticImageData; video?: { wide: string; narrow: string } }
+const STEPS: readonly Step[] = [
   { key: 'draft', image: offerShot, crop: offerCrop },
-  { key: 'sort', image: candidatesShot, crop: candidatesCrop },
+  {
+    key: 'sort',
+    image: candidatesShot,
+    crop: candidatesCrop,
+    video: { wide: '/home/video/candidatures-1920.mp4', narrow: '/home/video/candidatures-mobile-672.mp4' },
+  },
   { key: 'prepare', image: interviewShot, crop: interviewCrop },
-] as const
+]
 
 // Keep in sync with the `lg` and `pin` screens in tailwind.config.js.
 // How far off the middle of the window the panel may sit and still take the wheel, as a
@@ -454,7 +463,7 @@ function StepMedia({
   openLabel,
   closeLabel,
 }: {
-  step: { image: StaticImageData; crop: StaticImageData }
+  step: Step
   alt: string
   caption: string
   active: boolean
@@ -487,6 +496,7 @@ function StepMedia({
             closeLabel={closeLabel}
             focusable={active}
           >
+          <span className="relative block overflow-hidden md:h-full lg:h-auto lg:rounded-[8px]">
           <picture
             data-active={active}
             style={{ '--shift': offset === 0 ? '0px' : offset < 0 ? '-18px' : '18px' } as React.CSSProperties}
@@ -495,6 +505,8 @@ function StepMedia({
             <source media="(min-width: 1024px)" srcSet={wide.srcSet} sizes={wide.sizes} />
             <img {...narrow} alt={alt} className="h-full w-full object-cover object-left-top" />
           </picture>
+          {step.video ? <LoopVideo {...step.video} active={active} className="object-left-top" /> : null}
+          </span>
           </ImageZoom>
         </div>
       </div>

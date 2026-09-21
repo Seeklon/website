@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
+import LoopVideo from './LoopVideo'
 import candidatesShot from '@/public/home/capture-candidatures.png'
 import offerShot from '@/public/home/capture-offre.png'
 import interviewShot from '@/public/home/capture-entretien.png'
@@ -68,13 +69,17 @@ export default function HomeHero() {
           />
         </div>
 
-        <Image
-          src={candidatesShot}
-          alt={t('shotCandidates')}
-          priority
-          sizes="(min-width: 1010px) 962px, calc(100vw - 48px)"
-          className="hero-shot relative w-full rounded-lg shadow-[0_24px_48px_-16px_rgba(12,109,248,0.4)] md:rounded-[10px] md:shadow-[0_40px_80px_-24px_rgba(12,109,248,0.45)]"
-        />
+        {/* The capture is the first frame of the loop that plays over it. */}
+        <div className="hero-shot relative overflow-hidden rounded-lg shadow-[0_24px_48px_-16px_rgba(12,109,248,0.4)] md:rounded-[10px] md:shadow-[0_40px_80px_-24px_rgba(12,109,248,0.45)]">
+          <Image
+            src={candidatesShot}
+            alt={t('shotCandidates')}
+            priority
+            sizes="(min-width: 1010px) 962px, calc(100vw - 48px)"
+            className="block w-full"
+          />
+          <LoopVideo wide="/home/video/candidatures-1920.mp4" narrow="/home/video/candidatures-960.mp4" narrowBelow={768} />
+        </div>
       </figure>
 
     </section>
