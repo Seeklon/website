@@ -207,8 +207,11 @@ void main() {
   // the base colour, so the white copy keeps its contrast.
   // Wider banks down there, not lighter ones: the lightest point is what the white copy is
   // measured against, so the blue gets more weather by area and none by brightness.
-  float deepMass = smoothstep(-0.6, 0.15, bankHere) * 0.52 * deep;
-  vec3 deepTint = vec3(0.185, 0.455, 0.93);
+  // What makes them clouds rather than lighter blue is not brightness — the white copy
+  // caps that — but relief and hue: shadows darker than the base, lights at the ceiling,
+  // and a greyer, whiter tint than the saturated blue at the same luminance.
+  float deepMass = smoothstep(-0.6, 0.15, bankHere) * 0.76 * deep;
+  vec3 deepTint = mix(vec3(0.02, 0.27, 0.78), vec3(0.285, 0.455, 0.875), smoothstep(0.25, 0.9, massLight));
   sky = mix(sky, deepTint, deepMass);
   vec4 acc = uLayer > 0.5 ? vec4(0.0) : vec4(sky, 1.0); // premultiplied
 
@@ -254,8 +257,8 @@ void main() {
     float body = smoothstep(0.02 - 0.22 * deep, 0.62 - 0.12 * deep, here);
     float light = clamp(0.66 + (here - towardsSun) * 1.4, 0.0, 1.0);
     vec3 col = mix(vec3(0.835, 0.885, 0.965), vec3(0.992, 0.995, 1.0), light);
-    col = mix(col, vec3(0.20, 0.47, 0.935), deep);
-    float a = body * mix(0.7, 0.3, deep);
+    col = mix(col, mix(vec3(0.03, 0.28, 0.79), vec3(0.285, 0.455, 0.875), smoothstep(0.3, 0.9, light)), deep);
+    float a = body * mix(0.7, 0.42, deep);
     acc = vec4(col * a, a);
   }
 
