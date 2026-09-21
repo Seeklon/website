@@ -12,19 +12,34 @@ import offerShot from '@/public/home/capture-offre.png'
 import offerCrop from '@/public/home/capture-offre-mobile.png'
 import candidatesShot from '@/public/home/capture-candidatures.png'
 import candidatesCrop from '@/public/home/capture-candidatures-mobile.png'
+import candidatesFrame from '@/public/home/capture-candidatures-cadre.png'
 import interviewShot from '@/public/home/capture-entretien.png'
 import interviewCrop from '@/public/home/capture-entretien-mobile.png'
 
-// A step with a `video` plays it over its capture, which is the loop's first frame: the
-// 16:9 file on wide screens, the 4:3 one where the slide shows the crop.
-type Step = { key: string; image: StaticImageData; crop: StaticImageData; video?: { wide: string; narrow: string } }
+// A step with a `video` plays it over its capture, which is the loop's first frame. The
+// whole screen, drawn for 1920px, came out at 38% in a 736px slot — 8px text, a blur on any
+// 1x display whatever the encoding. So the slide shows a framing on what matters (`frame`
+// and `video.wide`, 16:9; `crop` and `video.narrow`, 4:3 on small screens) and keeps the
+// whole screen (`image`, `video.zoom`) for the enlarged view.
+type Step = {
+  key: string
+  image: StaticImageData
+  crop: StaticImageData
+  frame?: StaticImageData
+  video?: { wide: string; narrow: string; zoom: string }
+}
 const STEPS: readonly Step[] = [
   { key: 'draft', image: offerShot, crop: offerCrop },
   {
     key: 'sort',
     image: candidatesShot,
     crop: candidatesCrop,
-    video: { wide: '/home/video/candidatures-1920.mp4', narrow: '/home/video/candidatures-mobile-672.mp4' },
+    frame: candidatesFrame,
+    video: {
+      wide: '/home/video/candidatures-cadre-1472.mp4',
+      narrow: '/home/video/candidatures-mobile-672.mp4',
+      zoom: '/home/video/candidatures-1920.mp4',
+    },
   },
   { key: 'prepare', image: interviewShot, crop: interviewCrop },
 ]
@@ -475,7 +490,8 @@ function StepMedia({
 }) {
   // Phones and tablets get a readable crop; wide screens the whole screen. Both load
   // up front so a slide never arrives empty.
-  const { props: wide } = getImageProps({ src: step.image, alt, sizes: '(min-width: 1280px) 736px, 55vw' })
+  const { props: wide } = getImageProps({ src: step.frame ?? step.image, alt, sizes: '(min-width: 1280px) 736px, 55vw' })
+  const { props: full } = getImageProps({ src: step.image, alt, sizes: '(min-width: 1340px) 1240px, 92vw' })
   const { props: narrow } = getImageProps({
     src: step.crop,
     alt,
@@ -488,14 +504,14 @@ function StepMedia({
       <div className="lg:rounded-[24px] lg:bg-[linear-gradient(135deg,#EAF2FF_0%,#D4E4FE_100%)] lg:p-3 xl:p-4">
         <div className="lg:mx-auto lg:rounded-[14px] lg:bg-white/80 lg:p-1.5">
           <ImageZoom
-            src={wide.src}
-            srcSet={wide.srcSet}
+            src={full.src}
+            srcSet={full.srcSet}
             alt={alt}
             caption={caption}
             openLabel={openLabel}
             closeLabel={closeLabel}
             focusable={active}
-            video={step.video?.wide}
+            video={step.video?.zoom}
           >
           <span className="relative block overflow-hidden md:h-full lg:h-auto lg:rounded-[8px]">
           <picture
@@ -506,7 +522,7 @@ function StepMedia({
             <source media="(min-width: 1024px)" srcSet={wide.srcSet} sizes={wide.sizes} />
             <img {...narrow} alt={alt} className="h-full w-full object-cover object-left-top" />
           </picture>
-          {step.video ? <LoopVideo {...step.video} active={active} className="object-left-top" /> : null}
+          {step.video ? <LoopVideo wide={step.video.wide} narrow={step.video.narrow} active={active} className="object-left-top" /> : null}
           </span>
           </ImageZoom>
         </div>
