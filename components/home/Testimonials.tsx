@@ -15,9 +15,12 @@ export default function Testimonials() {
             <span className="block">{t('line2')}</span>
           </h2>
         </Reveal>
-        <p className="max-w-[17rem] text-balance text-xs leading-relaxed text-ink-faint md:text-sm lg:mb-1.5">
-          {t('note')}
-        </p>
+        {/* Only there while the quotes are placeholders. */}
+        {t.has('note') ? (
+          <p className="max-w-[17rem] text-balance text-xs leading-relaxed text-ink-faint md:text-sm lg:mb-1.5">
+            {t('note')}
+          </p>
+        ) : null}
       </div>
 
       {/* Two shared rows (quote, author) so the names line up across the cards. */}

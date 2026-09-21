@@ -105,23 +105,22 @@
     },
     "testimonials": {
       "line1": "Ce que ça change,",
-      "line2": "dit par ceux qui recrutent.",
-      "note": "Témoignages d’exemple, à remplacer par de vrais retours clients avant la mise en ligne.",
+      "line2": "dit par ceux qui l’ont vu naître.",
       "items": {
         "one": {
-          "quote": "« Avant, je passais mes dimanches à relire des CV. Maintenant, je sais qui appeler dès le lundi matin. »",
-          "name": "[Prénom Nom]",
-          "role": "[Gérante], [Entreprise], [12] salariés"
+          "quote": "« Seeklon transforme l’approche du recrutement PME. L’outil fait gagner un temps précieux en ne présentant que les profils pertinents. »",
+          "name": "Témoignage Mentor",
+          "role": "Expert Business"
         },
         "two": {
-          "quote": "« On a publié notre première offre dans l’après-midi. Sans service RH, sans agence. »",
-          "name": "[Prénom Nom]",
-          "role": "[Fondateur], [Entreprise], [25] salariés"
+          "quote": "« Une innovation majeure pour relever les défis du recrutement : trier avec précision et qualifier les talents avec pertinence. »",
+          "name": "Prix Coup de cœur du Jury Hackathon BPI 2024",
+          "role": "Jury BPI"
         },
         "three": {
-          "quote": "« Le guide d’entretien m’a évité de poser les mêmes questions à tout le monde. J’ai enfin pu comparer les candidats. »",
-          "name": "[Prénom Nom]",
-          "role": "[Directrice des opérations], [Entreprise], [40] salariés"
+          "quote": "« Une innovation prometteuse qui répond aux vrais besoins de tri et de qualification des candidats. »",
+          "name": "Témoignage Équipe Pédagogique Epitech",
+          "role": "Direction"
         }
       }
     },

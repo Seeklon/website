@@ -105,23 +105,22 @@
     },
     "testimonials": {
       "line1": "What it changes,",
-      "line2": "in the words of those who hire.",
-      "note": "Sample testimonials, to be replaced with real customer feedback before launch.",
+      "line2": "told by those who saw it start.",
       "items": {
         "one": {
-          "quote": "“I used to spend my Sundays rereading CVs. Now I know who to call first thing Monday morning.”",
-          "name": "[First Last]",
-          "role": "[Manager], [Company], [12] employees"
+          "quote": "“Seeklon transforms how SMBs approach recruiting. The tool saves precious time by surfacing only relevant profiles.”",
+          "name": "Mentor testimonial",
+          "role": "Business expert"
         },
         "two": {
-          "quote": "“We published our first job post in an afternoon. No HR department, no agency.”",
-          "name": "[First Last]",
-          "role": "[Founder], [Company], [25] employees"
+          "quote": "“A major innovation to tackle recruiting challenges: screen with precision and qualify talent effectively.”",
+          "name": "Jury favorite, BPI Hackathon 2024",
+          "role": "BPI Jury"
         },
         "three": {
-          "quote": "“The interview guide kept me from asking everyone the same questions. I could finally compare candidates.”",
-          "name": "[First Last]",
-          "role": "[Operations Director], [Company], [40] employees"
+          "quote": "“A promising innovation that addresses real screening and candidate qualification needs.”",
+          "name": "Epitech pedagogy team testimonial",
+          "role": "Management"
         }
       }
     },
