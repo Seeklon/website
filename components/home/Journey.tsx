@@ -21,9 +21,8 @@ const STEPS = [
 ] as const
 
 // Keep in sync with the `lg` and `pin` screens in tailwind.config.js.
-// How long the page must have been still before the panel may take the wheel, how far
-// off centre the panel may sit and still take it, and how long one slide takes to travel.
-const PAGE_SETTLE_MS = 120
+// How far off the middle of the window the panel may sit and still take the wheel, as a
+// share of the window height, and how long one slide takes to travel.
 const CENTRE_BAND = 0.2
 const SLIDE_MS = 560
 // Silence between two wheel events that ends a gesture (a burst runs at 17–24ms).
@@ -51,7 +50,6 @@ export default function Journey() {
   const viewportRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
-  const overRef = useRef(false)
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   // Unknown until the first media query check; rendered like 'swipe' meanwhile.
   const [mode, setMode] = useState<Mode | null>(null)
@@ -211,61 +209,80 @@ export default function Journey() {
     goTo(next)
   }
 
-  // Over the panel the wheel moves the slides, one notch one slide, and the panel hands
-  // the page straight back at either end. Two rules keep it honest: every event it takes
-  // starts a visible movement, and it takes nothing at all while the page itself is
-  // scrolling — the panel slides under a motionless cursor, and stopping a scroll the
-  // reader aimed elsewhere is what made it feel stuck.
+  // Over the panel the wheel moves the slides sideways and the page stands still; off the
+  // panel, the page scrolls as it always does. The decision is taken once, when a gesture
+  // starts, and holds until that gesture ends: read at every event, the first hundred
+  // pixels of page scroll pushed the panel out of the centre band, which made it refuse
+  // the next event, which scrolled another hundred — the page ran away under a cursor
+  // that never left the block.
   useEffect(() => {
     const panel = panelRef.current
     const viewport = viewportRef.current
     const track = trackRef.current
     if (!panel || !viewport || !track || mode !== 'panel') return
 
-    let lastPageScroll = 0
     let lastWheel = 0
     let busyUntil = 0
+    // Whether the current gesture belongs to the panel, and whether it has moved a slide.
+    let taken = false
+    let slid = false
     let target: number | null = null
     let release = 0
 
-    const onScroll = () => {
-      lastPageScroll = performance.now()
-    }
-    const enter = () => {
-      overRef.current = true
-    }
-    const leave = () => {
-      overRef.current = false
-    }
+    // The listener sits on the panel, so an event only arrives here when the pointer is
+    // over it: that is the whole hover test. A `pointerenter` flag used to guard it as
+    // well, and it never fired when the panel scrolled up under a cursor that had not
+    // moved — the block the reader was pointing at simply ignored them.
     const onWheel = (event: WheelEvent) => {
-      if (!overRef.current || document.querySelector('dialog[open]')) return
-      if (performance.now() - lastPageScroll < PAGE_SETTLE_MS) return
-      // Only once the panel has settled near the middle of the window: on its way in or
-      // out it is the page the reader is moving, not the slides.
-      const rect = panel.getBoundingClientRect()
-      const offCentre = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2)
-      if (offCentre > window.innerHeight * CENTRE_BAND) return
+      if (document.querySelector('dialog[open]')) return
       const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY
       const direction = Math.sign(delta)
       if (direction === 0 || Math.abs(delta) < 2) return
 
+      // One burst of the trackpad is one gesture: events keep coming every 17–24ms long
+      // after the fingers have lifted, while a slide takes about 590ms to fly.
+      const now = performance.now()
+      if (now - lastWheel >= GESTURE_GAP_MS) {
+        taken = false
+        slid = false
+      }
+      lastWheel = now
+
+      // The panel claims the wheel once it has settled near the middle of the window — a
+      // gesture that starts higher up scrolls the page until it gets there, and is taken
+      // from that point on. The claim is only ever gained mid-gesture, never lost to
+      // position: read both ways, the first hundred pixels of scroll pushed the panel out
+      // of the band, which made it refuse the next event, which scrolled another hundred.
+      if (!taken) {
+        const rect = panel.getBoundingClientRect()
+        const offCentre = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2)
+        taken = offCentre <= window.innerHeight * CENTRE_BAND
+      }
+      if (!taken) return
+
+      // The page waits while a slide flies, and for the rest of the gesture that launched
+      // it: one gesture, one slide. Letting the page go as soon as the last slide left
+      // scrolled it away under a picture still in motion.
+      if (now < busyUntil || slid) {
+        event.preventDefault()
+        return
+      }
+
       const pitch = slidePitch(track) || viewport.clientWidth
       const current = target ?? Math.round(viewport.scrollLeft / pitch)
-      const next = current + direction
-      // Nothing left in that direction: the page takes the wheel back.
-      if (next < 0 || next > STEPS.length - 1) return
+      // Nothing left in that direction: this gesture is the page's, and the reader
+      // carries on out of the section in one movement.
+      if (current + direction < 0 || current + direction > STEPS.length - 1) {
+        taken = false
+        return
+      }
       event.preventDefault()
-      // One burst of the trackpad is one gesture. Events keep coming every 17–24ms while
-      // a slide takes about 590ms to fly; counting each one ran two slides per swipe.
-      const now = performance.now()
-      const continuing = now - lastWheel < GESTURE_GAP_MS
-      lastWheel = now
-      if (continuing || now < busyUntil) return
 
-      target = next
+      slid = true
+      target = current + direction
       busyUntil = now + SLIDE_MS
       viewport.style.scrollSnapType = 'none'
-      viewport.scrollTo({ left: next * pitch, behavior: reducedMotion() ? 'auto' : 'smooth' })
+      viewport.scrollTo({ left: target * pitch, behavior: reducedMotion() ? 'auto' : 'smooth' })
       window.clearTimeout(release)
       release = window.setTimeout(() => {
         viewport.style.scrollSnapType = ''
@@ -273,15 +290,9 @@ export default function Journey() {
       }, SLIDE_MS + 120)
     }
 
-    panel.addEventListener('pointerenter', enter)
-    panel.addEventListener('pointerleave', leave)
     panel.addEventListener('wheel', onWheel, { passive: false })
-    window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
-      panel.removeEventListener('pointerenter', enter)
-      panel.removeEventListener('pointerleave', leave)
       panel.removeEventListener('wheel', onWheel)
-      window.removeEventListener('scroll', onScroll)
       window.clearTimeout(release)
       viewport.style.scrollSnapType = ''
     }
