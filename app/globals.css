@@ -139,10 +139,6 @@ body {
   .home [data-reveal] .reveal-stagger > *,
   .home [data-reveal]:not(:has(:is(h1, h2, h3) > span)):not(:has(.reveal-stagger)) {
     --reveal-delay: 0ms;
-    /* The mask stops at the box, and a descender hangs below it: the g of "Vous gardez la
-       décision." came out shaved. The box is extended, the layout is not. */
-    padding-bottom: 0.16em;
-    margin-bottom: -0.16em;
     opacity: 0;
     transform: translateY(14px);
     filter: blur(12px);
@@ -158,6 +154,16 @@ body {
       filter 1.1s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
       -webkit-mask-position 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
       mask-position 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay);
+  }
+
+  /* The mask stops at the box, and a descender hangs below it: the g of "Vous gardez la
+     décision." came out shaved. The box is extended, the layout is not. Not for the cards
+     of a staggered grid: they have a padding of their own, and this one replaced it — 32px
+     under a button came out as 2.56. */
+  .home [data-reveal] :is(h1, h2, h3) > span,
+  .home [data-reveal]:not(:has(:is(h1, h2, h3) > span)):not(:has(.reveal-stagger)) {
+    padding-bottom: 0.16em;
+    margin-bottom: -0.16em;
   }
 
   .home [data-reveal] :is(h1, h2, h3) > span:nth-child(2) {

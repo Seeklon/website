@@ -312,7 +312,7 @@
             "Guides d’entretien",
             "1 utilisateur"
           ],
-          "highlight": "1 offre active · 1 utilisateur"
+          "highlight": "Contenu du pack à venir"
         },
         "storm": {
           "name": "Tempête",
@@ -326,7 +326,7 @@
             "3 utilisateurs",
             "Support par e-mail"
           ],
-          "highlight": "5 offres actives · 3 utilisateurs"
+          "highlight": "Contenu du pack à venir"
         },
         "cyclone": {
           "name": "Cyclone",
@@ -339,7 +339,7 @@
             "Suivi de vos recrutements",
             "Accompagnement au démarrage"
           ],
-          "highlight": "Offres illimitées · 10 utilisateurs"
+          "highlight": "Contenu du pack à venir"
         }
       },
       "lead": "Le détail, ligne par ligne."
