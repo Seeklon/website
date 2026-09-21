@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, type ReactNode } from 'react'
+import { useRef, useState, type ReactNode } from 'react'
 import { X } from 'lucide-react'
 
 /**
@@ -17,6 +17,7 @@ export default function ImageZoom({
   openLabel,
   closeLabel,
   focusable = true,
+  video,
 }: {
   children: ReactNode
   src?: string
@@ -27,8 +28,13 @@ export default function ImageZoom({
   closeLabel: string
   /** A slide that is off-screen is aria-hidden; its button must leave the tab order too. */
   focusable?: boolean
+  /** A loop to play in place of the still once the dialog is open (never before). */
+  video?: string
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null)
+  const [open, setOpen] = useState(false)
+  const playVideo =
+    open && video && typeof window !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   return (
     <>
@@ -36,7 +42,10 @@ export default function ImageZoom({
         type="button"
         aria-label={openLabel}
         tabIndex={focusable ? 0 : -1}
-        onClick={() => dialogRef.current?.showModal()}
+        onClick={() => {
+          dialogRef.current?.showModal()
+          setOpen(true)
+        }}
         className="block w-full cursor-zoom-in rounded-[8px] text-left"
       >
         {children}
@@ -44,13 +53,27 @@ export default function ImageZoom({
 
       <dialog
         ref={dialogRef}
+        onClose={() => setOpen(false)}
         onClick={(event) => {
           if (event.target === dialogRef.current) dialogRef.current?.close()
         }}
         className="max-h-[92vh] w-[min(1240px,92vw)] rounded-[24px] bg-white p-4 text-ink backdrop:bg-ink/55 md:p-6"
       >
         <figure className="m-0">
-          <img src={src} srcSet={srcSet} alt={alt} className="h-auto w-full rounded-[12px]" />
+          {playVideo ? (
+            <video
+              src={video}
+              poster={src}
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-label={alt}
+              className="h-auto w-full rounded-[12px]"
+            />
+          ) : (
+            <img src={src} srcSet={srcSet} alt={alt} className="h-auto w-full rounded-[12px]" />
+          )}
           <figcaption className="mt-4 flex items-center justify-between gap-6 text-[15px] text-ink-soft">
             {caption}
             <button

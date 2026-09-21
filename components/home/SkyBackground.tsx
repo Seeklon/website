@@ -114,7 +114,10 @@ vec2 cumulus(vec2 p, float fluff, float coverage, float deepGain, float cellToCs
       // here, per cell — read at the fragment, the test flipped in the middle of a cloud
       // and popped it into existence along a straight line.
       float cellCss = (c.y + 0.5 + cellYOffset) * cellToCss;
-      float cellLow = smoothstep(0.5, 1.0, clamp(cellCss / max(uDeep.x, 1.0), 0.0, 1.0));
+      // Measured in pixels from the top, not as a share of the page: a share put different
+      // clouds at the same spot on a short page and a long one, and going from one to the
+      // other made some appear and others vanish under the reader's eyes.
+      float cellLow = smoothstep(1400.0, 4200.0, cellCss);
       // Coverage drifts across the page: clusters here, open sky there.
       float cellDeep = smoothstep(uDeep.x, uDeep.y, cellCss);
       if (hash(c + 7.13) > coverage + 0.06 * cellLow + deepGain * cellDeep + 0.22 * snoise(c * 0.37 + 4.0)) continue;
@@ -468,61 +471,137 @@ async function renderLayer(
  * on transparent ground. Scrolling is left entirely to the browser — a canvas redrawn in
  * JavaScript always trails the text by a frame — and the clouds move on their own, with a
  * CSS transform the compositor animates without asking the main thread for anything.
+ *
+ * A render is shown as one set: the three layers come in together on a single crossfade
+ * over the set before it, with the drift picked up where the old one had got to. The
+ * pattern is the same at the same place on every page, so from one page to the next the
+ * sky above the fold holds still. Swapped one layer at a time, each restarting its drift,
+ * clouds jumped, appeared and vanished at every link.
  */
+type SkySet = { element: HTMLDivElement; urls: string[]; layout: SkyLayout }
+
+// Renders already made, by layout: going back to a page shows its sky without redrawing it.
+const RENDER_CACHE = new Map<string, Blob[]>()
+const RENDER_CACHE_SIZE = 6
+const CROSSFADE_MS = 900
+
+const LAYER_CLASSES = [
+  'absolute inset-0 bg-no-repeat',
+  'sky-far absolute inset-y-0 -left-[14%] w-[128%] bg-no-repeat',
+  'sky-near absolute inset-y-0 -left-[14%] w-[128%] bg-no-repeat',
+]
+
+const layoutKey = (layout: SkyLayout) =>
+  // Rounded so sub-pixel reflows don't trigger a new render.
+  [layout.width, layout.height, layout.deepStart, layout.deepEnd].map((v) => Math.round(v / 4)).join(':')
+
 export default function SkyBackground() {
-  const skyRef = useRef<HTMLDivElement>(null)
-  const farRef = useRef<HTMLDivElement>(null)
-  const nearRef = useRef<HTMLDivElement>(null)
+  const stageRef = useRef<HTMLDivElement>(null)
+  const currentRef = useRef<SkySet | null>(null)
   const pathname = usePathname()
 
   // The blue band follows the layout, not the render: it must be in place before the
   // first paint of a new page, and it must stay right even where the sky never renders.
   useEffect(() => {
-    const host = skyRef.current?.parentElement
+    const host = stageRef.current?.parentElement
     if (!host) return
     placeDeep(host)
+
+    // The sky of the page just left is still up while the new one is drawn, and its deep
+    // blue belongs to the old page's height: a blue band across the middle of a longer
+    // page, or white clouds behind the white copy of a shorter one. Until the new sky
+    // fades in, the old one stops above whichever band comes first.
+    const current = currentRef.current
+    if (current) {
+      const next = measureLayout(host)
+      if (Math.abs(next.deepStart - current.layout.deepStart) > 80) {
+        const cut = Math.min(next.deepStart, current.layout.deepStart)
+        const mask = `linear-gradient(#000 0px, #000 ${Math.max(0, cut - 320)}px, transparent ${Math.max(0, cut)}px)`
+        current.element.style.setProperty('-webkit-mask-image', mask)
+        current.element.style.setProperty('mask-image', mask)
+      }
+    }
+
     const observer = new ResizeObserver(() => placeDeep(host))
     observer.observe(host)
     return () => observer.disconnect()
   }, [pathname])
 
   useEffect(() => {
-    const sky = skyRef.current
-    const far = farRef.current
-    const near = nearRef.current
-    const host = sky?.parentElement
-    if (!sky || !far || !near || !host) return
+    const stage = stageRef.current
+    const host = stage?.parentElement
+    if (!stage || !host) return
 
     let disposed = false
     let running = false
     let queued = false
     let renderedKey = ''
     let debounce = 0
-    const urls = new Map<HTMLElement, string>()
+    const timers = new Set<number>()
 
-    // The image is laid at the height it was rendered for, not stretched to the host: when
-    // the page grows after the render (a picture arrives, a font swaps) every cloud used to
-    // be pulled taller until the next one landed.
-    const show = async (element: HTMLElement, blob: Blob, height: number) => {
-      const url = URL.createObjectURL(blob)
-      const image = new Image()
-      image.src = url
+    const retire = (set: SkySet) => {
+      set.element.remove()
+      set.urls.forEach((url) => URL.revokeObjectURL(url))
+    }
+
+    const present = async (blobs: Blob[], layout: SkyLayout) => {
+      const urls = blobs.map((blob) => URL.createObjectURL(blob))
       try {
-        await image.decode()
+        await Promise.all(
+          urls.map((url) => {
+            const image = new Image()
+            image.src = url
+            return image.decode()
+          }),
+        )
       } catch {
-        URL.revokeObjectURL(url)
+        urls.forEach((url) => URL.revokeObjectURL(url))
         return
       }
       if (disposed) {
-        URL.revokeObjectURL(url)
+        urls.forEach((url) => URL.revokeObjectURL(url))
         return
       }
-      element.style.backgroundImage = `url("${url}")`
-      element.style.backgroundSize = `100% ${height}px`
-      element.dataset.ready = 'true'
-      const previous = urls.get(element)
-      if (previous) URL.revokeObjectURL(previous)
-      urls.set(element, url)
+
+      const element = document.createElement('div')
+      element.className = 'absolute inset-0 opacity-0'
+      element.style.transition = `opacity ${CROSSFADE_MS}ms ease-out`
+      const layers = urls.map((url, i) => {
+        const layer = document.createElement('div')
+        layer.className = LAYER_CLASSES[i]
+        layer.style.backgroundImage = `url("${url}")`
+        // Laid at the height it was rendered for, not stretched to the host: when the page
+        // grows after the render every cloud used to be pulled taller.
+        layer.style.backgroundSize = `100% ${layout.height}px`
+        layer.dataset.ready = 'true'
+        element.appendChild(layer)
+        return layer
+      })
+      stage.appendChild(element)
+
+      // Pick the drift up where the outgoing set has got to, so a cloud fades into itself.
+      const previous = currentRef.current
+      if (previous) {
+        const outgoing = Array.from(previous.element.children) as HTMLElement[]
+        layers.forEach((layer, i) => {
+          const from = outgoing[i]?.getAnimations()[0]
+          const to = layer.getAnimations()[0]
+          if (from && to && from.currentTime !== null) to.currentTime = from.currentTime
+        })
+      }
+
+      currentRef.current = { element, urls, layout }
+      element.getBoundingClientRect()
+      element.style.opacity = '1'
+      if (previous) {
+        previous.element.style.transition = `opacity ${CROSSFADE_MS}ms ease-in`
+        previous.element.style.opacity = '0'
+        const timer = window.setTimeout(() => {
+          timers.delete(timer)
+          retire(previous)
+        }, CROSSFADE_MS + 100)
+        timers.add(timer)
+      }
     }
 
     const run = async () => {
@@ -531,36 +610,34 @@ export default function SkyBackground() {
         return
       }
       const layout = measureLayout(host)
-      // Rounded so sub-pixel reflows don't trigger a new render.
-      const key = [layout.width, layout.height, layout.deepStart, layout.deepEnd].map((v) => Math.round(v / 4)).join(':')
+      const key = layoutKey(layout)
       if (key === renderedKey) return
       running = true
 
-      const pageSize = { width: layout.width, height: layout.height }
-      const cloudSize = { width: layout.width * CLOUD_OVERSCAN, height: layout.height }
-
-      // The sky first: it carries the cloud banks, which are most of what there is to see,
-      // and at half scale it is the quickest of the three to draw.
-      const skyBlob = await renderLayer(layout, () => disposed, 0, pageSize, SKY_SCALE)
-      if (!skyBlob) {
-        // No usable GPU: the CSS sky stays, and there is no point retrying on resize.
-        running = false
-        resizeObserver.disconnect()
-        return
+      let blobs = RENDER_CACHE.get(key)
+      if (!blobs) {
+        const pageSize = { width: layout.width, height: layout.height }
+        const cloudSize = { width: layout.width * CLOUD_OVERSCAN, height: layout.height }
+        const skyBlob = await renderLayer(layout, () => disposed, 0, pageSize, SKY_SCALE)
+        if (!skyBlob) {
+          // No usable GPU: the CSS sky stays, and there is no point retrying on resize.
+          running = false
+          resizeObserver.disconnect()
+          return
+        }
+        const farBlob = await renderLayer(layout, () => disposed, 1, cloudSize, CLOUD_SCALE)
+        const nearBlob = await renderLayer(layout, () => disposed, 2, cloudSize, CLOUD_SCALE)
+        if (farBlob && nearBlob) {
+          blobs = [skyBlob, farBlob, nearBlob]
+          RENDER_CACHE.set(key, blobs)
+          if (RENDER_CACHE.size > RENDER_CACHE_SIZE) RENDER_CACHE.delete(RENDER_CACHE.keys().next().value as string)
+        }
       }
-      await show(sky, skyBlob, layout.height)
-      const nearBlob = await renderLayer(layout, () => disposed, 2, cloudSize, CLOUD_SCALE)
-      const farBlob = await renderLayer(layout, () => disposed, 1, cloudSize, CLOUD_SCALE)
-      // The two banks of cloud come in together, on one slow fade. One after the other,
-      // each on a short one, the sky changed three times in two seconds under the hero.
-      await Promise.all([
-        nearBlob ? show(near, nearBlob, layout.height) : null,
-        farBlob ? show(far, farBlob, layout.height) : null,
-      ])
+      if (blobs && !disposed) await present(blobs, layout)
 
       running = false
       if (disposed) return
-      renderedKey = key
+      if (blobs) renderedKey = key
       if (queued) {
         queued = false
         run()
@@ -583,29 +660,17 @@ export default function SkyBackground() {
     return () => {
       disposed = true
       window.clearTimeout(debounce)
+      timers.forEach((timer) => window.clearTimeout(timer))
       resizeObserver.disconnect()
-      urls.forEach((url) => URL.revokeObjectURL(url))
+      if (currentRef.current) retire(currentRef.current)
+      currentRef.current = null
     }
   }, [])
 
   return (
     <>
       <div aria-hidden="true" className="sky-deep pointer-events-none" />
-      <div
-        ref={skyRef}
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-no-repeat opacity-0 transition-opacity duration-700 ease-out data-[ready=true]:opacity-100"
-      />
-      <div
-        ref={farRef}
-        aria-hidden="true"
-        className="sky-far pointer-events-none absolute inset-y-0 -left-[14%] -z-10 w-[128%] bg-no-repeat opacity-0 transition-opacity duration-[1400ms] ease-out data-[ready=true]:opacity-100"
-      />
-      <div
-        ref={nearRef}
-        aria-hidden="true"
-        className="sky-near pointer-events-none absolute inset-y-0 -left-[14%] -z-10 w-[128%] bg-no-repeat opacity-0 transition-opacity duration-[1400ms] ease-out data-[ready=true]:opacity-100"
-      />
+      <div ref={stageRef} aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10" />
     </>
   )
 }

@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Link } from '@/i18n/navigation'
 import Reveal from './Reveal'
 import ImageZoom from './ImageZoom'
+import LoopVideo from './LoopVideo'
 import offerShot from '@/public/home/capture-offre.png'
 import offerCrop from '@/public/home/capture-offre-mobile.png'
 import candidatesShot from '@/public/home/capture-candidatures.png'
@@ -14,11 +15,25 @@ import candidatesCrop from '@/public/home/capture-candidatures-mobile.png'
 import interviewShot from '@/public/home/capture-entretien.png'
 import interviewCrop from '@/public/home/capture-entretien-mobile.png'
 
-const STEPS = [
-  { key: 'draft', image: offerShot, crop: offerCrop },
-  { key: 'sort', image: candidatesShot, crop: candidatesCrop },
-  { key: 'prepare', image: interviewShot, crop: interviewCrop },
-] as const
+// Each step plays a loop over its capture, which is the loop's first frame: the whole
+// screen at twice the slot on wide screens (`wide`), a 4:3 layout made for small ones
+// (`narrow`), and the 1920 file in the enlarged view (`zoom`).
+type Step = {
+  key: string
+  image: StaticImageData
+  crop: StaticImageData
+  video: { wide: string; narrow: string; zoom: string }
+}
+const loops = (name: string) => ({
+  wide: `/home/video/${name}-1472.mp4`,
+  narrow: `/home/video/${name}-mobile-672.mp4`,
+  zoom: `/home/video/${name}-1920.mp4`,
+})
+const STEPS: readonly Step[] = [
+  { key: 'draft', image: offerShot, crop: offerCrop, video: loops('creer-offre') },
+  { key: 'sort', image: candidatesShot, crop: candidatesCrop, video: loops('candidatures') },
+  { key: 'prepare', image: interviewShot, crop: interviewCrop, video: loops('guide-entretien') },
+]
 
 // Keep in sync with the `lg` and `pin` screens in tailwind.config.js.
 // How far off the middle of the window the panel may sit and still take the wheel, as a
@@ -324,7 +339,7 @@ export default function Journey() {
       <div ref={runwayRef} className="relative mt-8 md:mt-14">
         <div>
           <div className="mx-auto w-full max-w-[1344px] px-6 md:px-10 lg:px-8">
-            <div ref={panelRef} className="lg:rounded-[28px] lg:bg-white/75 lg:px-8 lg:py-[clamp(20px,3.5vh,40px)] lg:shadow-[0_30px_60px_-40px_rgba(10,86,196,0.35)] xl:px-[52px]">
+            <div ref={panelRef} className="lg:rounded-[28px] lg:bg-white/75 lg:px-8 lg:py-[clamp(20px,3.5vh,40px)] lg:shadow-[0_30px_60px_-40px_rgba(10,86,196,0.35)] xl:px-10">
               <div role="tablist" aria-label={t('tabsLabel')} className="grid grid-cols-3 gap-3 md:gap-6 lg:gap-10">
                 {STEPS.map(({ key }, i) => (
                   <button
@@ -377,7 +392,7 @@ export default function Journey() {
                       id={`${uid}-panel-${i}`}
                       aria-labelledby={`${uid}-tab-${i}`}
                       aria-hidden={i !== active}
-                      className="flex w-[calc(100%-16px)] shrink-0 snap-start snap-always flex-col overflow-hidden rounded-[20px] bg-white/85 md:grid md:grid-cols-2 lg:w-full lg:grid-cols-[minmax(0,430px)_minmax(0,1fr)] lg:gap-[52px] lg:overflow-visible lg:rounded-none lg:bg-transparent"
+                      className="flex w-[calc(100%-16px)] shrink-0 snap-start snap-always flex-col overflow-hidden rounded-[20px] bg-white/85 md:grid md:grid-cols-2 lg:w-full lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-10 lg:overflow-visible lg:rounded-none lg:bg-transparent"
                     >
                       <StepMedia
                         step={step}
@@ -454,7 +469,7 @@ function StepMedia({
   openLabel,
   closeLabel,
 }: {
-  step: { image: StaticImageData; crop: StaticImageData }
+  step: Step
   alt: string
   caption: string
   active: boolean
@@ -466,7 +481,8 @@ function StepMedia({
 }) {
   // Phones and tablets get a readable crop; wide screens the whole screen. Both load
   // up front so a slide never arrives empty.
-  const { props: wide } = getImageProps({ src: step.image, alt, sizes: '(min-width: 1280px) 640px, 50vw' })
+  const { props: wide } = getImageProps({ src: step.image, alt, sizes: '(min-width: 1280px) 736px, 55vw' })
+  const { props: full } = getImageProps({ src: step.image, alt, sizes: '(min-width: 1340px) 1240px, 92vw' })
   const { props: narrow } = getImageProps({
     src: step.crop,
     alt,
@@ -476,17 +492,19 @@ function StepMedia({
 
   return (
     <figure className="md:order-last lg:flex lg:flex-col">
-      <div className="lg:rounded-[24px] lg:bg-[linear-gradient(135deg,#EAF2FF_0%,#D4E4FE_100%)] lg:p-6 xl:p-8">
-        <div className="lg:mx-auto lg:rounded-[14px] lg:bg-white/80 lg:p-2">
+      <div className="lg:rounded-[24px] lg:bg-[linear-gradient(135deg,#EAF2FF_0%,#D4E4FE_100%)] lg:p-3 xl:p-4">
+        <div className="lg:mx-auto lg:rounded-[14px] lg:bg-white/80 lg:p-1.5">
           <ImageZoom
-            src={wide.src}
-            srcSet={wide.srcSet}
+            src={full.src}
+            srcSet={full.srcSet}
             alt={alt}
             caption={caption}
             openLabel={openLabel}
             closeLabel={closeLabel}
             focusable={active}
+            video={step.video.zoom}
           >
+          <span className="relative block overflow-hidden md:h-full lg:h-auto lg:rounded-[8px]">
           <picture
             data-active={active}
             style={{ '--shift': offset === 0 ? '0px' : offset < 0 ? '-18px' : '18px' } as React.CSSProperties}
@@ -495,6 +513,8 @@ function StepMedia({
             <source media="(min-width: 1024px)" srcSet={wide.srcSet} sizes={wide.sizes} />
             <img {...narrow} alt={alt} className="h-full w-full object-cover object-left-top" />
           </picture>
+          <LoopVideo wide={step.video.wide} narrow={step.video.narrow} active={active} className="object-left-top" />
+          </span>
           </ImageZoom>
         </div>
       </div>
