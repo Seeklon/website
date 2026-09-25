@@ -1,6 +1,6 @@
 import { Link } from '@/i18n/navigation'
 import Button from '@/components/Button'
-import { Bot, Share2, MessageSquare, CheckCircle2, XCircle, Star, ArrowRight } from 'lucide-react'
+import { Bot, Share2, MessageSquare, CheckCircle2, ArrowRight } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { pageMetadata } from '@/lib/metadata'
 
@@ -54,38 +54,6 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-center font-heading text-3xl font-bold mb-12">{t('whyChangeBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('whyChangeAccent')}</span></h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div className="bg-white p-8 rounded-3xl border border-green-100 shadow-lg relative overflow-hidden ring-1 ring-green-500/20">
-              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600"><CheckCircle2 size={20}/></span>
-                {t('withSeeklon')}
-              </h3>
-              <ul className="space-y-4 text-slate-700 font-medium">
-                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s1')}</li>
-                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s2')}</li>
-                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s3')}</li>
-                <li className="flex gap-3"><CheckCircle2 size={20} className="text-green-500 shrink-0"/> {t('s4')}</li>
-              </ul>
-            </div>
-            <div className="bg-white p-8 rounded-3xl border border-red-100 shadow-sm relative overflow-hidden">
-              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-500"><XCircle size={20}/></span>
-                {t('traditional')}
-              </h3>
-              <ul className="space-y-4 text-slate-600">
-                <li className="flex gap-3"><span className="text-red-400">✕</span> {t('t1')}</li>
-                <li className="flex gap-3"><span className="text-red-400">✕</span> {t('t2')}</li>
-                <li className="flex gap-3"><span className="text-red-400">✕</span> {t('t3')}</li>
-                <li className="flex gap-3"><span className="text-red-400">✕</span> {t('t4')}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* 3. DEEP DIVE FEATURES */}
       <section className="py-24">
         <div className="container mx-auto px-4 space-y-24">
@@ -96,11 +64,6 @@ export default async function ProductPage({ params }: Props) {
               <div className="w-full bg-white rounded-xl shadow-lg p-6 space-y-4 max-w-sm border border-slate-100">
                 <div className="flex justify-between items-center border-b border-slate-100 pb-4">
                   <span className="font-bold text-slate-700">{t('candidateCardTitle')}</span>
-                  <div className="flex gap-0.5 items-center">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} size={14} className="fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
                 </div>
                 <div className="space-y-2">
                   <div className="h-2 bg-slate-100 rounded w-3/4" />
@@ -130,7 +93,7 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           {/* Feature 2 : Centralisation */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-3xl mx-auto">
             <div>
               <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-6">
                 <Share2 size={24} />
@@ -144,21 +107,6 @@ export default async function ProductPage({ params }: Props) {
                   {t('diffuseLink').replace(/\s*→\s*$/, '')} <ArrowRight size={16} />
                 </span>
               </Link>
-            </div>
-            <div className="relative h-[400px] bg-gradient-to-br from-purple-50 to-white rounded-3xl border border-purple-100 flex items-center justify-center">
-              <div className="relative w-64 h-64">
-                <div className="absolute top-0 left-0 w-16 h-16 bg-blue-500 rounded-xl shadow-lg flex items-center justify-center text-white font-bold animate-pulse">in</div>
-                <div className="absolute top-0 right-0 w-16 h-16 bg-blue-700 rounded-xl shadow-lg flex items-center justify-center text-white font-bold animate-pulse" style={{ animationDelay: '0.5s' }}>in</div>
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-24 bg-white border-4 border-primary rounded-full shadow-2xl flex items-center justify-center z-10">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white">
-                    <Share2 size={20} />
-                  </div>
-                </div>
-                <svg className="absolute inset-0 w-full h-full text-slate-300 -z-0" viewBox="0 0 100 100" aria-hidden>
-                  <line x1="20" y1="20" x2="50" y2="80" stroke="currentColor" strokeWidth="2" strokeDasharray="4" />
-                  <line x1="80" y1="20" x2="50" y2="80" stroke="currentColor" strokeWidth="2" strokeDasharray="4" />
-                </svg>
-              </div>
             </div>
           </div>
 

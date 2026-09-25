@@ -6,7 +6,7 @@
     "blog": "Blog",
     "about": "About",
     "contact": "Contact",
-    "tryProduct": "Try the product",
+    "tryProduct": "Request a demo",
     "logoAlt": "Seeklon Logo"
   },
   "Footer": {
@@ -34,7 +34,7 @@
       "pricing": "Pricing",
       "blog": "Blog",
       "about": "About",
-      "demo": "Book a demo",
+      "demo": "Request a demo",
       "demoShort": "Demo",
       "openMenu": "Open menu",
       "closeMenu": "Close menu",
@@ -42,23 +42,23 @@
     },
     "hero": {
       "title": "Hire",
-      "accent": "faster.",
+      "accent": "with structure.",
       "subtitle": "Even without an HR team.",
-      "body": "A clear job post, organised CVs, prepared interviews. Seeklon guides you, you decide.",
-      "cta": "Book a demo",
+      "body": "Software to draft your job posts, organise applications and prepare interviews.",
+      "cta": "Request a demo",
       "shotCandidates": "Seeklon: applications received for the Senior Product Designer role",
       "shotOffer": "Seeklon: creating a job post",
       "shotInterview": "Seeklon: interview guide for a candidate"
     },
     "problem": {
-      "line1": "You need to hire.",
-      "line2": "Where do you start?",
-      "body": "A job post to write tonight. Dozens of CVs by Thursday. An interview tomorrow morning, and no one to tell you what to ask.",
-      "strong": "Seeklon prepares each of those steps with you."
+      "line1": "Your next hire.",
+      "line2": "One step at a time.",
+      "body": "A job description, CVs and an interview to prepare.",
+      "strong": "Find the information you need at each step."
     },
     "journey": {
-      "line1": "One role. Three steps.",
-      "line2": "You keep the decision.",
+      "line1": "From job post",
+      "line2": "to interview.",
       "tabsLabel": "The three steps of the journey",
       "hintScroll": "Scroll to move from Write to Sort, then Prepare",
       "hintSwipe": "Swipe to move between steps",
@@ -68,28 +68,28 @@
       "steps": {
         "draft": {
           "tab": "Write",
-          "title1": "Put words",
-          "title2": "to your need.",
-          "body": "Already have a job description? Drop it in: Seeklon pulls out the title, location and skills, and drafts a clear job post for you to review and adjust.",
-          "outcome": "A clear job post to start with.",
+          "title1": "Write a clear",
+          "title2": "job post.",
+          "body": "Import your job description. Seeklon extracts the information to draft a job post for you to review and adjust.",
+          "outcome": "Your hiring needs, set out in a job post.",
           "caption": "The job post",
           "alt": "Seeklon: importing a job description and creating the job post"
         },
         "sort": {
           "tab": "Sort",
-          "title1": "The CVs arrive.",
-          "title2": "Find what matters.",
-          "body": "Gather the applications, review each background and sort them against the role. The information stays at hand to choose who to meet.",
-          "outcome": "Organised applications to move forward.",
+          "title1": "Choose who",
+          "title2": "to meet.",
+          "body": "Review the applications you receive and consider each candidate’s background against the requirements of the role.",
+          "outcome": "Applications grouped by role.",
           "caption": "The CVs",
           "alt": "Seeklon: applications received for a role"
         },
         "prepare": {
           "tab": "Prepare",
-          "title1": "Prepare a real",
-          "title2": "conversation.",
-          "body": "Seeklon prepares a guide from the CV and the role: questions to ask, experience to explore and points to check together during the interview.",
-          "outcome": "A guide to lead your interview.",
+          "title1": "Prepare your",
+          "title2": "questions.",
+          "body": "Use a guide built from the CV and the role: questions to ask, experience to explore and points to check.",
+          "outcome": "Questions to guide the conversation.",
           "caption": "The interview",
           "alt": "Seeklon: interview guide prepared for a candidate"
         }
@@ -99,11 +99,11 @@
     },
     "excerpt": {
       "quote": "“How did you structure a design system and get several product teams to adopt it?”",
-      "context": "A question tied to her experience. A concrete point to explore together. Your interview can begin."
+      "context": "A question based on the candidate’s background, ready for you to adapt to your interview."
     },
     "testimonials": {
-      "line1": "What it changes,",
-      "line2": "told by those who saw it start.",
+      "line1": "They saw",
+      "line2": "Seeklon take shape.",
       "items": {
         "one": {
           "quote": "“Seeklon transforms how SMBs approach recruiting. The tool saves precious time by surfacing only relevant profiles.”",
@@ -123,11 +123,11 @@
       }
     },
     "closing": {
-      "line1": "You meet.",
-      "line2": "You decide.",
-      "body": "Seeklon prepares the job post, organises the CVs and builds your interview guide. You stay in charge.",
+      "line1": "Let’s talk about",
+      "line2": "your next hire.",
+      "body": "See how Seeklon can help you draft a job post, review applications and prepare an interview.",
       "note": "Free demo, no commitment.",
-      "cta": "See this journey in a demo"
+      "cta": "Request a demo"
     },
     "footer": {
       "home": "Seeklon, back to home",
@@ -137,7 +137,7 @@
       "legal": "Legal",
       "journey": "The journey",
       "pricing": "Pricing",
-      "demo": "Book a demo",
+      "demo": "Request a demo",
       "about": "About",
       "blog": "Blog",
       "contact": "Contact",
@@ -151,8 +151,8 @@
   "Contact": {
     "hero": {
       "line1": "Let's talk about your next hire.",
-      "line2": "Answer within 24 hours.",
-      "body": "A demo, a question about the beta, or a heads-up when the packs open: write to us."
+      "line2": "Reply within 24 hours, Monday to Friday.",
+      "body": "Want a demo or have a question about the beta or upcoming packs? Write to us."
     },
     "form": {
       "title": "Write to us",
@@ -177,8 +177,8 @@
     },
     "aside": {
       "title": "In practice",
-      "responseTitle": "Answer within 24 hours",
-      "responseBody": "From someone on the team, not from a bot.",
+      "responseTitle": "Reply within 24 hours, Monday to Friday",
+      "responseBody": "A member of our team will reply.",
       "betaTitle": "Free beta",
       "betaBody": "Access is free for the whole beta, with no commitment.",
       "placeTitle": "Paris, France",
@@ -187,8 +187,8 @@
       "emailLabel": "Or by email:"
     },
     "news": {
-      "title": "Get notified when the packs open.",
-      "body": "One email when pricing is announced, and our hiring tips now and then. Nothing else.",
+      "title": "Get pricing when it’s announced.",
+      "body": "Receive an email when pricing is announced, along with occasional hiring tips.",
       "label": "Work email",
       "placeholder": "camille@company.com",
       "submit": "Sign me up",
@@ -197,7 +197,7 @@
       "error": "Sign-up failed. Try again in a moment.",
       "subject": "New sign-up to the Seeklon list",
       "honeypot": "Do not fill this field",
-      "consent": "One address, so we can tell you. Nothing else, and you can leave whenever you like. <privacy>Privacy policy</privacy>."
+      "consent": "We use your email address to send you the pricing announcement and occasional hiring tips. Unsubscribe at any time. <privacy>Privacy policy</privacy>."
     }
   },
   "Blog": {
@@ -210,28 +210,28 @@
     "closing": {
       "line1": "Put this advice",
       "line2": "into practice.",
-      "body": "Seeklon drafts the job post, organises applications and builds your interview guide. You keep the decision.",
+      "body": "Use Seeklon for the steps covered in our articles: drafting job posts, reviewing applications and preparing interviews.",
       "note": "Free throughout the beta, no commitment.",
-      "cta": "Try Seeklon"
+      "cta": "Request a demo"
     },
     "readingTime": "{minutes} min read",
     "relatedTitle": "Read next.",
     "tocTitle": "In this article"
   },
   "Product": {
-    "titleLine1": "A complete suite to",
-    "titleLine2": "run your hiring.",
+    "titleLine1": "Organise your hiring,",
+    "titleLine2": "from job post to interview.",
     "whyChangeBefore": "Why ",
     "whyChangeAccent": "change?",
-    "aiProfilesTitleBefore": "An AI that understands ",
-    "aiProfilesTitleAccent": "profiles.",
-    "diffuseTitleBefore": "Broadcast once, receive ",
-    "diffuseTitleAccent": "everywhere.",
-    "interviewTitleBefore": "Tailor-made job ",
-    "interviewTitleAccent": "interview.",
-    "ctaTitleBefore": "Ready to modernize your ",
-    "ctaTitleAccent": "hiring?",
-    "intro": "From job posting to final interview, Seeklon automates your most time-consuming tasks.",
+    "aiProfilesTitleBefore": "Review each background. ",
+    "aiProfilesTitleAccent": "Prepare your shortlist.",
+    "diffuseTitleBefore": "Find your applications ",
+    "diffuseTitleAccent": "in one place.",
+    "interviewTitleBefore": "Prepare your ",
+    "interviewTitleAccent": "interview questions.",
+    "ctaTitleBefore": "Let’s talk about ",
+    "ctaTitleAccent": "your next hire.",
+    "intro": "Draft your job posts, review applications and prepare your interview questions with Seeklon.",
     "whyChange": "Why change?",
     "traditional": "Traditional recruiting",
     "t1": "Tedious job posting",
@@ -240,25 +240,25 @@
     "t4": "Unprepared interviews",
     "withSeeklon": "With Seeklon",
     "s1": "AI-assisted writing",
-    "s2": "One click to post everywhere",
-    "s3": "AI pre-selects the top 10%",
+    "s2": "Applications grouped by role",
+    "s3": "Support for reviewing CVs",
     "s4": "Interview guide generated automatically",
-    "ctaTitle": "Ready to modernize your hiring?",
-    "ctaButton": "Start free Beta",
-    "ctaNote": "No credit card required • Set up in 2 min",
+    "ctaTitle": "Let’s talk about your next hire.",
+    "ctaButton": "Request beta access",
+    "ctaNote": "Free during the beta.",
     "aiActive": "AI Active",
-    "aiProfilesTitle": "An AI that understands profiles.",
-    "aiProfilesDesc": "Forget keyword search that eliminates good profiles. Our AI analyzes semantics, career path, and potential. It reads the CV like a human expert would, but in a fraction of a second.",
-    "aiProfilesBullet1": "Automatic scoring (0 to 5 stars)",
-    "aiProfilesBullet2": "Soft skills detection",
+    "aiProfilesTitle": "Review each background. Prepare your shortlist.",
+    "aiProfilesDesc": "Review each application and compare it with the requirements of the role. Choose the points to explore further in the interview.",
+    "aiProfilesBullet1": "Career background and experience",
+    "aiProfilesBullet2": "Skills mentioned in the CV",
     "candidateCardTitle": "Candidate #42",
-    "candidateCardLabel": "AI ANALYSIS",
-    "candidateCardQuote": "Relevant profile. Validated technical skills. Management experience aligned with the need.",
-    "diffuseTitle": "Broadcast once, receive everywhere.",
-    "diffuseDesc": "Connect Seeklon to LinkedIn, Indeed, Monster and your social networks. Publish your job from our interface and let the magic happen. All applications funnel into one pipeline.",
-    "diffuseLink": "View integrations →",
-    "interviewTitle": "Tailor-made job interview.",
-    "interviewDesc": "AI doesn't stop at sorting. For each selected candidate, Seeklon generates a custom interview guide with questions to ask and points to delve into, based on CV and job offer analysis.",
+    "candidateCardLabel": "Example analysis",
+    "candidateCardQuote": "The CV mentions management experience. Explore this further in the interview.",
+    "diffuseTitle": "Find your applications in one place.",
+    "diffuseDesc": "Review the applications received for a role and find the information you need to make your selection.",
+    "diffuseLink": "Let’s talk about your needs →",
+    "interviewTitle": "Prepare your interview questions.",
+    "interviewDesc": "Using the CV and the job post, Seeklon drafts an interview guide: questions to ask, experience to explore and points to check. Adapt it to your conversation.",
     "interviewCardTitle": "Interview Guide",
     "interviewCardSubtitle": "Generated by AI for Candidate #42",
     "interviewSuggestedLabel": "Suggested question:",
@@ -276,15 +276,15 @@
   },
   "Pricing": {
     "hero": {
-      "line1": "Free during the beta.",
-      "line2": "Packs are coming.",
-      "body": "Seeklon is in beta: access is free for the first companies testing it with us. Pack pricing will be announced before the beta ends."
+      "line1": "Access is free",
+      "line2": "during the beta.",
+      "body": "Access is free for the first companies testing Seeklon with us. Pack pricing will be announced before the beta ends."
     },
     "beta": {
       "name": "Beta access",
       "price": "€0",
       "period": "for the whole beta",
-      "description": "For the first companies hiring with Seeklon and helping us grow it.",
+      "description": "Draft your job posts, review your applications and prepare your interviews. Your feedback helps us improve Seeklon.",
       "features": [
         "Access to Seeklon on real hiring",
         "Guided job post writing",
@@ -293,15 +293,15 @@
         "Onboarding support",
         "Your feedback shapes the product"
       ],
-      "cta": "Join the beta"
+      "cta": "Request beta access"
     },
     "packs": {
       "title": "The packs to come.",
-      "cta": "Get notified",
+      "cta": "Get the pricing announcement",
       "items": {
         "breeze": {
           "name": "Breeze",
-          "description": "For a first hire, now and then.",
+          "description": "For your first hire or occasional hiring needs.",
           "features": [
             "1 active job post",
             "50 applications per post",
@@ -439,27 +439,27 @@
         },
         {
           "q": "Do you have a rate for non-profits?",
-          "a": "Yes, on request. Write to us and we'll look at your situation together."
+          "a": "Yes, on request. Write to us so we can review your situation together."
         }
       ]
     },
     "closing": {
-      "line1": "Start now.",
-      "line2": "It's free.",
-      "body": "Seeklon is free for the whole beta. You write your job posts, sort your applications and prepare your interviews — and you keep the decision.",
+      "line1": "Take part",
+      "line2": "in the beta.",
+      "body": "Use Seeklon for your hiring and share your feedback with the team.",
       "note": "Free for the whole beta, no commitment.",
-      "cta": "Join the beta"
+      "cta": "Request beta access"
     }
   },
   "Metadata": {
     "siteTitle": "Seeklon - Smart candidate screening",
     "siteDescription": "Simplify hiring for SMBs with our ATS powered by AI screening.",
     "homeTitle": "Hiring software for small companies without HR",
-    "homeDescription": "Hire faster, even without an HR team: Seeklon helps you write a clear job post, screen CVs and prepare your interviews. Free demo.",
+    "homeDescription": "Bring structure to hiring with Seeklon: draft job posts, organise applications and prepare interviews, even without an HR team. Request a demo.",
     "pricingTitle": "Pricing – Free during the beta",
     "pricingDescription": "Seeklon is in beta: access is free for the first companies. The Breeze, Storm and Cyclone packs are coming, with no commitment.",
-    "contactTitle": "Contact – Book a demo",
-    "contactDescription": "Write to the Seeklon team for a demo, a question about the free beta, or to be notified when the packs open. Answer within 24 hours.",
+    "contactTitle": "Contact – Request a demo",
+    "contactDescription": "Contact Seeklon about a demo, the beta or upcoming packs. Our team replies within 24 hours, Monday to Friday.",
     "aboutTitle": "About – Four people, one goal",
     "aboutDescription": "Seeklon was born at the Bpifrance hackathon on AI and ethics. Here is why we build a hiring tool that leaves the decision to the recruiter.",
     "blogTitle": "Blog – Hiring advice for small companies",
@@ -508,11 +508,11 @@
         },
         {
           "title": "How",
-          "body": "Explainable AI, interview guides and data analysis. The first screening gets simpler, the decision stays with the recruiter."
+          "body": "Seeklon drafts a job post from your job description, then an interview guide from the CV and the role. You review and adapt the drafts."
         },
         {
           "title": "What",
-          "body": "A steering and decision-support platform that connects application analysis, interview preparation and a clear view of the process."
+          "body": "Software to draft your job posts, review applications and prepare interviews."
         }
       ]
     },
@@ -526,7 +526,7 @@
       "award": "Jury’s Favourite award",
       "caption": "Bpifrance hackathon, on AI and ethics",
       "body": "Seeklon was born during the Bpifrance hackathon devoted to AI and ethics. Bpifrance created the Jury’s Favourite award especially for our project.",
-      "after": "Since then, we have been turning it into a real product, and making it grow."
+      "after": "Since then, we have continued to build and improve Seeklon."
     },
     "team": {
       "line1": "Four people,",
@@ -551,11 +551,11 @@
       ]
     },
     "closing": {
-      "line1": "You meet.",
-      "line2": "You decide.",
-      "body": "Seeklon prepares everything useful for your hiring. The decision stays in your hands.",
+      "line1": "Let’s talk about",
+      "line2": "your hiring.",
+      "body": "Tell us how you hire and which steps you would like help with.",
       "note": "Free throughout the beta, no commitment.",
-      "cta": "Book a demo"
+      "cta": "Request a demo"
     }
   },
   "Rgpd": {
@@ -598,8 +598,8 @@
     "closing": {
       "line1": "You were looking",
       "line2": "for something.",
-      "body": "Tell us what: if a page is missing, we would rather know than leave you searching.",
-      "note": "We reply within 24 hours.",
+      "body": "Tell us what you were looking for. If a page is missing, we’d rather hear about it than leave you searching.",
+      "note": "Reply within 24 hours, Monday to Friday.",
       "cta": "Write to us"
     }
   }

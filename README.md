@@ -235,6 +235,15 @@ Les pages sous `app/[locale]/blog/` appellent ces fonctions avec la `locale` cou
 
 Les textes affichés viennent des namespaces dans `messages/fr.json` et `messages/en.json`.
 
+### Rédaction des pages marketing
+
+- Présenter les actions concrètes : rédiger l’offre, examiner les candidatures et préparer les entretiens. L’accroche « Recrutez avec méthode » ne promet pas de gain de temps mesuré.
+- Adapter ensemble les textes FR/EN, leurs titres fractionnés et les métadonnées. Conserver les citations attribuées sans les réécrire.
+- Utiliser « Demandez une démo » pour une demande de démonstration et « Demandez un accès à la bêta » pour l’accès : les deux parcours ouvrent `/contact`. Les boutons des futurs packs ouvrent `/contact#newsletter`.
+- La newsletter annonce les tarifs et des conseils de recrutement occasionnels ; son descriptif et sa mention d’inscription doivent décrire les mêmes envois. Les formulaires et leur traitement restent inchangés.
+- Ne pas réintroduire de classement « Top 10 % », compétences validées automatiquement, intégrations ou délais d’installation sans preuve produit. La page `/product` n’affiche plus le comparatif dévalorisant, les étoiles statiques ni le schéma d’intégrations.
+- Après un changement de texte, vérifier les deux langues sur mobile et bureau, notamment le titre principal et les boutons. Le délai de réponse affiché reprend l’engagement existant de 24 heures, du lundi au vendredi ; les capacités produit et les citations restent à vérifier séparément si elles évoluent.
+
 ---
 
 ## Styles et thème
