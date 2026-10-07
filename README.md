@@ -214,8 +214,17 @@ Les pages sous `app/[locale]/blog/` appellent ces fonctions avec la `locale` cou
 | `/legal` | Mentions légales |
 | `/privacy` | Politique de confidentialité |
 | `/rgpd` | Page RGPD |
+| `/carte/thomas` | Carte de visite publique de Thomas Briand, sans navigation du site |
 
 - **Redirection** : `/demo` → `/contact` (permanent), configurée dans `next.config.js`.
+
+### Carte de visite de Thomas
+
+La carte française est accessible directement à `https://www.seeklon.com/carte/thomas`, hors du layout localisé. Une exception exacte dans `middleware.ts` évite les redirections de langue sur cette seule route.
+
+Les informations sont centralisées dans `lib/business-card.ts` : identité, email confirmé, coordonnées facultatives, visuel fourni et URL publique dérivée de `lib/site.ts`. Les actions sans coordonnée sont masquées. La page propose un contact vCard UTF-8, une vue QR, un export PNG de 1080 × 1920 et le partage natif avec repli vers la copie du lien. Aucun compte, service externe de génération ou stockage n’est utilisé.
+
+Voir [la documentation de la carte](docs/carte-thomas.md) pour les assets, les validations et la mise en ligne.
 
 ---
 
