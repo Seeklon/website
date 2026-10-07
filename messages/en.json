@@ -531,6 +531,8 @@
     "team": {
       "line1": "Four people,",
       "line2": "one goal.",
+      "viewCard": "View business card",
+      "viewCardFor": "View business card for {name}",
       "members": [
         {
           "name": "Thomas",

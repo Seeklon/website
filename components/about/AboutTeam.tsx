@@ -1,6 +1,8 @@
 import Image, { type StaticImageData } from 'next/image'
 import { useTranslations } from 'next-intl'
+import { ArrowUpRight } from 'lucide-react'
 import Reveal from '@/components/home/Reveal'
+import { THOMAS_CARD_PATH, thomasCard } from '@/lib/business-card'
 import thomas from '@/public/about/team-thomas.webp'
 import ilyes from '@/public/about/team-ilyes.webp'
 import deniz from '@/public/about/team-deniz.webp'
@@ -12,6 +14,7 @@ type Member = { name: string; role: string }
 // 5 to 7 KB, already cropped on the face: they are served as they are, since the optimizer
 // has nothing left to take off them.
 const PORTRAITS: Record<string, StaticImageData> = { Thomas: thomas, Ilyes: ilyes, Deniz: deniz, Robin: robin }
+const profileClassName = 'flex h-full flex-col items-center rounded-[20px] border border-white bg-white/80 px-6 py-9 text-center'
 
 // Four cards, one per founder. A member without a portrait gets an initial in the circle
 // rather than a grey silhouette — it reads as a person, not as a missing image.
@@ -30,31 +33,52 @@ export default function AboutTeam() {
 
       <Reveal>
         <ul className="reveal-stagger mt-8 grid gap-5 sm:grid-cols-2 md:mt-12 lg:grid-cols-4 lg:gap-6">
-          {members.map((member) => (
-            <li
-              key={member.name}
-              className="flex flex-col items-center rounded-[20px] border border-white bg-white/80 px-6 py-9 text-center"
-            >
-              {PORTRAITS[member.name] ? (
-                <Image
-                  src={PORTRAITS[member.name]}
-                  alt=""
-                  unoptimized
-                  sizes="132px"
-                  className="h-[112px] w-[112px] rounded-full bg-[#D8E6FF] object-cover md:h-[132px] md:w-[132px]"
-                />
-              ) : (
-                <span
-                  aria-hidden="true"
-                  className="flex h-[112px] w-[112px] items-center justify-center rounded-full bg-[linear-gradient(160deg,#EEF4FF_0%,#D8E6FF_100%)] text-[26px] text-azure-deep md:h-[132px] md:w-[132px] md:text-[32px]"
-                >
-                  {member.name.slice(0, 1)}
-                </span>
-              )}
-              <p className="mt-6 text-[22px] tracking-[-0.02em] md:text-2xl">{member.name}</p>
-              <p className="mt-1.5 text-[15px] text-ink-soft">{member.role}</p>
-            </li>
-          ))}
+          {members.map((member) => {
+            const hasCard = member.name === thomasCard.firstName
+            const profile = (
+              <>
+                {PORTRAITS[member.name] ? (
+                  <Image
+                    src={PORTRAITS[member.name]}
+                    alt=""
+                    unoptimized
+                    sizes="132px"
+                    className="h-[112px] w-[112px] rounded-full bg-[#D8E6FF] object-cover md:h-[132px] md:w-[132px]"
+                  />
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    className="flex h-[112px] w-[112px] items-center justify-center rounded-full bg-[linear-gradient(160deg,#EEF4FF_0%,#D8E6FF_100%)] text-[26px] text-azure-deep md:h-[132px] md:w-[132px] md:text-[32px]"
+                  >
+                    {member.name.slice(0, 1)}
+                  </span>
+                )}
+                <p className="mt-6 text-[22px] tracking-[-0.02em] md:text-2xl">{member.name}</p>
+                <p className="mt-1.5 text-[15px] text-ink-soft">{member.role}</p>
+              </>
+            )
+
+            return (
+              <li key={member.name}>
+                {hasCard ? (
+                  <a
+                    href={THOMAS_CARD_PATH}
+                    data-native-navigation
+                    aria-label={t('viewCardFor', { name: `${thomasCard.firstName} ${thomasCard.lastName}` })}
+                    className={`${profileClassName} group hover:border-azure-deep focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-azure-deep`}
+                  >
+                    {profile}
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-[15px] text-azure-deep underline-offset-4 group-hover:underline">
+                      {t('viewCard')}
+                      <ArrowUpRight aria-hidden="true" className="h-4 w-4 shrink-0" />
+                    </span>
+                  </a>
+                ) : (
+                  <div className={profileClassName}>{profile}</div>
+                )}
+              </li>
+            )
+          })}
         </ul>
       </Reveal>
     </section>

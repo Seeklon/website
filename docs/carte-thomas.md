@@ -3,6 +3,7 @@
 ## Configuration et intégration
 
 - Route : `/carte/thomas` (`app/carte/thomas/page.tsx`), en français, accessible sans authentification.
+- Accès depuis « À propos » : toute la fiche de Thomas (portrait compris) est cliquable, avec l’action « Voir la carte de visite » traduite en anglais. `components/about/AboutTeam.tsx` utilise un lien HTML vers `THOMAS_CARD_PATH` : même depuis `/en/about`, la destination reste `/carte/thomas`, sans préfixe de langue. Son attribut `data-native-navigation` est respecté par `PageTransitions` pour charger un nouveau document avec `lang="fr"`, sans conserver la langue de la page anglaise. Les autres profils restent sans lien tant qu’ils n’ont pas de carte configurée.
 - Configuration : `lib/business-card.ts`. L’URL est dérivée de `SITE_URL` dans `lib/site.ts` ; ne jamais utiliser l’origine du navigateur pour le QR, le partage ou le PNG. Conserver l’origine HTTPS de production dans `NEXT_PUBLIC_SITE_URL` si cette variable est définie.
 - Coordonnées confirmées : `Thomas.briand@seeklon.com` et [LinkedIn personnel de Thomas](https://www.linkedin.com/in/thomas-briand-5ab11725b?utm_source=share_via&utm_content=profile&utm_medium=member_android) fournis par Thomas, site `https://www.seeklon.com` issu de la configuration du dépôt. Téléphone absent : valeur `null`, action masquée. Ne pas remplacer son profil personnel par le LinkedIn de l’entreprise.
 - Route hors de `app/[locale]` pour éviter Header/Footer. `middleware.ts` laisse passer exactement cette route ; les autres parcours gardent leur comportement next-intl.
@@ -27,6 +28,7 @@
 5. Télécharger le PNG ; vérifier ses dimensions, la police, l’absence de recadrage du logo et de boutons. Décoder le PNG final avec jsQR ou un autre lecteur indépendant : destination attendue `https://www.seeklon.com/carte/thomas`. Décoder également la vue QR sur petit écran.
 6. Tester le partage natif, son annulation, la copie et le refus du presse-papiers. Vérifier les erreurs console.
 7. Vérifier que `/`, `/en`, `/product`, `/en/product`, robots et sitemap gardent les comportements attendus.
+8. Sur `/about` et `/en/about`, vérifier le lien du profil de Thomas au clic sur le portrait et au clavier, son focus visible et la destination `/carte/thomas`, y compris avec la préférence de langue anglaise.
 
 ## Publication
 

@@ -12,5 +12,6 @@ description: Modifier une carte de visite publique Seeklon, ses coordonnées, sa
 5. Générer le QR par bibliothèque avec fond blanc opaque et au moins 4 modules de marge. Réutiliser son image pour l’écran et le PNG, sans logo ni réduction floue.
 6. Vérifier la vCard UTF-8/CRLF et son pliage en octets, puis télécharger réellement le PNG et décoder le fichier final avec un lecteur indépendant.
 7. Contrôler une petite largeur mobile, le clavier/modal, partage/copie/refus, accès direct/reload avec langue EN, typecheck et build. Distinguer émulation navigateur et import Contacts sur téléphone réel.
+8. Depuis une page traduite, lier les cartes autonomes avec un lien HTML vers leur constante de chemin, sans ajout du préfixe next-intl. Ajouter `data-native-navigation` pour éviter l’interception par `PageTransitions` et vérifier `html[lang]` après clic depuis EN. Ne rendre cliquables que les profils ayant une carte réelle.
 
 Documenter les coordonnées manquantes et les contrôles réalisés. Le QR de production n’est utilisable qu’une fois la route déployée ; respecter les autorisations explicites de commit/push/déploiement.
