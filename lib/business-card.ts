@@ -37,15 +37,15 @@ export const thomasCard: BusinessCard = {
   filename: 'thomas-briand-seeklon',
 }
 
-// Robin's name and LinkedIn were supplied by the user; his role is published in About.
-// Email and phone remain hidden until explicitly confirmed.
+// Robin's name, email and LinkedIn were supplied by the user; his role is published in About.
+// Phone remains hidden until explicitly confirmed.
 export const robinCard: BusinessCard = {
   firstName: 'Robin',
   lastName: 'Biard',
   organization: 'Seeklon',
   role: 'Lead DevOps & SysAdmin',
   description: 'Avec Seeklon, nous aidons les entreprises à comprendre et améliorer leurs décisions de recrutement grâce à une IA explicable.',
-  email: null,
+  email: 'robin.biard@seeklon.com',
   phone: null,
   linkedin: 'https://www.linkedin.com/in/robin-biard-262248260?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   website: SITE_URL,
