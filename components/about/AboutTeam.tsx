@@ -2,7 +2,7 @@ import Image, { type StaticImageData } from 'next/image'
 import { useTranslations } from 'next-intl'
 import { ArrowUpRight } from 'lucide-react'
 import Reveal from '@/components/home/Reveal'
-import { THOMAS_CARD_PATH, thomasCard } from '@/lib/business-card'
+import { cardIdentity, publicBusinessCards } from '@/lib/business-card'
 import thomas from '@/public/about/team-thomas.webp'
 import ilyes from '@/public/about/team-ilyes.webp'
 import deniz from '@/public/about/team-deniz.webp'
@@ -34,7 +34,7 @@ export default function AboutTeam() {
       <Reveal>
         <ul className="reveal-stagger mt-8 grid gap-5 sm:grid-cols-2 md:mt-12 lg:grid-cols-4 lg:gap-6">
           {members.map((member) => {
-            const hasCard = member.name === thomasCard.firstName
+            const businessCard = publicBusinessCards.find(({ card }) => card.firstName === member.name)
             const profile = (
               <>
                 {PORTRAITS[member.name] ? (
@@ -60,11 +60,11 @@ export default function AboutTeam() {
 
             return (
               <li key={member.name}>
-                {hasCard ? (
+                {businessCard ? (
                   <a
-                    href={THOMAS_CARD_PATH}
+                    href={businessCard.path}
                     data-native-navigation
-                    aria-label={t('viewCardFor', { name: `${thomasCard.firstName} ${thomasCard.lastName}` })}
+                    aria-label={t('viewCardFor', { name: cardIdentity(businessCard.card).name })}
                     className={`${profileClassName} group hover:border-azure-deep focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-azure-deep`}
                   >
                     {profile}

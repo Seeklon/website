@@ -2,11 +2,11 @@
 
 ## Configuration et intégration
 
-- Route : `/carte/thomas` (`app/carte/thomas/page.tsx`), en français, accessible sans authentification.
+- Route : `/carte/thomas` (`app/carte/thomas/page.tsx`), en français, accessible sans authentification. La génération serveur (métadonnées, QR, vCard) est partagée dans `components/business-card/BusinessCardPage.tsx` avec la [carte de Robin Biard](carte-robin.md) ; chaque page transmet sa propre configuration.
 - Accès depuis « À propos » : toute la fiche de Thomas (portrait compris) est cliquable, avec l’action « Voir la carte de visite » traduite en anglais. `components/about/AboutTeam.tsx` utilise un lien HTML vers `THOMAS_CARD_PATH` : même depuis `/en/about`, la destination reste `/carte/thomas`, sans préfixe de langue. Son attribut `data-native-navigation` est respecté par `PageTransitions` pour charger un nouveau document avec `lang="fr"`, sans conserver la langue de la page anglaise. Les autres profils restent sans lien tant qu’ils n’ont pas de carte configurée.
 - Configuration : `lib/business-card.ts`. L’URL est dérivée de `SITE_URL` dans `lib/site.ts` ; ne jamais utiliser l’origine du navigateur pour le QR, le partage ou le PNG. Conserver l’origine HTTPS de production dans `NEXT_PUBLIC_SITE_URL` si cette variable est définie.
 - Coordonnées confirmées : `Thomas.briand@seeklon.com` et [LinkedIn personnel de Thomas](https://www.linkedin.com/in/thomas-briand-5ab11725b?utm_source=share_via&utm_content=profile&utm_medium=member_android) fournis par Thomas, site `https://www.seeklon.com` issu de la configuration du dépôt. Téléphone absent : valeur `null`, action masquée. Ne pas remplacer son profil personnel par le LinkedIn de l’entreprise.
-- Route hors de `app/[locale]` pour éviter Header/Footer. `middleware.ts` laisse passer exactement cette route ; les autres parcours gardent leur comportement next-intl.
+- Route hors de `app/[locale]` pour éviter Header/Footer. `middleware.ts` laisse passer uniquement les chemins exacts de `publicBusinessCards` dans `lib/business-card.ts` ; ce même registre détermine les profils cliquables dans « À propos ». Les autres parcours gardent leur comportement next-intl.
 - Métadonnées via `pageMetadata` dans `lib/metadata.ts`, avec uniquement l’alternate français et les images de partage propres à la carte. Pas de route anglaise pour cette carte.
 
 ## Visuel et téléchargements
