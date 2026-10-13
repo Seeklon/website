@@ -6,7 +6,7 @@
     "blog": "Blog",
     "about": "À propos",
     "contact": "Contact",
-    "tryProduct": "Demandez une démo",
+    "tryProduct": "Testez le produit",
     "logoAlt": "Seeklon Logo"
   },
   "Footer": {
@@ -42,23 +42,23 @@
     },
     "hero": {
       "title": "Recrutez",
-      "accent": "avec méthode.",
+      "accent": "plus vite.",
       "subtitle": "Même sans équipe RH.",
-      "body": "Un logiciel pour rédiger vos offres, organiser vos candidatures et préparer vos entretiens.",
+      "body": "Une offre claire, des CV organisés, des entretiens préparés. Seeklon vous guide, vous décidez.",
       "cta": "Demandez une démo",
       "shotCandidates": "Seeklon : candidatures reçues pour le poste de Product Designer Senior",
       "shotOffer": "Seeklon : création d’une offre",
       "shotInterview": "Seeklon : guide d’entretien d’une candidate"
     },
     "problem": {
-      "line1": "Votre prochain recrutement.",
-      "line2": "Une étape à la fois.",
-      "body": "Une fiche de poste, des CV, un entretien à préparer.",
-      "strong": "Retrouvez les informations utiles à chaque étape."
+      "line1": "Vous devez recruter.",
+      "line2": "Par où commencer ?",
+      "body": "Une offre à rédiger ce soir. Des dizaines de CV d’ici jeudi. Un entretien demain matin, et personne pour vous dire quoi demander.",
+      "strong": "Seeklon prépare chacune de ces étapes avec vous."
     },
     "journey": {
-      "line1": "De l’offre",
-      "line2": "à l’entretien.",
+      "line1": "Un poste. Trois étapes.",
+      "line2": "Vous gardez la décision.",
       "tabsLabel": "Les trois étapes du parcours",
       "hintScroll": "Faites défiler pour passer de Rédiger à Trier puis Préparer",
       "hintSwipe": "Balayez pour passer d’une étape à l’autre",
@@ -68,28 +68,28 @@
       "steps": {
         "draft": {
           "tab": "Rédiger",
-          "title1": "Rédigez une",
-          "title2": "offre claire.",
-          "body": "Importez votre fiche de poste. Seeklon en extrait les informations pour vous proposer une offre à relire et à ajuster.",
-          "outcome": "Votre besoin, formulé dans une offre.",
+          "title1": "Mettre des mots",
+          "title2": "sur votre besoin.",
+          "body": "Vous avez déjà une fiche de poste ? Déposez-la : Seeklon en tire l’intitulé, le lieu et les compétences, et prépare une offre claire que vous relisez et ajustez.",
+          "outcome": "Une offre claire pour commencer.",
           "caption": "L’offre",
           "alt": "Seeklon : import d’une fiche de poste et création de l’offre"
         },
         "sort": {
           "tab": "Trier",
-          "title1": "Choisissez qui",
-          "title2": "rencontrer.",
-          "body": "Consultez les candidatures reçues et examinez chaque parcours selon les critères du poste.",
-          "outcome": "Des candidatures regroupées par poste.",
+          "title1": "Les CV arrivent.",
+          "title2": "Retrouvez l’essentiel.",
+          "body": "Rassemblez les candidatures, consultez les parcours et triez-les au regard du poste. Les informations restent accessibles pour choisir les personnes à rencontrer.",
+          "outcome": "Des candidatures organisées pour avancer.",
           "caption": "Les CV",
           "alt": "Seeklon : liste des candidatures reçues pour un poste"
         },
         "prepare": {
           "tab": "Préparer",
-          "title1": "Préparez vos",
-          "title2": "questions.",
-          "body": "Appuyez-vous sur un guide construit à partir du CV et du poste : questions à poser, expériences à approfondir, points à vérifier.",
-          "outcome": "Des questions pour guider l’échange.",
+          "title1": "Préparez une vraie",
+          "title2": "conversation.",
+          "body": "Seeklon prépare un guide à partir du CV et du poste : questions à poser, expériences à approfondir et points à vérifier ensemble pendant l’entretien.",
+          "outcome": "Un guide pour conduire votre entretien.",
           "caption": "L’entretien",
           "alt": "Seeklon : guide d’entretien préparé pour une candidate"
         }
@@ -99,11 +99,11 @@
     },
     "excerpt": {
       "quote": "« Comment avez-vous structuré et fait adopter un design system par plusieurs équipes produit ? »",
-      "context": "Une question tirée du parcours du candidat, à adapter à votre entretien."
+      "context": "Une question liée à son expérience. Un point concret à approfondir ensemble. Votre entretien peut commencer."
     },
     "testimonials": {
-      "line1": "Ils ont vu",
-      "line2": "naître Seeklon.",
+      "line1": "Ce que ça change,",
+      "line2": "dit par ceux qui l’ont vu naître.",
       "items": {
         "one": {
           "quote": "« Seeklon transforme l’approche du recrutement PME. L’outil fait gagner un temps précieux en ne présentant que les profils pertinents. »",
@@ -123,11 +123,11 @@
       }
     },
     "closing": {
-      "line1": "Parlons de votre",
-      "line2": "prochain recrutement.",
-      "body": "Découvrez comment Seeklon peut vous aider à rédiger une offre, examiner des candidatures et préparer un entretien.",
+      "line1": "Vous rencontrez.",
+      "line2": "Vous décidez.",
+      "body": "Seeklon prépare l’offre, organise les CV et construit votre guide d’entretien. Vous gardez la main.",
       "note": "Démo gratuite, sans engagement.",
-      "cta": "Demandez une démo"
+      "cta": "Voir ce parcours en démo"
     },
     "footer": {
       "home": "Seeklon, retour à l’accueil",
@@ -151,8 +151,8 @@
   "Contact": {
     "hero": {
       "line1": "Parlons de votre prochain recrutement.",
-      "line2": "Réponse sous 24 heures, du lundi au vendredi.",
-      "body": "Une démo, une question sur la bêta ou sur les futurs packs ? Écrivez-nous."
+      "line2": "Réponse sous 24 heures.",
+      "body": "Une démo, une question sur la bêta, ou l’envie d’être prévenu quand les packs ouvrent : écrivez-nous."
     },
     "form": {
       "title": "Écrivez-nous",
@@ -177,18 +177,18 @@
     },
     "aside": {
       "title": "En pratique",
-      "responseTitle": "Réponse sous 24 heures, du lundi au vendredi",
-      "responseBody": "Un membre de l’équipe vous répond.",
+      "responseTitle": "Réponse sous 24 heures",
+      "responseBody": "Par une personne de l’équipe, pas par un robot.",
       "betaTitle": "Bêta gratuite",
       "betaBody": "L’accès est gratuit pendant toute la bêta, sans engagement.",
       "placeTitle": "Paris, France",
       "placeBody": "Seeklon est né pendant le hackathon Bpifrance sur l’IA et l’éthique.",
-      "linkedin": "Suivez Seeklon sur LinkedIn",
+      "linkedin": "Suivre Seeklon sur LinkedIn",
       "emailLabel": "Ou par e-mail :"
     },
     "news": {
-      "title": "Recevez les tarifs dès leur annonce.",
-      "body": "Recevez un e-mail à l’annonce des tarifs et, de temps en temps, nos conseils de recrutement.",
+      "title": "Être prévenu à l’ouverture des packs.",
+      "body": "Un e-mail quand les tarifs sont annoncés, et de temps en temps nos conseils recrutement. Rien d’autre.",
       "label": "E-mail professionnel",
       "placeholder": "camille@entreprise.fr",
       "submit": "M’inscrire",
@@ -197,7 +197,7 @@
       "error": "L’inscription a échoué. Réessayez dans un instant.",
       "subject": "Nouvelle inscription à la liste Seeklon",
       "honeypot": "Ne remplissez pas ce champ",
-      "consent": "Votre adresse sert à vous envoyer l’annonce des tarifs et nos conseils de recrutement occasionnels. Désinscription à tout moment. <privacy>Politique de confidentialité</privacy>."
+      "consent": "Une adresse, pour être prévenu. Rien d’autre, et vous partez quand vous voulez. <privacy>Politique de confidentialité</privacy>."
     }
   },
   "Blog": {
@@ -210,28 +210,28 @@
     "closing": {
       "line1": "Mettez ces conseils",
       "line2": "en pratique.",
-      "body": "Retrouvez dans Seeklon les étapes abordées dans nos articles : rédaction de l’offre, examen des candidatures et préparation de l’entretien.",
+      "body": "Seeklon prépare l’offre, organise les candidatures et construit votre guide d’entretien. Vous gardez la décision.",
       "note": "Gratuit pendant toute la bêta, sans engagement.",
-      "cta": "Demandez une démo"
+      "cta": "Essayez Seeklon"
     },
     "readingTime": "{minutes} min de lecture",
     "relatedTitle": "À lire ensuite.",
     "tocTitle": "Dans cet article"
   },
   "Product": {
-    "titleLine1": "Organisez vos recrutements,",
-    "titleLine2": "de l’offre à l’entretien.",
+    "titleLine1": "Une suite complète pour",
+    "titleLine2": "piloter vos recrutements.",
     "whyChangeBefore": "Pourquoi ",
     "whyChangeAccent": "changer ?",
-    "aiProfilesTitleBefore": "Examinez les parcours. ",
-    "aiProfilesTitleAccent": "Préparez votre sélection.",
-    "diffuseTitleBefore": "Retrouvez vos candidatures ",
-    "diffuseTitleAccent": "au même endroit.",
-    "interviewTitleBefore": "Préparez vos ",
-    "interviewTitleAccent": "questions d’entretien.",
-    "ctaTitleBefore": "Parlons de votre ",
-    "ctaTitleAccent": "prochain recrutement.",
-    "intro": "Rédigez vos offres, examinez les candidatures et préparez vos questions d’entretien avec Seeklon.",
+    "aiProfilesTitleBefore": "Une IA qui comprend les ",
+    "aiProfilesTitleAccent": "profils.",
+    "diffuseTitleBefore": "Diffusez une fois, recevez ",
+    "diffuseTitleAccent": "partout.",
+    "interviewTitleBefore": "Entretien d'embauche ",
+    "interviewTitleAccent": "sur-mesure.",
+    "ctaTitleBefore": "Prêt à moderniser votre ",
+    "ctaTitleAccent": "recrutement ?",
+    "intro": "De la rédaction de l'offre à l'entretien final, Seeklon automatise vos tâches les plus chronophages.",
     "whyChange": "Pourquoi changer ?",
     "traditional": "Recrutement Traditionnel",
     "t1": "Rédaction d'offre laborieuse",
@@ -240,25 +240,25 @@
     "t4": "Entretiens mal préparés",
     "withSeeklon": "Avec Seeklon",
     "s1": "Aide à la rédaction par IA",
-    "s2": "Candidatures regroupées par poste",
-    "s3": "Aide à l’examen des CV",
+    "s2": "1 clic pour diffuser partout",
+    "s3": "L'IA pré-sélectionne le Top 10%",
     "s4": "Guide d'entretien généré automatiquement",
-    "ctaTitle": "Parlons de votre prochain recrutement.",
-    "ctaButton": "Demandez un accès à la bêta",
-    "ctaNote": "Gratuit pendant la bêta.",
+    "ctaTitle": "Prêt à moderniser votre recrutement ?",
+    "ctaButton": "Démarrez la Bêta Gratuite",
+    "ctaNote": "Aucune carte bancaire requise • Installation en 2 min",
     "aiActive": "IA Active",
-    "aiProfilesTitle": "Examinez les parcours. Préparez votre sélection.",
-    "aiProfilesDesc": "Consultez les informations de chaque candidature et rapprochez-les des critères du poste. Choisissez les points à approfondir en entretien.",
-    "aiProfilesBullet1": "Parcours et expériences",
-    "aiProfilesBullet2": "Compétences mentionnées dans le CV",
+    "aiProfilesTitle": "Une IA qui comprend les profils.",
+    "aiProfilesDesc": "Oubliez la recherche par mots-clés qui élimine les bons profils. Notre IA analyse la sémantique, le parcours et le potentiel. Elle lit le CV comme un humain expert le ferait, mais en une fraction de seconde.",
+    "aiProfilesBullet1": "Scoring automatique (0 à 5 étoiles)",
+    "aiProfilesBullet2": "Détection des soft skills",
     "candidateCardTitle": "Candidat #42",
-    "candidateCardLabel": "Exemple d’analyse",
-    "candidateCardQuote": "Le CV mentionne une expérience en management. À approfondir en entretien.",
-    "diffuseTitle": "Retrouvez vos candidatures au même endroit.",
-    "diffuseDesc": "Consultez les candidatures reçues pour un poste et retrouvez les informations utiles à votre sélection.",
-    "diffuseLink": "Parlons de vos besoins →",
-    "interviewTitle": "Préparez vos questions d’entretien.",
-    "interviewDesc": "À partir du CV et de l’offre, Seeklon propose un guide d’entretien : questions à poser, expériences à approfondir et points à vérifier. Adaptez-le à votre échange.",
+    "candidateCardLabel": "ANALYSE IA",
+    "candidateCardQuote": "Profil pertinent. Compétences techniques validées. Expérience en management alignée avec le besoin.",
+    "diffuseTitle": "Diffusez une fois, recevez partout.",
+    "diffuseDesc": "Connectez Seeklon à LinkedIn, Indeed, Monster et vos réseaux sociaux. Publiez votre offre depuis notre interface et laissez la magie opérer. Toutes les candidatures redescendent dans un pipeline unique.",
+    "diffuseLink": "Voir les intégrations →",
+    "interviewTitle": "Entretien d'embauche sur-mesure.",
+    "interviewDesc": "L'IA ne s'arrête pas au tri. Pour chaque candidat sélectionné, Seeklon génère un guide d'entretien sur-mesure avec les questions à poser et les points à creuser, basés sur l'analyse du CV et de l'offre.",
     "interviewCardTitle": "Guide d'entretien",
     "interviewCardSubtitle": "Généré par IA pour Candidat #42",
     "interviewSuggestedLabel": "Question suggérée :",
@@ -276,15 +276,15 @@
   },
   "Pricing": {
     "hero": {
-      "line1": "L’accès est gratuit",
-      "line2": "pendant la bêta.",
-      "body": "L’accès est gratuit pour les premières entreprises qui testent Seeklon avec nous. Les tarifs des packs seront annoncés avant la fin de la bêta."
+      "line1": "Gratuit pendant la bêta.",
+      "line2": "Les packs arrivent.",
+      "body": "Seeklon est en version bêta : l’accès est gratuit pour les premières entreprises qui le testent avec nous. Les tarifs des packs seront annoncés avant la fin de la bêta."
     },
     "beta": {
       "name": "Accès bêta",
       "price": "0 €",
       "period": "pendant toute la bêta",
-      "description": "Rédigez vos offres, examinez vos candidatures et préparez vos entretiens. Vos retours nous aident à améliorer Seeklon.",
+      "description": "Pour les premières entreprises qui recrutent avec Seeklon et nous aident à le faire grandir.",
       "features": [
         "Accès à Seeklon en conditions réelles",
         "Rédaction guidée de l’offre",
@@ -293,15 +293,15 @@
         "Accompagnement au démarrage",
         "Vos retours orientent le produit"
       ],
-      "cta": "Demandez un accès à la bêta"
+      "cta": "Rejoindre la bêta"
     },
     "packs": {
       "title": "Les packs à venir.",
-      "cta": "Recevez l’annonce des tarifs",
+      "cta": "Être prévenu",
       "items": {
         "breeze": {
           "name": "Brise",
-          "description": "Pour un premier recrutement ou des besoins ponctuels.",
+          "description": "Pour un premier recrutement, de temps en temps.",
           "features": [
             "1 offre active",
             "50 candidatures par offre",
@@ -328,7 +328,7 @@
         },
         "cyclone": {
           "name": "Cyclone",
-          "description": "Pour les entreprises qui recrutent dans plusieurs équipes.",
+          "description": "Pour les entreprises qui recrutent sur plusieurs équipes.",
           "features": [
             "Offres illimitées",
             "Candidatures illimitées",
@@ -439,27 +439,27 @@
         },
         {
           "q": "Proposez-vous un tarif pour les associations ?",
-          "a": "Oui, sur demande. Écrivez-nous pour que nous étudiions votre situation ensemble."
+          "a": "Oui, sur demande. Écrivez-nous et nous regardons votre situation ensemble."
         }
       ]
     },
     "closing": {
-      "line1": "Participez",
-      "line2": "à la bêta.",
-      "body": "Utilisez Seeklon pour vos recrutements et partagez vos retours avec l’équipe.",
+      "line1": "Commencez maintenant.",
+      "line2": "C’est gratuit.",
+      "body": "L’accès à Seeklon est gratuit pendant toute la bêta. Vous rédigez vos offres, vous triez vos candidatures, vous préparez vos entretiens — et vous gardez la décision.",
       "note": "Gratuit pendant toute la bêta, sans engagement.",
-      "cta": "Demandez un accès à la bêta"
+      "cta": "Rejoindre la bêta"
     }
   },
   "Metadata": {
     "siteTitle": "Seeklon - Tri intelligent de candidatures",
     "siteDescription": "Simplifiez le processus de recrutement des PME grâce à notre ATS couplé à une IA de tri hiérarchisé.",
     "homeTitle": "Logiciel de recrutement pour PME sans équipe RH",
-    "homeDescription": "Recrutez avec méthode grâce à Seeklon : rédigez vos offres, organisez vos candidatures et préparez vos entretiens, même sans équipe RH. Demandez une démo.",
+    "homeDescription": "Recrutez plus vite, même sans équipe RH : Seeklon vous aide à rédiger une offre claire, trier les CV et préparer vos entretiens. Démo gratuite.",
     "pricingTitle": "Tarifs – Gratuit pendant la bêta",
     "pricingDescription": "Seeklon est en bêta : l’accès est gratuit pour les premières entreprises. Les packs Brise, Tempête et Cyclone arrivent, sans engagement.",
     "contactTitle": "Contact – Demandez une démo",
-    "contactDescription": "Contactez Seeklon pour une démo, la bêta ou les futurs packs. Notre équipe vous répond sous 24 heures, du lundi au vendredi.",
+    "contactDescription": "Écrivez à l’équipe Seeklon pour une démo, une question sur la bêta gratuite ou pour être prévenu à l’ouverture des packs. Réponse sous 24 heures.",
     "aboutTitle": "À propos – Quatre personnes, un seul objectif",
     "aboutDescription": "Né au hackathon Bpifrance sur l’IA et l’éthique, Seeklon est un outil de recrutement pour PME qui laisse la décision au recruteur. Découvrez l’équipe.",
     "blogTitle": "Blog – Conseils de recrutement pour les PME",
@@ -508,11 +508,11 @@
         },
         {
           "title": "Comment",
-          "body": "Seeklon vous propose une offre à partir de votre fiche de poste, puis un guide d’entretien à partir du CV et du poste. Vous relisez et adaptez ces propositions."
+          "body": "Une IA explicable, des guides d’entretien et l’analyse des données. Le premier tri est simplifié, la décision reste au recruteur."
         },
         {
           "title": "Quoi",
-          "body": "Un logiciel pour rédiger vos offres, examiner les candidatures et préparer les entretiens."
+          "body": "Une plateforme de pilotage et d’aide à la décision, qui relie l’analyse des candidatures, la préparation des entretiens et la compréhension du processus."
         }
       ]
     },
@@ -526,7 +526,7 @@
       "award": "Prix Coup de Cœur du jury",
       "caption": "Hackathon Bpifrance, thème IA et éthique",
       "body": "Seeklon est né pendant le hackathon Bpifrance consacré à l’IA et à l’éthique. Bpifrance a créé le prix Coup de Cœur du jury spécialement pour notre projet.",
-      "after": "Depuis, nous développons Seeklon et le faisons évoluer."
+      "after": "Depuis, nous en faisons un vrai produit, et nous le faisons grandir."
     },
     "team": {
       "line1": "Quatre personnes,",
@@ -551,9 +551,9 @@
       ]
     },
     "closing": {
-      "line1": "Échangeons sur",
-      "line2": "vos recrutements.",
-      "body": "Présentez-nous votre façon de recruter et les étapes pour lesquelles vous cherchez un appui.",
+      "line1": "Vous rencontrez.",
+      "line2": "Vous décidez.",
+      "body": "Seeklon prépare les éléments utiles à votre recrutement. La décision reste entre vos mains.",
       "note": "Gratuit pendant toute la bêta, sans engagement.",
       "cta": "Demandez une démo"
     }
@@ -598,8 +598,8 @@
     "closing": {
       "line1": "Vous cherchiez",
       "line2": "quelque chose.",
-      "body": "Dites-nous quoi : si une page vous manque, nous préférons le savoir plutôt que de vous laisser chercher.",
-      "note": "Réponse sous 24 heures, du lundi au vendredi.",
+      "body": "Dites-nous quoi : si une page vous manque, nous préférons le savoir que vous laisser chercher.",
+      "note": "Réponse sous 24 heures.",
       "cta": "Nous écrire"
     }
   }

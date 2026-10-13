@@ -6,7 +6,7 @@ import { SITE_URL } from '@/lib/site'
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: 'Seeklon', template: '%s | Seeklon' },
-  description: 'Software to draft job posts, organise applications and prepare interviews.',
+  description: 'Simplify hiring for SMBs with our ATS powered by AI screening.',
 }
 
 export default async function RootLayout({
