@@ -4,7 +4,7 @@
     "signupShort": "Commencez",
     "login": "Connexion",
     "demo": "Demandez une démo",
-    "betaNote": "Gratuit pendant la bêta, sans engagement."
+    "betaNote": "Gratuit jusqu’au 31 janvier 2027, sans engagement."
   },
   "Header": {
     "home": "Accueil",
@@ -133,7 +133,7 @@
       "line1": "Vous rencontrez.",
       "line2": "Vous décidez.",
       "body": "Seeklon prépare l’offre, organise les CV et construit votre guide d’entretien. Vous gardez la main.",
-      "note": "Gratuit pendant la bêta, sans engagement.",
+      "note": "Gratuit jusqu’au 31 janvier 2027, sans engagement.",
       "cta": "Commencez gratuitement"
     },
     "footer": {
@@ -187,7 +187,7 @@
       "responseTitle": "Réponse sous 24 heures",
       "responseBody": "Par une personne de l’équipe, pas par un robot.",
       "betaTitle": "Bêta gratuite",
-      "betaBody": "L’accès est gratuit pendant toute la bêta, sans engagement.",
+      "betaBody": "L’accès à la bêta est gratuit jusqu’au 31 janvier 2027, sans engagement.",
       "placeTitle": "Paris, France",
       "placeBody": "Seeklon est né pendant le hackathon Bpifrance sur l’IA et l’éthique.",
       "linkedin": "Suivre Seeklon sur LinkedIn",
@@ -218,7 +218,7 @@
       "line1": "Mettez ces conseils",
       "line2": "en pratique.",
       "body": "Seeklon prépare l’offre, organise les candidatures et construit votre guide d’entretien. Vous gardez la décision.",
-      "note": "Gratuit pendant toute la bêta, sans engagement.",
+      "note": "Gratuit jusqu’au 31 janvier 2027, sans engagement.",
       "cta": "Commencez gratuitement"
     },
     "readingTime": "{minutes} min de lecture",
@@ -252,7 +252,7 @@
     "s4": "Guide d'entretien généré automatiquement",
     "ctaTitle": "Prêt à moderniser votre recrutement ?",
     "ctaButton": "Démarrez la Bêta Gratuite",
-    "ctaNote": "Aucune carte bancaire requise • Installation en 2 min",
+    "ctaNote": "Bêta gratuite jusqu’au 31 janvier 2027, sans engagement.",
     "aiActive": "IA Active",
     "aiProfilesTitle": "Une IA qui comprend les profils.",
     "aiProfilesDesc": "Oubliez la recherche par mots-clés qui élimine les bons profils. Notre IA analyse la sémantique, le parcours et le potentiel. Elle lit le CV comme un humain expert le ferait, mais en une fraction de seconde.",
@@ -283,14 +283,14 @@
   },
   "Pricing": {
     "hero": {
-      "line1": "Gratuit pendant la bêta.",
-      "line2": "Les packs arrivent.",
-      "body": "Seeklon est en version bêta : l’accès est gratuit pour les premières entreprises qui le testent avec nous. Les tarifs des packs seront annoncés avant la fin de la bêta."
+      "line1": "Gratuit jusqu’au",
+      "line2": "31 janvier 2027.",
+      "body": "Seeklon est en version bêta : l’accès est gratuit jusqu’au 31 janvier 2027 pour les premières entreprises qui le testent avec nous. Les tarifs des packs seront annoncés avant la fin de la bêta."
     },
     "beta": {
       "name": "Accès bêta",
       "price": "0 €",
-      "period": "pendant toute la bêta",
+      "period": "jusqu’au 31 janvier 2027",
       "description": "Pour les premières entreprises qui recrutent avec Seeklon et nous aident à le faire grandir.",
       "features": [
         "Accès à Seeklon en conditions réelles",
@@ -434,7 +434,7 @@
       "items": [
         {
           "q": "La bêta est-elle vraiment gratuite ?",
-          "a": "Oui. Pendant la bêta, l’accès est gratuit et sans engagement. Nous vous préviendrons avant toute ouverture des packs payants."
+          "a": "Oui. L’accès à la bêta est gratuit jusqu’au 31 janvier 2027, sans engagement. Nous vous préviendrons avant toute ouverture des packs payants."
         },
         {
           "q": "Y a-t-il un engagement ?",
@@ -453,8 +453,8 @@
     "closing": {
       "line1": "Commencez maintenant.",
       "line2": "C’est gratuit.",
-      "body": "L’accès à Seeklon est gratuit pendant toute la bêta. Vous rédigez vos offres, vous triez vos candidatures, vous préparez vos entretiens — et vous gardez la décision.",
-      "note": "Gratuit pendant toute la bêta, sans engagement.",
+      "body": "L’accès à la bêta Seeklon est gratuit jusqu’au 31 janvier 2027. Vous rédigez vos offres, vous triez vos candidatures, vous préparez vos entretiens — et vous gardez la décision.",
+      "note": "Gratuit jusqu’au 31 janvier 2027, sans engagement.",
       "cta": "Créez votre compte"
     }
   },
@@ -463,8 +463,8 @@
     "siteDescription": "Simplifiez le processus de recrutement des PME grâce à notre ATS couplé à une IA de tri hiérarchisé.",
     "homeTitle": "Logiciel de recrutement pour PME sans équipe RH",
     "homeDescription": "Recrutez plus vite, même sans équipe RH : Seeklon vous aide à rédiger une offre claire, trier les CV et préparer vos entretiens. Démo gratuite.",
-    "pricingTitle": "Tarifs – Gratuit pendant la bêta",
-    "pricingDescription": "Seeklon est en bêta : l’accès est gratuit pour les premières entreprises. Les packs Brise, Tempête et Cyclone arrivent, sans engagement.",
+    "pricingTitle": "Tarifs – Bêta gratuite jusqu’au 31 janvier 2027",
+    "pricingDescription": "L’accès à la bêta Seeklon est gratuit jusqu’au 31 janvier 2027. Les packs Brise, Tempête et Cyclone arrivent, sans engagement.",
     "contactTitle": "Contact – Demandez une démo",
     "contactDescription": "Écrivez à l’équipe Seeklon pour une démo, une question sur la bêta gratuite ou pour être prévenu à l’ouverture des packs. Réponse sous 24 heures.",
     "aboutTitle": "À propos – Quatre personnes, un seul objectif",
@@ -563,7 +563,7 @@
       "line1": "Vous rencontrez.",
       "line2": "Vous décidez.",
       "body": "Seeklon prépare les éléments utiles à votre recrutement. La décision reste entre vos mains.",
-      "note": "Gratuit pendant toute la bêta, sans engagement.",
+      "note": "Gratuit jusqu’au 31 janvier 2027, sans engagement.",
       "cta": "Commencez gratuitement"
     }
   },

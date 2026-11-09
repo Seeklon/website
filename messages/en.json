@@ -4,7 +4,7 @@
     "signupShort": "Get started",
     "login": "Log in",
     "demo": "Book a demo",
-    "betaNote": "Free during the beta, no commitment."
+    "betaNote": "Free until 31 January 2027, no commitment."
   },
   "Header": {
     "home": "Home",
@@ -133,7 +133,7 @@
       "line1": "You meet.",
       "line2": "You decide.",
       "body": "Seeklon prepares the job post, organises the CVs and builds your interview guide. You stay in charge.",
-      "note": "Free during the beta, no commitment.",
+      "note": "Free until 31 January 2027, no commitment.",
       "cta": "Get started for free"
     },
     "footer": {
@@ -187,7 +187,7 @@
       "responseTitle": "Answer within 24 hours",
       "responseBody": "From someone on the team, not from a bot.",
       "betaTitle": "Free beta",
-      "betaBody": "Access is free for the whole beta, with no commitment.",
+      "betaBody": "Beta access is free until 31 January 2027, with no commitment.",
       "placeTitle": "Paris, France",
       "placeBody": "Seeklon was born at the Bpifrance hackathon on AI and ethics.",
       "linkedin": "Follow Seeklon on LinkedIn",
@@ -218,7 +218,7 @@
       "line1": "Put this advice",
       "line2": "into practice.",
       "body": "Seeklon drafts the job post, organises applications and builds your interview guide. You keep the decision.",
-      "note": "Free throughout the beta, no commitment.",
+      "note": "Free until 31 January 2027, no commitment.",
       "cta": "Get started for free"
     },
     "readingTime": "{minutes} min read",
@@ -252,7 +252,7 @@
     "s4": "Interview guide generated automatically",
     "ctaTitle": "Ready to modernize your hiring?",
     "ctaButton": "Start free Beta",
-    "ctaNote": "No credit card required • Set up in 2 min",
+    "ctaNote": "Free beta until 31 January 2027, no commitment.",
     "aiActive": "AI Active",
     "aiProfilesTitle": "An AI that understands profiles.",
     "aiProfilesDesc": "Forget keyword search that eliminates good profiles. Our AI analyzes semantics, career path, and potential. It reads the CV like a human expert would, but in a fraction of a second.",
@@ -283,14 +283,14 @@
   },
   "Pricing": {
     "hero": {
-      "line1": "Free during the beta.",
-      "line2": "Packs are coming.",
-      "body": "Seeklon is in beta: access is free for the first companies testing it with us. Pack pricing will be announced before the beta ends."
+      "line1": "Free until",
+      "line2": "31 January 2027.",
+      "body": "Seeklon is in beta: access is free until 31 January 2027 for the first companies testing it with us. Pack pricing will be announced before the beta ends."
     },
     "beta": {
       "name": "Beta access",
       "price": "€0",
-      "period": "for the whole beta",
+      "period": "until 31 January 2027",
       "description": "For the first companies hiring with Seeklon and helping us grow it.",
       "features": [
         "Access to Seeklon on real hiring",
@@ -434,7 +434,7 @@
       "items": [
         {
           "q": "Is the beta really free?",
-          "a": "Yes. During the beta, access is free with no commitment. We will let you know before any paid pack opens."
+          "a": "Yes. Beta access is free until 31 January 2027, with no commitment. We will let you know before any paid pack opens."
         },
         {
           "q": "Is there a commitment?",
@@ -453,8 +453,8 @@
     "closing": {
       "line1": "Start now.",
       "line2": "It's free.",
-      "body": "Seeklon is free for the whole beta. You write your job posts, sort your applications and prepare your interviews — and you keep the decision.",
-      "note": "Free for the whole beta, no commitment.",
+      "body": "Seeklon beta access is free until 31 January 2027. You write your job posts, sort your applications and prepare your interviews — and you keep the decision.",
+      "note": "Free until 31 January 2027, no commitment.",
       "cta": "Create your account"
     }
   },
@@ -463,8 +463,8 @@
     "siteDescription": "Simplify hiring for SMBs with our ATS powered by AI screening.",
     "homeTitle": "Hiring software for small companies without HR",
     "homeDescription": "Hire faster, even without an HR team: Seeklon helps you write a clear job post, screen CVs and prepare your interviews. Free demo.",
-    "pricingTitle": "Pricing – Free during the beta",
-    "pricingDescription": "Seeklon is in beta: access is free for the first companies. The Breeze, Storm and Cyclone packs are coming, with no commitment.",
+    "pricingTitle": "Pricing – Free beta until 31 January 2027",
+    "pricingDescription": "Seeklon beta access is free until 31 January 2027. The Breeze, Storm and Cyclone packs are coming, with no commitment.",
     "contactTitle": "Contact – Book a demo",
     "contactDescription": "Write to the Seeklon team for a demo, a question about the free beta, or to be notified when the packs open. Answer within 24 hours.",
     "aboutTitle": "About – Four people, one goal",
@@ -563,7 +563,7 @@
       "line1": "You meet.",
       "line2": "You decide.",
       "body": "Seeklon prepares everything useful for your hiring. The decision stays in your hands.",
-      "note": "Free throughout the beta, no commitment.",
+      "note": "Free until 31 January 2027, no commitment.",
       "cta": "Get started for free"
     }
   },

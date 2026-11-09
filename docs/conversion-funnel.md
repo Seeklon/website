@@ -2,6 +2,10 @@
 
 Décision de Thomas, 9 novembre 2026 : inscription autonome en priorité, démo en complément.
 
+Gratuité précisée par Thomas le 9 novembre 2026 : **la bêta est gratuite jusqu’au
+31 janvier 2027**. Les mentions FR/EN et la communication reprennent cette date. Cette
+précision ne définit ni les tarifs ultérieurs, ni une facturation automatique.
+
 ## Destinations
 
 - Inscription : `https://app.seeklon.com/register`.
