@@ -531,6 +531,8 @@
     "team": {
       "line1": "Quatre personnes,",
       "line2": "un seul objectif.",
+      "viewCard": "Voir la carte de visite",
+      "viewCardFor": "Voir la carte de visite de {name}",
       "members": [
         {
           "name": "Thomas",

@@ -33,6 +33,8 @@ export default function PageTransitions() {
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
       const anchor = (event.target as HTMLElement | null)?.closest('a')
       if (!anchor || anchor.target === '_blank' || anchor.hasAttribute('download')) return
+      // Standalone pages can require a fresh document (including its language).
+      if (anchor.hasAttribute('data-native-navigation')) return
       const href = anchor.getAttribute('href')
       if (!href || href.startsWith('#')) return
 
