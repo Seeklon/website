@@ -2,6 +2,8 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { ArrowRight } from 'lucide-react'
 import SeeklonWordmark from './SeeklonWordmark'
+import SignupLink from '@/components/SignupLink'
+import { APP_LOGIN_URL } from '@/lib/app-links'
 
 const COLUMNS = [
   { title: 'product', links: [['journey', '/#parcours'], ['pricing', '/pricing'], ['demo', '/contact']] },
@@ -11,6 +13,7 @@ const COLUMNS = [
 
 export default function HomeFooter() {
   const t = useTranslations('Home.footer')
+  const conversion = useTranslations('Conversion')
 
   // The page ends at night: the sky goes pale blue, deep blue, then this navy, which is what
   // says "footer" without a line or a box. It comes in over the first 220px so the blue
@@ -34,13 +37,13 @@ export default function HomeFooter() {
             <Link href="/" aria-label={t('home')} className="inline-flex text-white">
               <SeeklonWordmark className="h-[22px] w-auto" />
             </Link>
-            <Link
-              href="/contact"
+            <SignupLink
+              placement="footer-tagline"
               className="mt-8 inline-flex items-center gap-2 text-[15px] underline-offset-4 hover:underline"
             >
               {t('tagline')}
               <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} />
-            </Link>
+            </SignupLink>
           </div>
 
           <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3">
@@ -50,6 +53,12 @@ export default function HomeFooter() {
                   {t(title)}
                 </h3>
                 <ul className="mt-4 space-y-1">
+                  {title === 'product' && (
+                    <>
+                      <li><SignupLink placement="footer" className="inline-block py-1.5 text-[15px] underline-offset-4 hover:underline">{conversion('signup')}</SignupLink></li>
+                      <li><a href={APP_LOGIN_URL} className="inline-block py-1.5 text-[15px] underline-offset-4 hover:underline">{conversion('login')}</a></li>
+                    </>
+                  )}
                   {links.map(([label, href]) => (
                     <li key={label}>
                       <Link href={href} className="inline-block py-1.5 text-[15px] underline-offset-4 hover:underline">

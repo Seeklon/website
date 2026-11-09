@@ -1,4 +1,11 @@
 {
+  "Conversion": {
+    "signup": "Créez votre compte",
+    "signupShort": "Commencez",
+    "login": "Connexion",
+    "demo": "Demandez une démo",
+    "betaNote": "Gratuit pendant la bêta, sans engagement."
+  },
   "Header": {
     "home": "Accueil",
     "product": "Produit",
@@ -45,7 +52,7 @@
       "accent": "plus vite.",
       "subtitle": "Même sans équipe RH.",
       "body": "Une offre claire, des CV organisés, des entretiens préparés. Seeklon vous guide, vous décidez.",
-      "cta": "Demandez une démo",
+      "cta": "Commencez gratuitement",
       "shotCandidates": "Seeklon : candidatures reçues pour le poste de Product Designer Senior",
       "shotOffer": "Seeklon : création d’une offre",
       "shotInterview": "Seeklon : guide d’entretien d’une candidate"
@@ -126,8 +133,8 @@
       "line1": "Vous rencontrez.",
       "line2": "Vous décidez.",
       "body": "Seeklon prépare l’offre, organise les CV et construit votre guide d’entretien. Vous gardez la main.",
-      "note": "Démo gratuite, sans engagement.",
-      "cta": "Voir ce parcours en démo"
+      "note": "Gratuit pendant la bêta, sans engagement.",
+      "cta": "Commencez gratuitement"
     },
     "footer": {
       "home": "Seeklon, retour à l’accueil",
@@ -212,7 +219,7 @@
       "line2": "en pratique.",
       "body": "Seeklon prépare l’offre, organise les candidatures et construit votre guide d’entretien. Vous gardez la décision.",
       "note": "Gratuit pendant toute la bêta, sans engagement.",
-      "cta": "Essayez Seeklon"
+      "cta": "Commencez gratuitement"
     },
     "readingTime": "{minutes} min de lecture",
     "relatedTitle": "À lire ensuite.",
@@ -293,7 +300,7 @@
         "Accompagnement au démarrage",
         "Vos retours orientent le produit"
       ],
-      "cta": "Rejoindre la bêta"
+      "cta": "Créez votre compte"
     },
     "packs": {
       "title": "Les packs à venir.",
@@ -448,7 +455,7 @@
       "line2": "C’est gratuit.",
       "body": "L’accès à Seeklon est gratuit pendant toute la bêta. Vous rédigez vos offres, vous triez vos candidatures, vous préparez vos entretiens — et vous gardez la décision.",
       "note": "Gratuit pendant toute la bêta, sans engagement.",
-      "cta": "Rejoindre la bêta"
+      "cta": "Créez votre compte"
     }
   },
   "Metadata": {
@@ -557,7 +564,7 @@
       "line2": "Vous décidez.",
       "body": "Seeklon prépare les éléments utiles à votre recrutement. La décision reste entre vos mains.",
       "note": "Gratuit pendant toute la bêta, sans engagement.",
-      "cta": "Demandez une démo"
+      "cta": "Commencez gratuitement"
     }
   },
   "Rgpd": {

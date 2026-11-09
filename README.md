@@ -226,6 +226,13 @@ Les informations sont centralisées dans `lib/business-card.ts` : identité, ema
 
 Voir [la documentation de la carte](docs/carte-thomas.md) pour les assets, les validations et la mise en ligne.
 
+### Accès à l'application
+
+Les appels à l'action principaux conduisent à `https://app.seeklon.com/register` ;
+« Connexion » ouvre `https://app.seeklon.com/login`. La démo reste accessible depuis
+Contact. Les destinations et paramètres de provenance sont centralisés dans
+`lib/app-links.ts`. Voir [le parcours de conversion](docs/conversion-funnel.md).
+
 ---
 
 ## Composants

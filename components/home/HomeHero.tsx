@@ -2,12 +2,14 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import LoopVideo from './LoopVideo'
+import SignupLink from '@/components/SignupLink'
 import candidatesShot from '@/public/home/capture-candidatures.png'
 import offerShot from '@/public/home/hero-lateral-gauche.webp'
 import interviewShot from '@/public/home/hero-lateral-droite.webp'
 
 export default function HomeHero() {
   const t = useTranslations('Home.hero')
+  const conversion = useTranslations('Conversion')
   const accent = t('accent')
 
   return (
@@ -45,12 +47,18 @@ export default function HomeHero() {
         {t('body')}
       </p>
 
-      <Link
-        href="/contact"
-        className="sheen relative mt-9 inline-flex h-[52px] items-center overflow-hidden rounded-[10px] bg-azure px-[30px] text-base font-medium text-white shadow-[0_12px_24px_-12px_rgba(12,109,248,0.7)] transition-colors duration-150 hover:bg-azure-deep"
-      >
-        {t('cta')}
-      </Link>
+      <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+        <SignupLink
+          placement="home-hero"
+          className="sheen relative inline-flex h-[52px] items-center overflow-hidden rounded-[10px] bg-azure px-[30px] text-base font-medium text-white shadow-[0_12px_24px_-12px_rgba(12,109,248,0.7)] transition-colors duration-150 hover:bg-azure-deep"
+        >
+          {t('cta')}
+        </SignupLink>
+        <Link href="/contact" className="inline-flex min-h-11 items-center text-base text-azure-deep underline underline-offset-4 hover:text-ink">
+          {conversion('demo')}
+        </Link>
+      </div>
+      <p className="mt-3 text-sm text-ink-faint">{conversion('betaNote')}</p>
 
       <figure className="relative mx-auto mt-16 max-w-[962px] md:mt-[120px]">
         {/* Side captures peek out from behind the main one, tilted away (wide screens only). */}

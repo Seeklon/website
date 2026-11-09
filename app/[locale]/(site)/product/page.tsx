@@ -1,5 +1,5 @@
 import { Link } from '@/i18n/navigation'
-import Button from '@/components/Button'
+import SignupLink from '@/components/SignupLink'
 import { Bot, Share2, MessageSquare, CheckCircle2, XCircle, Star, ArrowRight } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { pageMetadata } from '@/lib/metadata'
@@ -16,6 +16,7 @@ export default async function ProductPage({ params }: Props) {
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('Product')
+  const conversion = await getTranslations('Conversion')
 
   return (
     <div className="bg-background overflow-hidden">
@@ -206,11 +207,12 @@ export default async function ProductPage({ params }: Props) {
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-text-main mb-8">
             {t('ctaTitleBefore')}<span className="font-accent italic text-primary" style={{ fontWeight: 600 }}>{t('ctaTitleAccent')}</span>
           </h2>
-          <Link href="/contact">
-            <Button className="bg-primary hover:bg-primary-dark text-white px-10 py-4 text-xl rounded-full shadow-xl shadow-primary/20 hover:-translate-y-1 transition-transform">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+            <SignupLink placement="product-cta" className="inline-flex bg-primary hover:bg-primary-dark text-white px-10 py-4 text-xl rounded-full font-medium shadow-xl shadow-primary/20 motion-safe:hover:-translate-y-1 motion-safe:transition-transform">
               {t('ctaButton')}
-            </Button>
-          </Link>
+            </SignupLink>
+            <Link href="/contact" className="inline-flex min-h-11 items-center text-primary underline underline-offset-4">{conversion('demo')}</Link>
+          </div>
           <p className="mt-6 text-text-muted text-sm">{t('ctaNote')}</p>
         </div>
       </section>

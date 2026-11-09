@@ -1,18 +1,20 @@
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import Reveal from './Reveal'
+import SignupLink from '@/components/SignupLink'
 
 // First section of the deep-blue sky. SkyBackground reads `data-sky-deep` and
 // `--deep-full` to blend its clouds into this blue; the blue itself is plain CSS so the
 // white copy keeps its contrast with or without WebGL.
 export default function ClosingCta({
   namespace = 'Home.closing',
-  href = '/contact',
+  href,
 }: {
   namespace?: string
   href?: string
 }) {
   const t = useTranslations(namespace)
+  const conversion = useTranslations('Conversion')
 
   return (
     <section data-sky-deep className="relative text-white [--deep-full:260px] [--deep-lead:340px] md:[--deep-full:420px] md:[--deep-lead:560px]">
@@ -32,12 +34,22 @@ export default function ClosingCta({
           </h2>
         </Reveal>
         <p className="mt-8 max-w-[34rem] text-base leading-[1.6] md:text-[19px]">{t('body')}</p>
-        <Link
-          href={href}
-          className="mt-9 inline-flex h-[52px] items-center justify-center rounded-[10px] bg-white px-8 text-base text-ink transition-colors duration-150 hover:bg-[#EAF2FF]"
-        >
-          {t('cta')}
-        </Link>
+        <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+          {href ? (
+            <Link href={href} className="inline-flex h-[52px] items-center justify-center rounded-[10px] bg-white px-8 text-base text-ink transition-colors duration-150 hover:bg-[#EAF2FF]">
+              {t('cta')}
+            </Link>
+          ) : (
+            <>
+              <SignupLink placement={namespace.toLowerCase().replace('.', '-')} className="inline-flex h-[52px] items-center justify-center rounded-[10px] bg-white px-8 text-base text-ink transition-colors duration-150 hover:bg-[#EAF2FF]">
+                {t('cta')}
+              </SignupLink>
+              <Link href="/contact" className="inline-flex min-h-11 items-center text-base text-white underline underline-offset-4 hover:text-white/90">
+                {conversion('demo')}
+              </Link>
+            </>
+          )}
+        </div>
         <p className="mt-3 text-sm text-white/90">{t('note')}</p>
       </div>
     </section>

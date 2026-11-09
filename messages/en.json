@@ -1,4 +1,11 @@
 {
+  "Conversion": {
+    "signup": "Create your account",
+    "signupShort": "Get started",
+    "login": "Log in",
+    "demo": "Book a demo",
+    "betaNote": "Free during the beta, no commitment."
+  },
   "Header": {
     "home": "Home",
     "product": "Product",
@@ -45,7 +52,7 @@
       "accent": "faster.",
       "subtitle": "Even without an HR team.",
       "body": "A clear job post, organised CVs, prepared interviews. Seeklon guides you, you decide.",
-      "cta": "Book a demo",
+      "cta": "Get started for free",
       "shotCandidates": "Seeklon: applications received for the Senior Product Designer role",
       "shotOffer": "Seeklon: creating a job post",
       "shotInterview": "Seeklon: interview guide for a candidate"
@@ -126,8 +133,8 @@
       "line1": "You meet.",
       "line2": "You decide.",
       "body": "Seeklon prepares the job post, organises the CVs and builds your interview guide. You stay in charge.",
-      "note": "Free demo, no commitment.",
-      "cta": "See this journey in a demo"
+      "note": "Free during the beta, no commitment.",
+      "cta": "Get started for free"
     },
     "footer": {
       "home": "Seeklon, back to home",
@@ -212,7 +219,7 @@
       "line2": "into practice.",
       "body": "Seeklon drafts the job post, organises applications and builds your interview guide. You keep the decision.",
       "note": "Free throughout the beta, no commitment.",
-      "cta": "Try Seeklon"
+      "cta": "Get started for free"
     },
     "readingTime": "{minutes} min read",
     "relatedTitle": "Read next.",
@@ -293,7 +300,7 @@
         "Onboarding support",
         "Your feedback shapes the product"
       ],
-      "cta": "Join the beta"
+      "cta": "Create your account"
     },
     "packs": {
       "title": "The packs to come.",
@@ -448,7 +455,7 @@
       "line2": "It's free.",
       "body": "Seeklon is free for the whole beta. You write your job posts, sort your applications and prepare your interviews — and you keep the decision.",
       "note": "Free for the whole beta, no commitment.",
-      "cta": "Join the beta"
+      "cta": "Create your account"
     }
   },
   "Metadata": {
@@ -557,7 +564,7 @@
       "line2": "You decide.",
       "body": "Seeklon prepares everything useful for your hiring. The decision stays in your hands.",
       "note": "Free throughout the beta, no commitment.",
-      "cta": "Book a demo"
+      "cta": "Get started for free"
     }
   },
   "Rgpd": {

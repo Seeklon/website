@@ -5,6 +5,8 @@ import { useLocale, useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
 import SeeklonWordmark from './SeeklonWordmark'
+import SignupLink from '@/components/SignupLink'
+import { APP_LOGIN_URL } from '@/lib/app-links'
 
 const LINKS = [
   { key: 'journey', href: '/#parcours' },
@@ -21,6 +23,7 @@ const LANGUAGE_NAMES: Record<string, string> = { fr: 'Français', en: 'English' 
 // back to the other language's blog index.
 export default function HomeNav({ postSlugs }: { postSlugs?: Record<string, string[]> }) {
   const t = useTranslations('Home.nav')
+  const conversion = useTranslations('Conversion')
   const locale = useLocale()
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
@@ -99,12 +102,12 @@ export default function HomeNav({ postSlugs }: { postSlugs?: Record<string, stri
         data-lifted={lifted}
         className="group/nav mx-auto max-w-[1040px] rounded-[14px] bg-white shadow-[0_14px_34px_-20px_rgba(11,11,12,0.45)] motion-safe:transition-shadow motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.16,1,0.3,1)] data-[lifted=true]:shadow-[0_18px_44px_-22px_rgba(12,109,248,0.5)]"
       >
-        <div className="flex h-14 items-center justify-between pl-5 pr-2 motion-safe:transition-[height] motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.16,1,0.3,1)] lg:grid lg:h-[60px] lg:grid-cols-[1fr_auto_1fr] lg:pl-6 lg:pr-3 lg:group-data-[lifted=true]/nav:h-[54px]">
+        <div className="flex h-14 items-center justify-between pl-5 pr-2 motion-safe:transition-[height] motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.16,1,0.3,1)] lg:grid lg:h-[60px] lg:grid-cols-[auto_1fr_auto] lg:gap-4 lg:pl-6 lg:pr-3 lg:group-data-[lifted=true]/nav:h-[54px]">
           <Link href="/" aria-label={t('home')} className="flex h-10 items-center text-ink" onClick={() => setOpen(false)}>
             <SeeklonWordmark className="h-[15px] w-auto" />
           </Link>
 
-          <ul className="hidden items-center gap-1 lg:flex">
+          <ul className="hidden items-center justify-center gap-1 lg:flex">
             {LINKS.map(({ key, href }) => {
               const current = pathname === href
               return (
@@ -125,21 +128,24 @@ export default function HomeNav({ postSlugs }: { postSlugs?: Record<string, stri
 
           <div className="hidden items-center justify-end gap-3 lg:flex">
             {localeSwitch}
-            <Link
-              href="/contact"
-              className="rounded-[10px] bg-azure px-4 py-2.5 text-sm leading-none text-white transition-colors duration-150 hover:bg-azure-deep"
+            <a href={APP_LOGIN_URL} className="whitespace-nowrap py-2.5 text-sm text-ink hover:text-azure-deep">
+              {conversion('login')}
+            </a>
+            <SignupLink
+              placement="nav"
+              className="whitespace-nowrap rounded-[10px] bg-azure px-4 py-2.5 text-sm leading-none text-white transition-colors duration-150 hover:bg-azure-deep"
             >
-              {t('demo')}
-            </Link>
+              {conversion('signup')}
+            </SignupLink>
           </div>
 
-          <Link
-            href="/contact"
-            aria-label={t('demo')}
+          <SignupLink
+            placement="nav-mobile"
+            aria-label={conversion('signup')}
             className="ml-auto mr-1 whitespace-nowrap rounded-[10px] bg-azure px-4 py-2.5 text-sm leading-none text-white transition-colors duration-150 hover:bg-azure-deep lg:hidden"
           >
-            {t('demoShort')}
-          </Link>
+            {conversion('signupShort')}
+          </SignupLink>
           <button
             ref={toggleRef}
             type="button"
@@ -177,6 +183,14 @@ export default function HomeNav({ postSlugs }: { postSlugs?: Record<string, stri
               </li>
             ))}
           </ul>
+          <div className="mt-2 flex flex-col border-t border-ink/[0.06] pt-2">
+            <a href={APP_LOGIN_URL} className="flex min-h-12 items-center rounded-[10px] px-3 text-lg hover:bg-azure/[0.07]">
+              {conversion('login')}
+            </a>
+            <Link href="/contact" onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-[10px] px-3 text-lg hover:bg-azure/[0.07]">
+              {conversion('demo')}
+            </Link>
+          </div>
           <div className="mt-3 px-1">{localeSwitch}</div>
         </div>
       </nav>

@@ -1,10 +1,12 @@
 import { useTranslations } from 'next-intl'
 import { Check } from 'lucide-react'
 import { Link } from '@/i18n/navigation'
+import SignupLink from '@/components/SignupLink'
 
 // The only plan on sale today: free while Seeklon is in beta.
 export default function BetaPlan() {
   const t = useTranslations('Pricing.beta')
+  const conversion = useTranslations('Conversion')
   const features = t.raw('features') as string[]
 
   return (
@@ -20,12 +22,17 @@ export default function BetaPlan() {
             <span className="text-[15px] text-ink-soft">{t('period')}</span>
           </p>
 
-          <Link
-            href="/contact"
-            className="sheen relative mt-8 inline-flex h-[54px] items-center overflow-hidden rounded-[10px] bg-azure px-8 text-base font-medium text-white transition-colors duration-150 hover:bg-azure-deep"
-          >
-            {t('cta')}
-          </Link>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <SignupLink
+              placement="pricing-beta"
+              className="sheen relative inline-flex h-[54px] items-center overflow-hidden rounded-[10px] bg-azure px-8 text-base font-medium text-white transition-colors duration-150 hover:bg-azure-deep"
+            >
+              {t('cta')}
+            </SignupLink>
+            <Link href="/contact" className="inline-flex min-h-11 items-center text-base text-azure-deep underline underline-offset-4 hover:text-ink">
+              {conversion('demo')}
+            </Link>
+          </div>
         </div>
 
         <ul className="mt-10 grid gap-x-8 gap-y-3.5 self-start text-base sm:grid-cols-2 lg:mt-1 lg:grid-cols-1">

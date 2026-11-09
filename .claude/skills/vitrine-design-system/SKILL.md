@@ -86,8 +86,12 @@ compositor animates on its own. Rules that matter:
 
 ## Components and classes
 
-- `HomeNav`: fixed pill, full nav from `lg`, burger below, compact `Démo` button on mobile,
-  active link `bg-[#EEF4FF]` + `aria-current="page"`.
+- `HomeNav`: fixed pill, full nav from `lg`, burger below, primary signup button and a
+  login link (inside the menu on mobile). Demo stays a secondary action. Desktop columns
+  use `auto 1fr auto` to fit the account actions. Active link: `bg-[#EEF4FF]` +
+  `aria-current="page"`.
+- `SignupLink`: a same-tab HTML link to the app's `/register` with fixed placement and
+  locale UTM parameters from `lib/app-links.ts`; app routes bypass the locale router.
 - `Reveal`: adds `data-reveal`/`data-visible` for the blur-and-rise entrance. Use it below
   the fold only — above the fold, prefer a CSS `animation` so nothing flashes.
 - `.accent-shine` (blue accent word) sweeps only on hover, slowly: on arrival it read as

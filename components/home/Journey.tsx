@@ -4,7 +4,7 @@ import { getImageProps, type StaticImageData } from 'next/image'
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import { useTranslations } from 'next-intl'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { Link } from '@/i18n/navigation'
+import SignupLink from '@/components/SignupLink'
 import Reveal from './Reveal'
 import ImageZoom from './ImageZoom'
 import LoopVideo from './LoopVideo'
@@ -446,12 +446,12 @@ export default function Journey() {
             </p>
 
             <div className="mt-8 text-center lg:hidden">
-              <Link
-                href="/contact"
+              <SignupLink
+                placement="home-journey"
                 className="sheen relative inline-flex h-[52px] items-center overflow-hidden rounded-[10px] bg-azure px-7 text-base font-medium text-white transition-colors duration-150 hover:bg-azure-deep"
               >
                 {tClosing('cta')}
-              </Link>
+              </SignupLink>
             </div>
           </div>
         </div>
