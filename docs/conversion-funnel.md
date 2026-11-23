@@ -43,10 +43,27 @@ Chaque lien d'inscription porte uniquement ces paramètres publics :
 | `utm_campaign` | `beta` |
 | `utm_content` | Emplacement fixe et langue, par exemple `home-hero_fr` ou `pricing-beta_en` |
 
-Ces liens ne recopient pas les paramètres de l'URL courante et n'ajoutent aucun cookie,
-appel de collecte ou script de mesure à la vitrine. Ils préparent l'attribution des
-arrivées côté application ; ils ne constituent pas un tableau de conversion ni un suivi
-des abandons sur la vitrine.
+Ces liens ne recopient pas les paramètres de l'URL courante. Ils préparent l'attribution
+des arrivées côté application.
+
+## Mesure d'audience
+
+`components/CookieConsentAnalytics.tsx` (repris de la branche
+`agent/website-polish-prospection`) charge GA4 uniquement après acceptation du bandeau.
+Le site a sa propre propriété GA4, « Seeklon - Site vitrine » (`G-269CM30LS9`), distincte
+de celle de l'application, pour garder deux tableaux de bord lisibles. L'ID vient de
+`NEXT_PUBLIC_GA_MEASUREMENT_ID` ; à défaut, `G-269CM30LS9` est utilisé en production
+seulement, et `next dev` ne mesure rien.
+
+Les arrivées sur l'application depuis le site se lisent dans la propriété de l'app :
+Acquisition de trafic, source/support `seeklon_website / website`, dimension secondaire
+« Contenu de la session manuelle » pour l'emplacement du bouton. Le parcours sur le site
+(articles lus, etc.) n'est pas relié à l'inscription dans un même rapport.
+
+- `page_view` à chaque changement de route (`send_page_view: false` puis envoi manuel).
+- `generate_lead` après un envoi réussi du formulaire de contact.
+- Refus ou retrait : `ga-disable-<ID>`, consentement `denied` et suppression des `_ga`.
+- Signaux Google et personnalisation publicitaire désactivés.
 
 Le code d'inscription de l'application contient déjà les événements
 `register_page_view`, `register_step_completed`, `register_submitted`, `register_success`

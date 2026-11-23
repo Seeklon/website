@@ -33,6 +33,10 @@ export default function ContactForm() {
         body,
         headers: { Accept: 'application/json' },
       })
+      if (response.ok) {
+        // gtag only exists once audience measurement was accepted.
+        window.gtag?.('event', 'generate_lead', { lead_source: 'website_contact', lead_type: 'general' })
+      }
       setState(response.ok ? 'sent' : 'failed')
     } catch {
       setState('failed')

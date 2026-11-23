@@ -6,6 +6,17 @@
     "demo": "Demandez une démo",
     "betaNote": "Gratuit jusqu’au 31 janvier 2027, sans engagement."
   },
+  "CookieConsent": {
+    "title": "Mesure d'audience",
+    "description": "Nous utilisons Google Analytics pour comprendre l'utilisation du site et améliorer l'expérience. Les mesures ne sont activées qu'après votre accord.",
+    "learnMore": "En savoir plus",
+    "decline": "Refuser",
+    "accept": "Accepter",
+    "manage": "Cookies",
+    "withdraw": "Retirer",
+    "statusAccepted": "Mesure d'audience actuellement acceptée.",
+    "statusDeclined": "Mesure d'audience actuellement refusée."
+  },
   "Header": {
     "home": "Accueil",
     "product": "Produit",
@@ -577,7 +588,7 @@
     "rightsLi2": "Droit de rectification : Vous avez le droit de nous demander de corriger toute information que vous jugez inexacte.",
     "rightsLi3": "Droit à l'effacement : Vous avez le droit de nous demander d'effacer vos données personnelles, sous certaines conditions.",
     "cookiesTitle": "2. Cookies",
-    "cookiesContent": "Ce site ne dépose aucun cookie publicitaire ni de mesure d’audience. Le seul cookie utilisé retient la langue que vous avez choisie, pour vous la servir à la visite suivante : il est strictement nécessaire au fonctionnement du site et ne permet pas de vous identifier. Vous pouvez le refuser dans votre navigateur, la langue sera alors redemandée à chaque visite.",
+    "cookiesContent": "Ce site ne dépose aucun cookie publicitaire. Le cookie de langue est strictement nécessaire : il retient la langue que vous avez choisie et ne permet pas de vous identifier. La mesure d’audience Google Analytics est optionnelle et n’est activée qu’après votre accord via le bandeau cookies ; elle dépose alors des cookies _ga sur seeklon.com, partagés avec l’application Seeklon. Vous pouvez modifier ou retirer ce choix à tout moment depuis le bouton de gestion des cookies, et refuser ne limite en rien l’accès au site.",
     "dpoTitle": "3. Contact DPO",
     "dpoContent": "Pour toute question relative à la protection de vos données ou pour exercer vos droits, vous pouvez contacter notre Délégué à la Protection des Données à l'adresse suivante : contact@seeklon.com"
   },
