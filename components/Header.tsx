@@ -3,7 +3,7 @@
 import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import Image from 'next/image'
 import SignupLink from './SignupLink'
-import { APP_LOGIN_URL } from '@/lib/app-links'
+import LoginLink from './LoginLink'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { useTranslations, useLocale } from 'next-intl'
@@ -98,7 +98,7 @@ export default function Header() {
                             </button>
                         ))}
                     </div>
-                    <a href={APP_LOGIN_URL} className="py-2 text-sm font-medium text-text-muted hover:text-primary">{conversion('login')}</a>
+                    <LoginLink placement="product-nav" className="py-2 text-sm font-medium text-text-muted hover:text-primary">{conversion('login')}</LoginLink>
                     <SignupLink placement="product-nav" className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-full font-medium transition-all shadow-lg shadow-primary/20 text-sm">
                         {conversion('signup')}
                     </SignupLink>
@@ -152,7 +152,7 @@ export default function Header() {
                     </div>
                     <div className="h-px bg-slate-100 my-2"></div>
 
-                    <a href={APP_LOGIN_URL} className="px-4 py-3 text-lg font-medium text-text-main hover:text-primary">{conversion('login')}</a>
+                    <LoginLink placement="product-nav-mobile" className="px-4 py-3 text-lg font-medium text-text-main hover:text-primary">{conversion('login')}</LoginLink>
                     <SignupLink placement="product-nav-mobile" onClick={() => setIsMobileMenuOpen(false)} className="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-xl text-center font-medium shadow-lg shadow-primary/20">
                         {conversion('signup')}
                     </SignupLink>

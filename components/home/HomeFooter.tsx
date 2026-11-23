@@ -3,7 +3,7 @@ import { Link } from '@/i18n/navigation'
 import { ArrowRight } from 'lucide-react'
 import SeeklonWordmark from './SeeklonWordmark'
 import SignupLink from '@/components/SignupLink'
-import { APP_LOGIN_URL } from '@/lib/app-links'
+import LoginLink from '@/components/LoginLink'
 
 const COLUMNS = [
   { title: 'product', links: [['journey', '/#parcours'], ['pricing', '/pricing'], ['demo', '/contact']] },
@@ -56,7 +56,7 @@ export default function HomeFooter() {
                   {title === 'product' && (
                     <>
                       <li><SignupLink placement="footer" className="inline-block py-1.5 text-[15px] underline-offset-4 hover:underline">{conversion('signup')}</SignupLink></li>
-                      <li><a href={APP_LOGIN_URL} className="inline-block py-1.5 text-[15px] underline-offset-4 hover:underline">{conversion('login')}</a></li>
+                      <li><LoginLink placement="footer" className="inline-block py-1.5 text-[15px] underline-offset-4 hover:underline">{conversion('login')}</LoginLink></li>
                     </>
                   )}
                   {links.map(([label, href]) => (

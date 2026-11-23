@@ -6,7 +6,7 @@ import { Link, usePathname } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
 import SeeklonWordmark from './SeeklonWordmark'
 import SignupLink from '@/components/SignupLink'
-import { APP_LOGIN_URL } from '@/lib/app-links'
+import LoginLink from '@/components/LoginLink'
 
 const LINKS = [
   { key: 'journey', href: '/#parcours' },
@@ -128,9 +128,9 @@ export default function HomeNav({ postSlugs }: { postSlugs?: Record<string, stri
 
           <div className="hidden items-center justify-end gap-3 lg:flex">
             {localeSwitch}
-            <a href={APP_LOGIN_URL} className="whitespace-nowrap py-2.5 text-sm text-ink hover:text-azure-deep">
+            <LoginLink placement="nav" className="whitespace-nowrap py-2.5 text-sm text-ink hover:text-azure-deep">
               {conversion('login')}
-            </a>
+            </LoginLink>
             <SignupLink
               placement="nav"
               className="whitespace-nowrap rounded-[10px] bg-azure px-4 py-2.5 text-sm leading-none text-white transition-colors duration-150 hover:bg-azure-deep"
@@ -184,9 +184,9 @@ export default function HomeNav({ postSlugs }: { postSlugs?: Record<string, stri
             ))}
           </ul>
           <div className="mt-2 flex flex-col border-t border-ink/[0.06] pt-2">
-            <a href={APP_LOGIN_URL} className="flex min-h-12 items-center rounded-[10px] px-3 text-lg hover:bg-azure/[0.07]">
+            <LoginLink placement="nav-mobile" className="flex min-h-12 items-center rounded-[10px] px-3 text-lg hover:bg-azure/[0.07]">
               {conversion('login')}
-            </a>
+            </LoginLink>
             <Link href="/contact" onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-[10px] px-3 text-lg hover:bg-azure/[0.07]">
               {conversion('demo')}
             </Link>

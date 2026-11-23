@@ -4,7 +4,7 @@ import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import SignupLink from './SignupLink'
-import { APP_LOGIN_URL } from '@/lib/app-links'
+import LoginLink from './LoginLink'
 
 export default function Footer() {
   const t = useTranslations('Footer')
@@ -58,7 +58,7 @@ export default function Footer() {
               <h3 className="font-heading font-semibold text-white mb-6"><span className="font-accent italic">{t('product')}</span></h3>
               <ul className="space-y-4 text-sm font-medium">
                 <li><SignupLink placement="product-footer" className="hover:text-primary-light">{conversion('signup')}</SignupLink></li>
-                <li><a href={APP_LOGIN_URL} className="hover:text-primary-light">{conversion('login')}</a></li>
+                <li><LoginLink placement="product-footer" className="hover:text-primary-light">{conversion('login')}</LoginLink></li>
                 <li><Link href="/#parcours" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('features')}</Link></li>
                 <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('requestDemo')}</Link></li>
               </ul>

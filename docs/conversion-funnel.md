@@ -62,6 +62,13 @@ Acquisition de trafic, source/support `seeklon_website / website`, dimension sec
 
 - `page_view` à chaque changement de route (`send_page_view: false` puis envoi manuel).
 - `generate_lead` après un envoi réussi du formulaire de contact.
+- `signup_click` et `login_click` au clic sur « Créez votre compte » et « Connexion »
+  (`components/AppLink.tsx`, via `SignupLink` et `LoginLink`), avec `placement` (même nom
+  que dans `utm_content`, par exemple `home-hero`, `nav-mobile`) et `site_locale` (`fr`,
+  `en`). Le clic attend la confirmation de GA, 400 ms au plus, avant de suivre le lien :
+  sans cela, GA4 perd le hit en quittant la page. Sans consentement, le lien part
+  immédiatement. Pour voir `placement` et `site_locale` dans les rapports, les déclarer
+  comme dimensions personnalisées (portée événement) dans la propriété du site.
 - Refus ou retrait : `ga-disable-<ID>`, consentement `denied` et suppression des `_ga`.
 - Signaux Google et personnalisation publicitaire désactivés.
 
