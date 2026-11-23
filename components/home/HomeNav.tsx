@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing'
 import SeeklonWordmark from './SeeklonWordmark'
 import SignupLink from '@/components/SignupLink'
 import LoginLink from '@/components/LoginLink'
+import DemoLink from '@/components/DemoLink'
 
 const LINKS = [
   { key: 'journey', href: '/#parcours' },
@@ -187,9 +188,9 @@ export default function HomeNav({ postSlugs }: { postSlugs?: Record<string, stri
             <LoginLink placement="nav-mobile" className="flex min-h-12 items-center rounded-[10px] px-3 text-lg hover:bg-azure/[0.07]">
               {conversion('login')}
             </LoginLink>
-            <Link href="/contact" onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-[10px] px-3 text-lg hover:bg-azure/[0.07]">
+            <DemoLink placement="nav-mobile" onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-[10px] px-3 text-lg hover:bg-azure/[0.07]">
               {conversion('demo')}
-            </Link>
+            </DemoLink>
           </div>
           <div className="mt-3 px-1">{localeSwitch}</div>
         </div>

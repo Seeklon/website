@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import Reveal from './Reveal'
 import SignupLink from '@/components/SignupLink'
+import DemoLink from '@/components/DemoLink'
 
 // First section of the deep-blue sky. SkyBackground reads `data-sky-deep` and
 // `--deep-full` to blend its clouds into this blue; the blue itself is plain CSS so the
@@ -44,9 +45,9 @@ export default function ClosingCta({
               <SignupLink placement={namespace.toLowerCase().replace('.', '-')} className="inline-flex h-[52px] items-center justify-center rounded-[10px] bg-white px-8 text-base text-ink transition-colors duration-150 hover:bg-[#EAF2FF]">
                 {t('cta')}
               </SignupLink>
-              <Link href="/contact" className="inline-flex min-h-11 items-center text-base text-white underline underline-offset-4 hover:text-white/90">
+              <DemoLink placement={namespace.toLowerCase().replace('.', '-')} className="inline-flex min-h-11 items-center text-base text-white underline underline-offset-4 hover:text-white/90">
                 {conversion('demo')}
-              </Link>
+              </DemoLink>
             </>
           )}
         </div>

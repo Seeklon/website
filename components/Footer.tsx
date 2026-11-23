@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import SignupLink from './SignupLink'
 import LoginLink from './LoginLink'
+import DemoLink from '@/components/DemoLink'
 
 export default function Footer() {
   const t = useTranslations('Footer')
@@ -60,7 +61,7 @@ export default function Footer() {
                 <li><SignupLink placement="product-footer" className="hover:text-primary-light">{conversion('signup')}</SignupLink></li>
                 <li><LoginLink placement="product-footer" className="hover:text-primary-light">{conversion('login')}</LoginLink></li>
                 <li><Link href="/#parcours" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('features')}</Link></li>
-                <li><Link href="/contact" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('requestDemo')}</Link></li>
+                <li><DemoLink placement="product-footer" className="hover:text-primary-light hover:pl-1 transition-all duration-200">{t('requestDemo')}</DemoLink></li>
               </ul>
             </div>
 

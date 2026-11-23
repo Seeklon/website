@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation'
 import { ArrowRight } from 'lucide-react'
 import SeeklonWordmark from './SeeklonWordmark'
 import SignupLink from '@/components/SignupLink'
+import DemoLink from '@/components/DemoLink'
 import LoginLink from '@/components/LoginLink'
 
 const COLUMNS = [
@@ -61,9 +62,15 @@ export default function HomeFooter() {
                   )}
                   {links.map(([label, href]) => (
                     <li key={label}>
-                      <Link href={href} className="inline-block py-1.5 text-[15px] underline-offset-4 hover:underline">
-                        {t(label)}
-                      </Link>
+                      {label === 'demo' ? (
+                        <DemoLink placement="footer" className="inline-block py-1.5 text-[15px] underline-offset-4 hover:underline">
+                          {t(label)}
+                        </DemoLink>
+                      ) : (
+                        <Link href={href} className="inline-block py-1.5 text-[15px] underline-offset-4 hover:underline">
+                          {t(label)}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>

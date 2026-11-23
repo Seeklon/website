@@ -67,8 +67,15 @@ Acquisition de trafic, source/support `seeklon_website / website`, dimension sec
   que dans `utm_content`, par exemple `home-hero`, `nav-mobile`) et `site_locale` (`fr`,
   `en`). Le clic attend la confirmation de GA, 400 ms au plus, avant de suivre le lien :
   sans cela, GA4 perd le hit en quittant la page. Sans consentement, le lien part
-  immédiatement. Pour voir `placement` et `site_locale` dans les rapports, les déclarer
-  comme dimensions personnalisées (portée événement) dans la propriété du site.
+  immédiatement.
+- `demo_click` au clic sur « Demandez une démo » (`components/DemoLink.tsx`), avec les
+  mêmes `placement` que les boutons d'inscription voisins (`home-hero`, `nav-mobile`,
+  `pricing-beta`, `footer`, `<page>-closing`, `product-cta`, `product-footer`) et
+  `site_locale`. Le lien reste sur le site (page Contact), la navigation n'est donc pas
+  retenue. `generate_lead` mesure ensuite les demandes réellement envoyées.
+
+Pour voir `placement` et `site_locale` dans les rapports, les déclarer comme dimensions
+personnalisées (portée événement) dans la propriété du site.
 - Refus ou retrait : `ga-disable-<ID>`, consentement `denied` et suppression des `_ga`.
 - Signaux Google et personnalisation publicitaire désactivés.
 
