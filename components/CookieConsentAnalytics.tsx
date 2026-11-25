@@ -6,77 +6,16 @@ import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
-
-// The site has its own GA4 property ("Seeklon - Site vitrine"), separate from the app's.
-// Visits sent on to the app are attributed there by the sign-up links' UTM parameters
-// (lib/app-links.ts). The production ID only applies to production builds, so `next dev`
-// measures nothing unless .env.local sets an ID (for instance the test property's).
-const GA_MEASUREMENT_ID =
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-  || (process.env.NODE_ENV === 'production' ? 'G-269CM30LS9' : '')
-const CONSENT_STORAGE_KEY = 'seeklon_analytics_consent'
-const CONSENT_VERSION = '2026-08-11'
-const CONSENT_ACCEPTED = 'accepted'
-const CONSENT_DECLINED = 'declined'
-
-type ConsentStatus = typeof CONSENT_ACCEPTED | typeof CONSENT_DECLINED
-
-type StoredConsent = {
-  status: ConsentStatus
-  version: string
-  source: 'cookie-banner'
-  updatedAt: string
-}
-
-declare global {
-  interface Window {
-    dataLayer?: unknown[]
-    gtag?: (...args: unknown[]) => void
-    [key: `ga-disable-${string}`]: boolean
-  }
-}
-
-function parseStoredConsent(value: string | null): StoredConsent | null {
-  if (!value) return null
-  try {
-    const parsed = JSON.parse(value) as Partial<StoredConsent>
-    if (
-      (parsed.status === CONSENT_ACCEPTED || parsed.status === CONSENT_DECLINED)
-      && parsed.version === CONSENT_VERSION
-      && parsed.source === 'cookie-banner'
-    ) {
-      return parsed as StoredConsent
-    }
-  } catch {
-    return null
-  }
-  return null
-}
-
-function deleteCookie(name: string, domain?: string) {
-  document.cookie = `${name}=; Max-Age=0; path=/; SameSite=Lax${domain ? `; domain=${domain}` : ''}`
-}
-
-function deleteGoogleAnalyticsCookies() {
-  const hostname = window.location.hostname
-  const domainParts = hostname.split('.')
-  const candidateDomains = new Set<string | undefined>([undefined, hostname])
-
-  if (domainParts.length >= 2) {
-    candidateDomains.add(`.${domainParts.slice(-2).join('.')}`)
-  }
-  if (hostname.startsWith('www.')) {
-    candidateDomains.add(`.${hostname.replace(/^www\./, '')}`)
-  }
-
-  document.cookie
-    .split(';')
-    .map((cookie) => cookie.trim().split('=')[0])
-    .filter((name) => name === '_ga' || name.startsWith('_ga_'))
-    .forEach((name) => {
-      candidateDomains.forEach((domain) => deleteCookie(name, domain))
-    })
-}
+import {
+  CONSENT_ACCEPTED,
+  CONSENT_DECLINED,
+  GA_MEASUREMENT_ID,
+  deleteWebsiteAnalyticsCookies,
+  readConsent,
+  writeConsent,
+  type ConsentStatus,
+  type StoredConsent,
+} from '@/lib/analytics'
 
 export default function CookieConsentAnalytics() {
   const t = useTranslations('CookieConsent')
@@ -89,7 +28,7 @@ export default function CookieConsentAnalytics() {
   const managerPanelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setConsent(parseStoredConsent(window.localStorage.getItem(CONSENT_STORAGE_KEY)))
+    setConsent(readConsent())
     setIsLoaded(true)
   }, [])
 
@@ -121,14 +60,7 @@ export default function CookieConsentAnalytics() {
   }, [isManagerOpen])
 
   const saveConsent = (status: ConsentStatus) => {
-    const nextConsent: StoredConsent = {
-      status,
-      version: CONSENT_VERSION,
-      source: 'cookie-banner',
-      updatedAt: new Date().toISOString(),
-    }
-    window.localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(nextConsent))
-    setConsent(nextConsent)
+    setConsent(writeConsent(status))
     setIsManagerOpen(false)
     if (isManagerOpen) {
       window.requestAnimationFrame(() => managerButtonRef.current?.focus())
@@ -137,7 +69,7 @@ export default function CookieConsentAnalytics() {
     if (status === CONSENT_DECLINED) {
       window[`ga-disable-${GA_MEASUREMENT_ID}`] = true
       window.gtag?.('consent', 'update', { analytics_storage: 'denied' })
-      deleteGoogleAnalyticsCookies()
+      deleteWebsiteAnalyticsCookies()
     } else {
       window[`ga-disable-${GA_MEASUREMENT_ID}`] = false
       window.gtag?.('consent', 'update', { analytics_storage: 'granted' })

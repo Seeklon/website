@@ -3,6 +3,7 @@
 import type { ComponentProps, MouseEvent } from 'react'
 import { useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
+import { canTrack } from '@/lib/analytics'
 
 type Props = Omit<ComponentProps<typeof Link>, 'href'> & { placement: string }
 
@@ -14,7 +15,7 @@ export default function DemoLink({ placement, onClick, ...props }: Props) {
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(event)
-    window.gtag?.('event', 'demo_click', { placement, site_locale: locale })
+    if (canTrack()) window.gtag?.('event', 'demo_click', { placement, site_locale: locale })
   }
 
   return <Link {...props} href="/contact" onClick={handleClick} />

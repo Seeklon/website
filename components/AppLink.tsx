@@ -2,6 +2,7 @@
 
 import type { ComponentPropsWithoutRef, MouseEvent } from 'react'
 import { useLocale } from 'next-intl'
+import { canTrack } from '@/lib/analytics'
 
 type Props = ComponentPropsWithoutRef<'a'> & {
   href: string
@@ -21,8 +22,8 @@ export default function AppLink({ href, event: eventName, placement, onClick, ch
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(event)
-    // gtag only exists once audience measurement was accepted.
-    if (event.defaultPrevented || !window.gtag) return
+    // Not accepted, or withdrawn since: a plain link, followed at once.
+    if (event.defaultPrevented || !canTrack()) return
 
     // GA4 batches hits, so one queued right before leaving the page can be dropped. Hold a
     // plain same-tab click until GA confirms the hit (or the timeout), then follow the link.
@@ -40,7 +41,7 @@ export default function AppLink({ href, event: eventName, placement, onClick, ch
     if (!opensElsewhere) event.preventDefault()
 
     // `site_locale` rather than `language`, which GA4 already fills with the browser's.
-    window.gtag('event', eventName, {
+    window.gtag?.('event', eventName, {
       placement,
       site_locale: locale,
       link_url: href,

@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { Check } from 'lucide-react'
+import { canTrack } from '@/lib/analytics'
 
 const FORMSPREE_CONTACT_ID = 'xpqqzzan'
 
@@ -33,8 +34,7 @@ export default function ContactForm() {
         body,
         headers: { Accept: 'application/json' },
       })
-      if (response.ok) {
-        // gtag only exists once audience measurement was accepted.
+      if (response.ok && canTrack()) {
         window.gtag?.('event', 'generate_lead', { lead_source: 'website_contact', lead_type: 'general' })
       }
       setState(response.ok ? 'sent' : 'failed')

@@ -52,8 +52,17 @@ des arrivées côté application.
 `agent/website-polish-prospection`) charge GA4 uniquement après acceptation du bandeau.
 Le site a sa propre propriété GA4, « Seeklon - Site vitrine » (`G-269CM30LS9`), distincte
 de celle de l'application, pour garder deux tableaux de bord lisibles. L'ID vient de
-`NEXT_PUBLIC_GA_MEASUREMENT_ID` ; à défaut, `G-269CM30LS9` est utilisé en production
-seulement, et `next dev` ne mesure rien.
+`NEXT_PUBLIC_GA_MEASUREMENT_ID` ; à défaut, `G-269CM30LS9` n'est utilisé que sur le
+déploiement Vercel de production (`VERCEL_ENV=production`, inliné par `next.config.js`).
+Les previews Vercel et les builds locaux ne mesurent rien. Pour tester une preview, donner
+à `NEXT_PUBLIC_GA_MEASUREMENT_ID` (environnement Preview) l'ID d'un flux de la propriété
+« Seeklon - Test ».
+
+Le consentement est lu par `lib/analytics.ts` (`canTrack()`), jamais déduit de la présence
+de `window.gtag`, qui reste défini après un retrait. Si le navigateur bloque le stockage,
+le choix vaut pour la page en cours. Un refus ne supprime que le cookie de session du site
+(`_ga_<id>`) et le `_ga` partagé, seulement si aucune autre propriété (l'app) n'a encore
+de cookie `_ga_*`.
 
 Les arrivées sur l'application depuis le site se lisent dans la propriété de l'app :
 Acquisition de trafic, source/support `seeklon_website / website`, dimension secondaire
