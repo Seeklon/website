@@ -6,6 +6,17 @@
     "demo": "Book a demo",
     "betaNote": "Free until 31 January 2027, no commitment."
   },
+  "CookieConsent": {
+    "title": "Audience measurement",
+    "description": "We use Google Analytics to understand site usage and improve the experience. Measurement is only enabled after your consent.",
+    "learnMore": "Learn more",
+    "decline": "Decline",
+    "accept": "Accept",
+    "manage": "Cookies",
+    "withdraw": "Withdraw",
+    "statusAccepted": "Audience measurement is currently accepted.",
+    "statusDeclined": "Audience measurement is currently declined."
+  },
   "Header": {
     "home": "Home",
     "product": "Product",
@@ -577,7 +588,7 @@
     "rightsLi2": "Right to rectification: You have the right to ask us to correct any information you believe is inaccurate.",
     "rightsLi3": "Right to erasure: You have the right to ask us to erase your personal data, under certain conditions.",
     "cookiesTitle": "2. Cookies",
-    "cookiesContent": "This site sets no advertising and no analytics cookies. The only cookie it uses remembers the language you picked, so the next visit starts in it: it is strictly necessary and cannot identify you. You can refuse it in your browser; the site will simply ask for the language again on each visit.",
+    "cookiesContent": "This site sets no advertising cookies. The language cookie is strictly necessary: it remembers the language you picked and cannot identify you. Google Analytics audience measurement is optional and only enabled after your consent through the cookie banner; it then sets _ga cookies on seeklon.com, shared with the Seeklon app. You can change or withdraw this choice at any time from the cookie management button, and declining does not limit access to the site.",
     "dpoTitle": "3. DPO contact",
     "dpoContent": "For any questions regarding the protection of your data or to exercise your rights, you can contact our Data Protection Officer at: contact@seeklon.com"
   },

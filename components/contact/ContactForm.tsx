@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { Check } from 'lucide-react'
+import { canTrack } from '@/lib/analytics'
 
 const FORMSPREE_CONTACT_ID = 'xpqqzzan'
 
@@ -33,6 +34,9 @@ export default function ContactForm() {
         body,
         headers: { Accept: 'application/json' },
       })
+      if (response.ok && canTrack()) {
+        window.gtag?.('event', 'generate_lead', { lead_source: 'website_contact' })
+      }
       setState(response.ok ? 'sent' : 'failed')
     } catch {
       setState('failed')

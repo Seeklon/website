@@ -43,10 +43,53 @@ Chaque lien d'inscription porte uniquement ces paramètres publics :
 | `utm_campaign` | `beta` |
 | `utm_content` | Emplacement fixe et langue, par exemple `home-hero_fr` ou `pricing-beta_en` |
 
-Ces liens ne recopient pas les paramètres de l'URL courante et n'ajoutent aucun cookie,
-appel de collecte ou script de mesure à la vitrine. Ils préparent l'attribution des
-arrivées côté application ; ils ne constituent pas un tableau de conversion ni un suivi
-des abandons sur la vitrine.
+Ces liens ne recopient pas les paramètres de l'URL courante. Ils préparent l'attribution
+des arrivées côté application.
+
+## Mesure d'audience
+
+`components/CookieConsentAnalytics.tsx` (repris de la branche
+`agent/website-polish-prospection`) charge GA4 uniquement après acceptation du bandeau.
+Le site a sa propre propriété GA4, « Seeklon - Site vitrine » (`G-269CM30LS9`), distincte
+de celle de l'application, pour garder deux tableaux de bord lisibles. L'ID vient de
+`NEXT_PUBLIC_GA_MEASUREMENT_ID` ; à défaut, `G-269CM30LS9` n'est utilisé que sur le
+déploiement Vercel de production (`VERCEL_ENV=production`, inliné par `next.config.js`).
+Les previews Vercel et les builds locaux ne mesurent rien. Pour tester une preview, donner
+à `NEXT_PUBLIC_GA_MEASUREMENT_ID` (environnement Preview) l'ID d'un flux de la propriété
+« Seeklon - Test ».
+
+Le consentement est lu par `lib/analytics.ts` (`canTrack()`), jamais déduit de la présence
+de `window.gtag`, qui reste défini après un retrait. Si le navigateur bloque le stockage,
+le choix vaut pour la page en cours. Un refus ne supprime que le cookie de session du site
+(`_ga_<id>`) et le `_ga` partagé, seulement si aucune autre propriété (l'app) n'a encore
+de cookie `_ga_*`.
+
+Les arrivées sur l'application depuis le site se lisent dans la propriété de l'app :
+Acquisition de trafic, source/support `seeklon_website / website`, dimension secondaire
+« Contenu de la session manuelle » pour l'emplacement du bouton. Le parcours sur le site
+(articles lus, etc.) n'est pas relié à l'inscription dans un même rapport.
+
+- `page_view` à chaque changement de route (`send_page_view: false` puis envoi manuel).
+  Retirer puis réaccepter sur la même page ne la compte pas deux fois.
+- `generate_lead` après un envoi réussi du formulaire de contact, avec
+  `lead_source: website_contact`.
+- Un double-clic sur un bouton d'inscription, de connexion ou de démo ne compte qu'un clic.
+- `signup_click` et `login_click` au clic sur « Créez votre compte » et « Connexion »
+  (`components/AppLink.tsx`, via `SignupLink` et `LoginLink`), avec `placement` (même nom
+  que dans `utm_content`, par exemple `home-hero`, `nav-mobile`) et `site_locale` (`fr`,
+  `en`). Le clic attend la confirmation de GA, 400 ms au plus, avant de suivre le lien :
+  sans cela, GA4 perd le hit en quittant la page. Sans consentement, le lien part
+  immédiatement.
+- `demo_click` au clic sur « Demandez une démo » (`components/DemoLink.tsx`), avec les
+  mêmes `placement` que les boutons d'inscription voisins (`home-hero`, `nav-mobile`,
+  `pricing-beta`, `footer`, `<page>-closing`, `product-cta`, `product-footer`) et
+  `site_locale`. Le lien reste sur le site (page Contact), la navigation n'est donc pas
+  retenue. `generate_lead` mesure ensuite les demandes réellement envoyées.
+
+Pour voir `placement` et `site_locale` dans les rapports, les déclarer comme dimensions
+personnalisées (portée événement) dans la propriété du site.
+- Refus ou retrait : `ga-disable-<ID>`, consentement `denied` et suppression des `_ga`.
+- Signaux Google et personnalisation publicitaire désactivés.
 
 Le code d'inscription de l'application contient déjà les événements
 `register_page_view`, `register_step_completed`, `register_submitted`, `register_success`

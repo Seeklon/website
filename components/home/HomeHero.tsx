@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { Link } from '@/i18n/navigation'
 import LoopVideo from './LoopVideo'
 import SignupLink from '@/components/SignupLink'
 import candidatesShot from '@/public/home/capture-candidatures.png'
 import offerShot from '@/public/home/hero-lateral-gauche.webp'
 import interviewShot from '@/public/home/hero-lateral-droite.webp'
+import DemoLink from '@/components/DemoLink'
 
 export default function HomeHero() {
   const t = useTranslations('Home.hero')
@@ -54,9 +54,9 @@ export default function HomeHero() {
         >
           {t('cta')}
         </SignupLink>
-        <Link href="/contact" className="inline-flex min-h-11 items-center text-base text-azure-deep underline underline-offset-4 hover:text-ink">
+        <DemoLink placement="home-hero" className="inline-flex min-h-11 items-center text-base text-azure-deep underline underline-offset-4 hover:text-ink">
           {conversion('demo')}
-        </Link>
+        </DemoLink>
       </div>
       <p className="mt-3 text-sm text-ink-faint">{conversion('betaNote')}</p>
 

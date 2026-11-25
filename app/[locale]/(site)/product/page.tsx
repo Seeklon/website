@@ -3,6 +3,7 @@ import SignupLink from '@/components/SignupLink'
 import { Bot, Share2, MessageSquare, CheckCircle2, XCircle, Star, ArrowRight } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { pageMetadata } from '@/lib/metadata'
+import DemoLink from '@/components/DemoLink'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -211,7 +212,7 @@ export default async function ProductPage({ params }: Props) {
             <SignupLink placement="product-cta" className="inline-flex bg-primary hover:bg-primary-dark text-white px-10 py-4 text-xl rounded-full font-medium shadow-xl shadow-primary/20 motion-safe:hover:-translate-y-1 motion-safe:transition-transform">
               {t('ctaButton')}
             </SignupLink>
-            <Link href="/contact" className="inline-flex min-h-11 items-center text-primary underline underline-offset-4">{conversion('demo')}</Link>
+            <DemoLink placement="product-cta" className="inline-flex min-h-11 items-center text-primary underline underline-offset-4">{conversion('demo')}</DemoLink>
           </div>
           <p className="mt-6 text-text-muted text-sm">{t('ctaNote')}</p>
         </div>

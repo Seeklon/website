@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { Check } from 'lucide-react'
-import { Link } from '@/i18n/navigation'
 import SignupLink from '@/components/SignupLink'
+import DemoLink from '@/components/DemoLink'
 
 // The only plan on sale today: free while Seeklon is in beta.
 export default function BetaPlan() {
@@ -29,9 +29,9 @@ export default function BetaPlan() {
             >
               {t('cta')}
             </SignupLink>
-            <Link href="/contact" className="inline-flex min-h-11 items-center text-base text-azure-deep underline underline-offset-4 hover:text-ink">
+            <DemoLink placement="pricing-beta" className="inline-flex min-h-11 items-center text-base text-azure-deep underline underline-offset-4 hover:text-ink">
               {conversion('demo')}
-            </Link>
+            </DemoLink>
           </div>
         </div>
 
