@@ -35,7 +35,7 @@ export default function ContactForm() {
         headers: { Accept: 'application/json' },
       })
       if (response.ok && canTrack()) {
-        window.gtag?.('event', 'generate_lead', { lead_source: 'website_contact', lead_type: 'general' })
+        window.gtag?.('event', 'generate_lead', { lead_source: 'website_contact' })
       }
       setState(response.ok ? 'sent' : 'failed')
     } catch {

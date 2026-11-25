@@ -70,7 +70,10 @@ Acquisition de trafic, source/support `seeklon_website / website`, dimension sec
 (articles lus, etc.) n'est pas relié à l'inscription dans un même rapport.
 
 - `page_view` à chaque changement de route (`send_page_view: false` puis envoi manuel).
-- `generate_lead` après un envoi réussi du formulaire de contact.
+  Retirer puis réaccepter sur la même page ne la compte pas deux fois.
+- `generate_lead` après un envoi réussi du formulaire de contact, avec
+  `lead_source: website_contact`.
+- Un double-clic sur un bouton d'inscription, de connexion ou de démo ne compte qu'un clic.
 - `signup_click` et `login_click` au clic sur « Créez votre compte » et « Connexion »
   (`components/AppLink.tsx`, via `SignupLink` et `LoginLink`), avec `placement` (même nom
   que dans `utm_content`, par exemple `home-hero`, `nav-mobile`) et `site_locale` (`fr`,

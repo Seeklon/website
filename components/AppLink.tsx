@@ -1,6 +1,6 @@
 'use client'
 
-import type { ComponentPropsWithoutRef, MouseEvent } from 'react'
+import { useRef, type ComponentPropsWithoutRef, type MouseEvent } from 'react'
 import { useLocale } from 'next-intl'
 import { canTrack } from '@/lib/analytics'
 
@@ -19,11 +19,18 @@ const TRACKING_TIMEOUT_MS = 400
 // and working without JavaScript, that reports the click to GA4 once measurement is accepted.
 export default function AppLink({ href, event: eventName, placement, onClick, children, ...props }: Props) {
   const locale = useLocale()
+  // A click is already being held: a second one (double-click) waits for it, untracked.
+  const holdingRef = useRef(false)
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(event)
+    if (event.defaultPrevented) return
+    if (holdingRef.current) {
+      event.preventDefault()
+      return
+    }
     // Not accepted, or withdrawn since: a plain link, followed at once.
-    if (event.defaultPrevented || !canTrack()) return
+    if (!canTrack()) return
 
     // GA4 batches hits, so one queued right before leaving the page can be dropped. Hold a
     // plain same-tab click until GA confirms the hit (or the timeout), then follow the link.
@@ -36,9 +43,15 @@ export default function AppLink({ href, event: eventName, placement, onClick, ch
     const follow = () => {
       if (followed || opensElsewhere) return
       followed = true
+      // Released here so the link works again if the visitor comes back to this page
+      // from the browser's cache.
+      holdingRef.current = false
       window.location.assign(href)
     }
-    if (!opensElsewhere) event.preventDefault()
+    if (!opensElsewhere) {
+      event.preventDefault()
+      holdingRef.current = true
+    }
 
     // `site_locale` rather than `language`, which GA4 already fills with the browser's.
     window.gtag?.('event', eventName, {

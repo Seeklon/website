@@ -26,6 +26,9 @@ export default function CookieConsentAnalytics() {
   const [isGaReady, setIsGaReady] = useState(false)
   const managerButtonRef = useRef<HTMLButtonElement>(null)
   const managerPanelRef = useRef<HTMLDivElement>(null)
+  // Last page reported, so withdrawing then accepting again on the same page does not
+  // count that page twice.
+  const lastPageViewRef = useRef<string | null>(null)
 
   useEffect(() => {
     setConsent(readConsent())
@@ -38,8 +41,11 @@ export default function CookieConsentAnalytics() {
 
   useEffect(() => {
     if (!isGaReady || consent?.status !== CONSENT_ACCEPTED || !window.gtag) return
+    const pagePath = `${pathname}${window.location.search}`
+    if (lastPageViewRef.current === pagePath) return
+    lastPageViewRef.current = pagePath
     window.gtag('event', 'page_view', {
-      page_path: `${pathname}${window.location.search}`,
+      page_path: pagePath,
       page_location: window.location.href,
       page_title: document.title,
     })
@@ -101,7 +107,6 @@ export default function CookieConsentAnalytics() {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', '${GA_MEASUREMENT_ID}', {
-                anonymize_ip: true,
                 allow_google_signals: false,
                 allow_ad_personalization_signals: false,
                 send_page_view: false
